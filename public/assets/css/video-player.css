@@ -1,0 +1,154 @@
+.section-one .row{
+	display: flex;
+	flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 3em;
+}
+
+.video video.hide {
+	display: none;
+}
+
+.video {
+  overflow: hidden;
+  border-radius: 1em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  outline: none;
+  border: none;
+}
+
+.section-one .video-list{
+	width: calc(calc(100% / 2) - 4em);
+  height: auto;
+	aspect-radio: 16 / 9;
+	padding: 2em;
+}
+.section-one .video-list-inner img{
+	width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section-one .video-list-inner img:hover, video:hover{
+  transition: .2s linear;
+  transform: scale(1.2);
+}
+
+.section-one .video-list-inner .play{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	cursor: pointer;
+}
+
+.section-one .video-list-inner .play i{
+  color: #fff;
+  opacity: 0.4;
+  font-size: 3.2em;
+	margin-top: -50%;
+	border-radius: 1em;
+	padding: 0 2px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.section-one .video-list-inner .play i:hover{
+	background: var(--color-secondary);
+  opacity: 1;
+  transition: 600ms;
+}
+
+.section-one .video-list.show{
+	animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn{
+	0%{
+		opacity: 0;
+		transform: scale(0.5);
+	}
+	100%{
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+.section-one .video-list.hide{
+	display: none;
+}
+
+/*responsive*/
+/*
+@media(max-width: 991px){
+	.section-one .video-list{
+
+	}
+}
+767px
+*/
+@media(max-width: 800px){
+	.section-one .video-list{
+    width: calc(100% - 2em);
+	}
+	.section-one .gallery-filter .filter-item{
+		margin-bottom: 0.5em;
+	}
+}
+
+
+/* Modal */
+
+.video-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  background-color: rgba(35, 35, 46, 0.6);
+  display: flex;
+	opacity: 0;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.video-container .close{
+  position: fixed;
+  top: 10%;
+  right: 32px;
+  font-size: 2em;
+  color: #fff;
+	opacity: 0.4;
+  cursor: pointer;
+	transform: scale(0);
+}
+
+.video-container video{
+  width: 75vw;
+  transform: scale(0);
+  box-shadow: 0 1em 1.25em rgba(0, 0, 0, 0.2);
+  outline: none;
+	border-radius: 1em;
+}
+
+.video-container.show{
+  pointer-events: all;
+  opacity: 1;
+}
+
+.video-container.show .close{
+  transform: scale(1);
+	transition: all 1s ease;
+}
+
+.video-container.show .close:hover {
+  opacity: 1;
+}
+
+.video-container.show video{
+  transform: scale(1);
+	transition: all 600ms ease;
+}

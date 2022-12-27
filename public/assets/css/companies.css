@@ -1,0 +1,282 @@
+.companies-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 92%;
+  margin: 2em 4%;
+}
+
+.companies-container h2 {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 1em;
+}
+
+.companies-list .companies, .top-research .top-companies {
+  display: flex;
+  flex-direction: column;
+}
+
+.companies-list {
+  width: 64%;
+  margin-right: 4%;
+}
+
+.top-research, .contact-form {
+  width: 32%;
+}
+
+.company-info {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #fff;
+  border-bottom: 5px solid var(--color-secondary);
+  border-radius: 1em;
+  padding: 2.5em;
+  margin-bottom: 1.5em;
+  box-shadow: 0 5px 10px rgb(100 100 100 / 12%);
+}
+.company-info .left {width: 75%;}
+.company-info .right {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.company-info .right img {
+  width: 100%;
+  padding: 1em;
+}
+
+.companies .company-info:hover {
+  border: 1px solid var(--color-primary);
+  border-bottom: 5px solid var(--color-primary);
+}
+
+.company-info .header { margin-bottom: 1.25em;}
+
+.company-info .header .company-category {
+  font-size: 16.5px;
+  padding: .5em 1em;
+  background-color: rgba(255, 165, 0, .1);
+  color: #764e04;
+}
+.company-info .header h3 {
+  text-transform: uppercase;
+  font-size: 1.32em;
+  margin-bottom: .5em;
+}
+.company-info .header h3 a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.company-info .header h3 a:hover {
+  letter-spacing: .2em;
+  border-bottom: 2px solid var(--color-secondary);
+  transition: all 300ms ease-out;
+}
+
+.company-info .contacts ul li {
+  list-style-type: none;
+  padding: 2px 0;
+  font-size: 14px;
+}
+
+.company-info .contacts ul li i {
+  font-size: 1.5em;
+  color: var(--color-primary);
+  margin-right: .5em;
+}
+
+.contacts .website-link {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.contacts .website-link:hover {
+  font-weight: bold;
+}
+
+.top-research h3 {
+  text-align: center;
+}
+
+.top-research .top-companies {
+  margin-top: 2em;
+  padding: .5em;
+}
+
+.top-research .top-company-info {
+  background: #fff;
+  padding: 1em 1.5em;
+  margin-bottom: 1em;
+  border-radius: .5em;
+  box-shadow: 0 5px 10px rgb(100 100 100 / 12%);
+}
+
+.top-research .top-company-info:hover {
+  border: 1px solid var(--color-primary);
+}
+
+.top-research .top-company-info h4 {margin-bottom: 5px;}
+.top-research .top-company-info h4 a {
+  text-decoration: none;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.top-research .top-company-info h4 a:hover {
+  color: var(--color-primary);
+  margin-left: .5em;
+  transition: all 300ms ease-out;
+}
+
+.top-research .top-company-info ul li {
+  font-size: 14px;
+  list-style-type: none;
+  padding: 2px 0;
+}
+
+.top-research .top-company-info ul li i {
+  color: var(--color-primary);
+  margin-right: 4px;
+}
+.companies .review {
+    width: 100%;
+    max-height: 40em;
+}
+
+.contact-form {
+  padding: 2em;
+  border-radius: 1em;
+  max-height: 400px;
+  background-color: #fff;
+  border-bottom: 5px solid var(--color-secondary);
+  box-shadow: 0 5px 10px rgb(100 100 100 / 12%);
+}
+
+.contact-form:hover {
+  border: 1px solid var(--color-primary);
+  border-bottom: 5px solid var(--color-primary);
+}
+
+.contact-form-header {
+  position: relative;
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.contact-form-header::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background-color: var(--color-primary);
+    border-radius: 1.5em;
+}
+
+.contact-form .input-box{
+    height: 2.5em;
+    width: 100%;
+    margin: 12px 0;
+}
+.contact-form .input-box input,
+.contact-form .input-box textarea{
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #F0F1F8;
+  border-radius: .5em;
+  padding: 0 1em;
+  resize: none;
+  font-family: Poppins;
+}
+.contact-form .message-box{
+  min-height: 6em;
+}
+.contact-form .input-box textarea{
+  padding-top: 4px;
+}
+.contact-form .button{
+  display: inline-block;
+  margin-top: 12px;
+}
+.contact-form .button input {
+  color: #fff;
+  font-size: 1em;
+  outline: none;
+  border: none;
+  padding: .5em 1em;
+  border-radius: .5em;
+  background: var(--color-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.contact-form .button input:hover{
+  background: var(--color-secondary);
+}
+
+.company-banner {
+  border: 2px solid var(--color-primary);
+  border-bottom: 5px solid var(--color-primary);
+  width: 100%;
+  padding: 1.5em 2.5em;
+}
+
+.company-banner h1 {
+  color: var(--color-primary);
+  margin-bottom: .5em;
+}
+
+.company-banner .header span {
+  color: #fff;
+  background-color: #073465;
+  border-radius: 1.5em;
+  font-size: 16.5px;
+  padding: 0.5em 1.25em;
+}
+
+.page-views {
+  margin: 1em 0 0 .5em;
+  font-size: 1.25em;
+  color: var(--text-color);
+}
+
+.page-views .product-rating {font-size: 12px;}
+.page-views .product-rating i {color: #ccc;}
+.page-views .product-rating .count-review {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.company-slider {
+  margin-left: 0;
+  margin-right: 0;
+}
+.companies-container .img-slider {
+  border-radius: 0;
+}
+
+@media (max-width: 800px) {
+  .companies-list {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .top-research, .contact-form {
+    width: 100%;
+    margin-top: 1.5em;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .company-banner .left {width: 100%;}
+  .company-banner .right {width: 100%;}
+}

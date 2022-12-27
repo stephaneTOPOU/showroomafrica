@@ -1,0 +1,107 @@
+.pro-container {
+  margin: 2em 4%;
+  margin-top: 6em;
+  width: 92%;
+}
+
+.pro-container h2 {
+  text-align: left;
+  color: var(--text-color);
+}
+
+
+.professionals-list {
+  width: 100%;
+}
+
+.professionals-list .professionals{
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 2em;
+}
+
+.professionals .professional-info {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 32%;
+  background: #fff;
+  border-radius: .5em;
+  padding: 1em 1.5em;
+  margin-bottom: 1.5em;
+  border-bottom: 5px solid rgba(6, 89, 178, .25);;
+  box-shadow: 0 5px 10px rgb(100 100 100 / 12%);
+}
+
+.professionals .professional-info:nth-child(3n-1),
+.professionals .professional-info:nth-child(3n+0) {
+  margin-left: 2%;
+}
+
+.professionals .professional-info .left {
+  width: 85%;
+}
+
+.professionals .professional-info .right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+}
+
+.professionals .professional-info:hover {
+  border: 2px solid var(--color-primary);
+  border-bottom: 5px solid var(--color-primary);
+  transition: all 300ms ease-out;
+}
+
+.professionals .professional-info h3 {
+  color: var(--color-primary);
+  font-weight: normal;
+}
+
+.professionals .professional-info ul {margin-top: .75em;}
+.professionals .professional-info ul li {
+  list-style-type: none;
+  padding: 2px 4px;
+  font-size: 14.5px;
+}
+
+.professionals .professional-info ul li i {
+  font-size: 1.25em;
+  margin-right: .5em;
+  color: var(--color-primary);
+}
+
+.professional-info .right a {
+  text-decoration: none;
+  padding: .25em .75em;
+  margin-top: .5em;
+  color: #fff;
+  font-size: 14px;
+  background-color: var(--color-primary);
+  border-radius: 1em;
+}
+
+@media (max-width: 900px) {
+  .pro-container {margin-top: 2em;}
+  .professionals .professional-info {width: 48%;}
+
+  .professionals .professional-info:nth-child(3n-1),
+  .professionals .professional-info:nth-child(3n+0) {
+    margin-left: 0;
+  }
+
+  .professionals .professional-info:nth-child(2n+0) {
+    margin-left: 4%;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .professionals .professional-info {width: 100%;}
+
+  .professionals .professional-info:nth-child(2n+0) {
+    margin-left: 0;
+  }
+
+}
