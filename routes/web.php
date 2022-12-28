@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/enregistrer-entreprise', [\App\Http\Controllers\AuthController::class, 'entreprise'])->name('entreprise.register');
+
+Route::get('/professionnel', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel'])->name('professionnel');
+
+Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
+
+Route::get('/categories', [\App\Http\Controllers\CategoriesController::class, 'categories'])->name('categorie');
+
+Route::get('/entreprise', [\App\Http\Controllers\EntrepriseController::class, 'entreprise'])->name('entreprise');
+
+Route::get('/entreprise-profil', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise'])->name('entreprise.profil');

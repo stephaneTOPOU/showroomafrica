@@ -3,14 +3,14 @@
         <div class="row">
             <div class="footer-col">
                 <h4>Showroom</h4>
-                <img height="40" src="assets/images/logo-white.png" alt="Logo">
+                <img height="40" src="{{ asset('assets/images/logo-white.png') }}" alt="Logo">
             </div>
             <div class="footer-col">
                 <h4>liens rapides</h4>
                 <ul>
-                    <li><a href="index.html">accueil</a></li>
-                    <li><a href="#">catégories</a></li>
-                    <li><a href="#">professionnels</a></li>
+                    <li><a href="/">accueil</a></li>
+                    <li><a href="{{ route('categorie') }}">catégories</a></li>
+                    <li><a href="{{ route('professionnel') }}">professionnels</a></li>
                     <li><a href="#">offres d'emploi</a></li>
                 </ul>
             </div>
@@ -47,10 +47,11 @@
 
 
 <!-- SCRIPTS -->
-<script src="assets/js/script.js"></script>
-<script src="assets/js/modal.js"></script>
-<script src="assets/js/forms.js"></script>
-<script src="assets/js/slider.js"></script>
+<script src="{{ asset('assets/js/script.js') }}"></script>
+<script src="{{ asset('assets/js/modal.js') }}"></script>
+<script src="{{ asset('assets/js/forms.js') }}"></script>
+<script src="{{ asset('assets/js/slider.js') }}"></script>
+
 <script type="text/javascript">
     var counter = 1;
     setInterval(function () {
@@ -86,6 +87,7 @@
 
 </script>
 <!-- END SCRIPTS -->
+@yield('javascripts')
 
 </body>
 
