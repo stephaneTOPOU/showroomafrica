@@ -51,6 +51,8 @@ class CreateEntreprisesTable extends Migration
             $table->string('magazineimage1')->nullable();
             $table->string('magazineimage2')->nullable();
             $table->string('magazineimage3')->nullable();
+            $table->string('ville')->nullable();
+            $table->string('pays')->nullable();
             $table->timestamps();
             $table->foreign('souscategorie_id')->references('id')->on('sous_categories')->onDelete('cascade')->onUpdate('cascade');
         });
