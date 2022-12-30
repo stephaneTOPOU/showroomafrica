@@ -6,23 +6,20 @@
 
     <!-- ADS BIG SLIDER -->
     <div class="img-slider">
-      <div class="slide active">
-          <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
-      </div>
-      @foreach ($slider as $sliders)
-          <div class="slide">
-              <img src="{{ asset('assets/images/sliders') }}/{{ $sliders->image }}" alt="">
-          </div>
-      @endforeach
-  </div>
-  <!-- END ADS BIG SLIDER -->
-  
+        <div class="slide active">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+        </div>
+        @foreach ($slider as $sliders)
+            <div class="slide">
+                <img src="{{ asset('assets/images/sliders') }}/{{ $sliders->image }}" alt="">
+            </div>
+        @endforeach
+    </div>
+    <!-- END ADS BIG SLIDER -->
+
     <div class="companies-container">
 
         <div class="companies-list">
-          @foreach ($sousCategories as $sousCategorie)
-            <h2>{{ $sousCategorie->libelle }}</h2>
-          @endforeach
             <div class="companies">
 
                 <div class="company-info">
@@ -31,7 +28,7 @@
                             <h3 class="company-name"><a href="#">Showroom Africa</a></h3>
                             <span class="company-category">Annuaire en ligne</span>
                         </div>
-                        <div class="contacts"> 
+                        <div class="contacts">
                             <ul>
                                 <li>
                                     <i class="fa-light fa-location-dot"></i>
@@ -48,48 +45,49 @@
                     </div>
 
                 </div>
-                @foreach ($entreprises as $entreprise)
-                  <div class="company-info">
-                    <div class="left">
-                        <div class="header">
-                            <h3 class="company-name"><a href="{{ route('entreprise.profil',['entreprise_id'=>$entreprise->id]) }}">{{$entreprise->nom}}</a></h3>
-                            <span class="company-category">{{ $entreprise->libelle }}</span>
+                @foreach ($recherches as $recherche)
+                    <div class="company-info">
+                        <div class="left">
+                            <div class="header">
+                                <h3 class="company-name"><a href="{{ route('entreprise.profil',['entreprise_id'=>$recherche->id]) }}">{{$recherche->nom}}</a></h3>
+                                <span class="company-category">{{ $recherche->sousCategorie }}</span>
+                            </div>
+                            <div class="contacts">
+                                <ul>
+                                    <li>
+                                        <i class="fa-light fa-location-dot"></i>
+                                        {{ $recherche->adresse }}
+                                    </li>
+                                    <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $recherche->telephone1 }}@if ($recherche->telephone2)
+                                        • {{ $recherche->telephone2 }}</b>
+                                      @endif </li>
+                                    <li>
+                                        <i class="fa-light fa-globe"></i>
+                                        <a href="{{ $recherche->siteweb }}" class="website-link">{{ $recherche->siteweb }}</a>
+                                    </li>
+                                    <li><i class="fa-light fa-map-location-dot"></i> {{ $recherche->itineraire }}</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="contacts">
-                            <ul>
-                                <li>
-                                    <i class="fa-light fa-location-dot"></i>
-                                    {{ $entreprise->adresse }}
-                                </li>
-                                <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $entreprise->telephone1 }}@if ($entreprise->telephone2)
-                                    • {{ $entreprise->telephone2 }}</b>
-                                  @endif </li>
-                                <li>
-                                    <i class="fa-light fa-globe"></i>
-                                    <a href="{{ $entreprise->siteweb }}" class="website-link">{{ $entreprise->siteweb }}</a>
-                                </li>
-                                <li><i class="fa-light fa-map-location-dot"></i>{{$entreprise->itineraire}}</li>
-                            </ul>
+
+                        <div class="right">
+                            @if ($recherche->logo)
+                                <img src="{{ asset('assets/images/companies')}}/{{ $recherche->logo }}" alt="{{$recherche->nom}}">
+                            @else
+                                <div class="carousel-text"> <b>{{ $recherche->nom }}</b></div>
+                            @endif
                         </div>
-                    </div>
 
-                    <div class="right">
-                        @if ($entreprise->logo)
-                            <img src="{{ asset('assets/images/companies') }}/{{ $entreprise->logo }}" alt="{{$entreprise->nom}}">
-                        @else
-                            <div class="carousel-text"> <b>{{ $entreprise->nom }}</b></div>
-                        @endif
                     </div>
-
-                </div>
                 @endforeach
             </div>
+
         </div>
 
         <div class="top-research">
             <h3>Sociétés les plus recherchées</h3>
             <div class="top-companies">
-              @foreach ($entreprisePopulaire as $entreprisePopulair)
+                @foreach ($entreprisePopulaire as $entreprisePopulair)
                     <div class="top-company-info">
                         <h4><a href="#">{{ $entreprisePopulair->nom }}</a></h4>
                         <ul>

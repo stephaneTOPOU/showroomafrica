@@ -1,7 +1,7 @@
 <nav>
 
     <a href="/" class="nav-icon" aria-label="visit homepage" aria-current="page">
-        <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
+        <img src="{{ asset('assets/images') }}/{{ $parametres->logo_header }}" alt="logo">
     </a>
 
     <div class="main-navlinks">
@@ -18,11 +18,9 @@
             <li class="dropdown">
                 <a href="#">Entreprise<i class="fa-regular fa-chevron-down"></i></a>
                 <div class="dropdown-content">
-                <a href="{{ route('entreprise') }}">Agences de communication</a><br>
-                <a href="{{ route('entreprise') }}">Arts graphiques</a><br>
-                <a href="{{ route('entreprise') }}">Audiovisuel</a><br>
-                <a href="{{ route('entreprise') }}">Centres d'appel</a><br>
-                <a href="{{ route('entreprise') }}">Toutes les catégories</a>
+                    @foreach ($sousCategorieNavs as $sousCategorieNav)
+                        <a href="{{ route('entreprise',['souscategorie_id'=>$sousCategorieNav->id]) }}">{{ $sousCategorieNav->libelle }}</a><br>
+                    @endforeach
                 </div>
             </li>
             <li>

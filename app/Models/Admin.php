@@ -64,4 +64,14 @@ class Admin extends Model
         return $this->belongsTo(SliderRechercheLateralBas::class);
     }
 
+    public function sliderCategorie()
+    {
+        return $this->belongsTo(SliderCategorie::class);
+    }
+
+    public function sliderEntreprise()
+    {
+        return $this->belongsTo(SliderEntreprise::class);
+    }
+
 }

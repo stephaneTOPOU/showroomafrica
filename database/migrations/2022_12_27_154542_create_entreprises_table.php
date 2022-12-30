@@ -39,7 +39,7 @@ class CreateEntreprisesTable extends Migration
             $table->boolean('honneur')->default(0);
             $table->boolean('est_souscrit')->default(0);
             $table->boolean('elus')->default(0);
-            $table->boolean('vue')->default(0);
+            $table->bigInteger('vue')->default(0);
             $table->boolean('a_publireportage')->default(0);
             $table->string('publireportage1')->nullable();
             $table->string('publireportage2')->nullable();

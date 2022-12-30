@@ -6,18 +6,17 @@ use App\Models\Parametre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProfessionnelController extends Controller
+class NavbarController extends Controller
 {
-    public function professionnel()
+    public function navBar()
     {
-        $parametres = Parametre::find(1);
-        
         $sousCategorieNavs = DB::table('categories')
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->select('*')
             ->take(4)
             ->get();
-        
-        return view('frontend.professionnel',compact('parametres', 'sousCategorieNavs'));
+            
+        $parametres = Parametre::find(1);
+        return view('frontend.navbar', compact('sousCategorieNavs', 'parametres'));
     }
 }

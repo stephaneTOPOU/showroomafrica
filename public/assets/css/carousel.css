@@ -20,6 +20,12 @@
   /*filter: grayscale(1) invert(100%);*/
 }
 
+.carousel-text {
+  width: 12em;
+  text-align: center;
+  font-size: 1.25em;
+}
+
 @keyframes slideshow {
   0% {transform: translateX(0);}
   100% {transform: translateX(-100%);}

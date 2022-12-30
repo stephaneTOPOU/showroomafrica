@@ -162,7 +162,7 @@ nav ul i {
   background-repeat: no-repeat;
   width: 100vw;
   height: auto;
-  aspect-ratio: 2/1;
+  aspect-ratio: 10/1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -403,6 +403,7 @@ nav ul i {
 .magazine .magazine-details {
   border: 2px solid var(--color-secondary);
   width: 86%;
+  position: relative;
 }
 .magazine-details button {
   background: var(--color-secondary);
@@ -410,9 +411,9 @@ nav ul i {
   font-size: 16px;
   border-style: none;
   z-index: 5;
-  margin-left: 1em;
   position: absolute;
-  margin-top: 17%;
+  bottom: 6em;
+  left: 1em;
 }
 .magazine-details button:hover {
   background: var(--color-primary);
@@ -457,6 +458,318 @@ nav ul i {
   line-height: calc(2em - 2px);
 	background-color: #fff;
 }
+
+/* HIGHLIGHTS */
+
+.highlights, .advertorials {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 88%;
+  margin: 0 6%;
+}
+
+.highlights .hightlighted-company {
+  width: 32%;
+  background: #fff;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 0 5px 10px rgb(100 100 100 / 10%);
+}
+
+.highlights .hightlighted-company:nth-child(2),
+.highlights .hightlighted-company:nth-child(3) { margin-left: 2%; }
+
+.hightlighted-company img {
+  width: 100%;
+  border-radius: .5em;
+}
+
+.hightlighted-company .highlight-links button {
+  border: none;
+  background-color: var(--color-primary);
+  padding: .5em 1em;
+  border-radius: 1em;
+  cursor: pointer;
+  margin-top: .5em;
+}
+
+.hightlighted-company .highlight-links button:hover,
+.hightlighted-company .highlight-links button:nth-child(2):hover {
+  background: var(--text-color);
+  transition: all 0.25s ease;
+}
+
+.hightlighted-company .highlight-links button i { color: #fff; }
+.hightlighted-company .highlight-links button a {
+  text-decoration: none;
+  font-family: Montserrat;
+  color: #fff;
+}
+
+.hightlighted-company .highlight-links button:nth-child(2) {
+  background-color: var(--color-secondary);
+  text-shadow: 2px 5px 16px rgb(0 0 0 / 72%);
+}
+
+@media (max-width: 900px) {
+  .hightlighted-company .highlight-links button:nth-child(2){
+    margin-top: .5em;
+  }
+}
+
+@media (max-width: 767px) {
+  .highlights .hightlighted-company { width: 48%; }
+
+  .highlights .hightlighted-company:nth-child(2) { margin-left: 4%; }
+  .highlights .hightlighted-company:nth-child(3) {
+    margin-left: 0;
+    margin-top: 1.5em;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .highlights .hightlighted-company { width: 96%; }
+
+  .highlights .hightlighted-company:nth-child(2),
+  .highlights .hightlighted-company:nth-child(3) {
+    margin-left: 0;
+    margin-top: 1.5em;
+  }
+
+}
+
+/* END HIGHLIGHTS */
+
+/* ADVERTORIAL */
+.advertorials .advertorial {
+  width: 32%;
+  position: relative;
+  margin-top: 0.75em;
+  display: flex;
+  align-items: center;
+}
+
+.advertorials .advertorial:nth-child(3n+0),
+.advertorials .advertorial:nth-child(3n-1) {
+  margin-left: 2%;
+}
+
+.advertorial img {
+  border-radius: 1em;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.advertorial a {
+  font-size: 14px;
+  text-decoration: none;
+  background-color: #fff;
+  border-radius: 1em;
+  color: var(--text-color);
+  padding: .5em 1em;
+  box-shadow: 0 5px 10px rgb(100 100 100 / 10%);
+  position: absolute;
+  bottom: 1.5em;
+  top: inherit;
+  left: 1em;
+  z-index: 2;
+}
+
+.advertorial a:hover {
+  margin-left: 1em;
+  transition: all .3s ease-out;
+}
+
+.advertorial a i {
+  margin-right: .5em;
+  color: var(--color-primary);
+}
+
+.advertorial .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.4);
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .25s ease;
+  border-radius: 1em;
+}
+
+.advertorial:hover .overlay {
+  width: 100%;
+}
+
+
+@media (max-width: 800px) {
+  .advertorials .advertorial {
+    width: 48%;
+    margin-top: 1.2em;
+  }
+  .advertorials .advertorial:nth-child(3n+0),
+  .advertorials .advertorial:nth-child(3n-1) {margin-left: 0;}
+  .advertorials .advertorial:nth-child(2n+0) {margin-left: 4%;}
+}
+
+@media (max-width: 600px) {
+  .advertorials .advertorial {width: 96%;}
+  .advertorials .advertorial:nth-child(2n+0) {margin-left: 0;}
+}
+
+/* END ADVERTORIAL */
+
+/* TOWER */
+.tower-ctn {
+  width: 100vw;
+  height: 22em;
+  margin-top: -2em;
+}
+
+.tower-ctn .drugstore {
+  width: 40%;
+  background: #fff;
+  border-radius: 1em;
+  padding: 1.5em;
+  box-shadow: 0 5px 10px rgb(100 100 100 / 10%);
+}
+
+.drugstore img {
+  width: 100%;
+  border-radius: .5em;
+}
+
+.drugstore h3 {
+  margin-top: 1em;
+  font-family: Montserrat;
+  color: var(--color-primary);
+}
+
+.drugstore li {
+  list-style-type: none;
+  font-family: Poppins;
+  font-size: 14px;
+  margin-top: .5em;
+}
+
+.drugstore li i {
+  color: var(--color-primary);
+  margin-right: .5em;
+}
+
+@keyframes display {
+  0% {
+    transform: translateX(20em);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(-20em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-20em);
+    opacity: 0;
+  }
+}
+
+.tower-ctn {
+  position: relative;
+  margin-top: 15vh;
+  width: 100vw;
+}
+
+.tower-ctn > .drugstore {
+  position: absolute;
+  top: 0;
+  left: 30%;
+  opacity: 0;
+  animation: display 25s infinite;
+}
+
+.tower-ctn .drugstore:nth-child(2) {
+  animation-delay: 5s;
+}
+.tower-ctn .drugstore:nth-child(3) {
+  animation-delay: 10s;
+}
+.tower-ctn .drugstore:nth-child(4) {
+  animation-delay: 15s;
+}
+.tower-ctn .drugstore:nth-child(5) {
+  animation-delay: 20s;
+}
+
+@media (min-width: 901px) {
+  .tower-ctn {margin-bottom: 2em;}
+  .tower-ctn .drugstore {margin-top: -1.5em;}
+}
+/* END TOWER */
+
+/* STATISTICS */
+.statistics {
+  display: flex;
+  justify-content: center;
+  flex-flow: row;
+  width: 100%;
+  background: #fff;
+}
+
+.statistics .statistic-detail {
+  width: 32%;
+  margin: 2.5em 1em;
+  padding-left: 1.5em;
+}
+
+.statistics .statistic-detail:nth-child(2),
+.statistics .statistic-detail:nth-child(3) {
+  border-left: 1px solid #3392f7;
+}
+
+.statistic-detail label {
+  width: 100%;
+  font-weight: bold;
+}
+.statistic-detail .statistic-score {
+  font-size: 2.25em;
+  color: var(--color-primary);
+}
+.statistic-detail span {
+  float: right;
+  background-color: #3392f7;
+  font-size: .8em;
+  color: #fff;
+  padding: .25em .5em;
+  border-radius: 1em;
+  margin-top: 1em;
+}
+
+@media (max-width: 685px) {
+  .statistics {
+    flex-direction: column;
+  }
+
+  .statistics .statistic-detail {
+    width: 96%;
+    padding: 0 1.5em;
+  }
+
+  .statistics .statistic-detail:nth-child(2),
+  .statistics .statistic-detail:nth-child(3) {
+    border-left: none;
+  }
+}
+/* END STATISTICS */
 
 
 /* FOOTER STYLE */
@@ -606,11 +919,11 @@ nav ul i {
   .advertising {float: right;}
   .sb-container {margin-top: 3.5em;}
 
-  .search-form .search-field:first-child {width: 58%;}
+  .search-form .search-field:first-child {width: 40%;}
   .search-form .search-field:nth-child(2),
   .search-form .search-field:nth-child(3) {width: 36%;}
   .search-form .search-field:nth-child(4) {width: 40%;}
-  .search-form .search-button {width: 16%;}
+  .search-form .search-button {width: 14%;}
 
 }
 
@@ -765,10 +1078,6 @@ nav ul i {
     margin-top: 5em;
   }
 
-  .magazine-details button {
-    margin-top: 25%;
-  }
-
 }
 
 @media (max-width: 750px) {
@@ -800,9 +1109,6 @@ nav ul i {
   }
   .magazines .magazine:nth-child(2){
     margin-left: 0;
-  }
-  .magazine-details button {
-    margin-top: 48%;
   }
 }
 

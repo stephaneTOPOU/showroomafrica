@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/video-player.css')}}" />
 
     <!-- FAVICON -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/showroom/favicon.ico') }}" />
 
     <!-- ICONS -->
     <link rel="stylesheet" href="{{ asset('assets/icons/fontawesome/css/all.min.css') }}" />
