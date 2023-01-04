@@ -1,4 +1,5 @@
 @include('frontend.header')
+<link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/css/categories.css') }}" />
 @include('frontend.navbar')
 
@@ -40,5 +41,6 @@
     </div>
 
 </div>
+<script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/accordion.js') }}"></script>
 @include('frontend.footer')

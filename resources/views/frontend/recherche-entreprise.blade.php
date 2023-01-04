@@ -1,6 +1,7 @@
 @include('frontend.header')
-<link rel="stylesheet" href="{{ asset('assets/css/categories.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/css/companies.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/categories.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/companies.css') }}" />
 @include('frontend.navbar')
 <div class="container">
 
@@ -54,18 +55,29 @@
                             </div>
                             <div class="contacts">
                                 <ul>
-                                    <li>
-                                        <i class="fa-light fa-location-dot"></i>
-                                        {{ $recherche->adresse }}
-                                    </li>
-                                    <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $recherche->telephone1 }}@if ($recherche->telephone2)
-                                        • {{ $recherche->telephone2 }}</b>
-                                      @endif </li>
-                                    <li>
-                                        <i class="fa-light fa-globe"></i>
-                                        <a href="{{ $recherche->siteweb }}" class="website-link">{{ $recherche->siteweb }}</a>
-                                    </li>
-                                    <li><i class="fa-light fa-map-location-dot"></i> {{ $recherche->itineraire }}</li>
+                                    @if ($recherche->adresse)
+                                        <li>
+                                            <i class="fa-light fa-location-dot"></i>
+                                            {{ $recherche->adresse }}
+                                        </li>
+                                    @endif
+                                    
+                                    @if ($recherche->telephone1)
+                                        <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $recherche->telephone1 }}@if ($recherche->telephone2)
+                                            • {{ $recherche->telephone2 }}</b>
+                                        @endif </li>
+                                    @endif
+                                    
+                                    @if ($recherche->siteweb)
+                                        <li>
+                                            <i class="fa-light fa-globe"></i>
+                                            <a href="{{ $recherche->siteweb }}" class="website-link">{{ $recherche->siteweb }}</a>
+                                        </li>
+                                    @endif
+                                    
+                                    @if ($recherche->itineraire)
+                                    <li><i class="fa-light fa-map-location-dot"></i><a href="{{ $recherche->itineraire }}" class="website-link">Itineraire</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -105,5 +117,6 @@
     </div>
 
 </div>
+<script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/accordion.js') }}"></script>
 @include('frontend.footer')

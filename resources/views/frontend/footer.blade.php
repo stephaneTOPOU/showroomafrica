@@ -50,10 +50,9 @@
 
 
 <!-- SCRIPTS -->
-<script src="{{ asset('assets/js/script.js') }}"></script>
+
 <script src="{{ asset('assets/js/modal.js') }}"></script>
 <script src="{{ asset('assets/js/forms.js') }}"></script>
-<script src="{{ asset('assets/js/slider.js') }}"></script>
 
 <script type="text/javascript">
     var counter = 1;

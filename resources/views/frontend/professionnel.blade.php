@@ -1,4 +1,5 @@
 @include('frontend.header')
+<link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/css/professionals.css') }}" />
 @include('frontend.navbar')
 

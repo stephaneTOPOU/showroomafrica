@@ -1,36 +1,9 @@
 @include('frontend.header')
+    <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/side-slider.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/carousel.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/video-player.css')}}" />
 @include('frontend.navbar')
-
-{{-- <style>
-    @media screen and (min-width:568px) {
-        .category p{
-            font-size: 10px;
-        }
-    }
-
-    @media screen and (max-width:768px) {
-        .category p{
-            font-size: 10px;
-        }
-    }
-    @media screen and (max-width: 767px){
-        .category p{
-            font-size: 10px;
-        }
-    }
-
-    @media screen and (max-width: 990px){
-        .category p{
-            font-size: 10px;
-        }
-    }
-
-    @media screen and (max-width: 480px){
-        .category p{
-            font-size: 10px;
-        }
-    }
-</style> --}}
 <!-- CONTAINER-->
 <div class="container">
 
@@ -323,160 +296,142 @@
                     </div>
                 @endforeach
         </div>
-      </div>
-      <!-- END HIGHLIGHTED COMPANIES -->
-      <!-- ADVERTORIAL -->
-      <div class="section-one">
+    </div>
+    <!-- END HIGHLIGHTED COMPANIES -->
+    <!-- ADVERTORIAL -->
+    <div class="section-one">
         <h1>Publireportage</h1>
         <div class="advertorials">
-          <div class="advertorial">
-            <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}">
-            <div class="overlay"></div>
-            <a href="#">
-              <i class="fa-solid fa-phone"></i> Téléphonie
-            </a>
-          </div>
+            <div class="advertorial">
+                <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}">
+                <div class="overlay"></div>
+                <a href="#">
+                <i class="fa-solid fa-phone"></i> Téléphonie
+                </a>
+            </div>
 
-          <div class="advertorial">
-            <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}">
-            <div class="overlay"></div>
-            <a href="#">
-              <i class="fa-solid fa-shopping-bag"></i> Commerce
-            </a>
-          </div>
+            <div class="advertorial">
+                <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}">
+                <div class="overlay"></div>
+                <a href="#">
+                <i class="fa-solid fa-shopping-bag"></i> Commerce
+                </a>
+            </div>
 
-          <div class="advertorial">
-            <img src="{{ asset('assets/images/advertorial/education.jpg') }}">
-            <div class="overlay"></div>
-            <a href="#">
-              <i class="fa-solid fa-backpack"></i> Education
-            </a>
-          </div>
+            <div class="advertorial">
+                <img src="{{ asset('assets/images/advertorial/education.jpg') }}">
+                <div class="overlay"></div>
+                <a href="#">
+                <i class="fa-solid fa-backpack"></i> Education
+                </a>
+            </div>
 
-          <div class="advertorial">
-            <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}">
-            <div class="overlay"></div>
-            <a href="#">
-              <i class="fa-solid fa-user-doctor"></i> Medecine
-            </a>
-          </div>
+            <div class="advertorial">
+                <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}">
+                <div class="overlay"></div>
+                <a href="#">
+                <i class="fa-solid fa-user-doctor"></i> Medecine
+                </a>
+            </div>
 
-          <div class="advertorial">
-            <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}">
-            <div class="overlay"></div>
-            <a href="#">
-              <i class="fa-solid fa-utensils"></i>Alimentation</span>
-            </a>
-          </div>
+            <div class="advertorial">
+                <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}">
+                <div class="overlay"></div>
+                <a href="#">
+                <i class="fa-solid fa-utensils"></i>Alimentation</span>
+                </a>
+            </div>
 
-          <div class="advertorial">
-            <img src="{{ asset('assets/images/advertorial/divers.jpg') }}">
-            <div class="overlay"></div>
-            <a href="#">
-              <i class="fa-solid fa-arrow-right"></i> Divers</span>
-            </a>
-          </div>
+            <div class="advertorial">
+                <img src="{{ asset('assets/images/advertorial/divers.jpg') }}">
+                <div class="overlay"></div>
+                <a href="#">
+                <i class="fa-solid fa-arrow-right"></i> Divers</span>
+                </a>
+            </div>
 
         </div>
-      </div>
-      <!-- END ADVERTORIAL -->
+    </div>
+    <!-- END ADVERTORIAL -->
     <!-- TOWER -->
     <div class="section-one">
         <h1>Pharmacies de garde</h1>
-<div class="tower-ctn">
-  <div class="drugstore">
-    <img src="{{ asset('assets/images/drugstores/1.jpg') }}">
-    <h3>Pharmacie Agoè-Nyivé</h3>
-    <ul>
-      <li>
-        <i class="fa-solid fa-location-dot"></i>
-        Eyadema, A côté de l'église catholique Marie Théotokos, Lomé
-      </li>
-      <li><i class="fa-solid fa-phone"></i> (+228) <b>22 25 83 38</b></li>
-    </ul>
-  </div>
+        <div class="tower-ctn">
+            @foreach ($pharmacies as $pharmacie)
+                <div class="drugstore">
+                    <img src="{{ asset('assets/images') }}/{{ $pharmacie->photo1 }}">
+                    <h3>{{ $pharmacie->nom }}</h3>
+                    <ul>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        {{ $pharmacie->adresse }}
+                    </li>
+                    <li><i class="fa-solid fa-phone"></i> (+228) <b>{{ $pharmacie->telephone1 }}</b></li>
+                    </ul>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    <!-- END TOWER -->
 
-  <div class="drugstore">
-    <img src="{{ asset('assets/images/drugstores/2.jpg') }}">
-    <h3>Pharmacie La Main de Dieu</h3>
-    <ul>
-      <li>
-        <i class="fa-solid fa-location-dot"></i>
-        Camp des Policiers d'Agoè, Lomé
-      </li>
-      <li><i class="fa-solid fa-phone"></i> (+228) <b>22 52 77 55</b></li>
-    </ul>
-  </div>
+    <!-- STATISTICS -->
+    @php
+        function pretty_number(int $n): string {
+        $prettyN = $n;
+        $suffix = '';
+        $len = strlen((string) $n);
+        $suffixes = ['K', 'M'];
+        foreach ($suffixes as $s) {
+            if ($n < 1000) {
+                break;
+            }
+            $suffix = $s;
+            $n = $n / 1000;
+            $prettyN = number_format($n, 1);
+        }
+        return $prettyN . $suffix;
+    }
+    @endphp                                         
 
-  <div class="drugstore">
-    <img src="{{ asset('assets/images/drugstores/3.jpg') }}">
-    <h3>Pharmacie 2000</h3>
-    <ul>
-      <li>
-        <i class="fa-solid fa-location-dot"></i>
-        Rue 258 HDN, Lomé
-      </li>
-      <li><i class="fa-solid fa-phone"></i> (+228) <b>91 64 73 38</b></li>
-    </ul>
-  </div>
+    <script>
+        let buttonHome = document.querySelector(".button-home");
+        var CountButtonHomeClicks = 0;
 
-  <div class="drugstore">
-    <img src="{{ asset('assets/images/drugstores/4.jpg') }}">
-    <h3>Pharmacie la CHARITE</h3>
-    <ul>
-      <li>
-        <i class="fa-solid fa-location-dot"></i>
-        66G3+4XV, Route de Mission Tové, Lomé
-      </li>
-      <li><i class="fa-solid fa-phone"></i> (+228) <b>22 25 12 60</b></li>
-    </ul>
-  </div>
+        buttonHome.addEventListener("click", function() {
+        CountButtonHomeClicks += 1;
+        output.textContent = CountButtonHomeClicks;
+        console.log('click : ',CountButtonHomeClicks);
+        });
+    </script>
 
-  <div class="drugstore">
-    <img src="{{ asset('assets/images/drugstores/5.jpg') }}">
-    <h3>Pharmacie de la Cité</h3>
-    <ul>
-      <li>
-        <i class="fa-solid fa-location-dot"></i>
-        Boulevard Du 30 Aout, Lomé
-      </li>
-      <li><i class="fa-solid fa-phone"></i> (+228) <b>22 25 01 25</b></li>
-    </ul>
-  </div>
-
-</div>
-      </div>
-<!-- END TOWER -->
-
-<!-- STATISTICS -->
-<div class="section-one">
+    <div class="section-one">
         <h1>Le mois dernier</h1>
-<div class="statistics">
-  <div class="statistic-detail">
-      <label class="statistic-title">Total visiteurs</label>
-      <div>
-        <label class="statistic-score">1.2M</label>
-        <span><b>+ 10</b>%</span>
-      </div>
-  </div>
-  <div class="statistic-detail">
-      <label class="statistic-title">Total clics</label>
-      <div>
-        <label class="statistic-score">2.5M</label>
-        <span><b>+ 10</b>%</span>
-      </div>
-  </div>
-  <div class="statistic-detail">
-      <label class="statistic-title">Entreprises</label>
-      <div>
-        <label class="statistic-score">14K</label>
-        <span><b>+ 5</b>%</span>
-      </div>
-  </div>
+        <div class="statistics">
+        <div class="statistic-detail">
+            <label class="statistic-title">Total visiteurs</label>
+            <div>
+                <label class="statistic-score">@php echo pretty_number(1500000)@endphp</label>
+                <span><b>+ 10</b>%</span>
+            </div>
+        </div>
+        <div class="statistic-detail">
+            <label class="statistic-title">Total clics</label>
+            <div>
+                <label class="statistic-score">@php echo pretty_number(2000000)@endphp</label>
+                <span><b>+ 10</b>%</span>
+            </div>
+        </div>
+        <div class="statistic-detail">
+            <label class="statistic-title">Entreprises</label>
+            <div>
+                <label class="statistic-score">@php echo pretty_number( $nombresEntreprise + 10000)@endphp</label>
+                <span><b>+ 5</b>%</span>
+            </div>
+        </div>
 
-</div>
-      </div>
-<!-- END STATISTICS -->
+        </div>
+    </div>
+    <!-- END STATISTICS -->
     <!-- MAGAZINES -->
     <div class="section-one white-bkg">
         <h1>Magazines</h1>
@@ -486,7 +441,7 @@
                 <div class="magazine-details">
                     <img class="magazine-img" src="{{ asset('assets/images') }}/{{ $magazine->magazineimage1 }}">
                     <button type="button" class="discover-btn">
-                        <a href=""><i class="fa-light fa-plus"></i> Découvrir</a>
+                        <a href="{{ route('entreprise.profil',['entreprise_id'=>$magazine->id]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
                     </button>
                     <div class="social-links">
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -503,4 +458,6 @@
 </div>
 <!-- END CONTAINER-->
 
+<script src="{{ asset('assets/js/script.js') }}"></script>
+<script src="{{ asset('assets/js/slider.js') }}"></script>
 @include('frontend.footer')

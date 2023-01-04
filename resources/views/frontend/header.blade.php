@@ -11,11 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/modal.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/forms.css')}}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/side-slider.css')}}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/carousel.css')}}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/video-player.css')}}" />
-
+    
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/showroom/favicon.ico') }}" />
 
@@ -35,4 +31,4 @@
 @yield('linkCss')
 
 
-<body>
+<body class="button-home">

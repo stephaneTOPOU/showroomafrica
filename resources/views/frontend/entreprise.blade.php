@@ -1,4 +1,5 @@
 @include('frontend.header')
+<link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/css/categories.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/companies.css') }}" />
 @include('frontend.navbar')
@@ -57,18 +58,28 @@
                         </div>
                         <div class="contacts">
                             <ul>
-                                <li>
-                                    <i class="fa-light fa-location-dot"></i>
-                                    {{ $entreprise->adresse }}
-                                </li>
-                                <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $entreprise->telephone1 }}@if ($entreprise->telephone2)
-                                    • {{ $entreprise->telephone2 }}</b>
-                                  @endif </li>
-                                <li>
-                                    <i class="fa-light fa-globe"></i>
-                                    <a href="{{ $entreprise->siteweb }}" class="website-link">{{ $entreprise->siteweb }}</a>
-                                </li>
-                                <li><i class="fa-light fa-map-location-dot"></i>{{$entreprise->itineraire}}</li>
+                                @if ($entreprise->adresse)
+                                    <li>
+                                        <i class="fa-light fa-location-dot"></i>
+                                        {{ $entreprise->adresse }}
+                                    </li>
+                                @endif
+                                
+                                @if ($entreprise->telephone1)
+                                    <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $entreprise->telephone1 }}@if ($entreprise->telephone2) • {{ $entreprise->telephone2 }}</b>
+                                    @endif </li>
+                                @endif
+
+                                @if ($entreprise->siteweb)
+                                    <li>
+                                        <i class="fa-light fa-globe"></i>
+                                        <a href="{{ $entreprise->siteweb }}" class="website-link">{{ $entreprise->siteweb }}</a>
+                                    </li>
+                                @endif
+                                
+                                @if ($entreprise->itineraire)
+                                    <li><i class="fa-light fa-map-location-dot"></i><a href="{{ $entreprise->itineraire }}" class="website-link">Itineraire</a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -76,8 +87,6 @@
                     <div class="right">
                         @if ($entreprise->logo)
                             <img src="{{ asset('assets/images/companies') }}/{{ $entreprise->logo }}" alt="{{$entreprise->nom}}">
-                        @else
-                            <div class="carousel-text"> <b>{{ $entreprise->nom }}</b></div>
                         @endif
                     </div>
 
@@ -107,5 +116,6 @@
     </div>
 
 </div>
+<script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/accordion.js') }}"></script>
 @include('frontend.footer')

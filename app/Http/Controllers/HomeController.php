@@ -273,8 +273,17 @@ class HomeController extends Controller
         ->take(3)
         ->get();
 
+        $nombresEntreprise = DB::table('entreprises')->count();
+        //dump($nombresEntreprise);
+
+        $pharmacies = DB::table('entreprises')
+        ->select('*')
+        ->where('est_pharmacie', '=', '1')
+        ->where('pharmacie_de_garde', '=', '1')
+        ->get();
+
         return view('frontend.home', compact('slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas',
         'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'sousCategorieNavs',
-        'honeures'));
+        'honeures', 'nombresEntreprise', 'pharmacies'));
     }
 }

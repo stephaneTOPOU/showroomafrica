@@ -1,5 +1,6 @@
 @include('frontend.header')
-<link rel="stylesheet" href="{{ asset('assets/css/companies.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/companies.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/rating.css') }}" />
 @include('frontend.navbar')
 
@@ -14,6 +15,7 @@
           <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
       </div>
+
       @foreach ($Profil_entreprises as $Profil_entreprise)
         <div class="company-info company-banner">
           <div class="left">
@@ -54,10 +56,7 @@
           <div class="right">
             @if ($Profil_entreprise->logo)
               <img src="{{ asset('assets/images/companies') }}/{{ $Profil_entreprise->logo }}" alt="{{ $Profil_entreprise->nom }}">
-            @else
-              <div class="carousel-text"> <b>{{ $Profil_entreprise->nom }}</b></div>
             @endif
-            
           </div>
         </div>
 
@@ -68,14 +67,22 @@
               <div class="contact-form-header">Coordonnées</div>
               <div class="contacts">
                 <ul>
-                  <li>
-                    <i class="fa-light fa-location-dot"></i>
-                    {{ $Profil_entreprise->adresse }}
-                  </li>
-                  <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $Profil_entreprise->telephone1 }} @if ($Profil_entreprise->telephone2)
-                    • {{ $Profil_entreprise->telephone2 }}</b>
-                  @endif </li>
-                  <li><a href="{{ $Profil_entreprise->itineraire }}"><i class="fa-light fa-map-location-dot"></i>Itineraire</a></li>
+                  @if ($Profil_entreprise->adresse)
+                    <li>
+                      <i class="fa-light fa-location-dot"></i>
+                      {{ $Profil_entreprise->adresse }}
+                    </li>
+                  @endif
+                  
+                  @if ($Profil_entreprise->telephone1)
+                    <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $Profil_entreprise->telephone1 }} @if ($Profil_entreprise->telephone2)
+                      • {{ $Profil_entreprise->telephone2 }}</b>
+                    @endif </li>
+                  @endif
+                  
+                  @if ($Profil_entreprise->itineraire)
+                    <li><a href="{{ $Profil_entreprise->itineraire }}"><i class="fa-light fa-map-location-dot"></i>Itineraire</a></li>
+                  @endif
                 </ul>
               </div>
 
@@ -220,5 +227,6 @@
 
     </div>
   </div>
+  <script src="{{ asset('assets/js/slider.js') }}"></script>
   <script src="{{ asset('assets/js/accordion.js') }}"></script>
   @include('frontend.footer')
