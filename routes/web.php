@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/show',[App\Http\Controllers\HomeController::class, 'show'])->name('vue');
+
 Route::get('/rechercher-entreprise', [App\Http\Controllers\HomeController::class, 'recherche'])->name('recherche');
 
 Route::get('/enregistrer-entreprise', [\App\Http\Controllers\AuthController::class, 'entreprise'])->name('entreprise.register');
@@ -27,8 +29,15 @@ Route::get('/professionnel', [\App\Http\Controllers\ProfessionnelController::cla
 
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
 
+Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'save'])->name('contact.save');
+
 Route::get('/categories', [\App\Http\Controllers\CategoriesController::class, 'categories'])->name('categorie');
 
 Route::get('/entreprise/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise'])->name('entreprise');
 
+Route::post('/entreprise/{entreprise_id}', [\App\Http\Controllers\CommentaireController::class, 'commentaire'])->name('entreprise.commentaire');
+
 Route::get('/entreprise-profil/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise'])->name('entreprise.profil');
+
+Route::post('/entreprise-profil/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.form');
+

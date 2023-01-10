@@ -90,18 +90,22 @@
 
             <div class="contact-form review">
               <div class="contact-form-header">Avis</div>
-              <form action="#">
+              @if(Session::has('ok'))
+                <div class="alert alert-success" role="alert">{{Session::get('ok') }}</div>
+              @endif
+              <form action="{{ route('entreprise.commentaire',['entreprise_id'=>$Profil_entreprise->id]) }}" method="POST">
+                @csrf
                 <div class="feedback">
                   <div class="rating">
-                    <input type="radio" name="rating" id="rating-5">
+                    <input type="radio" name="rating" id="rating-5" value="5">
                     <label for="rating-5"></label>
-                    <input type="radio" name="rating" id="rating-4">
+                    <input type="radio" name="rating" id="rating-4" value="4">
                     <label for="rating-4"></label>
-                    <input type="radio" name="rating" id="rating-3">
+                    <input type="radio" name="rating" id="rating-3" value="3">
                     <label for="rating-3"></label>
-                    <input type="radio" name="rating" id="rating-2">
+                    <input type="radio" name="rating" id="rating-2" value="2">
                     <label for="rating-2"></label>
-                    <input type="radio" name="rating" id="rating-1">
+                    <input type="radio" name="rating" id="rating-1" value="1">
                     <label for="rating-1"></label>
                     <div class="emoji-wrapper">
                       <div class="emoji">
@@ -194,7 +198,7 @@
                 </div>
 
                 <div class="input-box message-box">
-                  <textarea placeholder="Laisser un commentaire" required></textarea>
+                  <textarea placeholder="Laisser un commentaire" required name="commentaire"></textarea>
                 </div>
                 <div class="button">
                   <input type="submit" value="Noter" >
@@ -206,17 +210,24 @@
 
         </div>
 
-        <div class="contact-form">
+        <div class="contact-form">    
           <div class="contact-form-header">Ecrire à {{ $Profil_entreprise->nom }}</div>
-          <form action="#">
+          @if(Session::has('success'))
+            <div class="alert alert-success" role="alert">{{Session::get('success') }}</div>
+          @endif
+          <form action="{{ route('entreprise.form',['entreprise_id'=>$Profil_entreprise->id]) }}" method="POST">
+            @csrf
             <div class="input-box">
-                <input type="text" placeholder="Nom et prénom(s)" required>
+                <input type="text" placeholder="Nom et prénom(s)" required name="nom">
             </div>
             <div class="input-box">
-                <input type="email" placeholder="Votre e-mail" required>
+                <input type="email" placeholder="Votre e-mail" required name="email">
+            </div>
+            <div class="input-box">
+              <input type="text" placeholder="objet du mail" required name="objet">
             </div>
             <div class="input-box message-box">
-              <textarea placeholder="Votre message" required></textarea>
+              <textarea placeholder="Votre message" required name="message"></textarea>
             </div>
             <div class="button">
               <input type="submit" value="Envoyer" >

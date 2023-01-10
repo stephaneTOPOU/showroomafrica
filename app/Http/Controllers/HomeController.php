@@ -14,9 +14,16 @@ use App\Models\Slider3;
 use App\Models\SliderLateral;
 use App\Models\SliderLateralBas;
 use App\Models\SliderRecherche;
+use App\Models\Stat;
+use App\Models\User;
 use App\Models\Ville;
+use App\Models\Vue as ModelsVue;
+use CyrildeWit\EloquentViewable\View;
+use CyrildeWit\EloquentViewable\Views;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use NumberFormatter;
+use vue;
 
 class HomeController extends Controller
 {
@@ -227,8 +234,85 @@ class HomeController extends Controller
 
         return view('frontend.recherche-entreprise', compact('recherches', 'sousCategorieNavs', 'entreprisePopulaire', 'parametres', 'slider'));
     }
-    public function index()
+
+    // public function show()
+    // {
+    //     $vue = View::with('views')->latest()->get();
+    //     //views($vue)->cooldown($minutes = 3)->record();
+
+    //     $sousCategorieNavs = DB::table('categories')
+    //         ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+    //         ->select('*')
+    //         ->take(4)
+    //         ->get();
+
+    //         $villes = Ville::all();
+
+    //     $pays = Pays::all();
+
+    //     $categories = Categories::all();
+
+    //     $slider1s = Slider1::all();
+    //     $slider2s = Slider2::all();
+    //     $slider3s = Slider3::all();
+
+    //     $sliderLaterals = SliderLateral::all();
+    //     $sliderLateralBas = SliderLateralBas::all();
+
+    //     $rejoints = DB::table('entreprises')
+    //     ->select('*')
+    //     ->where('est_souscrit', '=', '1')
+    //     ->orderBy('id', 'desc')
+    //     ->get();
+
+    //     $minispots = MiniSpot::all();
+
+    //     $reportages = Reportage::all();
+
+    //     $magazines = DB::table('entreprises')
+    //     ->select('*')
+    //     ->where('a_magazine', '=', '1')
+    //     ->orderBy('id', 'desc')
+    //     ->get();
+
+    //     $parametres = Parametre::find(1);
+
+    //     $honeures = DB::table('entreprises')
+    //     ->select('*')
+    //     ->where('honneur', '=', '1')
+    //     ->orderBy('id', 'desc')
+    //     ->take(3)
+    //     ->get();
+
+    //     $nombresEntreprise = DB::table('entreprises')->count();
+    //     //dump($nombresEntreprise);
+
+    //     $pharmacies = DB::table('entreprises')
+    //     ->select('*')
+    //     ->where('est_pharmacie', '=', '1')
+    //     ->where('pharmacie_de_garde', '=', '1')
+    //     ->get();
+
+    //     $totalViews = Views($vue)->count();
+
+    //     return view('frontend.home', compact('slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas',
+    //     'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'sousCategorieNavs',
+    //     'honeures', 'nombresEntreprise', 'pharmacies','totalViews','vue'));
+    // }
+
+    public function index(/*ModelsVue $vue*/)
     {
+
+        $inscrit = User::all()->count();
+
+        $visiteur = Stat::find(1);
+        $visiteur->increment('visiteur');
+        $visiteur->save();
+
+        $visiteur2 = DB::table('stats')->select('visiteur')->get();
+        // $fmt = numfmt_create( 'en_EN', NumberFormatter::DECIMAL );
+        // numfmt_parse($fmt, $visiteur2);
+
         $sousCategorieNavs = DB::table('categories')
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->select('*')
@@ -282,8 +366,11 @@ class HomeController extends Controller
         ->where('pharmacie_de_garde', '=', '1')
         ->get();
 
+        //$totalViews = Views($vue)->count();
+        //dump( $visiteur);
+
         return view('frontend.home', compact('slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas',
         'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'sousCategorieNavs',
-        'honeures', 'nombresEntreprise', 'pharmacies'));
+        'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2'));
     }
 }

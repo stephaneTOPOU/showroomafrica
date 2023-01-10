@@ -85,8 +85,6 @@
                         <div class="right">
                             @if ($recherche->logo)
                                 <img src="{{ asset('assets/images/companies')}}/{{ $recherche->logo }}" alt="{{$recherche->nom}}">
-                            @else
-                                <div class="carousel-text"> <b>{{ $recherche->nom }}</b></div>
                             @endif
                         </div>
 

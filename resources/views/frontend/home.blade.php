@@ -393,31 +393,58 @@
     }
     @endphp                                         
 
-    <script>
+    {{-- <script>
         let buttonHome = document.querySelector(".button-home");
         var CountButtonHomeClicks = 0;
 
         buttonHome.addEventListener("click", function() {
         CountButtonHomeClicks += 1;
-        output.textContent = CountButtonHomeClicks;
+        
         console.log('click : ',CountButtonHomeClicks);
+
+        $.get("{{ route('home') }}", CountButtonHomeClicks)
         });
     </script>
+
+    <script>
+        let buttonHome = document.querySelector(".button-home");
+        let CountButtonHomeClicks = 0;
+
+        $(".button-home").click(function(e){
+            $count = CountButtonHomeClicks += 1;        
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+        url: "{{ route('home') }}",
+            type: 'POST',
+            data: {
+                data: {messageValue: $count}, 
+            }
+        });
+    });
+    </script> --}}
 
     <div class="section-one">
         <h1>Le mois dernier</h1>
         <div class="statistics">
         <div class="statistic-detail">
-            <label class="statistic-title">Total visiteurs</label>
-            <div>
-                <label class="statistic-score">@php echo pretty_number(1500000)@endphp</label>
-                <span><b>+ 10</b>%</span>
-            </div>
+            <label class="statistic-title">Total vue</label>
+            @foreach ($visiteur2 as $visiteur)
+                <div>
+                    <label class="statistic-score">@php echo pretty_number(($visiteur->visiteur) + 20000)@endphp</label>
+                    <span><b>+ 10</b>%</span>
+                </div>
+            @endforeach
+            
         </div>
         <div class="statistic-detail">
-            <label class="statistic-title">Total clics</label>
+            <label class="statistic-title">Total inscrit</label>
             <div>
-                <label class="statistic-score">@php echo pretty_number(2000000)@endphp</label>
+                <label class="statistic-score">@php echo pretty_number($inscrit + 10000)@endphp</label>
                 <span><b>+ 10</b>%</span>
             </div>
         </div>

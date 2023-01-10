@@ -49,40 +49,41 @@
                     </div>
 
                 </div>
-                @foreach ($entreprises as $entreprise)
-                  <div class="company-info">
-                    <div class="left">
-                        <div class="header">
-                            <h3 class="company-name"><a href="{{ route('entreprise.profil',['entreprise_id'=>$entreprise->id]) }}">{{$entreprise->nom}}</a></h3>
-                            <span class="company-category">{{ $entreprise->libelle }}</span>
-                        </div>
-                        <div class="contacts">
-                            <ul>
-                                @if ($entreprise->adresse)
-                                    <li>
-                                        <i class="fa-light fa-location-dot"></i>
-                                        {{ $entreprise->adresse }}
-                                    </li>
-                                @endif
-                                
-                                @if ($entreprise->telephone1)
-                                    <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $entreprise->telephone1 }}@if ($entreprise->telephone2) • {{ $entreprise->telephone2 }}</b>
-                                    @endif </li>
-                                @endif
 
-                                @if ($entreprise->siteweb)
-                                    <li>
-                                        <i class="fa-light fa-globe"></i>
-                                        <a href="{{ $entreprise->siteweb }}" class="website-link">{{ $entreprise->siteweb }}</a>
-                                    </li>
-                                @endif
-                                
-                                @if ($entreprise->itineraire)
-                                    <li><i class="fa-light fa-map-location-dot"></i><a href="{{ $entreprise->itineraire }}" class="website-link">Itineraire</a></li>
-                                @endif
-                            </ul>
+                @foreach ($entreprises as $entreprise)
+                    <div class="company-info">
+                        <div class="left">
+                            <div class="header">
+                                <h3 class="company-name"><a href="{{ route('entreprise.profil',['entreprise_id'=>$entreprise->id]) }}">{{$entreprise->nom}}</a></h3>
+                                <span class="company-category">{{ $entreprise->libelle }}</span>
+                            </div>
+                            <div class="contacts">
+                                <ul>
+                                    @if ($entreprise->adresse)
+                                        <li>
+                                            <i class="fa-light fa-location-dot"></i>
+                                            {{ $entreprise->adresse }}
+                                        </li>
+                                    @endif
+                                    
+                                    @if ($entreprise->telephone1)
+                                        <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $entreprise->telephone1 }}@if ($entreprise->telephone2) • {{ $entreprise->telephone2 }}</b>
+                                        @endif </li>
+                                    @endif
+
+                                    @if ($entreprise->siteweb)
+                                        <li>
+                                            <i class="fa-light fa-globe"></i>
+                                            <a href="{{ $entreprise->siteweb }}" class="website-link">{{ $entreprise->siteweb }}</a>
+                                        </li>
+                                    @endif
+                                    
+                                    @if ($entreprise->itineraire)
+                                        <li><i class="fa-light fa-map-location-dot"></i><a href="{{ $entreprise->itineraire }}" class="website-link">Itineraire</a></li>
+                                    @endif
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
                     <div class="right">
                         @if ($entreprise->logo)

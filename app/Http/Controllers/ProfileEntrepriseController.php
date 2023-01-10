@@ -2,13 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commentaire;
 use App\Models\Entreprise;
 use App\Models\Parametre;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ProfileEntrepriseController extends Controller
 {
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'nom' => 'required',
+            'email' => 'required|email',
+            'objet' => 'required',
+            'message' => 'required'
+        ]);
+    }
+
+    public function mail(Request $request)
+    {
+        $request->validate([
+            'nom' => 'required',
+            'email' => 'required|email',
+            'objet' => 'required',
+            'message' => 'required'
+        ]);
+        try {
+            //  Envoi de mail
+            Mail::send('frontend.contact-mail', array(
+                'name' => $request->input('nom'),
+                'email' => $request->input('email'),
+                'subject' => $request->input('objet'),
+                'form_message' => $request->input('message'),
+            ), function ($message) use ($request) {
+                $message->from($request->input('email'));
+                $message->to('gzk643192@gmail.com', 'Salut K Gz')->subject($request->input('objet'));
+            });
+            return redirect()->back()->with('success', 'Merci de nous avoir contacté.');
+        } catch (Exception $e) {
+            return redirect()->back()->with('success', $e->getMessage());
+        }
+    }
     public function ProfileEntreprise($entreprise_id)
     {
         $sousCategorieNavs = DB::table('categories')

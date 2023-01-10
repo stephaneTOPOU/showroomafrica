@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 
 class EntrepriseController extends Controller
 {
+    
+
     public function entreprise($sousCategorie_id)
     {
         $entreprises = DB::table('sous_categories')->where('sous_categories.id', $sousCategorie_id)

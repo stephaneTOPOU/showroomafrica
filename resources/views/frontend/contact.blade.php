@@ -35,21 +35,25 @@
         <div class="right-side">
           <div class="topic-text">Envoyez-nous un message</div>
           <p>Faites-nous part de toutes vos préoccupations, suggestions ou propositions de partenariat</p>
-          <form action="#">
+          @if(Session::has('success'))
+            <div class="alert alert-success" role="alert">{{Session::get('success') }}</div>
+          @endif
+          <form action="{{ route('contact.save') }} " method="POST">
+            @csrf
             <div class="input-box">
-                <input type="text" placeholder="Nom et prénom(s)" required>
+                <input type="text" placeholder="Nom et prénom(s)" required name="nom">
             </div>
             <div class="input-box">
-                <input type="email" placeholder="Votre e-mail" required>
+                <input type="email" placeholder="Votre e-mail" required name="email">
             </div>
             <div class="input-box">
-                <input type="text" placeholder="Objet de votre mail" required>
+                <input type="text" placeholder="Objet de votre mail" required name="objet">
             </div>
             <div class="input-box message-box">
-              <textarea placeholder="Votre message"></textarea>
+              <textarea placeholder="Votre message" name="message"></textarea>
             </div>
             <div class="button">
-              <input type="button" value="Envoyer" >
+              <input type="submit" value="Envoyer" />
             </div>
           </form>
         </div>
