@@ -71,14 +71,17 @@
             <div class="forms">
                 <div class="form login">
                     <span class="title">Connexion</span>
-
-                    <form action="#">
+                    @if(Session::has('connexion'))
+                        <div class="alert alert-success" role="alert">{{Session::get('connexion') }}</div>
+                    @endif
+                    <form action="{{ route('authenticate') }}" method="POST">
+                        @csrf
                         <div class="input-field">
-                            <input type="email" placeholder="Votre email ici" required>
+                            <input type="email" placeholder="Votre email ici" required name="email">
                             <i class="fa-light fa-envelope"></i>
                         </div>
                         <div class="input-field">
-                            <input type="password" class="password" placeholder="Votre mot de passe ici" required>
+                            <input type="password" class="password" placeholder="Votre mot de passe ici" required name="password">
                             <i class="fa-light fa-lock-keyhole"></i>
                             <i class="fa-light fa-eye-slash showHidePw"></i>
                         </div>
@@ -101,48 +104,51 @@
                 <!-- Registration Form -->
                 <div class="form signup">
                     <span class="title">Inscription</span>
-
-                    <form action="#">
+                    @if(Session::has('user'))
+                        <div class="alert alert-success" role="alert">{{Session::get('user') }}</div>
+                    @endif
+                    <form action="{{ route('user.add') }}" method="POST">
+                        @csrf
                         <div class="fields">
                             <div class="input-field field">
-                                <input type="text" placeholder="Votre nom ici" required>
+                                <input type="text" placeholder="Votre nom ici" required name="name">
                                 <i class="fa-light fa-user"></i>
                             </div>
                             <div class="input-field field">
-                                <input type="text" placeholder="Votre prénom ici" required>
+                                <input type="text" placeholder="Votre prénom ici" required name="prenoms">
                                 <i class="fa-light fa-user"></i>
                             </div>
                         </div>
 
                         <div class="input-field">
-                            <input type="email" placeholder="Votre email ici" required>
+                            <input type="email" placeholder="Votre email ici" required name="email">
                             <i class="fa-light fa-envelope"></i>
                         </div>
 
                         <div class="input-field">
-                            <input type="text" placeholder="Votre adresse ici" required>
+                            <input type="text" placeholder="Votre adresse ici" required name="adresse">
                             <i class="fa-light fa-map-location-dot"></i>
                         </div>
 
                         <div class="fields">
                             <div class="input-field field">
-                                <input type="text" placeholder="Votre numéro de téléphone" required>
+                                <input type="text" placeholder="Votre numéro de téléphone" required name="telephone1">
                                 <i class="fa-light fa-phone"></i>
                             </div>
                             <div class="input-field field">
-                                <input type="text" placeholder="Votre profession ici" required>
+                                <input type="text" placeholder="Votre profession ici" required name="fonction">
                                 <i class="fa-light fa-briefcase"></i>
                             </div>
                         </div>
 
                         <div class="fields">
                             <div class="input-field field">
-                                <input type="password" class="password" placeholder="Créer votre mot de passe" required>
+                                <input type="password" class="password" placeholder="Créer votre mot de passe" required name="password">
                                 <i class="fa-light fa-lock-keyhole"></i>
                             </div>
                             <div class="input-field field">
                                 <input type="password" class="password" placeholder="Confirmer le mot de passe"
-                                    required>
+                                    required name="password2">
                                 <i class="fa-light fa-lock-keyhole"></i>
                                 <i class="fa-light fa-eye-slash showHidePw"></i>
                             </div>

@@ -1,7 +1,7 @@
 .img-slider{
   position: relative;
   width: 92vw;
-  aspect-ratio: 30/5;
+  aspect-ratio: 32/5;
   margin: 1em;
 }
 
@@ -24,8 +24,8 @@
   border-radius: 1em;
 }
 
-/* @media (min-width: 901px) {
+@media (min-width: 901px) {
   .img-slider {
-    margin-top: 6em;
+    margin-top: 3em;
   }
-} */
+} 

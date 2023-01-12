@@ -41,3 +41,13 @@ Route::get('/entreprise-profil/{entreprise_id}', [\App\Http\Controllers\ProfileE
 
 Route::post('/entreprise-profil/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.form');
 
+
+
+Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
+
+Route::post('/ajouter-user', [\App\Http\Controllers\AuthController::class, 'addUser'])->name('user.add');
+
+Route::post('/authentification', [\App\Http\Controllers\AuthController::class, 'authentification'])->name('authenticate');
+
+Route::post('/ajouter-entreprise', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.add');
+
