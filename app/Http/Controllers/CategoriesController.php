@@ -21,8 +21,7 @@ class CategoriesController extends Controller
         $parametres = Parametre::find(1);
 
         $categories = DB::table('categories')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->select('*','categories.libelle as cat', 'sous_categories.libelle as subcat')
+        ->select('*','categories.libelle as cat')
         ->get();
 
         $souscategories = DB::table('categories')

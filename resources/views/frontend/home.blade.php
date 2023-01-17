@@ -392,42 +392,6 @@
         return $prettyN . $suffix;
     }
     @endphp                                         
-
-    {{-- <script>
-        let buttonHome = document.querySelector(".button-home");
-        var CountButtonHomeClicks = 0;
-
-        buttonHome.addEventListener("click", function() {
-        CountButtonHomeClicks += 1;
-        
-        console.log('click : ',CountButtonHomeClicks);
-
-        $.get("{{ route('home') }}", CountButtonHomeClicks)
-        });
-    </script>
-
-    <script>
-        let buttonHome = document.querySelector(".button-home");
-        let CountButtonHomeClicks = 0;
-
-        $(".button-home").click(function(e){
-            $count = CountButtonHomeClicks += 1;        
-        $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $.ajax({
-        url: "{{ route('home') }}",
-            type: 'POST',
-            data: {
-                data: {messageValue: $count}, 
-            }
-        });
-    });
-    </script> --}}
-
     <div class="section-one">
         <h1>Le mois dernier</h1>
         <div class="statistics">
