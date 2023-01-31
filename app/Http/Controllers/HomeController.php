@@ -300,6 +300,20 @@ class HomeController extends Controller
     //     'honeures', 'nombresEntreprise', 'pharmacies','totalViews','vue'));
     // }
 
+    public function autocompletion(Request $request)
+    {
+        $data = Entreprise::select('nom as value', 'id') 
+                            ->where('nom', 'LIKE', '%'.$request->get('searchfield').'%')->get()->take(6);
+        return response()->json($data);
+    }
+
+    public function autocomplete(Request $request)
+    {
+        $data = Ville::select('libelle as value', 'id') 
+                            ->where('libelle', 'LIKE', '%'.$request->get('origine2').'%')->get();
+        return response()->json($data);
+    }
+
     public function index(/*ModelsVue $vue*/)
     {
 

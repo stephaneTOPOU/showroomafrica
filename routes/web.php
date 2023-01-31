@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/autocomplete',[App\Http\Controllers\HomeController::class, 'autocompletion'])->name('autocomplete');
+
 Route::get('/show',[App\Http\Controllers\HomeController::class, 'show'])->name('vue');
 
 Route::get('/rechercher-entreprise', [App\Http\Controllers\HomeController::class, 'recherche'])->name('recherche');

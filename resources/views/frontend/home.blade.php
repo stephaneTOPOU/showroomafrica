@@ -4,6 +4,17 @@
     <link rel="stylesheet" href="{{ asset('assets/css/carousel.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/video-player.css')}}" />
 @include('frontend.navbar')
+
+<!-- autocompletion-->
+
+{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<!-- Fin autocompletion-->
+
+
 <!-- CONTAINER-->
 <div class="container">
 
@@ -26,6 +37,29 @@
                     name="nom">
                     <i id="searchicon" class="fa-light fa-buildings"></i>
                 </div>
+                <script type="text/javascript">
+                    var path = "{{ route('autocomplete') }}";
+                    $( "#searchfield" ).autocomplete({
+                        source: function( request, response ) {
+                            $.ajax({
+                            url: path,
+                            type: 'GET',
+                            dataType: "json",
+                            data: {
+                                searchfield: request.term
+                            },
+                            success: function( data ) {
+                                response( data );
+                            }
+                            });
+                        },
+                        select: function (event, ui) {
+                            $('#searchfield').val(ui.item.label);
+                            console.log(ui.item); 
+                            return false;
+                        }
+                        });
+                </script>
                 {{-- <div class="search-field">
                     <select name="pays" id="pays">
                         <option class="placeholder" value="" disabled selected style="width:100%; overflow-y: scroll;">Pays</option>
