@@ -47,16 +47,3 @@
 
 
 <!-- END FOOTER -->
-
-
-<!-- SCRIPTS -->
-
-<script src="{{ asset('assets/js/modal.js') }}"></script>
-<script src="{{ asset('assets/js/forms.js') }}"></script>
-
-<!-- END SCRIPTS -->
-@yield('javascripts')
-
-</body>
-
-</html>

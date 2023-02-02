@@ -16,7 +16,7 @@
 
 .professionals-list .professionals{
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row wrap; 
   margin-top: 2em;
 }
 
@@ -30,6 +30,25 @@
   margin-bottom: 1.5em;
   border-bottom: 5px solid rgba(6, 89, 178, .25);;
   box-shadow: 0 5px 10px rgb(100 100 100 / 12%);
+}
+
+.professional-info .header { margin-bottom: 1.25em;}
+
+.professional-info .header h3 {
+  text-transform: uppercase;
+  font-size: 1.32em;
+  margin-bottom: .5em;
+}
+
+.professional-info .header h3 a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.professional-info .header h3 a:hover {
+  letter-spacing: .2em;
+  border-bottom: 2px solid var(--color-secondary);
+  transition: all 300ms ease-out;
 }
 
 .professionals .professional-info:nth-child(3n-1),

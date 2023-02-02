@@ -1,9 +1,21 @@
-@include('frontend.header')
+@include('frontend.header.header')
+@include('frontend.header.header1')
+@include('frontend.header.header2')
+@include('frontend.header.header3')
+
     <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/side-slider.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/carousel.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/video-player.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/autocompletion.css') }}" />
+
+@include('frontend.header.header4')
+@include('frontend.header.header5')
+@include('frontend.header.header6')
+@include('frontend.header.header7')
+@include('frontend.header.header8')
+@include('frontend.header.header9')
+
 @include('frontend.navbar')
 
 <!-- autocompletion-->
@@ -77,6 +89,22 @@
                         }
                         });
                 </script>
+                <style>
+                    .ui-menu {
+                        background: #fff;
+                        padding: .5em;
+                        border-radius: 1em;
+                        margin: .5em;
+                        box-shadow: 2px 4px 12px -2px rgb(0 0 0 / 36%);
+                        position: absolute;
+                    }
+                    .ui-menu-item {
+                        border: none;
+                        outline: none;
+                        padding: .5em;
+                        margin: .5em;
+                    }
+                </style>
                 {{-- <div class="search-field">
                     <select name="pays" id="pays">
                         <option class="placeholder" value="" disabled selected style="width:100%; overflow-y: scroll;">Pays</option>
@@ -113,6 +141,8 @@
                 </button>
             </form>
         </div>
+        <br />
+        <br />
     </div>
     <!-- END BANNER -->
 
@@ -520,8 +550,10 @@
     <!-- END MAGAZINES -->
 </div>
 <!-- END CONTAINER-->
-
+@include('frontend.footer.footer')
 <script src="{{ asset('assets/js/script.js') }}"></script>
+@include('frontend.footer.footer1')
+@include('frontend.footer.footer2')
 <script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/autocompletion.js') }}"></script>
 
@@ -585,13 +617,4 @@
        /* End Popup */
 
 </script>
-
-<script type="text/javascript">
-    /*An array containing all the country names in the world:*/
-    var companies = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua & Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia & Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central Arfrican Republic", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cuba", "Curacao", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauro", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre & Miquelon", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "St Kitts & Nevis", "St Lucia", "St Vincent", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks & Caicos", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
-
-    /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-    autocomplete(document.getElementById("searchfield"), companies);
-</script>
-<!-- END SCRIPTS -->
-@include('frontend.footer')
+@include('frontend.footer.footer3')

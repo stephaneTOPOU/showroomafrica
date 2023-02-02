@@ -207,9 +207,9 @@ nav ul i {
 .sb-container {
   background: url('../images/banner.jpg');
   background-repeat: no-repeat;
-  width: 100vw;
+  width: 100%;
   height: auto;
-  aspect-ratio: 2/1;
+  aspect-ratio: 10/1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1122,11 +1122,11 @@ nav ul i {
   .advertising {float: right;}
   .sb-container {margin-top: 3.5em;}
 
-  .search-form .search-field:first-child {width: 58%;}
+  .search-form .search-field:first-child {width: 45%;}
   .search-form .search-field:nth-child(2),
-  .search-form .search-field:nth-child(3) {width: 36%;}
-  .search-form .search-field:nth-child(4) {width: 40%;}
-  .search-form .search-button {width: 16%;}
+  .search-form .search-field:nth-child(3) {width: 35%;}
+  /* .search-form .search-field:nth-child(4) {width: 40%;} */
+  .search-form .search-button {width: 15%;}
 
 }
 

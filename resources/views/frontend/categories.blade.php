@@ -1,6 +1,17 @@
-@include('frontend.header')
+@include('frontend.header.header')
+@include('frontend.header.header1')
+@include('frontend.header.header2')
+@include('frontend.header.header3')
+
 <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/css/categories.css') }}" />
+
+@include('frontend.header.header4')
+@include('frontend.header.header5')
+@include('frontend.header.header6')
+@include('frontend.header.header7')
+@include('frontend.header.header8')
+@include('frontend.header.header9')
 @include('frontend.navbar')
 
 <div class="container">
@@ -41,6 +52,11 @@
     </div>
 
 </div>
+@include('frontend.footer.footer')
+@include('frontend.footer.footer1')
+@include('frontend.footer.footer2')
+
 <script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/accordion.js') }}"></script>
-@include('frontend.footer')
+
+@include('frontend.footer.footer3')
