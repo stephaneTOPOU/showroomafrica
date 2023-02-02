@@ -16,6 +16,7 @@
 @include('frontend.header.header9')
 
 @include('frontend.navbar')
+
 <div class="container">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -134,14 +135,12 @@
                                 </ul>
                             </div>
                         </div>
-
-                    <div class="right">
-                        @if ($entreprise->logo)
-                            <img src="{{ asset('assets/images/companies') }}/{{ $entreprise->logo }}" alt="{{$entreprise->nom}}">
-                        @endif
+                        <div class="right">
+                            @if ($entreprise->logo)
+                                <img src="{{ asset('assets/images/companies') }}/{{ $entreprise->logo }}" alt="{{$entreprise->nom}}">
+                            @endif
+                        </div>
                     </div>
-
-                </div>
                 @endforeach
             </div>
         </div>

@@ -53,7 +53,7 @@
 }
 
 .accordion-description li::before {
-  content: "\2022";
+  content: "\2023";
   color: var(--color);
   font-weight: bold;
   display: inline-block;

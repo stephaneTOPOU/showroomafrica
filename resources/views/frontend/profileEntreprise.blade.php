@@ -140,6 +140,9 @@
                         <div class="image-box">
                           <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" />
                         </div>
+                        <div class="product-details">
+                          <h4 class="name">Comptabilité</h4>
+                        </div>
                       </div>
                     @endforeach
                     
@@ -168,34 +171,46 @@
             <div class="company-info">
               <div class="contact-form-header">Présentation de {{ $Profil_entreprise->nom }} </div>
               @foreach ($services as $service)
-                <div class="company-presentation">
-                  <div class="presentation-section">
-                    <h3>Qui Sommes-nous ?</h3>
-                    <p>
-                      {{$service->libelle}}
-                    </p>
-                  </div>
+                @if ($service->premium == 1 )
+                  <div class="company-presentation">
+                    <div class="presentation-section">
+                      @if ($service->libelle)
+                        <h3>Qui Sommes-nous ?</h3>
+                      @endif
+                      <p>
+                        {{$service->libelle}}
+                      </p>
+                    </div>
 
-                  <div class="presentation-section">
-                    <h3>Notre mission</h3>
-                    <p>
-                      {{$service->description}}
-                    </p>
-                    <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="IMAGE">
-                    <p>
-                      {{$service->image1}}
-                    </p>
-                  </div>
+                    <div class="presentation-section">
+                      @if ($service->description)
+                        <h3>Notre mission</h3>
+                      @endif
+                      <p>
+                        {{$service->description}}
+                      </p>
+                      @if ($service->image2)
+                        <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="IMAGE">
+                      @endif
+                      <p>
+                        {{$service->image1}}
+                      </p>
+                    </div>
 
-                  <div class="presentation-section">
-                    <h3>Nos objectifs</h3>
-                    <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image3 }}" alt="IMAGE">
-                    <p>
-                      {{$service->description}}
-                    </p>
-                  </div>
+                    <div class="presentation-section">
+                      @if ($service->image5)
+                        <h3>Nos objectifs</h3>
+                      @endif
+                      @if ($service->image3)
+                        <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image3 }}" alt="IMAGE">
+                      @endif
+                      <p>
+                        {{$service->image5}}
+                      </p>
+                    </div>
 
-                </div>
+                  </div>
+                @endif
               @endforeach
             </div>
 
