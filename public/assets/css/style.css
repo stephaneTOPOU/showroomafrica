@@ -71,9 +71,27 @@ nav ul i {
   display: block;
 }
 
+.dropdown-content .name {
+  margin: 1em;
+}
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.dropdown .initials {
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  padding: .25em 1em;
+}
+
+.dropdown-content a i {
+  font-size: 1em;
+  margin-right: .75em;
+}
+
+.dropdown .initials i {margin-right: .25em;}
 
 /* END DROPDOWN */
 
@@ -92,9 +110,9 @@ nav ul i {
 }
 
 .navlinks-container {
-  width: 80vw;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .navlinks-container a {
@@ -155,6 +173,35 @@ nav ul i {
   border-radius: 1em 1em 0 0;
 }
 
+
+/* POPUP */
+.popup-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1em 0;
+}
+.popup-container img {
+  width: 100%;
+}
+#popup .modal-content {
+  width: 36%;
+}
+
+@media (max-width: 900px) {
+  #popup .modal-content {width: 48%;}
+}
+@media (max-width: 767px) {
+  #popup .modal-content {width: 56%;}
+}
+@media (max-width: 568px) {
+  #popup .modal-content {width: 64%;}
+}
+@media (max-width: 480px) {
+  #popup .modal-content {width: 72%;}
+}
+/* END POPUP */
+
 /* SEARCH BOX */
 
 .sb-container {
@@ -162,7 +209,7 @@ nav ul i {
   background-repeat: no-repeat;
   width: 100vw;
   height: auto;
-  aspect-ratio: 10/1;
+  aspect-ratio: 2/1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -349,6 +396,19 @@ nav ul i {
   --fa-secondary-color: var(--color-primary);
   --fa-secondary-opacity: .4;
 }
+
+@media (max-width: 550px) {
+  .category {
+    width: 48%;
+    padding: 1em;
+  }
+  .category:nth-child(2), .category:nth-child(5),
+  .category:nth-child(8), .category:nth-child(3n+0) { margin-left: 0;}
+
+  .category:nth-child(2n+0) { margin-left: 4%;}
+}
+
+
 .section-one:nth-child(2) {
   display: flex;
   justify-content: center;
@@ -844,6 +904,7 @@ nav ul i {
 .tower-ctn .drugstore:nth-child(50) {
   animation-delay: 245s;
 }
+
 @media (min-width: 901px) {
   .tower-ctn {margin-bottom: 2em;}
   .tower-ctn .drugstore {margin-top: -1.5em;}
@@ -1036,6 +1097,14 @@ nav ul i {
     flex-flow: row nowrap;
   }
 
+  .main-navlinks {width: 75%;}
+  .nav-icon {width: 25%;}
+
+  .nav-authentication {
+    width: 92px;
+    margin-left: auto;
+  }
+
   .section-one {
     margin: 2.5em 3.5em;
   }
@@ -1053,11 +1122,11 @@ nav ul i {
   .advertising {float: right;}
   .sb-container {margin-top: 3.5em;}
 
-  .search-form .search-field:first-child {width: 40%;}
+  .search-form .search-field:first-child {width: 58%;}
   .search-form .search-field:nth-child(2),
   .search-form .search-field:nth-child(3) {width: 36%;}
   .search-form .search-field:nth-child(4) {width: 40%;}
-  .search-form .search-button {width: 14%;}
+  .search-form .search-button {width: 16%;}
 
 }
 

@@ -13,7 +13,7 @@
                         @csrf
                         <div class="fields">
                         <div class="input-field field2">
-                              <input type="text" placeholder="Raison sociale" required name="nom">
+                              <input type="text" placeholder="Raison sociale" required name="nom" >
                               <i class="fa-light fa-building"></i>
                         </div>
                         <div class="input-field field2">

@@ -12,22 +12,14 @@ class ActionEntrepriseController extends Controller
     {
         $data = $request->validate([
             'nom' => 'string',
-            //'statu' => 'string',
-            //'email' => 'string|email',
             'adresse' => 'string',
             'telephone1' => 'string',
-            //'telephone2' => 'string',
-            //'telephone3' => 'string',
-            //'telephone4' => 'string',
-            //'siteweb' => 'string',
             'pays' => 'string',
             'ville' => 'string',
             'souscategorie_id' => 'integer',
             'logo' => 'nullable|file|max:1024',
-            //'descriptionCourte' => 'string'
         ]);
 
-        //dd($request->all());
         try {
             if ($request->logo == null) {
                 $data = new Entreprise();

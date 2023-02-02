@@ -31,4 +31,4 @@
 @yield('linkCss')
 
 
-<body class="button-home">
+<body class="button-home" onload="loadPopup()">

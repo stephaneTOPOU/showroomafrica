@@ -229,7 +229,7 @@ class HomeController extends Controller
         $entreprisePopulaire = Entreprise::inRandomOrder()->limit(4)->get();
 
         $parametres = Parametre::find(1);
-        
+
         $slider = SliderRecherche::all();
 
         return view('frontend.recherche-entreprise', compact('recherches', 'sousCategorieNavs', 'entreprisePopulaire', 'parametres', 'slider'));
@@ -302,15 +302,15 @@ class HomeController extends Controller
 
     public function autocompletion(Request $request)
     {
-        $data = Entreprise::select('nom as value', 'id') 
-                            ->where('nom', 'LIKE', '%'.$request->get('searchfield').'%')->get()->take(6);
+        $data = Entreprise::select('nom as value', 'id')
+            ->where('nom', 'LIKE', '%' . $request->get('searchfield') . '%')->get()->take(6);
         return response()->json($data);
     }
 
     public function autocomplete(Request $request)
     {
-        $data = Ville::select('libelle as value', 'id') 
-                            ->where('libelle', 'LIKE', '%'.$request->get('origine2').'%')->get();
+        $data = Ville::select('libelle as value', 'id')
+            ->where('libelle', 'LIKE', '%' . $request->get('origine2') . '%')->get();
         return response()->json($data);
     }
 
@@ -347,44 +347,62 @@ class HomeController extends Controller
         $sliderLateralBas = SliderLateralBas::all();
 
         $rejoints = DB::table('entreprises')
-        ->select('*')
-        ->where('est_souscrit', '=', '1')
-        ->orderBy('id', 'desc')
-        ->get();
+            ->select('*')
+            ->where('est_souscrit', '=', '1')
+            ->orderBy('id', 'desc')
+            ->get();
 
         $minispots = MiniSpot::all();
 
         $reportages = Reportage::all();
 
         $magazines = DB::table('entreprises')
-        ->select('*')
-        ->where('a_magazine', '=', '1')
-        ->orderBy('id', 'desc')
-        ->get();
+            ->select('*')
+            ->where('a_magazine', '=', '1')
+            ->orderBy('id', 'desc')
+            ->get();
 
         $parametres = Parametre::find(1);
 
         $honeures = DB::table('entreprises')
-        ->select('*')
-        ->where('honneur', '=', '1')
-        ->orderBy('id', 'desc')
-        ->take(3)
-        ->get();
+            ->select('*')
+            ->where('honneur', '=', '1')
+            ->orderBy('id', 'desc')
+            ->take(3)
+            ->get();
 
         $nombresEntreprise = DB::table('entreprises')->count();
         //dump($nombresEntreprise);
 
         $pharmacies = DB::table('entreprises')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('pharmacie_de_garde', '=', '1')
-        ->get();
+            ->select('*')
+            ->where('est_pharmacie', '=', '1')
+            ->where('pharmacie_de_garde', '=', '1')
+            ->get();
 
         //$totalViews = Views($vue)->count();
         //dump( $visiteur);
 
-        return view('frontend.home', compact('slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas',
-        'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'sousCategorieNavs',
-        'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2'));
+        return view('frontend.home', compact(
+            'slider1s',
+            'slider2s',
+            'slider3s',
+            'sliderLaterals',
+            'sliderLateralBas',
+            'rejoints',
+            'minispots',
+            'reportages',
+            'magazines',
+            'parametres',
+            'villes',
+            'pays',
+            'categories',
+            'sousCategorieNavs',
+            'honeures',
+            'nombresEntreprise',
+            'pharmacies',
+            'inscrit',
+            'visiteur2'
+        ));
     }
 }

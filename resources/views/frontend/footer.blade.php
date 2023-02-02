@@ -54,40 +54,6 @@
 <script src="{{ asset('assets/js/modal.js') }}"></script>
 <script src="{{ asset('assets/js/forms.js') }}"></script>
 
-<script type="text/javascript">
-    var counter = 1;
-    setInterval(function () {
-        document.getElementById('radio' + counter).checked = true;
-        counter++;
-        if (counter > 2) {
-        counter = 1;
-        }
-    }, 12000);
-</script>
-
-<script type="text/javascript">
-
-    var text = document.getElementById("searchfield");
-    var icon = document.getElementById("searchicon");
-    var ai = document.getElementById("annuaire_i");
-    var a = document.getElementById("annuaire");
-
-    function changeText() {
-        text.placeholder = "Rechercher avec un numéro de téléphone";
-        ai.classList.add("btn-active");
-        a.classList.remove("btn-active");
-        icon.classList.remove("fa-buildings");
-        icon.classList.add("fa-phone");
-    }
-    function resetText() {
-        text.placeholder = "Rechercher une entreprise ou un professionnel";
-        a.classList.add("btn-active");
-        ai.classList.remove("btn-active");
-        icon.classList.remove("fa-phone");
-        icon.classList.add("fa-buildings");
-    }
-
-</script>
 <!-- END SCRIPTS -->
 @yield('javascripts')
 

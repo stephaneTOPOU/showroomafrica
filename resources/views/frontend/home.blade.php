@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/side-slider.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/carousel.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/video-player.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/autocompletion.css') }}" />
 @include('frontend.navbar')
 
 <!-- autocompletion-->
@@ -13,6 +14,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 <!-- Fin autocompletion-->
+
+
+<!-- POPUP -->
+<div id="popup" class="modal">
+    <!-- popup content -->
+    <div class="modal-content">
+        <span class="close" id="closepop"><i class="fa-regular fa-xmark"></i></span>
+
+        <div class="popup-container">
+            <img src="{{ asset('assets/images/popup.jpg') }}" alt="PUB">
+        </div>
+
+    </div>
+
+</div>
+<!-- END POPUP -->
 
 
 <!-- CONTAINER-->
@@ -100,7 +117,7 @@
     <!-- END BANNER -->
 
     <!-- ADS BIG SLIDER -->
-    <div class="img-slider">
+    <div class="img-slider first-slider">
         <div class="slide active" data-bs-interval="1">
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
@@ -210,10 +227,10 @@
             <div class="slider">
                 <div class="slides">
 
-                    <input type="radio" name="radio-btn" id="radio3">
-                    <input type="radio" name="radio-btn" id="radio4">
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
 
-                    <div class="slider-slide first">
+                    <div class="slider-slide second">
                         <img src="{{ asset('assets/images/sliders/side/3.jpg') }}">
                     </div>
                     @foreach ($sliderLateralBas as $sliderLateralBa)
@@ -232,20 +249,6 @@
         </div>
 
     </div>
-
-    <!-- ADS BIG SLIDER -->
-    <div class="img-slider">
-        <div class="slide active">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
-        </div>
-        @foreach ($slider2s as $slider2)
-        <div class="slide">
-            <img src="{{ asset('assets/images/sliders') }}/{{ $slider2->image }}" alt="">
-        </div>
-        @endforeach
-    </div>
-    <!-- END ADS BIG SLIDER -->
-
     <!-- NEWCOMERS -->
     <div class="section-one white-bkg">
         <h1>Ils nous ont rejoint</h1>
@@ -297,6 +300,19 @@
 
     </div>
     <!-- END SPOTS -->
+
+    <!-- ADS BIG SLIDER 2 -->
+    <div class="img-slider">
+        <div class="slide-two active">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+        </div>
+        @foreach ($slider2s as $slider2)
+        <div class="slide-two">
+            <img src="{{ asset('assets/images/sliders') }}/{{ $slider2->image }}" alt="">
+        </div>
+        @endforeach
+    </div>
+    <!-- END ADS BIG SLIDER 2 -->
 
     <!-- REPORTAGE -->
     <div class="section-one blue-bkg">
@@ -405,6 +421,14 @@
                 </div>
             @endforeach
         </div>
+        <br />
+        <div class="category-link" style="text-align: center">
+            <a href="{{ route('pharmacie') }}">
+                <i class="fa-regular fa-plus"></i>
+                Liste des pharmacie de garde
+            </a>
+        </div>
+        {{-- <p style="text-align: center"><a href="{{ route('pharmacie') }}">Liste des pharmacie de garde</a></p> --}}
     </div>
     <!-- END TOWER -->
 
@@ -457,6 +481,20 @@
         </div>
     </div>
     <!-- END STATISTICS -->
+
+    <!-- ADS BIG SLIDER 3 -->
+    <div class="img-slider">
+        <div class="slide-three active">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+        </div>
+        @foreach ($slider2s as $slider2)
+        <div class="slide-three">
+            <img src="{{ asset('assets/images/sliders') }}/{{ $slider2->image }}" alt="">
+        </div>
+        @endforeach
+    </div>
+    <!-- END ADS BIG SLIDER 3 -->
+
     <!-- MAGAZINES -->
     <div class="section-one white-bkg">
         <h1>Magazines</h1>
@@ -485,4 +523,75 @@
 
 <script src="{{ asset('assets/js/script.js') }}"></script>
 <script src="{{ asset('assets/js/slider.js') }}"></script>
+<script src="{{ asset('assets/js/autocompletion.js') }}"></script>
+
+<script type="text/javascript">
+    var counter = 1;
+    var count = 1;
+    const sliderInterval = setInterval(sliderTimer, 10000);
+
+    function sliderTimer() {
+        var radio = document.getElementById('rdo' + count);
+        radio.checked = true;
+        count++;
+        if (count > 2) {
+            count = 1;
+        }
+    }
+
+    setInterval(function () {
+        document.getElementById('radio' + counter).checked = true;
+        counter++;
+        if (counter > 2) {
+            counter = 1;
+        }
+    }, 12000);
+
+</script>
+
+<script type="text/javascript">
+
+    var text = document.getElementById("searchfield");
+    var icon = document.getElementById("searchicon");
+    var ai = document.getElementById("annuaire_i");
+    var a = document.getElementById("annuaire");
+
+    function changeText() {
+        text.placeholder = "Rechercher avec un numéro de téléphone";
+        ai.classList.add("btn-active");
+        a.classList.remove("btn-active");
+        icon.classList.remove("fa-buildings");
+        icon.classList.add("fa-phone");
+    }
+    function resetText() {
+        text.placeholder = "Rechercher une entreprise ou un professionnel";
+        a.classList.add("btn-active");
+        ai.classList.remove("btn-active");
+        icon.classList.remove("fa-phone");
+        icon.classList.add("fa-buildings");
+    }
+
+    /* Popup */
+    var pop = document.getElementById("popup");
+    var cp = document.getElementById("closepop");
+
+    function loadPopup() {
+        pop.style.display = "block";
+    }
+
+    cp.onclick = function () {
+        pop.style.display = "none";
+    }
+       /* End Popup */
+
+</script>
+
+<script type="text/javascript">
+    /*An array containing all the country names in the world:*/
+    var companies = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua & Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia & Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central Arfrican Republic", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cuba", "Curacao", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauro", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre & Miquelon", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "St Kitts & Nevis", "St Lucia", "St Vincent", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks & Caicos", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
+
+    /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+    autocomplete(document.getElementById("searchfield"), companies);
+</script>
+<!-- END SCRIPTS -->
 @include('frontend.footer')

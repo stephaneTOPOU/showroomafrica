@@ -30,18 +30,18 @@
   height: auto;
 }
 
-#radio1:checked ~ .first{
+#radio1:checked ~ .first, #rdo1:checked ~ .second{
   margin-left: 0;
 }
 
-#radio2:checked ~ .first{
+#radio2:checked ~ .first, #rdo2:checked ~ .second{
   margin-left: -20%;
 }
 
-#radio3:checked ~ .first{
+#radio3:checked ~ .first, #rdo3:checked ~ .second{
   margin-left: -40%;
 }
 
-#radio4:checked ~ .first{
+#radio4:checked ~ .first, #rdo4:checked ~ .second{
   margin-left: -60%;
 }

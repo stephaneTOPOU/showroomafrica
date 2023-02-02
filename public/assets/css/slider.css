@@ -1,31 +1,46 @@
-.img-slider{
+.img-slider {
   position: relative;
   width: 92vw;
   aspect-ratio: 32/5;
   margin: 1em;
 }
 
-.img-slider .slide{
+.img-slider .slide,
+.img-slider .slide-two,
+.img-slider .slide-three,
+.img-slider .slide-four,
+.img-slider .slide-five {
   z-index: 1;
   position: absolute;
   width: 100%;
   clip-path: circle(0% at 0 50%);
 }
 
-.img-slider .slide.active{
+.img-slider .slide.active,
+.img-slider .slide-two.active,
+.img-slider .slide-three.active,
+.img-slider .slide-four.active,
+.img-slider .slide-five.active {
   clip-path: circle(150% at 0 50%);
   transition: 2s;
   transition-property: clip-path;
 }
 
-.img-slider .slide img{
+.img-slider .slide img,
+.img-slider .slide-two img,
+.img-slider .slide-three img,
+.img-slider .slide-four img,
+.img-slider .slide-five img {
   z-index: 1;
   width: 100%;
   border-radius: 1em;
 }
 
 @media (min-width: 901px) {
-  .img-slider {
-    margin-top: 5em;
-  }
-} 
+  .first-slider {margin-top: 6em;}
+  .company-slider {margin-top: 4.5em;}
+}
+
+@media (max-width: 900px) {
+  .company-slider {margin-top: -1.25em;}
+}

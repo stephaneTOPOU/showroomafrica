@@ -1,0 +1,22 @@
+.jlr {font-size: 0;}
+
+.jlr .jlr_item {
+    font-size: 1rem;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.jlr img.jlr_img {
+    height: 100px;
+    opacity: 0;
+}
+
+.jlr img.jlr_loaded {
+     -webkit-transition: opacity 1s ease-in;
+    -moz-transition: opacity 1s ease-in;
+    -o-transition: opacity 1s ease-in;
+    -ms-transition: opacity 1s ease-in;
+    transition: opacity 1s ease-in;
+    opacity: 1;
+}

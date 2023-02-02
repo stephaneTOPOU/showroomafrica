@@ -70,12 +70,35 @@ class ProfileEntrepriseController extends Controller
             ->join('commentaires', 'entreprises.id', '=', 'commentaires.entreprise_id')
             ->select('note')
             ->get();
+        
+        $services = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
+            ->join('services', 'services.entreprise_id', '=', 'entreprises.id')
+            ->select('*', 'entreprises.id as identifiant')
+            ->where('premium', 1)
+            ->get();
+
+        $serviceImages = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
+            ->join('services', 'services.entreprise_id', '=', 'entreprises.id')
+            ->join('service_images', 'service_images.service_id', '=', 'services.id')
+            ->select('*', 'entreprises.id as identifiant')
+            ->get();
+
+        $horaires = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
+            ->join('horaires', 'horaires.entreprise_id', '=', 'entreprises.id')
+            ->select('*', 'entreprises.id as identifiant')
+            ->get();
+
+        $galleries = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
+            ->join('gallerie_images', 'gallerie_images.entreprise_id', '=', 'entreprises.id')
+            ->where('premium', 1)
+            ->select('*', 'entreprises.id as identifiant')
+            ->get();
 
         $entreprise = Entreprise::find($entreprise_id);
         $entreprise->increment('vue');
         $entreprise->save();
         
         return view('frontend.profileEntreprise', compact('sousCategorieNavs', 'parametres', 'Profil_entreprises',
-    'avis3', 'avis'));
+    'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries'));
     }
 }

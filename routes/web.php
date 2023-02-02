@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+
 Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/autocomplete',[App\Http\Controllers\HomeController::class, 'autocompletion'])->name('autocomplete');
@@ -43,9 +44,11 @@ Route::get('/entreprise-profil/{entreprise_id}', [\App\Http\Controllers\ProfileE
 
 Route::post('/entreprise-profil/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.form');
 
-
+Route::get('/pharmacie', [\App\Http\Controllers\PharmacieController::class, 'pharmacie'])->name('pharmacie');
 
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
+
+Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
 Route::post('/ajouter-user', [\App\Http\Controllers\AuthController::class, 'addUser'])->name('user.add');
 
