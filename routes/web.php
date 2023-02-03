@@ -48,7 +48,7 @@ Route::get('/pharmacie', [\App\Http\Controllers\PharmacieController::class, 'pha
 
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
 
-Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
 Route::post('/ajouter-user', [\App\Http\Controllers\AuthController::class, 'addUser'])->name('user.add');
 

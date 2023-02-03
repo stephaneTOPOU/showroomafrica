@@ -23,177 +23,26 @@
         <h2>Professionnels</h2>
 
         <div class="professionals">
+          @foreach ($professionels as $professionel)
+            <div class="professional-info">
+              <div class="left">
+                <h3>{{ $professionel->prenoms }} <b>{{ $professionel->name }}</b></h3>
+                <ul>
+                  @if ($professionel->adresse)
+                    <li><i class="fa-light fa-location-dot"></i> {{ $professionel->adresse }}</li>
+                  @endif
+                  @if ($professionel->fonction)
+                    <li><i class="fa-light fa-briefcase"></i> <b>{{ $professionel->fonction }}</b></li>
+                  @endif
+                </ul>
+              </div>
 
-          <div class="professional-info">
-            <div class="left">
-              <h3>Edem <b>FIAGBE</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i> Avédji, Lomé-Togo</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Directeur commercial</b></li>
-              </ul>
+              <div class="right">
+                <a href="#">CV</a>
+              </div>
             </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
-          <div class="professional-info">
-            <div class="left">
-              <h3>Maléki <b>BOUTALA</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i>Consulat du Pakistan, Kélégougan, Lomé-Togo</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Développeur d'applications</b></li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
-          <div class="professional-info">
-            <div class="left">
-              <h3>Ducson <b>MALEEK</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i> Carrefour 3K, Forever, Lomé-Togo</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Graphiste</b></li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
-          <div class="professional-info">
-            <div class="left">
-              <h3>John <b>DOE</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i> Lost in Space, Universe</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Danseur</b></li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
-          <div class="professional-info">
-            <div class="left">
-              <h3>Jane <b>DOE</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i> Lost in Space, Universe</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Masseuse professionnelle</b></li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
-          <div class="professional-info">
-            <div class="left">
-              <h3>Kylian <b>M'BAPPE</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i>9 Rue des buts, Paris-Centre, France</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Footballeur</b></li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
-          <div class="professional-info">
-            <div class="left">
-              <h3>Edem <b>FIAGBE</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i> Avédji, Lomé-Togo</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Directeur commercial</b></li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
-          <div class="professional-info">
-            <div class="left">
-              <h3>Maléki <b>BOUTALA</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i>Consulat du Pakistan, Kélégougan, Lomé-Togo</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Développeur d'applications</b></li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
-          <div class="professional-info">
-            <div class="left">
-              <h3>Ducson <b>MALEEK</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i> Carrefour 3K, Forever, Lomé-Togo</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Graphiste</b></li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
-          <div class="professional-info">
-            <div class="left">
-              <h3>John <b>DOE</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i> Lost in Space, Universe</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Danseur</b></li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
-          <div class="professional-info">
-            <div class="left">
-              <h3>Jane <b>DOE</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i> Lost in Space, Universe</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Masseuse professionnelle</b></li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
-          <div class="professional-info">
-            <div class="left">
-              <h3>Kylian <b>M'BAPPE</b></h3>
-              <ul>
-                <li><i class="fa-light fa-location-dot"></i>9 Rue des buts, Paris-Centre, France</li>
-                <li><i class="fa-light fa-briefcase"></i> <b>Footballeur</b></li>
-              </ul>
-            </div>
-
-            <div class="right">
-              <a href="#">CV</a>
-            </div>
-          </div>
-
+          @endforeach
         </div>
-
       </div>
     </div>
 

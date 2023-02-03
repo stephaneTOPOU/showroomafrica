@@ -38,8 +38,8 @@ class AuthController extends Controller
             'prenoms' => 'required|string',
             'email' => 'required|email',
             'adresse' => 'required|string',
-            'telephone1' => 'required|string',
             'fonction' => 'required|string',
+            'telephone1' => 'required|string',
             'password' => 'required|string|min:8',
             'password2' => 'required_with:password|same:password|min:8'
 

@@ -1,4 +1,4 @@
-@if (Route::has('login'))
+@if (Auth::check())
 <nav>
 
     <a href="/" class="nav-icon" aria-label="visit homepage" aria-current="page">
@@ -48,14 +48,15 @@
             </li>
             </ul>
             
-            <div class="nav-authentication" id="accountBtn">
+            <div class="nav-authentication" id="">
                 <div class="account dropdown">
-                    <a href="#" class="initials"><i class="fa-solid fa-circle-user"></i> DM</a>
+                    <a href="#" class="initials"><i class="fa-solid fa-circle-user"></i>{{ Str::limit(Auth::user()->name, 2) }}</a>
                     <div class="dropdown-content">
-                        <span class="name"><b></b></span><br>
+                        <span class="name"><b>{{ Auth::user()->name }}</b> {{ Auth::user()->prenoms }}</span><br>
                         <a href="#"><i class="fa-solid fa-address-card"></i> Mon profil</a><br>
-                        <form method="POST" action="{{ route('logout') }}">
-                            <a href="#" type="submit"><i class="fa-regular fa-arrow-right-from-bracket"></i> Déconnexion</a><br>
+                        <form method="Get" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}" type="submit"><i class="fa-regular fa-arrow-right-from-bracket"></i> Déconnexion</a><br>
                         </form>
                         
                     </div>
@@ -64,7 +65,7 @@
         </div>
         </div>
 
-        <div class="nav-authentication" id="accountBtn">
+        <div class="nav-authentication" id="">
             <div class="sign-user">
             <a href="#" class="initials"><i class="fa-solid fa-circle-user"></i></a>
             </div>

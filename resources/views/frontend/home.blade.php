@@ -100,6 +100,7 @@
                     }
                     .ui-menu-item {
                         border: none;
+                        border-radius: 1em;
                         outline: none;
                         padding: .5em;
                         margin: .5em;
