@@ -754,7 +754,7 @@ nav ul i {
   top: 0;
   left: 30%;
   opacity: 0;
-  animation: display 25s infinite;
+  animation: display 30s infinite;
 }
 
 .tower-ctn .drugstore:nth-child(2) {
@@ -903,6 +903,66 @@ nav ul i {
 }
 .tower-ctn .drugstore:nth-child(50) {
   animation-delay: 245s;
+}
+.tower-ctn .drugstore:nth-child(51) {
+  animation-delay: 250s;
+}
+.tower-ctn .drugstore:nth-child(52) {
+  animation-delay: 255s;
+}
+.tower-ctn .drugstore:nth-child(53) {
+  animation-delay: 260s;
+}
+.tower-ctn .drugstore:nth-child(54) {
+  animation-delay: 265s;
+}
+.tower-ctn .drugstore:nth-child(55) {
+  animation-delay: 270s;
+}
+.tower-ctn .drugstore:nth-child(56) {
+  animation-delay: 275s;
+}
+.tower-ctn .drugstore:nth-child(57) {
+  animation-delay: 280s;
+}
+.tower-ctn .drugstore:nth-child(58) {
+  animation-delay: 285s;
+}
+.tower-ctn .drugstore:nth-child(59) {
+  animation-delay: 290s;
+}
+.tower-ctn .drugstore:nth-child(60) {
+  animation-delay: 295s;
+}
+.tower-ctn .drugstore:nth-child(61) {
+  animation-delay: 300s;
+}
+.tower-ctn .drugstore:nth-child(62) {
+  animation-delay: 305s;
+}
+.tower-ctn .drugstore:nth-child(63) {
+  animation-delay: 310s;
+}
+.tower-ctn .drugstore:nth-child(64) {
+  animation-delay: 315s;
+}
+.tower-ctn .drugstore:nth-child(65) {
+  animation-delay: 320s;
+}
+.tower-ctn .drugstore:nth-child(66) {
+  animation-delay: 325s;
+}
+.tower-ctn .drugstore:nth-child(67) {
+  animation-delay: 330s;
+}
+.tower-ctn .drugstore:nth-child(68) {
+  animation-delay: 335s;
+}
+.tower-ctn .drugstore:nth-child(69) {
+  animation-delay: 340s;
+}
+.tower-ctn .drugstore:nth-child(70) {
+  animation-delay: 345s;
 }
 
 @media (min-width: 901px) {
