@@ -112,127 +112,240 @@
 
             </div>
 
-            <div class="company-info">
-              <div class="contact-form-header">Retrouvez {{$Profil_entreprise->nom}} sur la carte</div>
-              <div class="company-map">
-                @if ($Profil_entreprise->geolocalisation)
-                  <iframe
-                    src="{{ $Profil_entreprise->geolocalisation }}"
-                    height="360" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                  </iframe>
-                @else
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15865.701238777434!2d1.1834649!3d6.2074975!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x13525f005439bec7!2sShowroom%20Africa!5e0!3m2!1sfr!2stg!4v1671102033967!5m2!1sfr!2stg"
-                    height="360" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                  </iframe>
-                @endif
-                
-              </div>
-            </div>
-
-            <div class="company-info">
-              <div class="contact-form-header">Produits / Services</div>
-              <div class="swiper">
-                <div class="slide-container">
-                  <div class="card-wrapper swiper-wrapper">
-                    @foreach ($serviceImages as $serviceImage)
-                      <div class="card swiper-slide">
-                        <div class="image-box">
-                          <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" />
-                        </div>
-                        <div class="product-details">
-                          <h4 class="name">Comptabilité</h4>
-                        </div>
-                      </div>
-                    @endforeach
-                    
+            @foreach ($premiums as $premium)
+              @if ($premium->geolocalisation)
+                <div class="company-info">
+                  <div class="contact-form-header">Retrouvez {{$Profil_entreprise->nom}} sur la carte</div>
+                  <div class="company-map">
+                    @if ($Profil_entreprise->geolocalisation)
+                      <iframe
+                        src="{{ $Profil_entreprise->geolocalisation }}"
+                        height="360" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                      </iframe>
+                    @else
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126931.66373132428!2d1.24669075!3d6.1823217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023e1c113185419%3A0x3224b5422caf411d!2zTG9tw6k!5e0!3m2!1sfr!2stg!4v1675847364153!5m2!1sfr!2stg" height="360" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                      </iframe>
+                    @endif
                   </div>
                 </div>
-                <div class="swiper-button-next swiper-navBtn"></div>
-                <div class="swiper-button-prev swiper-navBtn"></div>
-                <div class="swiper-pagination"></div>
-              </div>
-            </div>
+              @endif
+            @endforeach
 
-            <div class="company-info">
-              <div class="contact-form-header">Galerie</div>
-              <div class="flex-boxes">
-						    <div id="jLightroom" class="jlr">
-                  @foreach ($galleries as $gallerie)
-                    <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
-                  @endforeach
-                  @foreach ($galleries as $gallerie)
-                    <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
-                  @endforeach
-						    </div>
-              </div>
-            </div>
-
-            <div class="company-info">
-              <div class="contact-form-header">Présentation de {{ $Profil_entreprise->nom }} </div>
-              @foreach ($services as $service)
-                @if ($service->premium == 1 )
-                  <div class="company-presentation">
-                    <div class="presentation-section">
-                      @if ($service->libelle)
-                        <h3>Qui Sommes-nous ?</h3>
-                      @endif
-                      <p>
-                        {{$service->libelle}}
-                      </p>
-                    </div>
-
-                    <div class="presentation-section">
-                      @if ($service->description)
-                        <h3>Notre mission</h3>
-                      @endif
-                      <p>
-                        {{$service->description}}
-                      </p>
-                      @if ($service->image2)
-                        <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="IMAGE">
-                      @endif
-                      <p>
-                        {{$service->image1}}
-                      </p>
-                    </div>
-
-                    <div class="presentation-section">
-                      @if ($service->image5)
-                        <h3>Nos objectifs</h3>
-                      @endif
-                      @if ($service->image3)
-                        <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image3 }}" alt="IMAGE">
-                      @endif
-                      <p>
-                        {{$service->image5}}
-                      </p>
-                    </div>
-
+            @foreach ($basics as $basic)
+              {{-- @if ($basic->geolocalisation) --}}
+                <div class="company-info">
+                  <div class="contact-form-header">Retrouvez {{$Profil_entreprise->nom}} sur la carte</div>
+                  <div class="company-map">
+                    @if ($Profil_entreprise->geolocalisation)
+                      <iframe
+                        src="{{ $Profil_entreprise->geolocalisation }}"
+                        height="360" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                      </iframe>
+                    @else
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126931.66373132428!2d1.24669075!3d6.1823217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023e1c113185419%3A0x3224b5422caf411d!2zTG9tw6k!5e0!3m2!1sfr!2stg!4v1675847364153!5m2!1sfr!2stg" height="360" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                      </iframe>
+                    @endif
                   </div>
-                @endif
-              @endforeach
-            </div>
+                </div>
+              
+              {{-- @endif --}}
+            @endforeach
+            
 
-            <div class="company-info">
-              <div class="contact-form-header">Horaires de service</div>
-              <div class="premium">
-                <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span>
-                <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
+            @foreach ($premiums as $premium)
+                  <div class="company-info">
+                    <div class="contact-form-header">Produits / Services</div>
+                    <div class="swiper">
+                      <div class="slide-container">
+                        <div class="card-wrapper swiper-wrapper">
+                          @foreach ($serviceImages as $serviceImage)
+                            <div class="card swiper-slide">
+                              <div class="image-box">
+                                <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" />
+                              </div>
+                              <div class="product-details">
+                                <h4 class="name">Comptabilité</h4>
+                              </div>
+                            </div>
+                          @endforeach
+                          
+                        </div>
+                      </div>
+                      <div class="swiper-button-next swiper-navBtn"></div>
+                      <div class="swiper-button-prev swiper-navBtn"></div>
+                      <div class="swiper-pagination"></div>
+                    </div>
+                  </div>
+            @endforeach
+
+            @foreach ($basics as $basic)
+                <div class="company-info">
+                  <div class="contact-form-header">Produits / Services</div>
+                  <div class="swiper">
+                    <div class="slide-container">
+                      <div class="card-wrapper swiper-wrapper">
+                        @foreach ($serviceImages as $serviceImage)
+                          <div class="card swiper-slide">
+                            <div class="image-box">
+                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" />
+                            </div>
+                            <div class="product-details">
+                              <h4 class="name">Comptabilité</h4>
+                            </div>
+                          </div>
+                        @endforeach
+                        
+                      </div>
+                    </div>
+                    <div class="swiper-button-next swiper-navBtn"></div>
+                    <div class="swiper-button-prev swiper-navBtn"></div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+                </div>
+            @endforeach
+            
+            @foreach ($premiums as $premium)
+              <div class="company-info">
+                <div class="contact-form-header">Galerie</div>
+                <div class="flex-boxes">
+                  <div id="jLightroom" class="jlr">
+                    @foreach ($galleries as $gallerie)
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
+                    @endforeach
+                    @foreach ($galleries as $gallerie)
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
+                    @endforeach
+                  </div>
+                </div>
               </div>
-              <table class="company-table">
-                <tbody>
+            @endforeach
 
-                  @foreach ($horaires as $horaire)
-                    <tr>
-                      <td class="days" value>{{ $horaire->jour }}</td>
-                      <td class="hours text-center" colspan="1">{{ $horaire->h_ouverture }}</td>
-                    </tr>
-                  @endforeach
-                  
-                </tbody>
-              </table>
-            </div>
+            @foreach ($basics as $basic)
+              <div class="company-info">
+                <div class="contact-form-header">Galerie</div>
+                <div class="flex-boxes">
+                  <div id="jLightroom" class="jlr">
+                    @foreach ($galleries as $gallerie)
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
+                    @endforeach
+                    @foreach ($galleries as $gallerie)
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
+                    @endforeach
+                  </div>
+                </div>
+              </div>
+            @endforeach
+            
+            @foreach ($premiums as $premium)
+              <div class="company-info">
+                <div class="contact-form-header">Présentation de {{ $Profil_entreprise->nom }} </div>
+                @foreach ($services as $service)
+                    <div class="company-presentation">
+                      <div class="presentation-section">
+                        @if ($service->libelle)
+                          <h3>Qui Sommes-nous ?</h3>
+                        @endif
+                        <p>
+                          {{$service->libelle}}
+                        </p>
+                      </div>
+
+                      <div class="presentation-section">
+                        @if ($service->description)
+                          <h3>Notre mission</h3>
+                        @endif
+                        <p>
+                          {{$service->description}}
+                        </p>
+                        @if ($service->image2)
+                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="IMAGE">
+                        @endif
+                        <p>
+                          {{$service->image1}}
+                        </p>
+                      </div>
+
+                      <div class="presentation-section">
+                        @if ($service->image5)
+                          <h3>Nos objectifs</h3>
+                        @endif
+                        @if ($service->image3)
+                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image3 }}" alt="IMAGE">
+                        @endif
+                        <p>
+                          {{$service->image5}}
+                        </p>
+                      </div>
+
+                    </div> 
+                @endforeach
+              </div>
+            @endforeach
+
+            @foreach ($basics as $basic)
+              <div class="company-info">
+                <div class="contact-form-header">Présentation de {{ $Profil_entreprise->nom }} </div>
+                @foreach ($services as $service)
+                    <div class="company-presentation">
+                      <div class="presentation-section">
+                        @if ($service->libelle)
+                          <h3>Qui Sommes-nous ?</h3>
+                        @endif
+                        <p>
+                          {{$service->libelle}}
+                        </p>
+                      </div>
+                    </div> 
+                @endforeach
+              </div>
+            @endforeach
+            
+            @foreach ($premiums as $premium)
+              <div class="company-info">
+                <div class="contact-form-header">Horaires de service</div>
+                <div class="premium">
+                  <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span>
+                  <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
+                </div>
+                <table class="company-table">
+                  <tbody>
+
+                    @foreach ($horaires as $horaire)
+                      <tr>
+                        <td class="days" value>{{ $horaire->jour }}</td>
+                        <td class="hours text-center" colspan="1">{{ $horaire->h_ouverture }}</td>
+                      </tr>
+                    @endforeach
+                    
+                  </tbody>
+                </table>
+              </div>
+            @endforeach
+
+            @foreach ($basics as $basic)
+              <div class="company-info">
+                <div class="contact-form-header">Horaires de service</div>
+                <div class="premium">
+                  <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span>
+                  <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
+                </div>
+                <table class="company-table">
+                  <tbody>
+
+                    @foreach ($horaires as $horaire)
+                      <tr>
+                        <td class="days" value>{{ $horaire->jour }}</td>
+                        <td class="hours text-center" colspan="1">{{ $horaire->h_ouverture }}</td>
+                      </tr>
+                    @endforeach
+                    
+                  </tbody>
+                </table>
+              </div>
+            @endforeach
+            
 
             <div class="contact-form review">
               <div class="contact-form-header">Avis</div>

@@ -61,6 +61,18 @@ class ProfileEntrepriseController extends Controller
             ->select('*', 'entreprises.id')
             ->get();
 
+        $premiums = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
+            ->join('sous_categories', 'sous_categories.id', '=', 'souscategorie_id')
+            ->where('premium', 1)
+            ->select('*', 'entreprises.id')
+            ->get();
+
+        $basics = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
+            ->join('sous_categories', 'sous_categories.id', '=', 'souscategorie_id')
+            ->where('basic', 1)
+            ->select('*', 'entreprises.id')
+            ->get();
+
         $avis = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
             ->join('commentaires', 'entreprises.id', '=', 'commentaires.entreprise_id')
             ->select('note')
@@ -99,6 +111,6 @@ class ProfileEntrepriseController extends Controller
         $entreprise->save();
         
         return view('frontend.profileEntreprise', compact('sousCategorieNavs', 'parametres', 'Profil_entreprises',
-    'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries'));
+    'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics'));
     }
 }
