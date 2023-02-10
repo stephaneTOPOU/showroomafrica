@@ -117,9 +117,14 @@
                                     @endif
                                     
                                     @if ($recherche->telephone1)
-                                        <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $recherche->telephone1 }}@if ($recherche->telephone2)
-                                            • {{ $recherche->telephone2 }}</b>
-                                        @endif </li>
+                                        <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $recherche->telephone1 }}</b>
+                                            @if ($recherche->telephone2)
+                                                <b>
+                                                    • {{ $recherche->telephone2 }}
+                                                </b>
+                                        @endif 
+                                    </li>
+
                                     @endif
                                     
                                     @if ($recherche->siteweb)
