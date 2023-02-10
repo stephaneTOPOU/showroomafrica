@@ -123,7 +123,7 @@
                                             @if ($entreprise->telephone2)
                                                 <b>
                                                     • {{ $entreprise->telephone2 }}
-                                                </b>
+                                                </b> 
                                         @endif </li>
                                     @endif
 
