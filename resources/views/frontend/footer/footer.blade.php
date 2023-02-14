@@ -38,7 +38,8 @@
                     <a href="{{ $parametres->lienface }}"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="{{ $parametres->lientwitter }}"><i class="fa-brands fa-twitter"></i></a>
                     <a href="{{ $parametres->lieninsta }}"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="{{ $parametres->lienyoutube }}"><i class="fa-brands fa-linkedin-in"></i></a>
+                    {{-- <a href="{{ $parametres->lienyoutube }}"><i class="fa-brands fa-linkedin-in"></i></a> --}}
+                    <a href="{{ $parametres->lienyoutube }}"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
             </div>

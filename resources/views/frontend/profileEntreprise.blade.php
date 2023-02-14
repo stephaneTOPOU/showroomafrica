@@ -191,7 +191,7 @@
                                 <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" />
                               </div>
                               <div class="product-details">
-                                <h4 class="name">Comptabilité</h4>
+                                <h4 class="name">{{ $serviceImage->description }}</h4>
                               </div>
                             </div>
                           @endforeach
