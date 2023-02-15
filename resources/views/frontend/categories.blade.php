@@ -17,7 +17,7 @@
 <div class="container">
 
     <!-- ADS BIG SLIDER -->
-    <div class="img-slider">
+    <div class="img-slider first-slider">
         <div class="slide active">
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>

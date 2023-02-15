@@ -16,14 +16,17 @@
             <li>
                 <a href="/" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
             </li>
-            <li class="dropdown">
+            <li>
+                <a href="{{ route('categorie') }}">Entreprises</a>
+            </li>
+            {{-- <li class="dropdown">
                 <a href="#">Entreprise<i class="fa-regular fa-chevron-down"></i></a>
                 <div class="dropdown-content">
                     @foreach ($sousCategorieNavs as $sousCategorieNav)
                         <a href="{{ route('entreprise',['souscategorie_id'=>$sousCategorieNav->id]) }}">{{ $sousCategorieNav->libelle }}</a><br>
                     @endforeach
                 </div>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('professionnel') }}">Professionnels</a>
             </li>
@@ -89,14 +92,17 @@
             <li>
                 <a href="/" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
             </li>
-            <li class="dropdown">
+            <li>
+                <a href="{{ route('categorie') }}">Entreprises</a>
+            </li>
+            {{-- <li class="dropdown">
                 <a href="#">Entreprise<i class="fa-regular fa-chevron-down"></i></a>
                 <div class="dropdown-content">
                     @foreach ($sousCategorieNavs as $sousCategorieNav)
                         <a href="{{ route('entreprise',['souscategorie_id'=>$sousCategorieNav->id]) }}">{{ $sousCategorieNav->libelle }}</a><br>
                     @endforeach
                 </div>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('professionnel') }}">Professionnels</a>
             </li>

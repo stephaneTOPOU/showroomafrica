@@ -453,6 +453,7 @@
             @endforeach
         </div>
         <br />
+        <br />
         <div class="category-link" style="text-align: center">
             <a href="{{ route('pharmacie') }}">
                 <i class="fa-regular fa-plus"></i>
