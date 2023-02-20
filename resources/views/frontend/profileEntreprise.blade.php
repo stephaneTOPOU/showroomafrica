@@ -523,6 +523,7 @@
     </div>
   </div>
   @include('frontend.footer.footer')
+  <script src="{{ asset('assets/js/script.js') }}"></script>
   @include('frontend.footer.footer1')
   @include('frontend.footer.footer2')
   <script src="{{ asset('assets/js/slider.js') }}"></script>
