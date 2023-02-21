@@ -1,0 +1,41 @@
+.wrapper .outer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper .card{
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  animation: animate 15s linear infinite;
+  animation-delay: calc(3s * var(--delay));
+}
+.outer:hover .card{
+  animation-play-state: paused;
+}
+.wrapper .card:last-child{
+  animation-delay: calc(-3s * var(--delay));
+}
+@keyframes animate {
+  0%{
+    opacity: 0;
+    transform: translateY(100%) scale(0.5);
+  }
+  5%, 20%{
+    opacity: 0.4;
+    transform: translateY(100%) scale(0.7);
+  }
+  25%, 40%{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0%) scale(1);
+  }
+  45%, 60%{
+    opacity: 0.4;
+    transform: translateY(-100%) scale(0.7);
+  }
+  65%, 100%{
+    opacity: 0;
+    transform: translateY(-100%) scale(0.5);
+  }
+}

@@ -184,9 +184,52 @@ nav ul i {
 .popup-container img {
   width: 100%;
 }
-#popup .modal-content {
-  width: 36%;
+.popup-container .title {
+  font-family: Poppins;
+  font-size: 1.25em;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
 }
+.popup-container .countries, .popup-container .country_flag {
+  display: flex;
+  flex-direction: column;
+}
+.popup-container .countries {
+  padding: 1em;
+}
+.popup-container .countries_flag {
+  margin-top: 2em;
+  display: flex;
+  flex-flow: row wrap;
+}
+.popup-container .countries_flag a {
+  font-size: .75em;
+  text-align: center;
+  padding: 1em;
+}
+.popup-container .countries_flag a:hover {
+  border: 1px solid var(--color-primary);
+  border-radius: 1em;
+}
+.popup-container .countries_flag .selected {
+  border: 1px solid var(--color-secondary);
+  border-radius: 1em;
+  background-color: rgba(255, 165, 0, .1);
+}
+.popup-container .country_flag {
+  width: 12.5%;
+  align-items: center;
+}
+.popup-container .countries_flag span {
+  font-size: 3.25em;
+  border-radius: 4px;
+  margin-bottom: .25em;
+  margin-left: 25%;
+}
+
+#countries_popup .modal-content {width: 72%;}
+#popup .modal-content {width: 36%;}
 
 @media (max-width: 900px) {
   #popup .modal-content {width: 48%;}
@@ -1116,6 +1159,23 @@ nav ul i {
   margin-right: .25em;
 }
 
+.footer-col .download-app {
+  display: flex;
+  flex-flow: row column;
+  /* margin-top: 1em; */
+}
+
+.footer-col .download-app a img {
+  width: 90%;
+  margin: 4px 10%;
+  border-radius: 2em;
+}
+
+.footer-col .download-app a img:hover {
+  border: 2px solid var(--color-secondary);
+  border-radius: 2em;
+}
+
 @media(min-width: 801px){
   .footer-col:nth-child(2) {
     width: 25%;
@@ -1136,6 +1196,11 @@ nav ul i {
   }
   .footer-col:first-child img {
     height: 3.5em;
+  }
+  .footer-col .download-app {flex-wrap: nowrap;}
+  .footer-col .download-app a img {
+    width: 90%;
+    margin: 2px 5%;
   }
 }
 @media(max-width: 574px){

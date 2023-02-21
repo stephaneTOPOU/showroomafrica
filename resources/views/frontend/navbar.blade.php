@@ -14,7 +14,7 @@
         <div class="navlinks-container">
             <ul>
             <li>
-                <a href="/" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
+                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
             </li>
             <li>
                 <a href="{{ route('categorie') }}">Entreprises</a>
@@ -90,7 +90,7 @@
         <div class="navlinks-container">
             <ul>
             <li>
-                <a href="/" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
+                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
             </li>
             <li>
                 <a href="{{ route('categorie') }}">Entreprises</a>
@@ -255,3 +255,39 @@
 <!-- END MODAL -->
 
 <!-- END HEADER -->
+
+<div id="countries_popup" class="modal">
+    <!-- popup content -->
+    <div class="modal-content">
+      <span class="close" id="closecp"><i class="fa-regular fa-xmark"></i></span>
+
+      <div class="popup-container">
+        <div class="countries">
+          <span class="title">Sélectionnez votre pays</span>
+          <div class="countries_flag">
+            <a class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
+            <a class="country_flag"><span class="flag fi fi-bf"></span> Burkina Faso</a>
+            <a class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a>
+            <a class="country_flag"><span class="flag fi fi-cm"></span> Cameroun</a>
+            <a class="country_flag"><span class="flag fi fi-cf"></span> Centrafrique</a>
+            <a class="country_flag"><span class="flag fi fi-cg"></span> Congo - Brazzaville</a>
+            <a class="country_flag"><span class="flag fi fi-ci"></span> Côte d'Ivoire</a>
+            <a class="country_flag"><span class="flag fi fi-dj"></span> Djibouti</a>
+            <a class="country_flag"><span class="flag fi fi-ga"></span> Gabon</a>
+            <a class="country_flag"><span class="flag fi fi-gn"></span> Guinée - Conakry</a>
+            <a class="country_flag"><span class="flag fi fi-mg"></span> Madagascar</a>
+            <a class="country_flag"><span class="flag fi fi-ml"></span> Mali</a>
+            <a class="country_flag"><span class="flag fi fi-mr"></span> Mauritanie</a>
+            <a class="country_flag"><span class="flag fi fi-ne"></span> Niger</a>
+            <a class="country_flag"><span class="flag fi fi-cd"></span> République Démocratique du Congo</a>
+            <a class="country_flag"><span class="flag fi fi-rw"></span> Rwanda</a>
+            <a class="country_flag"><span class="flag fi fi-sn"></span> Sénégal</a>
+            <a class="country_flag"><span class="flag fi fi-td"></span> Tchad</a>
+            <a class="country_flag selected"><span class="flag fi fi-tg"></span> Togo</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>

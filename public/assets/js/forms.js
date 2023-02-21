@@ -25,8 +25,8 @@ const container = document.querySelector(".form-container"),
     })
 
     signUp.addEventListener("click", ( )=>{
-        container.classList.add("active");
+        container.classList.add("active-form");
     });
     login.addEventListener("click", ( )=>{
-        container.classList.remove("active");
+        container.classList.remove("active-form");
     });

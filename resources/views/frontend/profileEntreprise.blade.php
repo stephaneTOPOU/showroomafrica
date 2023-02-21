@@ -523,12 +523,12 @@
     </div>
   </div>
   @include('frontend.footer.footer')
-  <script src="{{ asset('assets/js/script.js') }}"></script>
   @include('frontend.footer.footer1')
   @include('frontend.footer.footer2')
   <script src="{{ asset('assets/js/slider.js') }}"></script>
   <script src="{{ asset('assets/js/accordion.js') }}"></script>
   <script src="{{ asset('assets/js/company-hours.js') }}"></script>
+  <script src="{{ asset('assets/js/script.js') }}"></script>
     <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/company-carousel.js') }}"></script>
     <script src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>

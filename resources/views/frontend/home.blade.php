@@ -555,6 +555,7 @@
 @include('frontend.footer.footer')
 <script src="{{ asset('assets/js/script.js') }}"></script>
 @include('frontend.footer.footer1')
+<script src="{{ asset('assets/js/video-modal.js') }}"></script>
 @include('frontend.footer.footer2')
 <script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/autocompletion.js') }}"></script>

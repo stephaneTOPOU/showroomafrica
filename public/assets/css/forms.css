@@ -16,7 +16,7 @@
     background-color: #fff;
     transition: margin-left 0.18s ease;
 }
-.form-container.active .login{
+.form-container.active-form .login{
     margin-left: -50%;
     opacity: 0;
     transition: margin-left 0.18s ease, opacity 0.15s ease;
@@ -25,13 +25,13 @@
     opacity: 0;
     transition: opacity 0.09s ease;
 }
-.form-container.active .signup{
+.form-container.active-form .signup{
     opacity: 1;
     transition: opacity 0.2s ease;
     height: inherit;
     overflow-y: scroll;
 }
-.form-container.active .forms{
+.form-container.active-form .forms{
     height: 600px;
 }
 .form .title{
@@ -312,7 +312,7 @@ figcaption{
   display: inline-block;
   margin-top: 12px;
 }
-.right-side .button input[type="submit"]{
+.right-side .button input[type="button"]{
   color: #fff;
   font-size: 18px;
   outline: none;
@@ -329,11 +329,9 @@ figcaption{
 
 @media (max-width: 950px) {
   .form-container{
-    width: 90%;
     padding: 30px 40px 40px 35px ;
   }
   .form-container .content .right-side{
-   width: 75%;
    margin-left: 55px;
 }
 }
