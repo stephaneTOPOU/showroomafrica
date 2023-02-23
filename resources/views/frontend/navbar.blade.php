@@ -42,7 +42,7 @@
                 <div class="dropdown-content">
                 <a href="#">Comptabilité</a><br>
                 <a href="#">Audit</a><br>
-                <a href="#">Sites web</a><br>
+                <a href="{{ route('service.siteweb') }}">Sites web</a><br>
                 <a href="#">Centres d'appel</a><br>
                 </div>
             </li>
@@ -118,7 +118,7 @@
                 <div class="dropdown-content">
                 <a href="#">Comptabilité</a><br>
                 <a href="#">Audit</a><br>
-                <a href="#">Sites web</a><br>
+                <a href="{{ route('service.siteweb') }}">Sites web</a><br>
                 <a href="#">Centres d'appel</a><br>
                 </div>
             </li>

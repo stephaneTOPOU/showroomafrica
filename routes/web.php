@@ -56,3 +56,5 @@ Route::post('/authentification', [\App\Http\Controllers\AuthController::class, '
 
 Route::post('/ajouter-entreprise', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.add');
 
+Route::get('/siteweb', [\App\Http\Controllers\ServiceController::class, 'siteweb'])->name('service.siteweb');
+
