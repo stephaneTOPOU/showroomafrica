@@ -7,6 +7,7 @@ use App\Models\Entreprise;
 use App\Models\MiniSpot;
 use App\Models\Parametre;
 use App\Models\Pays;
+use App\Models\PopUp;
 use App\Models\Reportage;
 use App\Models\Slider1;
 use App\Models\Slider2;
@@ -380,6 +381,8 @@ class HomeController extends Controller
             ->where('pharmacie_de_garde', '=', '1')
             ->get();
 
+        $popups = PopUp::all();
+
         //$totalViews = Views($vue)->count();
         //dump( $visiteur);
 
@@ -402,7 +405,8 @@ class HomeController extends Controller
             'nombresEntreprise',
             'pharmacies',
             'inscrit',
-            'visiteur2'
+            'visiteur2',
+            'popups'
         ));
     }
 }

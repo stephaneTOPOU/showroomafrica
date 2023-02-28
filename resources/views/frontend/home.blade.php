@@ -33,11 +33,11 @@
     <!-- popup content -->
     <div class="modal-content">
         <span class="close" id="closepop"><i class="fa-regular fa-xmark"></i></span>
-
-        <div class="popup-container">
-            <img src="{{ asset('assets/images/popup.jpg') }}" alt="PUB">
-        </div>
-
+        @foreach ($popups as $popup)
+            <div class="popup-container">
+                <img src="{{ asset('assets/images') }}/{{ $popup->image }}" alt="PUB">
+            </div>
+        @endforeach
     </div>
 
 </div>
@@ -452,6 +452,7 @@
                 </div>
             @endforeach
         </div>
+        <br />
         <br />
         <br />
         <div class="category-link" style="text-align: center">
