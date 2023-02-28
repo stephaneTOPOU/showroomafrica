@@ -154,7 +154,7 @@
         </div>
         @foreach ($slider1s as $slider1)
         <div class="slide" data-bs-interval="1">
-            <img src="{{ asset('assets/images/sliders') }}/{{ $slider1->image }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider1->image }}" alt="">
         </div>
         @endforeach
     </div>
@@ -243,7 +243,7 @@
                     </div>
                     @foreach ($sliderLaterals as $sliderLateral)
                         <div class="slider-slide">
-                            <img src="{{ asset('assets/images/sliders') }}/{{ $sliderLateral->image }}">
+                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateral->image }}">
                         </div>
                     @endforeach
                     <div class="navigation-auto">
@@ -266,7 +266,7 @@
                     </div>
                     @foreach ($sliderLateralBas as $sliderLateralBa)
                         <div class="slider-slide">
-                            <img src="{{ asset('assets/images/sliders') }}/{{ $sliderLateralBa->image }}">
+                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateralBa->image }}">
                         </div>
                     @endforeach
                     <div class="navigation-auto">
@@ -339,7 +339,7 @@
         </div>
         @foreach ($slider2s as $slider2)
         <div class="slide-two">
-            <img src="{{ asset('assets/images/sliders') }}/{{ $slider2->image }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="">
         </div>
         @endforeach
     </div>
@@ -520,9 +520,9 @@
         <div class="slide-three active">
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
-        @foreach ($slider2s as $slider2)
+        @foreach ($slider3s as $slider3)
         <div class="slide-three">
-            <img src="{{ asset('assets/images/sliders') }}/{{ $slider2->image }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="">
         </div>
         @endforeach
     </div>

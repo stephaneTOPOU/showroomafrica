@@ -28,7 +28,7 @@
         </div>
         @foreach ($slider as $sliders)
             <div class="slide">
-                <img src="{{ asset('assets/images/sliders') }}/{{ $sliders->image }}" alt="">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $sliders->image }}" alt="">
             </div>
         @endforeach
     </div>
