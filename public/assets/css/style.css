@@ -228,20 +228,33 @@ nav ul i {
   margin-left: 25%;
 }
 
-#countries_popup .modal-content {width: 72%;}
+#countries_popup .modal-content {width: 76%;}
 #popup .modal-content {width: 36%;}
 
+@media (max-width: 1024px) {
+  #countries_popup .modal-content {width: 84%;}
+}
 @media (max-width: 900px) {
   #popup .modal-content {width: 48%;}
+  #countries_popup .modal-content {width: 92%;}
+  .popup-container .country_flag {width: 14.25%;}
 }
 @media (max-width: 767px) {
   #popup .modal-content {width: 56%;}
+  .popup-container .country_flag {width: 16.5%;}
+}
+@media (max-width: 640px) {
+  .popup-container .country_flag {width: 20%;}
 }
 @media (max-width: 568px) {
   #popup .modal-content {width: 64%;}
+  .popup-container .country_flag {width: 25%;}
 }
 @media (max-width: 480px) {
   #popup .modal-content {width: 72%;}
+}
+@media (max-width: 395px) {
+  .popup-container .country_flag {width: 33.25%;}
 }
 /* END POPUP */
 
