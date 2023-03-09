@@ -143,7 +143,7 @@
                         </div>
                         <div class="right">
                             @if ($recherche->logo)
-                                <img src="{{ asset('assets/images/companies')}}/{{ $recherche->logo }}" alt="{{$recherche->nom}}">
+                                <img src="{{ asset('assets/images/companies/logos')}}/{{ $recherche->logo }}" alt="{{$recherche->nom}}">
                             @endif
                         </div>
 

@@ -87,7 +87,7 @@
 
           <div class="right">
             @if ($Profil_entreprise->logo)
-              <img src="{{ asset('assets/images/companies') }}/{{ $Profil_entreprise->logo }}" alt="{{ $Profil_entreprise->nom }}">
+              <img src="{{ asset('assets/images/companies/logos') }}/{{ $Profil_entreprise->logo }}" alt="{{ $Profil_entreprise->nom }}">
             @endif
           </div>
         </div>

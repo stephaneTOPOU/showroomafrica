@@ -287,7 +287,7 @@
             <div class="carousel">
                 @foreach ($rejoints as $rejoint)
                     @if ($rejoint->logo)
-                        <img src="{{ asset('assets/images/companies') }}/{{ $rejoint->logo }}" alt="{{ $rejoint->nom }}" />
+                        <img src="{{ asset('assets/images/companies/logos') }}/{{ $rejoint->logo }}" alt="{{ $rejoint->nom }}" />
                     @else
                         <div class="carousel-text"> <b>{{ $rejoint->nom }}</b></div>
                     @endif
@@ -296,7 +296,7 @@
             <div class="carousel">
                 @foreach ($rejoints as $rejoint)
                     @if ($rejoint->logo)
-                        <img src="{{ asset('assets/images/companies') }}/{{ $rejoint->logo }}" alt="{{ $rejoint->nom }}" />
+                        <img src="{{ asset('assets/images/companies/logos') }}/{{ $rejoint->logo }}" alt="{{ $rejoint->nom }}" />
                     @else
                         <div class="carousel-text"> <b>{{ $rejoint->nom }}</b></div>
                     @endif
