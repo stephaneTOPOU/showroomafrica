@@ -45,14 +45,21 @@
                     <a href="https://play.google.com/store/apps/details?id=com.showroomafrica.annuaire">
                         <img src="{{ asset('assets/images/playstore-button.jpg') }}" alt="Playstore">
                     </a>
-                    <a href="#">
+                    {{-- <a href="#">
                         <img src="{{ asset('assets/images/appstore-button.jpg') }}" alt="Appstore">
-                    </a>
+                    </a> --}}
                 </div>
             </div>
             </div>
         </div>
     </footer>
 
+    <script>
+        if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("/sw.js").then(function (reg) {
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
+    </script>
 
 <!-- END FOOTER -->
