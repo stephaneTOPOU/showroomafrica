@@ -1180,14 +1180,14 @@ nav ul i {
 .footer-col .download-app a:nth-child(2) {margin-left: 2%;}
 
 .footer-col .download-app a img {
-  width: 100%;
+  width: 50%;
   padding: 4px;
-  border-radius: 2em;
+  border-radius: 1em;
 }
 
 .footer-col .download-app a img:hover {
   border: 2px solid var(--color-secondary);
-  border-radius: 2em;
+  border-radius: 1em;
 }
 
 @media(min-width: 801px){
@@ -1201,6 +1201,16 @@ nav ul i {
   .footer-col:nth-child(3) {
     width: 35%;
   }
+
+  .footer-col .download-app {
+    display: contents;
+    margin: 1em -4px;
+  }
+  .footer-col .download-app a img {
+    width: 50%;
+    padding: 4px;
+    border-radius: 1em;
+  }
 }
 
 @media(max-width: 800px){
@@ -1211,14 +1221,34 @@ nav ul i {
   .footer-col:first-child img {
     height: 3.5em;
   }
+
+  .footer-col .download-app {
+    display: flex;
+    margin: 1em -4px;
+  }
+  .footer-col .download-app a img {
+    width: 50%;
+    padding: 4px;
+    border-radius: 1em;
+  }
 }
 @media(max-width: 574px){
   .footer-col{
     width: 100%;
   }
-  .footer-col .download-app a img {border-radius: 3em;}
-  .footer-col .download-app a img:hover {border-radius: 3em;}
+  .footer-col .download-app a img {border-radius: 1em;}
+  .footer-col .download-app a img:hover {border-radius: 1em;}
   .footer-col .download-app a:nth-child(2) {margin-left: 4%;}
+
+  .footer-col .download-app {
+    display: flex;
+    margin: 1em -4px;
+  }
+  .footer-col .download-app a img {
+    width: 50%;
+    padding: 4px;
+    border-radius: 1em;
+  }
 }
 /* END FOOTER STYLE */
 

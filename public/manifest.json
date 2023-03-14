@@ -1,16 +1,16 @@
 {
-    "name": "Laravel Package Tutorial",
-    "short_name": "LPT",
+    "name": "Annuaire Showroom Africa",
+    "short_name": "Annuaire Showroom Africa",
     "start_url": "/index.php",
     "background_color": "#6777ef",
-    "description": "Tutorial of Laravel Package",
+    "description": "Annuaire en ligne",
     "display": "fullscreen",
     "theme_color": "#6777ef",
     "icons": [
         {
-            "src": "favicon.ico",
+            "src": "assets/images/showroom/favicon.ico",
             "sizes": "512x512",
-            "type": "assets/images/showroom",
+            "type": "image/png",
             "purpose": "any maskable"
         }
     ]
