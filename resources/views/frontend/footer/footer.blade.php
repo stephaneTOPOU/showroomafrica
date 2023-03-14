@@ -42,13 +42,13 @@
                     <a href="{{ $parametres->lienyoutube }}"><i class="fa-brands fa-youtube"></i></a>
                 </div>
                 <div class="download-app">
-                    <a href="#">
-                      <img src="{{ asset('assets/images/playstore-button.jpg') }}" alt="Playstore">
+                    <a href="https://play.google.com/store/apps/details?id=com.showroomafrica.annuaire">
+                        <img src="{{ asset('assets/images/playstore-button.jpg') }}" alt="Playstore">
                     </a>
                     <a href="#">
-                      <img src="{{ asset('assets/images/appstore-button.jpg') }}" alt="Appstore">
+                        <img src="{{ asset('assets/images/appstore-button.jpg') }}" alt="Appstore">
                     </a>
-                  </div>
+                </div>
             </div>
             </div>
         </div>
