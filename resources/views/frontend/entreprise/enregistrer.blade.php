@@ -1,4 +1,13 @@
-@include('frontend.header')
+@include('frontend.header.header')
+@include('frontend.header.header1')
+@include('frontend.header.header2')
+@include('frontend.header.header3')
+@include('frontend.header.header4')
+@include('frontend.header.header5')
+@include('frontend.header.header6')
+@include('frontend.header.header7')
+@include('frontend.header.header8')
+@include('frontend.header.header9')
 @include('frontend.navbar')
 
 <!-- CONTAINER -->
@@ -108,4 +117,6 @@
 </div>
 <!-- END CONTAINER -->
 <script src="{{ asset('assets/js/upload.js') }}"></script>
-@include('frontend.footer')
+@include('frontend.footer.footer')
+@include('frontend.footer.footer2')
+@include('frontend.footer.footer3')
