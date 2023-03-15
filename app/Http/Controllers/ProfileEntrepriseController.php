@@ -64,13 +64,13 @@ class ProfileEntrepriseController extends Controller
         $premiums = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
             ->join('sous_categories', 'sous_categories.id', '=', 'souscategorie_id')
             ->where('premium', 1)
-            ->select('*', 'entreprises.id')
+            ->select('*', 'entreprises.id as identifiant')
             ->get();
 
         $basics = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
             ->join('sous_categories', 'sous_categories.id', '=', 'souscategorie_id')
             ->where('basic', 1)
-            ->select('*', 'entreprises.id')
+            ->select('*', 'entreprises.id as identifiant')
             ->get();
 
         $avis = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
@@ -86,7 +86,6 @@ class ProfileEntrepriseController extends Controller
         $services = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
             ->join('services', 'services.entreprise_id', '=', 'entreprises.id')
             ->select('*', 'entreprises.id as identifiant')
-            ->where('premium', 1)
             ->get();
 
         $serviceImages = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
@@ -102,7 +101,6 @@ class ProfileEntrepriseController extends Controller
 
         $galleries = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
             ->join('gallerie_images', 'gallerie_images.entreprise_id', '=', 'entreprises.id')
-            ->where('premium', 1)
             ->select('*', 'entreprises.id as identifiant')
             ->get();
 

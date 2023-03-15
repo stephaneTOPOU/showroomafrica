@@ -321,6 +321,9 @@
                         <p>
                           {{$service->libelle}}
                         </p>
+                        @if ($service->image2)
+                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="IMAGE">
+                        @endif
                       </div>
                     </div> 
                 @endforeach
