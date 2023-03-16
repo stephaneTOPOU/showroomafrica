@@ -79,7 +79,12 @@
                 @if ($Profil_entreprise->premium == 1)
                   <span><i class="fa-regular fa-gem"></i> PREMIUM</span>
                 @endif
-                <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span>
+                @if ($Profil_entreprise->pharmacie_de_garde == 1)
+                  <span><i class="fa-regular fa-check"></i> <b>Garde</b></span>
+                @else
+                  <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span>
+                @endif
+                {{-- <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span> --}}
                 <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
               </div>
             </div>
@@ -356,8 +361,13 @@
               <div class="company-info">
                 <div class="contact-form-header">Horaires de service</div>
                 <div class="premium">
+                  @if ($basic->pharmacie_de_garde == 1)
+                  <span><i class="fa-regular fa-check"></i> <b>Garde</b></span>
+                @else
                   <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span>
-                  <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
+                @endif
+                {{-- <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span> --}}
+                <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
                 </div>
                 <table class="company-table">
                   <tbody>
