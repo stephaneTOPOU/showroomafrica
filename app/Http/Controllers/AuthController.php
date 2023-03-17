@@ -95,6 +95,6 @@ class AuthController extends Controller
         $villes = Ville::all();
         $souscategories = SousCategories::all();
 
-        return view('frontend.entreprise.enregistrer', compact('parametres', 'sousCategorieNavs', 'pays', 'villes', 'souscategories'));
+        return view('frontend.tg.entreprise.enregistrer', compact('parametres', 'sousCategorieNavs', 'pays', 'villes', 'souscategories'));
     }
 }

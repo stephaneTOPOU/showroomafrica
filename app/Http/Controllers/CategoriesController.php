@@ -32,6 +32,6 @@ class CategoriesController extends Controller
 
         $slider = SliderCategorie::all();
 
-        return view('frontend.categories', compact('sousCategorieNavs', 'parametres', 'categories', 'souscategories', 'slider'));
+        return view('frontend.tg.categories', compact('sousCategorieNavs', 'parametres', 'categories', 'souscategories', 'slider'));
     }
 }

@@ -233,7 +233,7 @@ class HomeController extends Controller
 
         $slider = SliderRecherche::all();
 
-        return view('frontend.recherche-entreprise', compact('recherches', 'sousCategorieNavs', 'entreprisePopulaire', 'parametres', 'slider'));
+        return view('frontend.tg.recherche-entreprise', compact('recherches', 'sousCategorieNavs', 'entreprisePopulaire', 'parametres', 'slider'));
     }
 
     // public function show()
@@ -386,7 +386,7 @@ class HomeController extends Controller
         //$totalViews = Views($vue)->count();
         //dump( $visiteur);
 
-        return view('frontend.home', compact(
+        return view('frontend.tg.home', compact(
             'slider1s',
             'slider2s',
             'slider3s',

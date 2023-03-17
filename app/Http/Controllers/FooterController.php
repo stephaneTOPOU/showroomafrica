@@ -18,6 +18,6 @@ class FooterController extends Controller
         ->take(4)
         ->get();
 
-        return view('frontend.footer', compact('parametres', 'sousCategorieNavs'));
+        return view('frontend.tg.footer.footer', compact('parametres', 'sousCategorieNavs'));
     }
 }

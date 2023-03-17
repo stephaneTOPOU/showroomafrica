@@ -10,6 +10,6 @@ class UserController extends Controller
     public function user()
     {
         $professionels = User::all(); 
-        return view('frontend.professionnel', compact('professionels'));
+        return view('frontend.tg.professionnel', compact('professionels'));
     }
 }

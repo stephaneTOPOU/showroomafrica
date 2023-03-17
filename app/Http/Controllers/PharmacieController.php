@@ -23,6 +23,6 @@ class PharmacieController extends Controller
             ->select('*')
             ->get();
 
-        return view('frontend.pharmacie', compact('pharmacies','sousCategorieNavs', 'parametres'));
+        return view('frontend.tg.pharmacie', compact('pharmacies','sousCategorieNavs', 'parametres'));
     }
 }

@@ -38,7 +38,7 @@ class EntrepriseController extends Controller
         $slider = SliderEntreprise::all();
 
         $parametres = Parametre::find(1);
-        return view('frontend.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
+        return view('frontend.tg.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
     'entreprisePopulaire', 'slider', 'parametres'));
     }
 }

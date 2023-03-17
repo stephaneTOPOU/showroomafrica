@@ -17,6 +17,6 @@ class NavbarController extends Controller
             ->get();
             
         $parametres = Parametre::find(1);
-        return view('frontend.navbar', compact('sousCategorieNavs', 'parametres'));
+        return view('frontend.tg.navbar', compact('sousCategorieNavs', 'parametres'));
     }
 }

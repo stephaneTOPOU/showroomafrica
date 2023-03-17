@@ -57,6 +57,6 @@ class ContactController extends Controller
             ->take(4)
             ->get();
             
-        return view('frontend.contact', compact('parametres', 'sousCategorieNavs'));
+        return view('frontend.tg.contact', compact('parametres', 'sousCategorieNavs'));
     }
 }
