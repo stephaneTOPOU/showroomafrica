@@ -1,16 +1,16 @@
-@include('frontend.tg.header.header')
-@include('frontend.tg.header.header1')
-@include('frontend.tg.header.header2')
-@include('frontend.tg.header.header3')
+@include('frontend.ne.header.header')
+@include('frontend.ne.header.header1')
+@include('frontend.ne.header.header2')
+@include('frontend.ne.header.header3')
 <link rel="stylesheet" href="{{ asset('assets/css/services.css') }}" />
-@include('frontend.tg.header.header4')
-@include('frontend.tg.header.header5')
-@include('frontend.tg.header.header6')
-@include('frontend.tg.header.header7')
-@include('frontend.tg.header.header8')
-@include('frontend.tg.header.header9')
+@include('frontend.ne.header.header4')
+@include('frontend.ne.header.header5')
+@include('frontend.ne.header.header6')
+@include('frontend.ne.header.header7')
+@include('frontend.ne.header.header8')
+@include('frontend.ne.header.header9')
 
-@include('frontend.tg.navbar')
+@include('frontend.ne.navbar')
 
 <div class="container">
 
@@ -42,8 +42,8 @@
 
 </div>
 
-@include('frontend.tg.footer.footer')
+@include('frontend.ne.footer.footer')
   <script src="{{ asset('assets/js/script.js') }}"></script>
-  @include('frontend.tg.footer.footer1')
-  @include('frontend.tg.footer.footer2')
-  @include('frontend.tg.footer.footer3')
+  @include('frontend.ne.footer.footer1')
+  @include('frontend.ne.footer.footer2')
+  @include('frontend.ne.footer.footer3')

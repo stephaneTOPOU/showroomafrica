@@ -1,7 +1,7 @@
-@include('frontend.tg.header.header')
-@include('frontend.tg.header.header1')
-@include('frontend.tg.header.header2')
-@include('frontend.tg.header.header3')
+@include('frontend.dj.header.header')
+@include('frontend.dj.header.header1')
+@include('frontend.dj.header.header2')
+@include('frontend.dj.header.header3')
 
     <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/companies.css') }}" />
@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="{{ asset('assets/css/lightroom.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets/css/lightbox.css') }}">
 
-@include('frontend.tg.header.header4')
-@include('frontend.tg.header.header5')
-@include('frontend.tg.header.header6')
-@include('frontend.tg.header.header7')
-@include('frontend.tg.header.header8')
-@include('frontend.tg.header.header9')
+@include('frontend.dj.header.header4')
+@include('frontend.dj.header.header5')
+@include('frontend.dj.header.header6')
+@include('frontend.dj.header.header7')
+@include('frontend.dj.header.header8')
+@include('frontend.dj.header.header9')
 
-@include('frontend.tg.navbar')
+@include('frontend.dj.navbar')
 
 <div class="container">
 
@@ -535,9 +535,9 @@
 
     </div>
   </div>
-  @include('frontend.tg.footer.footer')
-  @include('frontend.tg.footer.footer1')
-  @include('frontend.tg.footer.footer2')
+  @include('frontend.dj.footer.footer')
+  @include('frontend.dj.footer.footer1')
+  @include('frontend.dj.footer.footer2')
   <script src="{{ asset('assets/js/slider.js') }}"></script>
   <script src="{{ asset('assets/js/accordion.js') }}"></script>
   <script src="{{ asset('assets/js/company-hours.js') }}"></script>
@@ -559,4 +559,4 @@
         }).init();
     </script>
     <!-- END SCRIPTS -->
-    @include('frontend.tg.footer.footer3')
+    @include('frontend.dj.footer.footer3')

@@ -1,18 +1,18 @@
-@include('frontend.tg.header.header')
-@include('frontend.tg.header.header1')
-@include('frontend.tg.header.header2')
-@include('frontend.tg.header.header3')
+@include('frontend.mg.header.header')
+@include('frontend.mg.header.header1')
+@include('frontend.mg.header.header2')
+@include('frontend.mg.header.header3')
 
 <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/css/categories.css') }}" />
 
-@include('frontend.tg.header.header4')
-@include('frontend.tg.header.header5')
-@include('frontend.tg.header.header6')
-@include('frontend.tg.header.header7')
-@include('frontend.tg.header.header8')
-@include('frontend.tg.header.header9')
-@include('frontend.tg.navbar')
+@include('frontend.mg.header.header4')
+@include('frontend.mg.header.header5')
+@include('frontend.mg.header.header6')
+@include('frontend.mg.header.header7')
+@include('frontend.mg.header.header8')
+@include('frontend.mg.header.header9')
+@include('frontend.mg.navbar')
 
 <div class="container">
 
@@ -52,12 +52,12 @@
     </div>
 
 </div>
-@include('frontend.tg.footer.footer')
+@include('frontend.mg.footer.footer')
 <script src="{{ asset('assets/js/script.js') }}"></script>
-@include('frontend.tg.footer.footer1')
-@include('frontend.tg.footer.footer2')
+@include('frontend.mg.footer.footer1')
+@include('frontend.mg.footer.footer2')
 
 <script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/accordion.js') }}"></script>
 
-@include('frontend.tg.footer.footer3')
+@include('frontend.mg.footer.footer3')

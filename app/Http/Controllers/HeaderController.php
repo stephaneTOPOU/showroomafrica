@@ -10,6 +10,6 @@ class HeaderController extends Controller
     public function header()
     {
         $parametres = Parametre::find(1);
-        return view('frontend.tg.header.header', compact('parametres'));
+        return view('frontend.header.header', compact('parametres'));
     }
 }

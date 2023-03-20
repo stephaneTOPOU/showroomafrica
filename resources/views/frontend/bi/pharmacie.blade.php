@@ -1,19 +1,19 @@
-@include('frontend.tg.header.header')
-@include('frontend.tg.header.header1')
-@include('frontend.tg.header.header2')
-@include('frontend.tg.header.header3')
+@include('frontend.bi.header.header')
+@include('frontend.bi.header.header1')
+@include('frontend.bi.header.header2')
+@include('frontend.bi.header.header3')
 
 <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/css/professionals.css') }}" />
 
-@include('frontend.tg.header.header4')
-@include('frontend.tg.header.header5')
-@include('frontend.tg.header.header6')
-@include('frontend.tg.header.header7')
-@include('frontend.tg.header.header8')
-@include('frontend.tg.header.header9')
+@include('frontend.bi.header.header4')
+@include('frontend.bi.header.header5')
+@include('frontend.bi.header.header6')
+@include('frontend.bi.header.header7')
+@include('frontend.bi.header.header8')
+@include('frontend.bi.header.header9')
 
-@include('frontend.tg.navbar')
+@include('frontend.bi.navbar')
 
 <div class="container">
 
@@ -42,8 +42,8 @@
     </div>
 
 </div>
-@include('frontend.tg.footer.footer')
+@include('frontend.bi.footer.footer')
 <script src="{{ asset('assets/js/script.js') }}"></script>
-@include('frontend.tg.footer.footer1')
-@include('frontend.tg.footer.footer2')
-@include('frontend.tg.footer.footer3')
+@include('frontend.bi.footer.footer1')
+@include('frontend.bi.footer.footer2')
+@include('frontend.bi.footer.footer3')

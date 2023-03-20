@@ -230,6 +230,12 @@ nav ul i {
   margin-left: 25%;
 }
 
+.popup-container .countries_flag img {
+  font-size: 3.25em;
+  border-radius: 4px;
+  margin-bottom: .25em;
+}
+
 #countries_popup .modal-content {width: 76%;}
 #popup .modal-content {width: 36%;}
 

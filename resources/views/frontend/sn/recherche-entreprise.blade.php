@@ -1,7 +1,7 @@
-@include('frontend.tg.header.header')
-@include('frontend.tg.header.header1')
-@include('frontend.tg.header.header2')
-@include('frontend.tg.header.header3')
+@include('frontend.sn.header.header')
+@include('frontend.sn.header.header1')
+@include('frontend.sn.header.header2')
+@include('frontend.sn.header.header3')
 
 <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/css/categories.css') }}" />
@@ -9,14 +9,14 @@
 {{-- <link rel="stylesheet" href="{{ asset('assets/css/vertical-carousel.css') }}" /> --}}
 <link rel="stylesheet" href="{{ asset('assets/css/autocompletion.css') }}" />
 
-@include('frontend.tg.header.header4')
-@include('frontend.tg.header.header5')
-@include('frontend.tg.header.header6')
-@include('frontend.tg.header.header7')
-@include('frontend.tg.header.header8')
-@include('frontend.tg.header.header9')
+@include('frontend.sn.header.header4')
+@include('frontend.sn.header.header5')
+@include('frontend.sn.header.header6')
+@include('frontend.sn.header.header7')
+@include('frontend.sn.header.header8')
+@include('frontend.sn.header.header9')
 
-@include('frontend.tg.navbar')
+@include('frontend.sn.navbar')
 <div class="container">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
@@ -195,13 +195,13 @@
 
 </div>
 
-@include('frontend.tg.footer.footer')
+@include('frontend.sn.footer.footer')
 <script src="{{ asset('assets/js/script.js') }}"></script>
-@include('frontend.tg.footer.footer1')
-@include('frontend.tg.footer.footer2')
+@include('frontend.sn.footer.footer1')
+@include('frontend.sn.footer.footer2')
 
 <script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/accordion.js') }}"></script>
 <script src="{{ asset('assets/js/autocompletion.js') }}"></script>
 
-@include('frontend.tg.footer.footer3')
+@include('frontend.sn.footer.footer3')

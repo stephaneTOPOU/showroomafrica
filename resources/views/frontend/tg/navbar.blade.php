@@ -265,7 +265,7 @@
             <div class="countries">
                 <span class="title">Sélectionnez votre pays</span>
                 <div class="countries_flag">
-                    <a href="#" class="country_flag"><span class="flag fi fi-ua"></span> Afrique</a>
+                    <a href="#" class="country_flag"><img src="{{ asset('assets/afrique.jpg') }}" alt="afrique"></a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bf"></span> Burkina Faso</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a>

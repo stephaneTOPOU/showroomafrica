@@ -21,6 +21,6 @@ class ProfessionnelController extends Controller
 
         $professionels = User::all(); 
         
-        return view('frontend.tg.professionnel',compact('parametres', 'sousCategorieNavs', 'professionels'));
+        return view('frontend.professionnel',compact('parametres', 'sousCategorieNavs', 'professionels'));
     }
 }

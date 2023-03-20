@@ -18,6 +18,6 @@ class ServiceController extends Controller
             ->take(4)
             ->get();
 
-        return view('frontend.tg.siteweb', compact('parametres', 'sousCategorieNavs'));
+        return view('frontend.siteweb', compact('parametres', 'sousCategorieNavs'));
     }
 }

@@ -1,15 +1,15 @@
-@include('frontend.tg.header.header')
-@include('frontend.tg.header.header1')
-@include('frontend.tg.header.header2')
-@include('frontend.tg.header.header3')
-@include('frontend.tg.header.header4')
-@include('frontend.tg.header.header5')
-@include('frontend.tg.header.header6')
-@include('frontend.tg.header.header7')
-@include('frontend.tg.header.header8')
-@include('frontend.tg.header.header9')
+@include('frontend.dj.header.header')
+@include('frontend.dj.header.header1')
+@include('frontend.dj.header.header2')
+@include('frontend.dj.header.header3')
+@include('frontend.dj.header.header4')
+@include('frontend.dj.header.header5')
+@include('frontend.dj.header.header6')
+@include('frontend.dj.header.header7')
+@include('frontend.dj.header.header8')
+@include('frontend.dj.header.header9')
 
-@include('frontend.tg.navbar')
+@include('frontend.dj.navbar')
 
 <div class="container">
 
@@ -72,8 +72,8 @@
 
     </div>
   </div>
-  @include('frontend.tg.footer.footer')
+  @include('frontend.dj.footer.footer')
   <script src="{{ asset('assets/js/script.js') }}"></script>
-  @include('frontend.tg.footer.footer1')
-  @include('frontend.tg.footer.footer2')
-  @include('frontend.tg.footer.footer3')
+  @include('frontend.dj.footer.footer1')
+  @include('frontend.dj.footer.footer2')
+  @include('frontend.dj.footer.footer3')

@@ -108,7 +108,7 @@ class ProfileEntrepriseController extends Controller
         $entreprise->increment('vue');
         $entreprise->save();
         
-        return view('frontend.tg.profileEntreprise', compact('sousCategorieNavs', 'parametres', 'Profil_entreprises',
+        return view('frontend.profileEntreprise', compact('sousCategorieNavs', 'parametres', 'Profil_entreprises',
     'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics'));
     }
 }

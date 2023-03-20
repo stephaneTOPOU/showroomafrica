@@ -1,7 +1,7 @@
-@include('frontend.tg.header.header')
-@include('frontend.tg.header.header1')
-@include('frontend.tg.header.header2')
-@include('frontend.tg.header.header3')
+@include('frontend.ml.header.header')
+@include('frontend.ml.header.header1')
+@include('frontend.ml.header.header2')
+@include('frontend.ml.header.header3')
 
     <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/side-slider.css')}}" />
@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="{{ asset('assets/css/video-player.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/autocompletion.css') }}" />
 
-@include('frontend.tg.header.header4')
-@include('frontend.tg.header.header5')
-@include('frontend.tg.header.header6')
-@include('frontend.tg.header.header7')
-@include('frontend.tg.header.header8')
-@include('frontend.tg.header.header9')
+@include('frontend.ml.header.header4')
+@include('frontend.ml.header.header5')
+@include('frontend.ml.header.header6')
+@include('frontend.ml.header.header7')
+@include('frontend.ml.header.header8')
+@include('frontend.ml.header.header9')
 
-@include('frontend.tg.navbar')
+@include('frontend.ml.navbar')
 
 <!-- autocompletion-->
 
@@ -553,11 +553,11 @@
     <!-- END MAGAZINES -->
 </div>
 <!-- END CONTAINER-->
-@include('frontend.tg.footer.footer')
+@include('frontend.ml.footer.footer')
 <script src="{{ asset('assets/js/script.js') }}"></script>
-@include('frontend.tg.footer.footer1')
+@include('frontend.ml.footer.footer1')
 <script src="{{ asset('assets/js/video-modal.js') }}"></script>
-@include('frontend.tg.footer.footer2')
+@include('frontend.ml.footer.footer2')
 <script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/autocompletion.js') }}"></script>
 
@@ -621,4 +621,4 @@
        /* End Popup */
 
 </script>
-@include('frontend.tg.footer.footer3')
+@include('frontend.ml.footer.footer3')

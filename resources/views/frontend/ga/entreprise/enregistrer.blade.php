@@ -1,14 +1,14 @@
-@include('frontend.tg.header.header')
-@include('frontend.tg.header.header1')
-@include('frontend.tg.header.header2')
-@include('frontend.tg.header.header3')
-@include('frontend.tg.header.header4')
-@include('frontend.tg.header.header5')
-@include('frontend.tg.header.header6')
-@include('frontend.tg.header.header7')
-@include('frontend.tg.header.header8')
-@include('frontend.tg.header.header9')
-@include('frontend.tg.navbar')
+@include('frontend.ga.header.header')
+@include('frontend.ga.header.header1')
+@include('frontend.ga.header.header2')
+@include('frontend.ga.header.header3')
+@include('frontend.ga.header.header4')
+@include('frontend.ga.header.header5')
+@include('frontend.ga.header.header6')
+@include('frontend.ga.header.header7')
+@include('frontend.ga.header.header8')
+@include('frontend.ga.header.header9')
+@include('frontend.ga.navbar')
 
 <!-- CONTAINER -->
 <div class="container">
@@ -117,6 +117,6 @@
 </div>
 <!-- END CONTAINER -->
 <script src="{{ asset('assets/js/upload.js') }}"></script>
-@include('frontend.tg.footer.footer')
-@include('frontend.tg.footer.footer2')
-@include('frontend.tg.footer.footer3')
+@include('frontend.ga.footer.footer')
+@include('frontend.ga.footer.footer2')
+@include('frontend.ga.footer.footer3')
