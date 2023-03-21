@@ -1,7 +1,7 @@
 @if (Auth::check())
 <nav>
 
-    <a href="/" class="nav-icon" aria-label="visit homepage" aria-current="page">
+    <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
         <img src="{{ asset('assets/images') }}/{{ $parametres->logo_header }}" alt="logo">
     </a>
 
@@ -14,7 +14,7 @@
         <div class="navlinks-container">
             <ul>
             <li>
-                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
+                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo </a>
             </li>
             <li>
                 <a href="{{ route('categorie') }}">Entreprises</a>
@@ -28,7 +28,7 @@
                 </div>
             </li> --}}
             <li>
-                <a href="{{ route('professionnel') }}">Professionnels</a>
+                <a href="{{ route('professionnel.tg',['pays_id'=>14]) }}">Professionnels</a>
             </li>
             <li class="dropdown">
                 <a href="#">Opportunités<i class="fa-regular fa-chevron-down"></i></a>
@@ -77,7 +77,7 @@
 @else
 <nav>
 
-    <a href="/" class="nav-icon" aria-label="visit homepage" aria-current="page">
+    <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
         <img src="{{ asset('assets/images') }}/{{ $parametres->logo_header }}" alt="logo">
     </a>
 
@@ -90,7 +90,7 @@
         <div class="navlinks-container">
             <ul>
             <li>
-                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
+                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo </a>
             </li>
             <li>
                 <a href="{{ route('categorie') }}">Entreprises</a>
@@ -104,7 +104,7 @@
                 </div>
             </li> --}}
             <li>
-                <a href="{{ route('professionnel') }}">Professionnels</a>
+                <a href="{{ route('professionnel.tg',['pays_id'=>14]) }}">Professionnels</a>
             </li>
             <li class="dropdown">
                 <a href="#">Opportunités<i class="fa-regular fa-chevron-down"></i></a>
@@ -178,7 +178,7 @@
                             <b><a href="#" class="text signup-link">Inscrivez-vous</a></b>
                         </span>
                         <span class="text">ou
-                            <b><a href="{{ route('entreprise.register') }}" class="text signup-link">Enregistrez votre entreprise</a></b>
+                            <b><a href="{{ route('entreprise.register.tg',['pays_id'=>14]) }}" class="text signup-link">Enregistrez votre entreprise</a></b>
                         </span>
                     </div>
                 </div>
@@ -265,7 +265,7 @@
             <div class="countries">
                 <span class="title">Sélectionnez votre pays</span>
                 <div class="countries_flag">
-                    <a href="#" class="country_flag"><img src="{{ asset('assets/afrique.jpg') }}" alt="afrique"></a>
+                    <a href="{{ route('home') }}" class="country_flag"><img src="{{ asset('assets/afrique.jpg') }}" alt="afrique"></a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bf"></span> Burkina Faso</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a>
@@ -284,7 +284,7 @@
                     <a href="#" class="country_flag"><span class="flag fi fi-rw"></span> Rwanda</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-sn"></span> Sénégal</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-td"></span> Tchad</a>
-                    <a href="#" class="country_flag selected"><span class="flag fi fi-tg"></span> Togo</a>
+                    <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="country_flag selected"><span class="flag fi fi-tg"></span> Togo</a>
                 </div>
             </div>
         </div>

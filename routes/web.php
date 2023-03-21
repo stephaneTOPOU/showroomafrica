@@ -17,12 +17,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-
+//******************************************Pour l'Afrique***************************************************//
 Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/autocomplete',[App\Http\Controllers\HomeController::class, 'autocompletion'])->name('autocomplete');
-
-Route::get('/show',[App\Http\Controllers\HomeController::class, 'show'])->name('vue');
 
 Route::get('/rechercher-entreprise', [App\Http\Controllers\HomeController::class, 'recherche'])->name('recherche');
 
@@ -57,4 +55,17 @@ Route::post('/authentification', [\App\Http\Controllers\AuthController::class, '
 Route::post('/ajouter-entreprise', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.add');
 
 Route::get('/siteweb', [\App\Http\Controllers\ServiceController::class, 'siteweb'])->name('service.siteweb');
+
+//****************************************************end Afrique************************************************//
+
+//****************************************************Pour le Togo***********************************************//
+Route::get('/tg/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_tg'])->name('home.tg');
+
+Route::get('/tg/autocomplete/{pays_id}',[App\Http\Controllers\HomeController::class, 'autocompletion_tg'])->name('autocomplete.tg');
+
+Route::get('/tg/rechercher-entreprise/{pays_id}', [App\Http\Controllers\HomeController::class, 'recherche_tg'])->name('recherche.tg');
+
+Route::get('/tg/enregistrer-entreprise/{pays_id}', [\App\Http\Controllers\AuthController::class, 'entreprise_tg'])->name('entreprise.register.tg');
+
+Route::get('/tg/professionnel/{pays_id}', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel_tg'])->name('professionnel.tg');
 

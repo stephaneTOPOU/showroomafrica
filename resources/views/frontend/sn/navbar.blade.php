@@ -14,7 +14,7 @@
         <div class="navlinks-container">
             <ul>
             <li>
-                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
+                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-sn"></span> Sénégal </a>
             </li>
             <li>
                 <a href="{{ route('categorie') }}">Entreprises</a>
@@ -90,7 +90,7 @@
         <div class="navlinks-container">
             <ul>
             <li>
-                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
+                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-sn"></span> Sénégal </a>
             </li>
             <li>
                 <a href="{{ route('categorie') }}">Entreprises</a>
@@ -281,9 +281,9 @@
                     <a href="#" class="country_flag"><span class="flag fi fi-ne"></span> Niger</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-cd"></span> République Démocratique du Congo</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-rw"></span> Rwanda</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-sn"></span> Sénégal</a>
+                    <a href="#" class="country_flag selected"><span class="flag fi fi-sn"></span> Sénégal</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-td"></span> Tchad</a>
-                    <a href="#" class="country_flag selected"><span class="flag fi fi-tg"></span> Togo</a>
+                    <a href="#" class="country_flag"><span class="flag fi fi-tg"></span> Togo</a>
                 </div>
             </div>
         </div>

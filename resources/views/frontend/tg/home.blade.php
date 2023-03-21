@@ -60,14 +60,16 @@
         </div>
 
         <div class="search-bar">
-            <form action="{{ route('recherche') }}" method="GET" class="search-form">
+            <form action="{{ route('recherche.tg',['pays_id'=>14]) }}" method="GET" class="search-form">
                 <div class="search-field">
                     <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel"
                     name="nom">
                     <i id="searchicon" class="fa-light fa-buildings"></i>
                 </div>
                 <script type="text/javascript">
-                    var path = "{{ route('autocomplete') }}";
+                    var path = "{{ route('autocomplete.tg',['pays_id'=>14]) }}" ;
+                    // path = path.replace(':pays_id', pays_id);
+
                     $( "#searchfield" ).autocomplete({
                         source: function( request, response ) {
                             $.ajax({

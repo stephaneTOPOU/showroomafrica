@@ -97,4 +97,29 @@ class AuthController extends Controller
 
         return view('frontend.entreprise.enregistrer', compact('parametres', 'sousCategorieNavs', 'pays', 'villes', 'souscategories'));
     }
+
+    public function entreprise_tg($pays_id)
+    {
+        $parametres = Parametre::find(1);
+
+        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->select('*')
+            ->take(4)
+            ->get();
+
+        $pays = Pays::all();
+        $villes = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('villes', 'pays.id', '=', 'villes.pays_id')
+            ->select('*')
+            ->get();
+
+        $souscategories = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->select('*')
+            ->get();
+
+        return view('frontend.tg.entreprise.enregistrer', compact('parametres', 'sousCategorieNavs', 'pays', 'villes', 'souscategories'));
+    }
 }

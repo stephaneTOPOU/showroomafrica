@@ -14,7 +14,7 @@
         <div class="navlinks-container">
             <ul>
             <li>
-                <a href="#" id="flag" aria-current="page" class="current">Pays</a>
+                <a href="#" id="flag" aria-current="page" class="current">Trouver pays</a>
             </li>
             <li>
                 <a href="{{ route('categorie') }}">Entreprises</a>
@@ -90,7 +90,7 @@
         <div class="navlinks-container">
             <ul>
             <li>
-                <a href="#" id="flag" aria-current="page" class="current"> Pays </a>
+                <a href="#" id="flag" aria-current="page" class="current"> Trouver pays </a>
             </li>
             <li>
                 <a href="{{ route('categorie') }}">Entreprises</a>
@@ -265,7 +265,7 @@
             <div class="countries">
                 <span class="title">Sélectionnez votre pays</span>
                 <div class="countries_flag">
-                    <a href="#" class="country_flag selected"><img src="{{ asset('assets/afrique.jpg') }}" alt="afrique"></a>
+                    <a href="{{ route('home') }}" class="country_flag selected"><img src="{{ asset('assets/afrique.jpg') }}" alt="afrique"></a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bf"></span> Burkina Faso</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a>
@@ -284,7 +284,7 @@
                     <a href="#" class="country_flag"><span class="flag fi fi-rw"></span> Rwanda</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-sn"></span> Sénégal</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-td"></span> Tchad</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-tg"></span> Togo</a>
+                    <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="country_flag"><span class="flag fi fi-tg"></span> Togo</a>
                 </div>
             </div>
         </div>

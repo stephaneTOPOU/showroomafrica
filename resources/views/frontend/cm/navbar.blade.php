@@ -14,7 +14,7 @@
         <div class="navlinks-container">
             <ul>
             <li>
-                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
+                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-cm"></span> Cameroun </a>
             </li>
             <li>
                 <a href="{{ route('categorie') }}">Entreprises</a>
@@ -90,7 +90,7 @@
         <div class="navlinks-container">
             <ul>
             <li>
-                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo</a>
+                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-cm"></span> Cameroun </a>
             </li>
             <li>
                 <a href="{{ route('categorie') }}">Entreprises</a>
@@ -268,7 +268,7 @@
                     <a href="#" class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bf"></span> Burkina Faso</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-cm"></span> Cameroun</a>
+                    <a href="#" class="country_flag selected"><span class="flag fi fi-cm"></span> Cameroun</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-cf"></span> Centrafrique</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-cg"></span> Congo - Brazzaville</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-ci"></span> Côte d'Ivoire</a>
@@ -283,7 +283,7 @@
                     <a href="#" class="country_flag"><span class="flag fi fi-rw"></span> Rwanda</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-sn"></span> Sénégal</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-td"></span> Tchad</a>
-                    <a href="#" class="country_flag selected"><span class="flag fi fi-tg"></span> Togo</a>
+                    <a href="#" class="country_flag"><span class="flag fi fi-tg"></span> Togo</a>
                 </div>
             </div>
         </div>
