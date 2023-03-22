@@ -1,10 +1,11 @@
 @if (Auth::check())
 <nav>
 
-    <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
-        <img src="{{ asset('assets/images') }}/{{ $parametres->logo_header }}" alt="logo">
-    </a>
-
+    @foreach ($parametres as $parametre)
+        <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
+            <img src="{{ asset('assets/images') }}/{{ $parametre->logo_header }}" alt="logo">
+        </a>
+    @endforeach
     <div class="main-navlinks">
         <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
             <span></span>
@@ -17,7 +18,7 @@
                 <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo </a>
             </li>
             <li>
-                <a href="{{ route('categorie') }}">Entreprises</a>
+                <a href="{{ route('categorie.tg',['pays_id'=>14]) }}">Entreprises</a>
             </li>
             {{-- <li class="dropdown">
                 <a href="#">Entreprise<i class="fa-regular fa-chevron-down"></i></a>
@@ -42,12 +43,12 @@
                 <div class="dropdown-content">
                 <a href="#">Comptabilité</a><br>
                 <a href="#">Audit</a><br>
-                <a href="{{ route('service.siteweb') }}">Sites web</a><br>
+                <a href="{{ route('service.tg.siteweb',['pays_id'=>14]) }}">Sites web</a><br>
                 <a href="#">Centres d'appel</a><br>
                 </div>
             </li>
             <li>
-                <a href="{{ route('contact') }}">Contact</a>
+                <a href="{{ route('contact.tg',['pays_id'=>14]) }}">Contact</a>
             </li>
             </ul>
             
@@ -57,9 +58,9 @@
                     <div class="dropdown-content">
                         <span class="name"><b>{{ Auth::user()->name }}</b> {{ Auth::user()->prenoms }}</span><br>
                         <a href="#"><i class="fa-solid fa-address-card"></i> Mon profil</a><br>
-                        <form method="Get" action="{{ route('logout') }}">
+                        <form method="Get" action="{{ route('logout.tg',['pays_id'=>14]) }}">
                             @csrf
-                            <a href="{{ route('logout') }}" type="submit"><i class="fa-regular fa-arrow-right-from-bracket"></i> Déconnexion</a><br>
+                            <a href="{{ route('logout.tg',['pays_id'=>14]) }}" type="submit"><i class="fa-regular fa-arrow-right-from-bracket"></i> Déconnexion</a><br>
                         </form>
                         
                     </div>
@@ -76,10 +77,11 @@
 </nav>
 @else
 <nav>
-
-    <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
-        <img src="{{ asset('assets/images') }}/{{ $parametres->logo_header }}" alt="logo">
-    </a>
+    @foreach ($parametres as $parametre)
+        <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
+            <img src="{{ asset('assets/images') }}/{{ $parametre->logo_header }}" alt="logo">
+        </a>
+    @endforeach
 
     <div class="main-navlinks">
         <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
@@ -93,16 +95,8 @@
                 <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-tg"></span> Togo </a>
             </li>
             <li>
-                <a href="{{ route('categorie') }}">Entreprises</a>
+                <a href="{{ route('categorie.tg',['pays_id'=>14]) }}">Entreprises</a>
             </li>
-            {{-- <li class="dropdown">
-                <a href="#">Entreprise<i class="fa-regular fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                    @foreach ($sousCategorieNavs as $sousCategorieNav)
-                        <a href="{{ route('entreprise',['souscategorie_id'=>$sousCategorieNav->id]) }}">{{ $sousCategorieNav->libelle }}</a><br>
-                    @endforeach
-                </div>
-            </li> --}}
             <li>
                 <a href="{{ route('professionnel.tg',['pays_id'=>14]) }}">Professionnels</a>
             </li>
@@ -118,12 +112,12 @@
                 <div class="dropdown-content">
                 <a href="#">Comptabilité</a><br>
                 <a href="#">Audit</a><br>
-                <a href="{{ route('service.siteweb') }}">Sites web</a><br>
+                <a href="{{ route('service.tg.siteweb',['pays_id'=>14]) }}">Sites web</a><br>
                 <a href="#">Centres d'appel</a><br>
                 </div>
             </li>
             <li>
-                <a href="{{ route('contact') }}">Contact</a>
+                <a href="{{ route('contact.tg',['pays_id'=>14]) }}">Contact</a>
             </li>
             </ul>               
         </div>
@@ -156,7 +150,7 @@
                     @if(Session::has('connexion'))
                         <div class="alert alert-success" role="alert">{{Session::get('connexion') }}</div>
                     @endif
-                    <form action="{{ route('authenticate') }}" method="POST">
+                    <form action="{{ route('authenticate.tg',['pays_id'=>14]) }}" method="POST">
                         @csrf
                         <div class="input-field">
                             <input type="email" placeholder="Votre email ici" required name="email">
@@ -189,7 +183,7 @@
                     @if(Session::has('user'))
                         <div class="alert alert-success" role="alert">{{Session::get('user') }}</div>
                     @endif
-                    <form action="{{ route('user.add') }}" method="POST">
+                    <form action="{{ route('user.tg.add',['pays_id'=>14]) }}" method="POST">
                         @csrf
                         <div class="fields">
                             <div class="input-field field">

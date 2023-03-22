@@ -458,7 +458,7 @@
         <br />
         <br />
         <div class="category-link" style="text-align: center">
-            <a href="{{ route('pharmacie') }}">
+            <a href="{{ route('pharmacie.tg',['pays_id'=>14]) }}">
                 <i class="fa-regular fa-plus"></i>
                 Liste des pharmacie de garde
             </a>

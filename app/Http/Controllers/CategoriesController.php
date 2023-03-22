@@ -34,4 +34,43 @@ class CategoriesController extends Controller
 
         return view('frontend.categories', compact('sousCategorieNavs', 'parametres', 'categories', 'souscategories', 'slider'));
     }
+
+//***********************************************Categorie Togo********************************************** */
+    public function categories_tg($pays_id)
+    {
+        $parametres = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+            ->where('parametres.id', 1)
+            ->select('*')
+            ->get();
+        
+        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->select('*')
+            ->take(4)
+            ->get();
+
+        $categories = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->select('*','categories.libelle as cat')
+            ->get();                        
+
+        $souscategories = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->select('*','categories.libelle as cat', 'sous_categories.libelle as subcat')
+            //->where('')
+            ->take(8)
+            ->get();
+
+        $slider = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
+            ->select('*')
+            ->get();
+
+        return view('frontend.tg.categories', compact('sousCategorieNavs', 'parametres', 'categories', 'souscategories', 'slider'));
+    }
+
+//***********************************************End Categorie Togo********************************************** */
 }

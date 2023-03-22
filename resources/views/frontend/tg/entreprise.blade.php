@@ -14,7 +14,6 @@
 @include('frontend.tg.header.header7')
 @include('frontend.tg.header.header8')
 @include('frontend.tg.header.header9')
-
 @include('frontend.tg.navbar')
 
 <div class="container">
@@ -37,7 +36,7 @@
     <div class="companies-container">
 
         <div class="search-bar" style="margin-bottom:2em;">
-            <form action="{{ route('recherche') }}" autocomplete="off" class="search-form" method="GET">
+            <form action="{{ route('recherche.tg',['pays_id'=>14]) }}" autocomplete="off" class="search-form" method="GET">
                 <div class="search-field autocomplete">
                     <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel" required="" name="nom">
                     <i id="searchicon" class="fa-light fa-buildings"></i>
@@ -101,7 +100,7 @@
                     <div class="company-info">
                         <div class="left">
                             <div class="header">
-                                <h3 class="company-name"><a href="{{ route('entreprise.profil',['entreprise_id'=>$entreprise->id]) }}">{{$entreprise->nom}}</a></h3>
+                                <h3 class="company-name"><a href="{{ route('entreprise.tg.profil',['pays_id'=>$entreprise->pays_id,'entreprise_id'=>$entreprise->id]) }}">{{$entreprise->nom}}</a></h3>
                                 <span class="company-category">{{ $entreprise->libelle }}</span>
                                 @if ($entreprise->premium == 1)
                                     <div class="premium">

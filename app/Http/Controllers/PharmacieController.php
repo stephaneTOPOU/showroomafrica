@@ -8,13 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class PharmacieController extends Controller
 {
+//*********************************************Pharmacie*************************************** */
     public function pharmacie()
     {
-        $sousCategorieNavs = DB::table('categories')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
 
         $parametres = Parametre::find(1);
         
@@ -23,6 +19,32 @@ class PharmacieController extends Controller
             ->select('*')
             ->get();
 
-        return view('frontend.pharmacie', compact('pharmacies','sousCategorieNavs', 'parametres'));
+        return view('frontend.pharmacie', compact('pharmacies','parametres'));
     }
+//*********************************************End Pharmacie*************************************** */
+
+
+
+//*********************************************Pharmacie Togo*************************************** */
+    public function pharmacie_tg($pays_id)
+    {
+
+        $parametres = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+            ->where('parametres.id', 1)
+            ->select('*')
+            ->get();
+        
+        $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+            ->where('pharmacie_de_garde', 1)
+            ->select('*')
+            ->get();
+
+        return view('frontend.tg.pharmacie', compact('pharmacies','parametres'));
+    }
+
+//*********************************************End Pharmacie Togo*************************************** */
 }

@@ -58,6 +58,8 @@ Route::get('/siteweb', [\App\Http\Controllers\ServiceController::class, 'siteweb
 
 //****************************************************end Afrique************************************************//
 
+
+
 //****************************************************Pour le Togo***********************************************//
 Route::get('/tg/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_tg'])->name('home.tg');
 
@@ -68,4 +70,28 @@ Route::get('/tg/rechercher-entreprise/{pays_id}', [App\Http\Controllers\HomeCont
 Route::get('/tg/enregistrer-entreprise/{pays_id}', [\App\Http\Controllers\AuthController::class, 'entreprise_tg'])->name('entreprise.register.tg');
 
 Route::get('/tg/professionnel/{pays_id}', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel_tg'])->name('professionnel.tg');
+
+Route::get('/tg/contact/{pays_id}', [\App\Http\Controllers\ContactController::class, 'contact_tg'])->name('contact.tg');
+
+Route::get('/tg/categories/{pays_id}', [\App\Http\Controllers\CategoriesController::class, 'categories_tg'])->name('categorie.tg');
+
+Route::get('/tg/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_tg'])->name('entreprise.tg');
+
+Route::get('/tg/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_tg'])->name('entreprise.tg.profil');
+
+Route::get('/tg/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_tg'])->name('pharmacie.tg');
+
+Route::get('/tg/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 'login_tg'])->name('login.tg');
+
+Route::get('/tg/logout/{pays_id}', [\App\Http\Controllers\AuthController::class, 'logout_tg'])->name('logout.tg');
+
+Route::post('/tg/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_tg'])->name('user.tg.add');
+
+Route::post('/tg/authentification/{pays_id}', [\App\Http\Controllers\AuthController::class, 'authentification_tg'])->name('authenticate.tg');
+
+Route::post('/tg/ajouter-entreprise/{pays_id}', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.tg.add');
+
+Route::get('/tg/siteweb/{pays_id}', [\App\Http\Controllers\ServiceController::class, 'siteweb_tg'])->name('service.tg.siteweb');
+
+//****************************************************End Pour le Togo***********************************************//
 
