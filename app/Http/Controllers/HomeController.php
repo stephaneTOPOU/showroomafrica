@@ -515,12 +515,6 @@ class HomeController extends Controller
         // $fmt = numfmt_create( 'en_EN', NumberFormatter::DECIMAL );
         // numfmt_parse($fmt, $visiteur2);
 
-        $sousCategorieNavs = DB::table('categories')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
-
         $villes = Ville::all();
 
         $pays = Pays::all();
@@ -587,7 +581,6 @@ class HomeController extends Controller
             'villes',
             'pays',
             'categories',
-            'sousCategorieNavs',
             'honeures',
             'nombresEntreprise',
             'pharmacies',
@@ -608,13 +601,6 @@ class HomeController extends Controller
             $visiteur->save();
             
             $visiteur2 = DB::table('stats')->select('visiteur')->get();
-            
-            $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->select('*')
-                ->take(4)
-                ->get();
     
             $villes = DB::table('pays')->where('pays.id', $pays_id)
                 ->join('villes', 'pays.id', '=', 'villes.pays_id')
@@ -637,6 +623,7 @@ class HomeController extends Controller
                 ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
                 ->select('*')
                 ->get();
+
             $slider3s = DB::table('pays')->where('pays.id', $pays_id)
                 ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
                 ->select('*')
@@ -646,6 +633,7 @@ class HomeController extends Controller
                 ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
                 ->select('*')
                 ->get();
+
             $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
                 ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
                 ->select('*')
@@ -729,7 +717,6 @@ class HomeController extends Controller
                 'villes',
                 'pays',
                 'categories',
-                'sousCategorieNavs',
                 'honeures',
                 'nombresEntreprise',
                 'pharmacies',
@@ -740,4 +727,143 @@ class HomeController extends Controller
         }
 
         //*****************************************End Index*************************************************/
+
+
+//**************************************Pour le Togo************************************************/
+public function index_bj($pays_id)
+{
+    
+    $inscrit = User::all()->count();
+    
+    $visiteur = Stat::find(1);
+    $visiteur->increment('visiteur');
+    $visiteur->save();
+    
+    $visiteur2 = DB::table('stats')->select('visiteur')->get();
+
+    $villes = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('villes', 'pays.id', '=', 'villes.pays_id')
+        ->select('*')
+        ->get();
+
+    $pays = Pays::all();
+
+    $categories = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('categories', 'pays.id', '=', 'categories.pays_id')
+        ->select('*')
+        ->get();
+
+    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+        ->select('*')
+        ->get();
+
+    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
+        ->select('*')
+        ->get();
+
+    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
+        ->select('*')
+        ->get();
+
+    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
+        ->select('*')
+        ->get();
+
+    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
+        ->select('*')
+        ->get();
+
+    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('categories', 'pays.id', '=', 'categories.pays_id')
+        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+        ->select('*')
+        ->where('entreprises.est_souscrit', '=', '1')
+        ->orderBy('entreprises.id', 'desc')
+        ->get();
+
+    $minispots = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
+        ->select('*')
+        ->get();
+
+    $reportages = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
+        ->select('*')
+        ->get();
+
+    $magazines = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('categories', 'pays.id', '=', 'categories.pays_id')
+        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+        ->select('*')
+        ->where('entreprises.a_magazine', '=', '1')
+        ->orderBy('entreprises.id', 'desc')
+        ->get();
+
+    $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+        ->where('parametres.id', 2)
+        ->select('*')
+        ->get();
+
+    $honeures = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('categories', 'pays.id', '=', 'categories.pays_id')
+        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+        ->select('*')
+        ->where('entreprises.honneur', '=', '1')
+        ->orderBy('entreprises.id', 'desc')
+        ->take(3)
+        ->get();
+
+    $nombresEntreprise = DB::table('entreprises')->count();
+    //dump($nombresEntreprise);
+
+    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('categories', 'pays.id', '=', 'categories.pays_id')
+        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+        ->select('*')
+        ->where('est_pharmacie', '=', '1')
+        ->where('entreprises.pharmacie_de_garde', '=', '1')
+        ->get();
+
+    $popups = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
+        ->select('*')
+        ->get();
+
+    //$totalViews = Views($vue)->count();
+    //dump( $visiteur);
+
+    return view('frontend.bj.home', compact(
+        'slider1s',
+        'slider2s',
+        'slider3s',
+        'sliderLaterals',
+        'sliderLateralBas',
+        'rejoints',
+        'minispots',
+        'reportages',
+        'magazines',
+        'parametres',
+        'villes',
+        'pays',
+        'categories',
+        'honeures',
+        'nombresEntreprise',
+        'pharmacies',
+        'inscrit',
+        'visiteur2',
+        'popups'
+    ));
+}
+
+//*****************************************End Index*************************************************/
 }

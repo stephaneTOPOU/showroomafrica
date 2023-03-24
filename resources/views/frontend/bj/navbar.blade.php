@@ -1,9 +1,11 @@
 @if (Auth::check())
 <nav>
 
-    <a href="/" class="nav-icon" aria-label="visit homepage" aria-current="page">
-        <img src="{{ asset('assets/images') }}/{{ $parametres->logo_header }}" alt="logo">
-    </a>
+    @foreach ($parametres as $parametre)
+        <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
+            <img src="{{ asset('assets/images') }}/{{ $parametre->logo_header }}" alt="logo">
+        </a>
+    @endforeach
 
     <div class="main-navlinks">
         <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
@@ -77,9 +79,11 @@
 @else
 <nav>
 
-    <a href="/" class="nav-icon" aria-label="visit homepage" aria-current="page">
-        <img src="{{ asset('assets/images') }}/{{ $parametres->logo_header }}" alt="logo">
-    </a>
+    @foreach ($parametres as $parametre)
+        <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
+            <img src="{{ asset('assets/images') }}/{{ $parametre->logo_header }}" alt="logo">
+        </a>
+    @endforeach
 
     <div class="main-navlinks">
         <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
@@ -265,6 +269,7 @@
             <div class="countries">
                 <span class="title">Sélectionnez votre pays</span>
                 <div class="countries_flag">
+                    <a href="{{ route('home') }}" class="country_flag"><img src="{{ asset('assets/afrique.jpg') }}" alt="afrique"></a>
                     <a href="#" class="country_flag selected"><span class="flag fi fi-bj"></span> Bénin</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bf"></span> Burkina Faso</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a>

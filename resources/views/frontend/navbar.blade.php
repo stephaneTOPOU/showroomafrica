@@ -266,7 +266,7 @@
                 <span class="title">Sélectionnez votre pays</span>
                 <div class="countries_flag">
                     <a href="{{ route('home') }}" class="country_flag selected"><img src="{{ asset('assets/afrique.jpg') }}" alt="afrique"></a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
+                    <a href="{{ route('home.bj',['pays_id'=>1]) }}" class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bf"></span> Burkina Faso</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a>
                     <a href="#" class="country_flag"><span class="flag fi fi-cm"></span> Cameroun</a>
