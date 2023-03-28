@@ -265,25 +265,26 @@
             <div class="countries">
                 <span class="title">Sélectionnez votre pays</span>
                 <div class="countries_flag">
-                    <a href="#" class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-bf"></span> Burkina Faso</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-cm"></span> Cameroun</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-cf"></span> Centrafrique</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-cg"></span> Congo - Brazzaville</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-ci"></span> Côte d'Ivoire</a>
-                    <a href="#" class="country_flag selected"><span class="flag fi fi-dj"></span> Djibouti</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-ga"></span> Gabon</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-gn"></span> Guinée - Conakry</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-mg"></span> Madagascar</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-ml"></span> Mali</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-mr"></span> Mauritanie</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-ne"></span> Niger</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-cd"></span> République Démocratique du Congo</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-rw"></span> Rwanda</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-sn"></span> Sénégal</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-td"></span> Tchad</a>
-                    <a href="#" class="country_flag"><span class="flag fi fi-tg"></span> Togo</a>
+                    <a href="{{ route('home') }}" class="country_flag"><img src="{{ asset('assets/afrique.jpg') }}" alt="afrique"></a>
+                    <a href="{{ route('home.bj',['pays_id'=>1]) }}" class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
+                    <a href="{{ route('home.bf',['pays_id'=>2]) }}" class="country_flag"><span class="flag fi fi-bf"></span> Burkina Faso</a>
+                    <a href="{{ route('home.bi',['pays_id'=>21]) }}" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a>
+                    <a href="{{ route('home.cm',['pays_id'=>3]) }}" class="country_flag"><span class="flag fi fi-cm"></span> Cameroun</a>
+                    <a href="{{ route('home.cf',['pays_id'=>4]) }}" class="country_flag"><span class="flag fi fi-cf"></span> Centrafrique</a>
+                    <a href="{{ route('home.cg',['pays_id'=>5]) }}" class="country_flag"><span class="flag fi fi-cg"></span> Congo - Brazzaville</a>
+                    <a href="{{ route('home.ci',['pays_id'=>6]) }}" class="country_flag"><span class="flag fi fi-ci"></span> Côte d'Ivoire</a>
+                    <a href="{{ route('home.dj',['pays_id'=>22]) }}" class="country_flag selected"><span class="flag fi fi-dj"></span> Djibouti</a>
+                    <a href="{{ route('home.ga',['pays_id'=>7]) }}" class="country_flag"><span class="flag fi fi-ga"></span> Gabon</a>
+                    <a href="{{ route('home.gn',['pays_id'=>26]) }}" class="country_flag"><span class="flag fi fi-gn"></span> Guinée - Conakry</a>
+                    <a href="{{ route('home.mg',['pays_id'=>23]) }}" class="country_flag"><span class="flag fi fi-mg"></span> Madagascar</a>
+                    <a href="{{ route('home.ml',['pays_id'=>10]) }}" class="country_flag"><span class="flag fi fi-ml"></span> Mali</a>
+                    <a href="{{ route('home.mr',['pays_id'=>24]) }}" class="country_flag"><span class="flag fi fi-mr"></span> Mauritanie</a>
+                    <a href="{{ route('home.ne',['pays_id'=>11]) }}" class="country_flag"><span class="flag fi fi-ne"></span> Niger</a>
+                    <a href="{{ route('home.cd',['pays_id'=>15]) }}" class="country_flag"><span class="flag fi fi-cd"></span> République Démocratique du Congo</a>
+                    <a href="{{ route('home.rw',['pays_id'=>25]) }}" class="country_flag"><span class="flag fi fi-rw"></span> Rwanda</a>
+                    <a href="{{ route('home.sn',['pays_id'=>12]) }}" class="country_flag"><span class="flag fi fi-sn"></span> Sénégal</a>
+                    <a href="{{ route('home.td',['pays_id'=>13]) }}" class="country_flag"><span class="flag fi fi-td"></span> Tchad</a>
+                    <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="country_flag"><span class="flag fi fi-tg"></span> Togo</a>
                 </div>
             </div>
         </div>
