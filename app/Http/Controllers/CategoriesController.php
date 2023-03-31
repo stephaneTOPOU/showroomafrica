@@ -12,28 +12,25 @@ class CategoriesController extends Controller
 {
     public function categories()
     {
-        $sousCategorieNavs = DB::table('categories')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
-
         $parametres = Parametre::find(1);
 
         $categories = DB::table('categories')
-        ->select('*','categories.libelle as cat')
-        ->get();
+            ->select('*','categories.libelle as cat','categories.id as id1')
+            ->get();
 
-        $souscategories = DB::table('categories')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->select('*','categories.libelle as cat', 'sous_categories.libelle as subcat')
-        ->take(8)
-        ->get();
+        $souscategories = DB::table('sous_categories')
+            //->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->select('*', 'sous_categories.libelle as subcat', 'sous_categories.categorie_id as id2')
+            ->take(8)
+            ->get();
 
         $slider = SliderCategorie::all();
 
-        return view('frontend.categories', compact('sousCategorieNavs', 'parametres', 'categories', 'souscategories', 'slider'));
+        return view('frontend.categories', compact('parametres', 'categories', 'souscategories', 'slider'));
     }
+
+
+
 
 //***********************************************Categorie Togo********************************************** */
     public function categories_tg($pays_id)
@@ -42,13 +39,6 @@ class CategoriesController extends Controller
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
-            ->get();
-        
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
             ->get();
 
         $categories = DB::table('pays')->where('pays.id', $pays_id)
@@ -69,7 +59,7 @@ class CategoriesController extends Controller
             ->select('*')
             ->get();
 
-        return view('frontend.tg.categories', compact('sousCategorieNavs', 'parametres', 'categories', 'souscategories', 'slider'));
+        return view('frontend.tg.categories', compact('parametres', 'categories', 'souscategories', 'slider'));
     }
 
 //***********************************************End Categorie Togo********************************************** */
