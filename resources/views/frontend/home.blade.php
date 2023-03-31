@@ -258,8 +258,8 @@
             <div class="slider">
                 <div class="slides">
 
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="rdo1">
+                    <input type="radio" name="radio-btn" id="rdo2">
 
                     <div class="slider-slide second">
                         <img src="{{ asset('assets/images/sliders/side/3.jpg') }}">

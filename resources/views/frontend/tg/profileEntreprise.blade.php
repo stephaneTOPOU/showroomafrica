@@ -45,7 +45,11 @@
           <div class="left">
             <div class="header">
               <h1 class="company-name">{{ $Profil_entreprise->nom }}</h1>
-              <span>{{ $Profil_entreprise->libelle }}</span>
+              @if ($Profil_entreprise->premium == 1)
+                <span class="category">{{ $Profil_entreprise->libelle }}</span>
+              @else
+                <span>{{ $Profil_entreprise->libelle }}</span>
+              @endif
               <div class="page-views">
                 <p><b>{{ $Profil_entreprise->vue }}</b> vues</p>
                 <div class="product-rating">
