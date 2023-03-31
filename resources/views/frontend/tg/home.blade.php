@@ -319,7 +319,7 @@
                         <div class="play">
                             <i class="fa-regular fa-circle-play"></i>
                         </div>
-                        <video class="hide" muted src="{{ asset('assets') }}/{{ $minispot->video }}" controls
+                        <video class="hide" muted src="{{ asset('assets/videos') }}/{{ $minispot->video }}" controls
                             poster="{{ asset('assets/videos') }}/{{ $minispot->image }}">
                     </div>
                 </div>

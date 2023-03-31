@@ -218,23 +218,22 @@ class HomeController extends Controller
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
                 ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.id', 'desc')
+                ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         }
 
-        $sousCategorieNavs = DB::table('categories')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        $entreprisePopulaire = DB::table('entreprises')
             ->select('*')
-            ->take(4)
+            ->where('entreprises.vue', '>', '500')
+            ->inRandomOrder()
+            ->limit(4)
             ->get();
-
-        $entreprisePopulaire = Entreprise::inRandomOrder()->limit(4)->get();
 
         $parametres = Parametre::find(1);
 
         $slider = SliderRecherche::all();
 
-        return view('frontend.recherche-entreprise', compact('recherches', 'sousCategorieNavs', 'entreprisePopulaire', 'parametres', 'slider'));
+        return view('frontend.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider'));
     }
 
     //*************Pour le togo*******************
@@ -443,16 +442,9 @@ class HomeController extends Controller
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
                 ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.id', 'desc')
+                ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         }
-
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
 
         $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
             ->join('categories', 'pays.id', '=', 'categories.pays_id')
@@ -468,7 +460,7 @@ class HomeController extends Controller
 
         $slider = SliderRecherche::all();
 
-        return view('frontend.tg.recherche-entreprise', compact('recherches', 'sousCategorieNavs', 'entreprisePopulaire', 'parametres', 'slider'));
+        return view('frontend.tg.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider'));
     }
     //*********************************End Recherche*********************************************//
 
