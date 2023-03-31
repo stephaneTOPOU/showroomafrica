@@ -258,8 +258,8 @@
             <div class="slider">
                 <div class="slides">
 
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="rdo1">
+                    <input type="radio" name="radio-btn" id="rdo2">
 
                     <div class="slider-slide second">
                         <img src="{{ asset('assets/images/sliders/side/3.jpg') }}">
@@ -317,7 +317,7 @@
                         <div class="play">
                             <i class="fa-regular fa-circle-play"></i>
                         </div>
-                        <video class="hide" muted src="{{ asset('assets') }}/{{ $minispot->video }}" controls
+                        <video class="hide" muted src="{{ asset('assets/videos') }}/{{ $minispot->video }}" controls
                             poster="{{ asset('assets/videos') }}/{{ $minispot->image }}">
                     </div>
                 </div>
