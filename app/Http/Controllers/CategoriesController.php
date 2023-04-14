@@ -24,7 +24,7 @@ class CategoriesController extends Controller
             ->take(8)
             ->get();
 
-        $slider = SliderCategorie::all();
+        $slider = SliderRecherche::all();
 
         return view('frontend.categories', compact('parametres', 'categories', 'souscategories', 'slider'));
     }

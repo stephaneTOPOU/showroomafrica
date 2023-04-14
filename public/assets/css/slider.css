@@ -22,7 +22,7 @@
 .img-slider .slide-four.active,
 .img-slider .slide-five.active {
   clip-path: circle(150% at 0 50%);
-  transition: 2s;
+  transition: 1s;
   transition-property: clip-path;
 }
 
