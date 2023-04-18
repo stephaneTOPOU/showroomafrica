@@ -45,3 +45,20 @@
 #radio4:checked ~ .first, #rdo4:checked ~ .second{
   margin-left: -60%;
 }
+
+
+#rad1:checked ~ .first, #rdo1:checked ~ .second{
+  margin-left: 0;
+}
+
+#rad2:checked ~ .first, #rdo2:checked ~ .second{
+  margin-left: -20%;
+}
+
+#rad3:checked ~ .first, #rdo3:checked ~ .second{
+  margin-left: -40%;
+}
+
+#rad4:checked ~ .first, #rdo4:checked ~ .second{
+  margin-left: -60%;
+}

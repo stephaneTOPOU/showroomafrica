@@ -17,8 +17,116 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+//Route::redirect('/', '/geoip');
+
+Route::get('/', function () {
+    $geoipInfo = geoip()->getLocation($_SERVER['REMOTE_ADDR']);
+    // return $geoipInfo->iso_code;
+    if ($geoipInfo->iso_code == 'US') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_tg'],
+            ['pays_id' => 14]
+        );
+    } elseif ($geoipInfo->iso_code == 'BJ') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_bj'],
+            ['pays_id' => 1]
+        );
+    } elseif ($geoipInfo->iso_code == 'BF') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_bf'],
+            ['pays_id' => 2]
+        );
+    } elseif ($geoipInfo->iso_code == 'BI') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_bi'],
+            ['pays_id' => 21]
+        );
+    } elseif ($geoipInfo->iso_code == 'CM') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_cm'],
+            ['pays_id' => 3]
+        );
+    } elseif ($geoipInfo->iso_code == 'CF') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_cf'],
+            ['pays_id' => 4]
+        );
+    } elseif ($geoipInfo->iso_code == 'CG') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_cg'],
+            ['pays_id' => 5]
+        );
+    } elseif ($geoipInfo->iso_code == 'CI') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_ci'],
+            ['pays_id' => 6]
+        );
+    } elseif ($geoipInfo->iso_code == 'DJ') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_dj'],
+            ['pays_id' => 22]
+        );
+    } elseif ($geoipInfo->iso_code == 'GA') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_ga'],
+            ['pays_id' => 7]
+        );
+    } elseif ($geoipInfo->iso_code == 'GN') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_gn'],
+            ['pays_id' => 26]
+        );
+    } elseif ($geoipInfo->iso_code == 'MG') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_mg'],
+            ['pays_id' => 23]
+        );
+    } elseif ($geoipInfo->iso_code == 'ML') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_ml'],
+            ['pays_id' => 10]
+        );
+    } elseif ($geoipInfo->iso_code == 'MR') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_bj'],
+            ['pays_id' => 24]
+        );
+    } elseif ($geoipInfo->iso_code == 'NE') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_ne'],
+            ['pays_id' => 11]
+        );
+    } elseif ($geoipInfo->iso_code == 'CD') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_cd'],
+            ['pays_id' => 15]
+        );
+    } elseif ($geoipInfo->iso_code == 'RW') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_rw'],
+            ['pays_id' => 25]
+        );
+    } elseif ($geoipInfo->iso_code == 'SN') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_sn'],
+            ['pays_id' => 12]
+        );
+    } elseif ($geoipInfo->iso_code == 'TD') {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index_td'],
+            ['pays_id' => 13]
+        );
+    } else {
+        return redirect()->action(
+            [App\Http\Controllers\HomeController::class, 'index']
+        );
+    }
+});
+
+//Route::redirect('/geoip', '/');
 //******************************************Pour l'Afrique***************************************************//
-Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/annuaire',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/autocomplete',[App\Http\Controllers\HomeController::class, 'autocompletion'])->name('autocomplete');
 
@@ -61,9 +169,9 @@ Route::get('/siteweb', [\App\Http\Controllers\ServiceController::class, 'siteweb
 
 
 //****************************************************Pour le Togo***********************************************//
-Route::get('/tg/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_tg'])->name('home.tg');
+Route::get('/tg/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_tg'])->name('home.tg');
 
-Route::get('/tg/autocomplete/{pays_id}',[App\Http\Controllers\HomeController::class, 'autocompletion_tg'])->name('autocomplete.tg');
+Route::get('/tg/autocomplete/{pays_id}', [App\Http\Controllers\HomeController::class, 'autocompletion_tg'])->name('autocomplete.tg');
 
 Route::get('/tg/rechercher-entreprise/{pays_id}', [App\Http\Controllers\HomeController::class, 'recherche_tg'])->name('recherche.tg');
 
@@ -98,14 +206,14 @@ Route::get('/tg/siteweb/{pays_id}', [\App\Http\Controllers\ServiceController::cl
 
 
 //****************************************************Pour le Bénin***********************************************//
-Route::get('/bj/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.bj');
+Route::get('/bj/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.bj');
 
 //****************************************************Pour le Bénin***********************************************//
 
 
 
 //****************************************************Pour le Burkina faso***********************************************//
-Route::get('/bf/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.bf');
+Route::get('/bf/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_bf'])->name('home.bf');
 
 //****************************************************Pour le Burkina faso***********************************************//
 
@@ -113,21 +221,21 @@ Route::get('/bf/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour Burundi***********************************************//
-Route::get('/bi/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.bi');
+Route::get('/bi/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_bi'])->name('home.bi');
 
 //****************************************************Pour Burundi***********************************************//
 
 
 
 //****************************************************Pour le Cameroun***********************************************//
-Route::get('/cm/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.cm');
+Route::get('/cm/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_cm'])->name('home.cm');
 
 //****************************************************Pour le Cameroun***********************************************//
 
 
 
 //****************************************************Pour Centrafrique ***********************************************//
-Route::get('/cf/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.cf');
+Route::get('/cf/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_cf'])->name('home.cf');
 
 //****************************************************Pour Centrafrique ***********************************************//
 
@@ -136,7 +244,7 @@ Route::get('/cf/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour Congo Brazzaville ***********************************************//
-Route::get('/cg/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.cg');
+Route::get('/cg/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_cg'])->name('home.cg');
 
 //****************************************************Pour Congo Brazzaville ***********************************************//
 
@@ -145,7 +253,7 @@ Route::get('/cg/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour Cote divoire***********************************************//
-Route::get('/ci/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.ci');
+Route::get('/ci/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_ci'])->name('home.ci');
 
 //****************************************************Pour Cote divoire***********************************************//
 
@@ -155,7 +263,7 @@ Route::get('/ci/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour Djibouti***********************************************//
-Route::get('/dj/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.dj');
+Route::get('/dj/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_dj'])->name('home.dj');
 
 //****************************************************Pour Djibouti***********************************************//
 
@@ -163,7 +271,7 @@ Route::get('/dj/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour le Gabon ***********************************************//
-Route::get('/ga/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.ga');
+Route::get('/ga/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_ga'])->name('home.ga');
 
 //****************************************************Pour le Gabon ***********************************************//
 
@@ -173,7 +281,7 @@ Route::get('/ga/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour Guinée conakry***********************************************//
-Route::get('/gn/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.gn');
+Route::get('/gn/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_gn'])->name('home.gn');
 
 //****************************************************Pour Guinée conakry***********************************************//
 
@@ -184,7 +292,7 @@ Route::get('/gn/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour MAdagascar ***********************************************//
-Route::get('/mg/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.mg');
+Route::get('/mg/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_mg'])->name('home.mg');
 
 //****************************************************Pour MAdagascar ***********************************************//
 
@@ -194,7 +302,7 @@ Route::get('/mg/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour le Mali ***********************************************//
-Route::get('/ml/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.ml');
+Route::get('/ml/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_ml'])->name('home.ml');
 
 //****************************************************Pour le Mali ***********************************************//
 
@@ -202,7 +310,7 @@ Route::get('/ml/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour Mauritanie ***********************************************//
-Route::get('/mr/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.mr');
+Route::get('/mr/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_mr'])->name('home.mr');
 
 //****************************************************Pour Mauritanie ***********************************************//
 
@@ -210,7 +318,7 @@ Route::get('/mr/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour le Niger ***********************************************//
-Route::get('/ne/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.ne');
+Route::get('/ne/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_ne'])->name('home.ne');
 
 //****************************************************Pour le Niger ***********************************************//
 
@@ -218,7 +326,7 @@ Route::get('/ne/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour RDC ***********************************************//
-Route::get('/cd/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.cd');
+Route::get('/cd/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_cd'])->name('home.cd');
 
 //****************************************************Pour RDC ***********************************************//
 
@@ -226,7 +334,7 @@ Route::get('/cd/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour le rwanda ***********************************************//
-Route::get('/rw/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.rw');
+Route::get('/rw/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_rw'])->name('home.rw');
 
 //****************************************************Pour le rwanda ***********************************************//
 
@@ -236,7 +344,7 @@ Route::get('/rw/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour le Senegal ***********************************************//
-Route::get('/sn/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.sn');
+Route::get('/sn/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_sn'])->name('home.sn');
 
 //****************************************************Pour le Senegal ***********************************************//
 
@@ -246,7 +354,6 @@ Route::get('/sn/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_b
 
 
 //****************************************************Pour le Tchad ***********************************************//
-Route::get('/td/{pays_id}',[App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.td');
+Route::get('/td/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_td'])->name('home.td');
 
 //****************************************************Pour le Tchad ***********************************************//
-

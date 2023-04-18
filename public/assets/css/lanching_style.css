@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Sofia');
+:root {
+    --color-primary: #0659B2;
+    --color-secondary: #FFA500;
+    --text-color: #414141;
+  }
 
 .container{
     position: relative;
@@ -19,6 +24,17 @@ body{
     top: 2rem;
     font-size: 12px;
     font-weight: bold;
+}
+
+.head a{
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.head a:hover{
+    letter-spacing: .2em;
+    border-bottom: 2px solid var(--color-secondary); 
+    transition: all 300ms ease-out;
 }
 .an{
     margin-left: .4rem;
@@ -53,6 +69,11 @@ body{
     position: relative;
     margin-top: 15%;
     margin-left: 7rem;
+}
+
+.box a{
+    text-decoration: none;
+    color: var(--color-primary);
 }
 
 .box i{

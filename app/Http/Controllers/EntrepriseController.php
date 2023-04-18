@@ -35,7 +35,7 @@ class EntrepriseController extends Controller
 
         $entreprisePopulaire = Entreprise::inRandomOrder()->limit(4)->get();
 
-        $slider = SliderEntreprise::all();
+        $slider = SliderRecherche::all();
 
         $parametres = Parametre::find(1);
         return view('frontend.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',

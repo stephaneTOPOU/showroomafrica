@@ -33,11 +33,27 @@
     <!-- popup content -->
     <div class="modal-content">
         <span class="close" id="closepop"><i class="fa-regular fa-xmark"></i></span>
-        @foreach ($popups as $popup)
-            <div class="popup-container">
-                <img src="{{ asset('assets/images') }}/{{ $popup->image }}" alt="PUB">
+        <div class="slider">
+            <div class="slides">
+
+                <input type="radio" name="radio-btn" id="rad1">
+                <input type="radio" name="radio-btn" id="rad2">
+
+                <div class="slider-slide first">
+                    <img src="{{ asset('assets/images/popup2.jpg') }}">
+                </div>
+                @foreach ($popups as $popup)
+                    <div class="slider-slide">
+                        <img src="{{ asset('assets/images') }}/{{ $popup->image }}" alt="PUB">
+                    </div>
+                @endforeach
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                </div>
+
             </div>
-        @endforeach
+        </div>
     </div>
 
 </div>
@@ -358,7 +374,7 @@
     </div>
     <!-- END REPORTAGE -->
     <!-- HIGHLIGHTED COMPANIES -->
-    <div class="section-one">
+    {{-- <div class="section-one">
         <h1>Entreprises du mois</h1>
             <div class="highlights">
                 @foreach ($honeures as $honeure)
@@ -377,10 +393,10 @@
                     </div>
                 @endforeach
         </div>
-    </div>
+    </div> --}}
     <!-- END HIGHLIGHTED COMPANIES -->
     <!-- ADVERTORIAL -->
-    <div class="section-one">
+    {{-- <div class="section-one">
         <h1>Publireportage</h1>
         <div class="advertorials">
             <div class="advertorial">
@@ -432,10 +448,10 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
     <!-- END ADVERTORIAL -->
     <!-- TOWER -->
-    <div class="section-one">
+    {{-- <div class="section-one">
         <h1>Pharmacies de garde</h1>
         <div class="tower-ctn">
             @foreach ($pharmacies as $pharmacie)
@@ -461,8 +477,7 @@
                 Liste des pharmacie de garde
             </a>
         </div>
-        {{-- <p style="text-align: center"><a href="{{ route('pharmacie') }}">Liste des pharmacie de garde</a></p> --}}
-    </div>
+    </div> --}}
     <!-- END TOWER -->
 
     <!-- STATISTICS -->
@@ -529,7 +544,7 @@
     <!-- END ADS BIG SLIDER 3 -->
 
     <!-- MAGAZINES -->
-    <div class="section-one white-bkg">
+    {{-- <div class="section-one white-bkg">
         <h1>Magazines</h1>
         <div class="magazines">
             @foreach ($magazines as $magazine)
@@ -549,7 +564,7 @@
             @endforeach
         </div>
 
-    </div>
+    </div> --}}
     <!-- END MAGAZINES -->
 </div>
 <!-- END CONTAINER-->
@@ -564,7 +579,8 @@
 <script type="text/javascript">
     var counter = 1;
     var count = 1;
-    const sliderInterval = setInterval(sliderTimer, 10000);
+    
+    const sliderInterval = setInterval(sliderTimer, 5000);
 
     function sliderTimer() {
         var radio = document.getElementById('rdo' + count);
@@ -581,7 +597,7 @@
         if (counter > 2) {
             counter = 1;
         }
-    }, 12000);
+    }, 7000);
 
 </script>
 
