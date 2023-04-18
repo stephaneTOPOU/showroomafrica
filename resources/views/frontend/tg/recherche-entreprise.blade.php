@@ -100,7 +100,7 @@
                     <div class="company-info">
                         <div class="left">
                             <div class="header">
-                                <h3 class="company-name"><a href="{{ route('entreprise.profil',['entreprise_id'=>$recherche->id]) }}">{{$recherche->nom}}</a></h3>
+                                <h3 class="company-name"><a href="{{ route('entreprise.tg.profil',['pays_id'=>$recherche->pays_id,'entreprise_id'=>$recherche->id]) }}">{{$recherche->nom}}</a></h3>
                                 <span class="company-category">{{ $recherche->sousCategorie }}</span>
                                 @if ($recherche->premium == 1)
                                     <div class="premium">
