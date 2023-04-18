@@ -43,7 +43,7 @@
                 </div>
 
                 <script type="text/javascript">
-                    var path = "{{ route('autocomplete') }}";
+                    var path = "{{ route('autocomplete.tg',['pays_id'=>14]) }}";
                     $( "#searchfield" ).autocomplete({
                         source: function( request, response ) {
                             $.ajax({

@@ -193,7 +193,7 @@ class ProfileEntrepriseController extends Controller
             ->where('entreprises.id', $entreprise_id)
             ->join('services', 'services.entreprise_id', '=', 'entreprises.id')
             ->join('service_images', 'service_images.service_id', '=', 'services.id')
-            ->select('*', 'entreprises.id as identifiant')
+            ->select('*', 'entreprises.id as identifiant', 'service_images.description as servicedesc')
             ->get();
 
         $horaires = DB::table('pays')->where('pays.id', $pays_id)
