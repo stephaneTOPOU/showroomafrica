@@ -15,7 +15,7 @@ class PaysAdmin extends Migration
     {
         Schema::table('admins', function (Blueprint $table) {
             $table->bigInteger('pays_id')->unsigned()->nullable();
-            $table->foreign('pays_id')->references('id')->on('pays')->onDelete('cascade');
+            $table->foreign('pays_id')->references('id')->on('pays')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

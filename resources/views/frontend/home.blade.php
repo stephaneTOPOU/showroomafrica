@@ -396,8 +396,8 @@
     </div> --}}
     <!-- END HIGHLIGHTED COMPANIES -->
     <!-- ADVERTORIAL -->
-    {{-- <div class="section-one">
-        <h1>Publireportage</h1>
+    <div class="section-one">
+        <h1>Actualités</h1>
         <div class="advertorials">
             <div class="advertorial">
                 <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}">
@@ -448,7 +448,7 @@
             </div>
 
         </div>
-    </div> --}}
+    </div>
     <!-- END ADVERTORIAL -->
     <!-- TOWER -->
     {{-- <div class="section-one">

@@ -13,7 +13,7 @@ class PaysSliderLateral extends Migration
      */
     public function up()
     {
-        Schema::table('slider_laterals', function (Blueprint $table) {
+         Schema::table('slider_laterals', function (Blueprint $table) {
             $table->bigInteger('pays_id')->unsigned()->nullable();
             $table->foreign('pays_id')->references('id')->on('pays')->onDelete('cascade')->onUpdate('cascade');
         });
