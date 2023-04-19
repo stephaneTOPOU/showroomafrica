@@ -42,7 +42,9 @@
                     <div class="accordion-content">
                         <ul class="accordion-description">
                             @foreach ($souscategories as $souscategorie)
-                                <li><a href="{{ route('entreprise.tg',['pays_id'=>$categorie->pays_id,'souscategorie_id'=>$souscategorie->id]) }}">{{ $souscategorie->subcat }}</a></li>
+                                @if ($categorie->idCat == $souscategorie->id1)
+                                    <li><a href="{{ route('entreprise.tg',['pays_id'=>$categorie->pays_id,'souscategorie_id'=>$souscategorie->idSousCat])}}">{{ $souscategorie->subcat }}</a></li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>

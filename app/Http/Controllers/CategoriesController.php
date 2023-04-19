@@ -15,13 +15,12 @@ class CategoriesController extends Controller
         $parametres = Parametre::find(1);
 
         $categories = DB::table('categories')
-            ->select('*','categories.libelle as cat','categories.id as id1')
+            ->select('*','categories.libelle as cat','categories.id as idCat')
             ->get();
 
-        $souscategories = DB::table('sous_categories')
-            //->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*', 'sous_categories.libelle as subcat', 'sous_categories.categorie_id as id2')
-            ->take(8)
+        $souscategories = DB::table('categories')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->select('*', 'sous_categories.libelle as subcat', 'sous_categories.categorie_id as id2', 'sous_categories.id as idSousCat', 'categories.id as id1')
             ->get();
 
         $slider = SliderRecherche::all();
@@ -43,15 +42,13 @@ class CategoriesController extends Controller
 
         $categories = DB::table('pays')->where('pays.id', $pays_id)
             ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->select('*','categories.libelle as cat')
+            ->select('*','categories.libelle as cat', 'categories.id as idCat')
             ->get();                        
 
         $souscategories = DB::table('pays')->where('pays.id', $pays_id)
             ->join('categories', 'pays.id', '=', 'categories.pays_id')
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*','categories.libelle as cat', 'sous_categories.libelle as subcat')
-            //->where('')
-            ->take(8)
+            ->select('*', 'sous_categories.libelle as subcat', 'sous_categories.categorie_id as id2', 'sous_categories.id as idSousCat', 'categories.id as id1')
             ->get();
 
         $slider = DB::table('pays')->where('pays.id', $pays_id)
