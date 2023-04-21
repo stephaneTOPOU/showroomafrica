@@ -323,7 +323,7 @@
     <!-- END NEWCOMERS -->
 
     <!-- SPOTS -->
-    <div class="section-one">
+    {{-- <div class="section-one">
         <h1>Mini-Spots</h1>
         <div class="row">
             @foreach ($minispots as $minispot)
@@ -345,11 +345,11 @@
             <video src="" autoplay controls poster=""></video>
         </div>
 
-    </div>
+    </div> --}}
     <!-- END SPOTS -->
 
     <!-- ADS BIG SLIDER 2 -->
-    <div class="img-slider">
+    {{-- <div class="img-slider">
         <div class="slide-two active">
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
@@ -358,7 +358,7 @@
             <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="">
         </div>
         @endforeach
-    </div>
+    </div> --}}
     <!-- END ADS BIG SLIDER 2 -->
 
     <!-- REPORTAGE -->
@@ -402,15 +402,15 @@
             <div class="advertorial">
                 <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}">
                 <div class="overlay"></div>
-                <a href="#">
-                <i class="fa-solid fa-phone"></i> Téléphonie
+                <a href="{{ route('annonce') }}">
+                    <i class="fa-solid fa-phone"></i> Téléphonie
                 </a>
             </div>
 
             <div class="advertorial">
                 <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}">
                 <div class="overlay"></div>
-                <a href="#">
+                <a href="{{ route('annonce') }}">
                 <i class="fa-solid fa-shopping-bag"></i> Commerce
                 </a>
             </div>
@@ -418,7 +418,7 @@
             <div class="advertorial">
                 <img src="{{ asset('assets/images/advertorial/education.jpg') }}">
                 <div class="overlay"></div>
-                <a href="#">
+                <a href="{{ route('annonce') }}">
                 <i class="fa-solid fa-backpack"></i> Education
                 </a>
             </div>
@@ -426,7 +426,7 @@
             <div class="advertorial">
                 <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}">
                 <div class="overlay"></div>
-                <a href="#">
+                <a href="{{ route('annonce') }}">
                 <i class="fa-solid fa-user-doctor"></i> Medecine
                 </a>
             </div>
@@ -434,7 +434,7 @@
             <div class="advertorial">
                 <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}">
                 <div class="overlay"></div>
-                <a href="#">
+                <a href="{{ route('annonce') }}">
                 <i class="fa-solid fa-utensils"></i>Alimentation</span>
                 </a>
             </div>
@@ -442,7 +442,7 @@
             <div class="advertorial">
                 <img src="{{ asset('assets/images/advertorial/divers.jpg') }}">
                 <div class="overlay"></div>
-                <a href="#">
+                <a href="{{ route('annonce') }}">
                 <i class="fa-solid fa-arrow-right"></i> Divers</span>
                 </a>
             </div>
@@ -531,7 +531,7 @@
     <!-- END STATISTICS -->
 
     <!-- ADS BIG SLIDER 3 -->
-    <div class="img-slider">
+    {{-- <div class="img-slider">
         <div class="slide-three active">
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
@@ -540,7 +540,7 @@
             <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="">
         </div>
         @endforeach
-    </div>
+    </div> --}}
     <!-- END ADS BIG SLIDER 3 -->
 
     <!-- MAGAZINES -->

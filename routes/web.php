@@ -128,6 +128,8 @@ Route::get('/', function () {
 //******************************************Pour l'Afrique***************************************************//
 Route::get('/annuaire',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/annonce',[App\Http\Controllers\AnnonceController::class, 'annonce'])->name('annonce');
+
 Route::get('/autocomplete',[App\Http\Controllers\HomeController::class, 'autocompletion'])->name('autocomplete');
 
 Route::get('/rechercher-entreprise', [App\Http\Controllers\HomeController::class, 'recherche'])->name('recherche');

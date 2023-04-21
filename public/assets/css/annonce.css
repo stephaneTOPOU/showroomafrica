@@ -1,20 +1,28 @@
-#website {margin-top: 8em;}
+#annonce {margin-top: 8em;}
 
 .service-details {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   padding: 0 2em;
 }
 
-.service-details img {
-  width: 36%;
+.service-details .section-annonce {
+  width: 40%;
   padding: 1em;
 }
 
 .service-details .section-text {
-  width: 64%;
+  width: 60%;
   text-align: justify;
   padding: .5em;
+}
+
+.service-details .section-text img {
+  border-radius: 1em;
+}
+
+.service-details .section-text video {
+  border-radius: 1em;
 }
 
 .service-details .section-text h3 {
@@ -22,6 +30,52 @@
   margin: 1em 0;
 }
 
+.service-details .section-annonce h3 {
+  color: var(--color-primary);
+  text-align: center;
+  margin: 1em 0;
+}
+
+.service-details .section-annonce video {
+  border-radius: 1em;
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.img-div {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 1em;
+}
+
+.img-div img {
+  background: center no-repeat;
+  background-size: cover;
+  width: 100%;
+  border-radius: 1em;
+  
+}
+
+
 @media (max-width: 900px) {
-  #website {margin-top: 4em;}
+  #annonce {margin-top: 4em;}
+  .section-text {width: 100% !important;}
+  .section-annonce {width: 100% !important;}
+}
+
+@media (max-width: 800px) {
+  #annonce {margin-top: 4em;}
+  .section-text {width: 100% !important;}
+  .section-annonce {width: 100% !important;}
+}
+
+@media (max-width: 640px) {
+  #annonce {margin-top: 4em;}
+  .section-text {width: 100% !important;}
+  .section-annonce {width: 100% !important;}
 }
