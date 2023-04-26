@@ -1,0 +1,43 @@
+
+.review .commentaires{
+    padding: 1rem;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    border: 2px solid rgba(11, 67, 235, 0.688);
+    border-radius: .5rem;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.review .commentaires .user{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-bottom: 1.5rem;
+}
+
+.review .commentaires .user img{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review .commentaires .user h3 {
+    color: black;
+    font-size: 25px;
+    padding-bottom: .5rem;
+}
+
+.review .commentaires p{
+    font-size: 16px;
+    line-height: 1.8;
+    margin-top: -2.5rem;
+    color: rgb(34, 34, 34);
+}
+
+.review .commentaires .time{
+    font-size: 14px;
+    /* margin-top: .5rem; */
+    color: #ccc;
+    
+}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Annonce;
 use App\Models\Entreprise;
 use App\Models\MiniSpot;
 use App\Models\Parametre;
@@ -562,10 +563,13 @@ class HomeController extends Controller
 
         $popups = PopUp::all();
 
+        $annonces = Annonce::all();
+
         //$totalViews = Views($vue)->count();
         //dump( $visiteur);
 
         return view('frontend.home', compact(
+            'annonces',
             'slider1s',
             'slider2s',
             'slider3s',

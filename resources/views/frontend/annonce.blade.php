@@ -2,13 +2,12 @@
 @include('frontend.header.header1')
 @include('frontend.header.header2')
 @include('frontend.header.header3')
-
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="{{ asset('assets/js/annonce-comment.js') }}" type="module" defer></script>
 
+<link rel="stylesheet" href="{{ asset('assets/css/commentaire.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/annonce.css') }}" />
+
 @include('frontend.header.header4')
 @include('frontend.header.header5')
 @include('frontend.header.header6')
@@ -22,108 +21,102 @@
 
     <!-- ADVERTORIAL -->
     <div class="section-one white-bkg" id="annonce">
-        <h1>Titre</h1>
+        @foreach ($annonces as $annonce)
+            <h1>{{ $annonce->titre }}</h1>
+        @endforeach
         <div class="service-details">
             
             <div class="section-text">
-            {{-- <h3>Création de site web</h3> --}}
-            <p>
-                Notre agence web se spécialise dans la conception et le développement de sites Web adaptatifs sur mesure grâce à son riche savoir-faire et son équipe expérimentée.
-                Notre entreprise s’assure de maintenir les plus hauts standards de qualité lors du développement de sites Internet que ce soit pour une création totale ou une refonte.
-                Du design à la programmation, nous saurons cerner vos besoins pour vous offrir un site Web qui répondra à vos besoins et à vos attentes.
-                Nos experts sauront mettre en place un plan stratégique pour répondre à vos objectifs et garantir votre satisfaction.
-            </p>
-            <br />
-
-            {{-- <h3>Refonte de site web</h3> --}}
-            <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}" width="100%">
-            <br />
-            <br />
-            <p>
-                Les webmasters de l’entreprise SHOWROOM AFRICA emploient leur savoir-faire et leur vigilance afin d’être à la hauteur de la clientèle et
-                délivrer des solutions qui combinent l’originalité, la profitabilité et l’efficience. Pour les plateformes web rencontrant des problèmes
-                et nécessitant des solutions efficaces, nous nous tenons à votre disposition afin de remédier ses défaillances ainsi que ses faiblesses et
-                assurer la refonte de votre site internet sur mesure.
-            </p>
-            <br />
-            <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}" width="100%">
-            <br/>
-            <br/>
-            <p>
-                Les webmasters de l’entreprise SHOWROOM AFRICA emploient leur savoir-faire et leur vigilance afin d’être à la hauteur de la clientèle et
-                délivrer des solutions qui combinent l’originalité, la profitabilité et l’efficience. Pour les plateformes web rencontrant des problèmes
-                et nécessitant des solutions efficaces, nous nous tenons à votre disposition afin de remédier ses défaillances ainsi que ses faiblesses et
-                assurer la refonte de votre site internet sur mesure.
-            </p>
-
-            <article>
-                <hr>
-                <h3>Les commentaires</h3>
-                    <template id="alert">
-                        <div class="alert alert-dismissible fade show" role="alert">
-                            <div class="js-text"></div>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    </template>
-
-                    <form 
-                        action="" 
-                        class="js-form-fetch"
-                        data-endpoint="https://jsonplaceholder.typicode.com/comments"
-                        data-template="#comment"
-                        data-target=".comments"
-                        data-elements='{"name": ".js-username", "body": ".js-content"}'
-                    >
-                        <div class="input-box">
-                            <input type="text" placeholder="Votre pseudo" required name="nom">
-                        </div>
-                        {{-- <div class="input-box">
-                            <input type="email" placeholder="Nom et prénom(s)" required name="email">
-                        </div> --}}
-
-                        <div class="input-box message-box">
-                            <textarea placeholder="Votre message" name="message"></textarea>
-                        </div>
-                        <div class="button">
-                            <input type="submit" value="Envoyer" />
-                        </div>
-                    </form>
+                @foreach ($annonces as $annonce)
+                    {{-- <h3>Création de site web</h3> --}}
+                    <p>
+                        {{$annonce->text1}}
+                    </p>
                     <br />
 
-                    <hr />
+                    {{-- <h3>Refonte de site web</h3> --}}
+                    <img src="{{ asset('assets/images/advertorial') }}/{{ $annonce->image1 }}" width="100%">
+                    <br />
+                    <br />
+                    <p>
+                        {{$annonce->text2}}
+                    </p>
+                    <br />
+                    <img src="{{ asset('assets/images/advertorial') }}/{{ $annonce->image2 }}" width="100%">
+                    <br/>
+                    <br/>
+                    <p>
+                        {{$annonce->text3}}
+                    </p>
+                    <article>
+                        <br>
+                        <hr>
+                        <h3>Les commentaires</h3>
+                        {{-- @if(Session::has('comment'))
+                            <div class="alert alert-success" role="alert">{{Session::get('comment') }}</div>
+                        @endif --}}
+                        <form action="{{ route('annonce.commentaire',['annonce_id'=>$annonce->id]) }}" method="POST">
+                            @csrf
+                            <div class="input-box">
+                                <input type="text" placeholder="Votre pseudo" required name="pseudo">
+                            </div>
+                            {{-- <div class="input-box">
+                                <input type="email" placeholder="Nom et prénom(s)" required name="email">
+                            </div> --}}
+    
+                            <div class="input-box message-box">
+                                <textarea placeholder="Votre message" name="commentaire"></textarea>
+                            </div>
+                            <div class="button">
+                                <input type="submit" value="Envoyer" />
+                            </div>
+                        </form>
+                        <br />
+                        <hr />
+                    </article>
 
-                    <div class="comments"></div>
+                    <br>
+                    <section class="review" id="review">
+                        <div class="review-commentaires">
+                            <div class="wrapper">
+                                @foreach ($commentaires as $commentaire)
+                                    <div class="commentaires">
+                                        <div class="user">
+                                            <img src="{{ asset('assets/images/user.png') }}" alt="">
+                                            <div class="user-info">
+                                                <h3>{{ $commentaire->pseudo }}</h3>
+                                            </div>
+                                        </div>
+                                        <p>{{$commentaire->commentaire}}</p>
+                    
+                                        <div class="time">
+                                            <span>{{ $commentaire->created_at->diffForHumans() }}</span> 
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </section>
+                @endforeach
+                
+                
 
-                    <template id="comment">
-                        <article class="mb-4">
-                            <div class="mb-1"><strong class="js-username"></strong></div>
-                            <p class="js-content"></p>
-                        </article>
-                    </template>
-
-                    <div 
-                        data-endpoint="https://jsonplaceholder.typicode.com/comments?_limit=10"
-                        data-template="#comment"
-                        data-target=".comments"
-                        data-elements='{"name": ".js-username", "body": ".js-content"}'
-                        class="text-center js-infinite-pagination">
-                        <div class="spinner-border" role="status"></div>
-                    </div>
-
-                </article>
             </div>
             
             <div class="section-annonce">
-                <video src="{{ asset('assets/videos/dma.mp4') }}" autoplay muted controls></video>
+                @foreach ($annonces as $annonce)
+                    @if ($annonce->image3)
+                        <video src="{{ asset('assets/videos') }}/{{ $annonce->image3 }}" autoplay muted controls></video>
+                    @endif
+                    <br />
+                    <br />
+                @endforeach
 
-                <br />
-                <br />
-                <h3>Actualités récentes</h3>
+            <h3>Actualités récentes</h3>
                 <div class="slider">
-                    <div class="img-div"><img src="{{ asset('assets/images/advertorial/divers.jpg') }}"></div>
-                    <div class="img-div"><img src="{{ asset('assets/images/advertorial/commerce.jpg') }}"  ></div>
-                    <div class="img-div"><img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}" ></div>
-                    <div class="img-div"><img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}"></div>
+                    @foreach ($actualites as $actualite)
+                        <div class="img-div"><img src="{{ asset('assets/images/advertorial') }}/{{ $actualite->image1 }}"></div>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -400,54 +400,15 @@
     <div class="section-one">
         <h1>Actualités</h1>
         <div class="advertorials">
-            <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}">
-                <div class="overlay"></div>
-                <a href="{{ route('annonce') }}">
-                    <i class="fa-solid fa-phone"></i> Téléphonie
-                </a>
-            </div>
-
-            <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}">
-                <div class="overlay"></div>
-                <a href="{{ route('annonce') }}">
-                <i class="fa-solid fa-shopping-bag"></i> Commerce
-                </a>
-            </div>
-
-            <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/education.jpg') }}">
-                <div class="overlay"></div>
-                <a href="{{ route('annonce') }}">
-                <i class="fa-solid fa-backpack"></i> Education
-                </a>
-            </div>
-
-            <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}">
-                <div class="overlay"></div>
-                <a href="{{ route('annonce') }}">
-                <i class="fa-solid fa-user-doctor"></i> Medecine
-                </a>
-            </div>
-
-            <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}">
-                <div class="overlay"></div>
-                <a href="{{ route('annonce') }}">
-                <i class="fa-solid fa-utensils"></i>Alimentation</span>
-                </a>
-            </div>
-
-            <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/divers.jpg') }}">
-                <div class="overlay"></div>
-                <a href="{{ route('annonce') }}">
-                <i class="fa-solid fa-arrow-right"></i> Divers</span>
-                </a>
-            </div>
-
+            @foreach ($annonces as $annonce)
+                <div class="advertorial">
+                    <img src="{{ asset('assets/images/advertorial') }}/{{ $annonce->image1 }}">
+                    <div class="overlay"></div>
+                    <a href="{{ route('annonce',['annonce_id'=>$annonce->id]) }}">
+                        <i class="fa-solid fa-phone"></i> {{ $annonce->titre }}
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
     <!-- END ADVERTORIAL -->
