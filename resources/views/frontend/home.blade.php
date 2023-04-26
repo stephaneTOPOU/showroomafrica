@@ -64,7 +64,8 @@
 <div class="container">
 
     <!-- BANNER -->
-    <div class="sb-container">
+    <div class="sb-container"> 
+        {{-- <img src="{{ asset('assets/images/banner.jpg') }}" alt=""> --}}
         <div class="search-text">
             <h1>Trouvez les meilleurs services & produits aux meilleurs prix en contactant directement les entreprises!
             </h1>
