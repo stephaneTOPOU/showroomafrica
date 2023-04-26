@@ -90,7 +90,7 @@
                                         <p>{{$commentaire->commentaire}}</p>
                     
                                         <div class="time">
-                                            <span>{{ $commentaire->created_at->diffForHumans() }}</span> 
+                                            <span>{{ $commentaire->created_at }}</span> 
                                         </div>
                                     </div>
                                 @endforeach
@@ -115,7 +115,9 @@
             <h3>Actualités récentes</h3>
                 <div class="slider">
                     @foreach ($actualites as $actualite)
-                        <div class="img-div"><img src="{{ asset('assets/images/advertorial') }}/{{ $actualite->image1 }}"></div>
+                        <a href="{{ route('annonce',['annonce_id'=>$actualite->id]) }}">
+                            <div class="img-div"><img src="{{ asset('assets/images/advertorial') }}/{{ $actualite->image1 }}"></div>
+                        </a>
                     @endforeach
                 </div>
             </div>

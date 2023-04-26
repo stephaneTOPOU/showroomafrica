@@ -405,7 +405,7 @@
                     <img src="{{ asset('assets/images/advertorial') }}/{{ $annonce->image1 }}">
                     <div class="overlay"></div>
                     <a href="{{ route('annonce',['annonce_id'=>$annonce->id]) }}">
-                        <i class="fa-solid fa-phone"></i> {{ $annonce->titre }}
+                        {{ Str::limit($annonce->titre, 40) }}
                     </a>
                 </div>
             @endforeach
