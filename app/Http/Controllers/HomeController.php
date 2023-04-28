@@ -9,6 +9,7 @@ use App\Models\MiniSpot;
 use App\Models\Parametre;
 use App\Models\Pays;
 use App\Models\PopUp;
+use App\Models\Banner;
 use App\Models\Reportage;
 use App\Models\Slider1;
 use App\Models\Slider2;
@@ -561,14 +562,17 @@ class HomeController extends Controller
             ->where('pharmacie_de_garde', '=', '1')
             ->get();
 
-        $popups = PopUp::all();
+        $popups = PopUp::inRandomOrder()->first();
 
-        $annonces = Annonce::all();
+        $banner = Banner::inRandomOrder()->first();
+
+        $annonces = Annonce::take(6)->orderBy('id', 'desc')->get();
 
         //$totalViews = Views($vue)->count();
         //dump( $visiteur);
 
         return view('frontend.home', compact(
+            'banner',
             'annonces',
             'slider1s',
             'slider2s',

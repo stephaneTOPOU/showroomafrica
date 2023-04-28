@@ -269,7 +269,7 @@ nav ul i {
 /* SEARCH BOX */
 
 .sb-container {
-  background: url('../images/banner.jpg');
+  /* background: url('../images/banner.jpg'); */
   background-repeat: no-repeat;
   width: 100%;
   height: auto;

@@ -90,7 +90,9 @@
                                         <p>{{$commentaire->commentaire}}</p>
                     
                                         <div class="time">
-                                            <span>{{ $commentaire->created_at }}</span> 
+                                            <span>@php
+                                                echo \Carbon\Carbon::parse($commentaire->created_at)->diffForHumans(null, false, 'fr');
+                                            @endphp</span> 
                                         </div>
                                     </div>
                                 @endforeach

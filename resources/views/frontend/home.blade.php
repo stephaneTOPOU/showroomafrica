@@ -33,39 +33,25 @@
     <!-- popup content -->
     <div class="modal-content">
         <span class="close" id="closepop"><i class="fa-regular fa-xmark"></i></span>
-        <div class="slider">
-            <div class="slides">
-
-                <input type="radio" name="radio-btn" id="rad1">
-                <input type="radio" name="radio-btn" id="rad2">
-
-                <div class="slider-slide first">
-                    <img src="{{ asset('assets/images/popup2.jpg') }}">
-                </div>
-                @foreach ($popups as $popup)
-                    <div class="slider-slide">
-                        <img src="{{ asset('assets/images') }}/{{ $popup->image }}" alt="PUB">
-                    </div>
-                @endforeach
-                <div class="navigation-auto">
-                    <div class="auto-btn1"></div>
-                    <div class="auto-btn2"></div>
-                </div>
-
-            </div>
+        <div class="popup-container">
+            <img src="{{ asset('assets/images') }}/{{ $popups->image }}" alt="PUB" id="image">
         </div>
     </div>
-
 </div>
+
 <!-- END POPUP -->
 
 
 <!-- CONTAINER-->
 <div class="container">
 
+    <style>
+        .sb-container {
+            background-image: url('{{ asset('assets/images') }}/{{ $banner->image }}');
+        }
+    </style>
     <!-- BANNER -->
     <div class="sb-container"> 
-        {{-- <img src="{{ asset('assets/images/banner.jpg') }}" alt=""> --}}
         <div class="search-text">
             <h1>Trouvez les meilleurs services & produits aux meilleurs prix en contactant directement les entreprises!
             </h1>
