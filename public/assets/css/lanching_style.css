@@ -1,9 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Sofia');
-:root {
-    --color-primary: #0659B2;
-    --color-secondary: #FFA500;
-    --text-color: #414141;
-  }
 
 .container{
     position: relative;
@@ -16,41 +11,23 @@ body{
     color: #0056b7;
 }
 
-.head span{
-    font-family: "Arial";
+.head .logo{
     position: relative;
     display: flex;
-    left: 7rem;
-    top: 2rem;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.head a{
-    text-decoration: none;
-    color: var(--color-primary);
-}
-
-.head a:hover{
-    letter-spacing: .2em;
-    border-bottom: 2px solid var(--color-secondary); 
-    transition: all 300ms ease-out;
-}
-.an{
-    margin-left: .4rem;
-}
-.af{
-    margin-left: 1rem;
+    width: 20%;
+    left: 3.5rem;
+    top: 3.5rem;
 }
 
 .body span{
     position: relative;
     display: flex;
+    text-align: center;
     font-family:'Poppins', sans-serif;
     text-shadow: 3px 3px 3px #ababab;
     font-size: 70px;
     width: 2%;
-    top: 10rem;
+    top: 12rem;
 }
 .so{
     margin-left: 5rem;
@@ -71,11 +48,6 @@ body{
     margin-left: 7rem;
 }
 
-.box a{
-    text-decoration: none;
-    color: var(--color-primary);
-}
-
 .box i{
     position: relative;
     margin-left: 2%;
@@ -93,14 +65,22 @@ body{
         padding-left: 30%;
         margin: auto;
     }
+    .head .logo{
+        position: relative;
+        display: flex;
+        width: 40%;
+        left: 3rem;
+        top: 3.5rem;
+    }
     .body p{
         position: relative;
         margin-top: 34%;
+        top: 1rem;
         width: 60%;
     }
     .box p {
         position: relative;
-        margin-top: 25%;
+        margin-top: 30%;
         margin-left: 7rem;
     }
     .box i{
@@ -119,9 +99,6 @@ body{
         justify-content: center;
         padding-left: 20%;
         /* margin: auto; */
-    }
-    .head span{
-        left: 6rem;
     }
     .body span{
         top: 10rem;
@@ -167,6 +144,7 @@ body{
     }
     .body span{
         position: relative;
+        align-items: center;
         font-size: 50px;
         width: 2%;
         top: 15rem;

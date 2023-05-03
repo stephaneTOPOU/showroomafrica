@@ -15,11 +15,8 @@
     <div class="container">
         <div class="head">
             <a href="{{ route('home') }}">
-                <span class="an">ANNUAIRE</span>
-                <span>SHOWROOM</span>
-                <span class="af">AFRICA</span>
+                <img class="logo" src="{{ asset('assets/images/showroom/logo.png') }}" alt="">
             </a>
-        
         </div>
         <div class="body">
             <span>Launching</span>
