@@ -33,19 +33,21 @@
     <!-- popup content -->
     <div class="modal-content">
         <span class="close" id="closepop"><i class="fa-regular fa-xmark"></i></span>
-        @foreach ($popups as $popup)
-            <div class="popup-container">
-                <img src="{{ asset('assets/images') }}/{{ $popup->image }}" alt="PUB">
-            </div>
-        @endforeach
+        <div class="popup-container">
+            <img src="{{ asset('assets/images') }}/{{ $popups->image }}" alt="PUB" id="image">
+        </div>
     </div>
-
 </div>
 <!-- END POPUP -->
 
 
 <!-- CONTAINER-->
 <div class="container">
+    <style>
+        .sb-container {
+            background-image: url('{{ asset('assets/images') }}/{{ $banner->image }}');
+        }
+    </style>
 
     <!-- BANNER -->
     <div class="sb-container">
@@ -537,9 +539,9 @@
             @foreach ($magazines as $magazine)
             <div class="magazine">
                 <div class="magazine-details">
-                    <img class="magazine-img" src="{{ asset('assets/images') }}/{{ $magazine->magazineimage1 }}">
+                    <img class="magazine-img" src="{{ asset('assets/images/magazines') }}/{{ $magazine->magazineimage1 }}">
                     <button type="button" class="discover-btn">
-                        <a href="{{ route('entreprise.profil',['entreprise_id'=>$magazine->id]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
+                        <a href="{{ route('entreprise.tg.profil',['pays_id'=>$magazine->pays_id,'entreprise_id'=>$magazine->id]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
                     </button>
                     <div class="social-links">
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>

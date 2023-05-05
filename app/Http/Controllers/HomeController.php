@@ -702,15 +702,22 @@ class HomeController extends Controller
                 ->where('entreprises.pharmacie_de_garde', '=', '1')
                 ->get();
     
+
             $popups = DB::table('pays')->where('pays.id', $pays_id)
                 ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-                ->select('*')
-                ->get();
+                ->inRandomOrder()
+                ->first();
+
+            $banner = DB::table('pays')->where('pays.id', $pays_id)
+                ->join('banners', 'pays.id', '=', 'banners.pays_id')
+                ->inRandomOrder()
+                ->first();
     
             //$totalViews = Views($vue)->count();
             //dump( $visiteur);
     
             return view('frontend.tg.home', compact(
+                'banner',
                 'slider1s',
                 'slider2s',
                 'slider3s',
