@@ -9,7 +9,7 @@
                 <div class="footer-col">
                     <h4>liens rapides</h4>
                     <ul>
-                        <li><a href="/">accueil</a></li>
+                        <li><a href="{{ route('home') }}">accueil</a></li>
                         <li><a href="{{ route('categorie') }}">catégories</a></li>
                         <li><a href="{{ route('professionnel') }}">professionnels</a></li>
                         <li><a href="#">offres d'emploi</a></li>

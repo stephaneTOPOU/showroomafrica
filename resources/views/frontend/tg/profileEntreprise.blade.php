@@ -284,6 +284,11 @@
                         <p>
                           {{$service->libelle}}
                         </p>
+                        @if ($service->photo4)
+                          <br />
+                          <video src="{{ asset('assets/videos') }}/{{ $service->photo4 }}" autoplay muted controls width="100%" style="border-radius: 1em"></video>
+                        @endif
+
                       </div>
 
                       <div class="presentation-section">
