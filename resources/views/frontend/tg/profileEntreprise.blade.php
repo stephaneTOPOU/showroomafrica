@@ -376,8 +376,6 @@
                     <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span>
                     <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
                   @endif
-                {{-- <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span> --}}
-                {{-- <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span> --}}
                 </div>
                 <table class="company-table">
                   <tbody>
