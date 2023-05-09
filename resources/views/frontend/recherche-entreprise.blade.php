@@ -158,7 +158,7 @@
             <div class="top-companies">
                 @foreach ($entreprisePopulaire as $entreprisePopulair)
                     <div class="top-company-info">
-                        <h4><a href="#">{{ $entreprisePopulair->nom }}</a></h4>
+                        <h4><a href="{{ route('entreprise.profil',['entreprise_id'=>$entreprisePopulair->id]) }}">{{ $entreprisePopulair->nom }}</a></h4>
                         <ul>
                             <li>
                                 <i class="fa-solid fa-location-dot"></i>

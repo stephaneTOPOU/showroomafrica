@@ -1,7 +1,7 @@
 @if (Auth::check())
 <nav>
 
-    <a href="/" class="nav-icon" aria-label="visit homepage" aria-current="page">
+    <a href="{{ route('home') }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
         <img src="{{ asset('assets/images') }}/{{ $parametres->logo_header }}" alt="logo">
     </a>
 
@@ -77,7 +77,7 @@
 @else
 <nav>
 
-    <a href="/" class="nav-icon" aria-label="visit homepage" aria-current="page">
+    <a href="{{ route('home') }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
         <img src="{{ asset('assets/images') }}/{{ $parametres->logo_header }}" alt="logo">
     </a>
 
