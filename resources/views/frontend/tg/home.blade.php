@@ -371,7 +371,7 @@
                         <div class="highlight-links">
                         <button type="button">
                             <i class="fa-regular fa-plus"></i>
-                            <a href="{{ route('entreprise.profil',['entreprise_id'=>$honeure->id]) }}">Découvrir</a>
+                            <a href="{{ route('entreprise.tg.profil',['pays_id'=>$honeure->pays_id,'entreprise_id'=>$honeure->id]) }}">Découvrir</a>
                         </button>
                         <button type="button">
                             <i class="fa-regular fa-phone"></i>
