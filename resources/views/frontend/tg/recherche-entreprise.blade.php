@@ -19,9 +19,9 @@
 @include('frontend.tg.navbar')
 <div class="container">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> --}}
 
     <!-- ADS BIG SLIDER -->
     <div class="img-slider first-slider">
@@ -30,7 +30,7 @@
         </div>
         @foreach ($slider as $sliders)
             <div class="slide">
-                <img src="{{ asset('assets/images/sliders/main') }}/{{ $sliders->image }}" alt="">
+                <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}" alt="">
             </div>
         @endforeach
     </div>
