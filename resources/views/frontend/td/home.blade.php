@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/lanching_style.css') }}">
     <title>Launching Soon</title>
-</head>
+    @include('frontend.td.header.header8')
 <body>
     <div class="container">
         <div class="head">
