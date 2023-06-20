@@ -29,55 +29,59 @@ for (let i = 1; i < 7; i++) {
     var nextDayOpenHour = hours[i].innerText;
     var todayOpenHour = hours[i-1].innerText;
     //console.log(parseInt(closeMinute,10));
-    console.log(todayOpenHour);
 
-    function setClosed() {
+    function showClosedLabel() {
       close[0].classList.add('show');
       close[1].classList.add('show');
-      if (nextDayOpenHour != "Fermé") {
-        close[0].innerHTML += " - <i style='font-size:12px;'>Ouvre demain à "+ nextDayOpenHour.substr(0, 5) +"</i>";
-        close[1].innerHTML += " - <i style='font-size:12px;'>Ouvre demain à "+ nextDayOpenHour.substr(0, 5) +"</i>";
-      }
     }
 
-    function setOpened() {
+    function showOpenLabel() {
       open[0].classList.add('show');
       open[1].classList.add('show');
     }
 
-    function willOpen() {
-      close[0].classList.add('show');
-      close[1].classList.add('show');
+    function nextDayLabel() {
+      close[0].innerHTML += " - <i style='font-size:12px;'>Ouvre demain à "+ nextDayOpenHour.substr(0, 5) +"</i>";
+      close[1].innerHTML += " - <i style='font-size:12px;'>Ouvre demain à "+ nextDayOpenHour.substr(0, 5) +"</i>";
+    }
+
+    function todayLabel() {
       close[0].innerHTML += " - <i style='font-size:12px;'>Ouvre bientôt à "+ todayOpenHour.substr(0, 5) +"</i>";
       close[1].innerHTML += " - <i style='font-size:12px;'>Ouvre bientôt à "+ todayOpenHour.substr(0, 5) +"</i>";
     }
 
-    if (currentHour > parseInt(closeHour,10)) {
-      setClosed();
-    }
-    else {
-      if (currentHour == parseInt(closeHour,10)) {
-        if (currentMinute > parseInt(closeMinute,10)) {
-          setClosed();
-        } else {
-          setOpened();
-        }
-      }
-      else {
-        setOpened();
+    function setClosed() {
+      showClosedLabel();
+      if (nextDayOpenHour != "Fermé") {
+        nextDayLabel();
       }
     }
 
-    if (currentHour > parseInt(openHour)) {
-      setOpened();
+    function willOpen() {
+      showClosedLabel();
+      todayLabel();
     }
-    else {
-      if (currentMinute > parseInt(openMinute,10)) {
-        setOpened();
+
+    if (currentHour < parseInt(closeHour,10)) {
+      if (currentHour >= parseInt(openHour)) {
+        if (currentMinute >= parseInt(openMinute,10)) {
+          showOpenLabel();
+        }
       }
       else {
         willOpen();
       }
+    }
+    else if (currentHour == parseInt(closeHour,10)) {
+      if (currentMinute <= parseInt(closeMinute,10)) {
+        showOpenLabel();
+      }
+      else {
+        setClosed();
+      }
+    }
+    else {
+      setClosed();
     }
 
     if (hours[i-1].innerText == "Fermé") {

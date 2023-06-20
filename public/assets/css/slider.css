@@ -7,9 +7,7 @@
 
 .img-slider .slide,
 .img-slider .slide-two,
-.img-slider .slide-three,
-.img-slider .slide-four,
-.img-slider .slide-five {
+.img-slider .slide-three {
   z-index: 1;
   position: absolute;
   width: 100%;
@@ -17,20 +15,16 @@
 }
 
 .img-slider .slide.active,
-.img-slider .slide-two.active,
-.img-slider .slide-three.active,
-.img-slider .slide-four.active,
-.img-slider .slide-five.active {
+.img-slider .slide-two.active-two,
+.img-slider .slide-three.active-three {
   clip-path: circle(150% at 0 50%);
-  transition: 1s;
+  transition: 2s;
   transition-property: clip-path;
 }
 
 .img-slider .slide img,
 .img-slider .slide-two img,
-.img-slider .slide-three img,
-.img-slider .slide-four img,
-.img-slider .slide-five img {
+.img-slider .slide-three img {
   z-index: 1;
   width: 100%;
   border-radius: 1em;

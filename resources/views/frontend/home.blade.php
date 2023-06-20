@@ -335,8 +335,8 @@
     <!-- END SPOTS -->
 
     <!-- ADS BIG SLIDER 2 -->
-    {{-- <div class="img-slider">
-        <div class="slide-two active">
+    <div class="img-slider" hidden>
+        <div class="slide-two active-two">
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider2s as $slider2)
@@ -344,7 +344,7 @@
             <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="">
         </div>
         @endforeach
-    </div> --}}
+    </div>
     <!-- END ADS BIG SLIDER 2 -->
 
     <!-- REPORTAGE -->
@@ -387,7 +387,7 @@
         <div class="advertorials">
             @foreach ($annonces as $annonce)
                 <div class="advertorial">
-                    <img src="{{ asset('assets/images/advertorial') }}/{{ $annonce->image1 }}">
+                    <img src="{{ asset('assets/images/annonce/images') }}/{{ $annonce->image1 }}">
                     <div class="overlay"></div>
                     <a href="{{ route('annonce',['annonce_id'=>$annonce->id]) }}">
                         {{ Str::limit($annonce->titre, 40) }}
@@ -452,7 +452,7 @@
             <label class="statistic-title">Total vue</label>
             @foreach ($visiteur2 as $visiteur)
                 <div>
-                    <label class="statistic-score">@php echo pretty_number(($visiteur->visiteur) + 20000)@endphp</label>
+                    <label class="statistic-score">@php echo pretty_number(($visiteur->visiteur) + 300000)@endphp</label>
                     <span><b>+ 10</b>%</span>
                 </div>
             @endforeach
@@ -478,8 +478,8 @@
     <!-- END STATISTICS -->
 
     <!-- ADS BIG SLIDER 3 -->
-    {{-- <div class="img-slider">
-        <div class="slide-three active">
+    <div class="img-slider" hidden>
+        <div class="slide-three active-three">
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider3s as $slider3)
@@ -487,7 +487,7 @@
             <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="">
         </div>
         @endforeach
-    </div> --}}
+    </div>
     <!-- END ADS BIG SLIDER 3 -->
 
     <!-- MAGAZINES -->

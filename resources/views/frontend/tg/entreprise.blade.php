@@ -33,6 +33,32 @@
     </div>
     <!-- END ADS BIG SLIDER -->
 
+    <!-- ADS BIG SLIDER 2 -->
+    <div class="img-slider" hidden>
+        <div class="slide-two active-two">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+        </div>
+        @foreach ($slider as $slider2)
+            <div class="slide-two">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="">
+            </div>
+        @endforeach
+    </div>
+    <!-- END ADS BIG SLIDER 2 -->
+
+    <!-- ADS BIG SLIDER 3 -->
+    <div class="img-slider" hidden>
+        <div class="slide-three active-three">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+        </div>
+        @foreach ($slider as $slider3)
+        <div class="slide-three">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="">
+        </div>
+        @endforeach
+    </div>
+    <!-- END ADS BIG SLIDER 3 -->
+
     <div class="companies-container">
 
         <div class="search-bar" style="margin-bottom:2em;">

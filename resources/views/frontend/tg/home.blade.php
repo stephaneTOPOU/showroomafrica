@@ -157,9 +157,9 @@
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider1s as $slider1)
-        <div class="slide" data-bs-interval="1">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider1->image }}" alt="">
-        </div>
+            <div class="slide" data-bs-interval="1">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider1->image }}" alt="">
+            </div>
         @endforeach
     </div>
     <!-- END ADS BIG SLIDER -->
@@ -317,7 +317,7 @@
             @foreach ($minispots as $minispot)
                 <div class="video-list">
                     <div class="video-list-inner video">
-                        <img class="play" src="{{ asset('assets/videos') }}/{{ $minispot->image }}">
+                        <img class="play" src="{{ asset('assets/videos/posters') }}/{{ $minispot->image }}">
                         <div class="play">
                             <i class="fa-regular fa-circle-play"></i>
                         </div>
@@ -338,13 +338,13 @@
 
     <!-- ADS BIG SLIDER 2 -->
     <div class="img-slider">
-        <div class="slide-two active">
+        <div class="slide-two active-two">
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider2s as $slider2)
-        <div class="slide-two">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="">
-        </div>
+            <div class="slide-two">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="">
+            </div>
         @endforeach
     </div>
     <!-- END ADS BIG SLIDER 2 -->
@@ -367,7 +367,7 @@
             <div class="highlights">
                 @foreach ($honeures as $honeure)
                     <div class="hightlighted-company">
-                        <img src="{{ asset('assets/images') }}/{{ $honeure->photo4 }}" alt="{{ $honeure->nom }}">
+                        <img src="{{ asset('assets/images/highlights') }}/{{ $honeure->photo4 }}" alt="{{ $honeure->nom }}">
                         <div class="highlight-links">
                         <button type="button">
                             <i class="fa-regular fa-plus"></i>
@@ -494,7 +494,7 @@
             <label class="statistic-title">Total vue</label>
             @foreach ($visiteur2 as $visiteur)
                 <div>
-                    <label class="statistic-score">@php echo pretty_number(($visiteur->visiteur) + 20000)@endphp</label>
+                    <label class="statistic-score">@php echo pretty_number(($visiteur->visiteur) + 300000)@endphp</label>
                     <span><b>+ 10</b>%</span>
                 </div>
             @endforeach
@@ -521,7 +521,7 @@
 
     <!-- ADS BIG SLIDER 3 -->
     <div class="img-slider">
-        <div class="slide-three active">
+        <div class="slide-three active-three">
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider3s as $slider3)
@@ -539,7 +539,7 @@
             @foreach ($magazines as $magazine)
             <div class="magazine">
                 <div class="magazine-details">
-                    <img class="magazine-img" src="{{ asset('assets/images/magazines') }}/{{ $magazine->magazineimage1 }}">
+                    <img class="magazine-img" src="{{ asset('assets/images') }}/{{ $magazine->magazineimage1 }}">
                     <button type="button" class="discover-btn">
                         <a href="{{ route('entreprise.tg.profil',['pays_id'=>$magazine->pays_id,'entreprise_id'=>$magazine->id]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
                     </button>
@@ -561,7 +561,7 @@
 <script src="{{ asset('assets/js/script.js') }}"></script>
 @include('frontend.tg.footer.footer1')
 <script src="{{ asset('assets/js/video-modal.js') }}"></script>
-@include('frontend.tg.footer.footer2')
+@include('frontend.tg.footer.footer2')0
 <script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/autocompletion.js') }}"></script>
 
