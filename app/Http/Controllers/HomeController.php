@@ -228,7 +228,7 @@ class HomeController extends Controller
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->join('entreprises', 'sous_categories.id', '=', 'souscategorie_id')
             ->select('*', 'categories.pays_id as code')
-            ->where('vue', '>', 500)
+            ->where('vue', '>=', 500)
             ->inRandomOrder()
             ->limit(4)
             ->get();
@@ -455,7 +455,7 @@ class HomeController extends Controller
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
             ->select('*')
-            ->where('entreprises.vue', '>', '100')
+            ->where('entreprises.vue', '>=', 500)
             ->inRandomOrder()
             ->limit(4)
             ->get();
