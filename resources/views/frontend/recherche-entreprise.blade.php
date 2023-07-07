@@ -143,7 +143,11 @@
                                     @endif
                                     
                                     @if ($recherche->telephone1)
-                                        <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $recherche->telephone1 }}</b>
+                                        <li><i class="fa-light fa-phone"></i>@if ($recherche->code == 14)
+                                                    (+228) 
+                                                @elseif ($recherche->code == 6)
+                                                    (+225)
+                                                @endif<b>{{ $recherche->telephone1 }}</b>
                                             @if ($recherche->telephone2)
                                                 <b>
                                                     • {{ $recherche->telephone2 }}
@@ -189,7 +193,11 @@
                                 <i class="fa-solid fa-location-dot"></i>
                                 {{ $entreprisePopulair->adresse }}
                             </li>
-                            <li><i class="fa-solid fa-phone"></i> (+228) <b>{{ $entreprisePopulair->telephone1 }}</b></li>
+                            <li><i class="fa-solid fa-phone"></i>@if ($entreprisePopulair->code == 14)
+                                (+228) 
+                            @elseif ($entreprisePopulair->code == 6)
+                                (+225)
+                            @endif<b>{{ $entreprisePopulair->telephone1 }}</b></li>
                         </ul>
                     </div>
                 @endforeach

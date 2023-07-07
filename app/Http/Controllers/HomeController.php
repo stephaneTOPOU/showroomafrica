@@ -50,7 +50,7 @@ class HomeController extends Controller
                 ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $pays && $ville) {
@@ -64,7 +64,7 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $pays && $secteur) {
@@ -78,7 +78,7 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $ville && $secteur) {
@@ -92,7 +92,7 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays && $ville && $secteur) {
@@ -102,7 +102,7 @@ class HomeController extends Controller
                 ->where('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $pays) {
@@ -115,7 +115,7 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $ville) {
@@ -128,7 +128,7 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $secteur) {
@@ -141,7 +141,7 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays && $ville) {
@@ -150,7 +150,7 @@ class HomeController extends Controller
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays && $secteur) {
@@ -159,7 +159,7 @@ class HomeController extends Controller
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($ville && $secteur) {
@@ -168,7 +168,7 @@ class HomeController extends Controller
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom) {
@@ -180,7 +180,7 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays) {
@@ -188,7 +188,7 @@ class HomeController extends Controller
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($ville) {
@@ -196,7 +196,7 @@ class HomeController extends Controller
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($secteur) {
@@ -204,7 +204,7 @@ class HomeController extends Controller
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } else {
@@ -219,14 +219,16 @@ class HomeController extends Controller
                 ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         }
 
-        $entreprisePopulaire = DB::table('entreprises')
-            ->select('*')
-            ->where('entreprises.vue', '>', '500')
+        $entreprisePopulaire = DB::table('categories')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->join('entreprises', 'sous_categories.id', '=', 'souscategorie_id')
+            ->select('*', 'categories.pays_id as code')
+            ->where('vue', '>', 500)
             ->inRandomOrder()
             ->limit(4)
             ->get();
