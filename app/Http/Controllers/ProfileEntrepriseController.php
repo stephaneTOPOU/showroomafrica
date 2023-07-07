@@ -59,9 +59,10 @@ class ProfileEntrepriseController extends Controller
 
         $parametres = Parametre::find(1);
 
-        $Profil_entreprises = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
-            ->join('sous_categories', 'sous_categories.id', '=', 'souscategorie_id')
-            ->select('*', 'entreprises.id')
+        $Profil_entreprises = DB::table('categories')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->join('entreprises', 'sous_categories.id', '=', 'souscategorie_id')->where('entreprises.id', $entreprise_id)
+            ->select('*', 'entreprises.id as identifiant', 'categories.pays_id as code')
             ->get();
 
         $premiums = DB::table('entreprises')->where('entreprises.id', $entreprise_id)

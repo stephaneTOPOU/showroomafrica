@@ -116,7 +116,11 @@
                   @endif
                   
                   @if ($Profil_entreprise->telephone1)
-                    <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $Profil_entreprise->telephone1 }} </b> 
+                    <li><i class="fa-light fa-phone"></i>@if ($Profil_entreprise->code == 14)
+                              (+228) 
+                          @elseif ($Profil_entreprise->code == 6)
+                              (+225)
+                          @endif<b>{{ $Profil_entreprise->telephone1 }} </b> 
                       @if ($Profil_entreprise->telephone2) 
                         <b>
                           • {{ $Profil_entreprise->telephone2 }}
