@@ -15,10 +15,6 @@ class ActionEntrepriseController extends Controller
             'nom' => 'string',
             'adresse' => 'string',
             'telephone1' => 'string',
-            'pays' => 'string',
-            'ville' => 'string',
-            'souscategorie_id' => 'integer',
-            'logo' => 'nullable|file|max:1024',
         ]);
 
         try {

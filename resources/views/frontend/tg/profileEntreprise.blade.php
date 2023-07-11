@@ -366,6 +366,60 @@
               </div>
             @endforeach
 
+            @if ($Profil_entreprise->partenaire == 1)
+              @foreach ($premiums as $premium)
+                <div class="company-info">
+                  <div class="contact-form-header">Partenaires</div>
+                  <div class="swiper">
+                    <div class="slide-container">
+                      <div class="card-wrapper swiper-wrapper">
+                        @foreach ($partenaires as $partenaire)
+                          <div class="card swiper-slide">
+                            <div class="image-box">
+                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $partenaire->image }}" />
+                            </div>
+                            {{-- <div class="product-details">
+                              <h4 class="name">{{ $partenaire->description }}</h4>
+                            </div> --}}
+                          </div>
+                        @endforeach
+                      
+                      </div>
+                    </div>
+                    <div class="swiper-button-next swiper-navBtn"></div>
+                    <div class="swiper-button-prev swiper-navBtn"></div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+                </div>
+              @endforeach
+
+              @foreach ($basics as $basic)
+                <div class="company-info">
+                  <div class="contact-form-header">Partenaires</div>
+                  <div class="swiper">
+                    <div class="slide-container">
+                      <div class="card-wrapper swiper-wrapper">
+                        @foreach ($partenaires as $partenaire)
+                          <div class="card swiper-slide">
+                            <div class="image-box">
+                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $partenaire->image }}" />
+                            </div>
+                            {{-- <div class="product-details">
+                              <h4 class="name">{{ $partenaire->description }}</h4>
+                            </div> --}}
+                          </div>
+                        @endforeach
+                          
+                      </div>
+                    </div>
+                    <div class="swiper-button-next swiper-navBtn"></div>
+                    <div class="swiper-button-prev swiper-navBtn"></div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+                </div>
+              @endforeach
+            @endif
+
             @foreach ($basics as $basic)
               <div class="company-info">
                 <div class="contact-form-header">Horaires de service</div>

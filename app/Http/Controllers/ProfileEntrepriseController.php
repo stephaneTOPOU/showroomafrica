@@ -111,9 +111,14 @@ class ProfileEntrepriseController extends Controller
         $entreprise = Entreprise::find($entreprise_id);
         $entreprise->increment('vue');
         $entreprise->save();
+
+        $partenaires = DB::table('entreprises')->where('entreprises.id', $entreprise_id)
+            ->join('partenaires', 'partenaires.entreprise_id', '=', 'entreprises.id')
+            ->select('*', 'entreprises.id as identifiant')
+            ->get();
         
         return view('frontend.profileEntreprise', compact('sousCategorieNavs', 'parametres', 'Profil_entreprises',
-    'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics'));
+    'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
     }
 //****************************************************Profile des entreprise************************************************* */
 
@@ -218,9 +223,18 @@ class ProfileEntrepriseController extends Controller
         $entreprise = Entreprise::find($entreprise_id);
         $entreprise->increment('vue');
         $entreprise->save();
+
+        $partenaires = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+            ->where('entreprises.id', $entreprise_id)
+            ->join('partenaires', 'partenaires.entreprise_id', '=', 'entreprises.id')
+            ->select('*', 'entreprises.id as identifiant')
+            ->get();
         
         return view('frontend.tg.profileEntreprise', compact('sousCategorieNavs', 'parametres', 'Profil_entreprises',
-    'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics'));
+    'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
     }
 
 //****************************************************End Profile des entreprise Togo************************************************* */
