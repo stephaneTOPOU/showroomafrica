@@ -21,72 +21,73 @@
                   <form action="{{ route('entreprise.add') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="fields">
-                        <div class="input-field field2">
-                              <input type="text" placeholder="Raison sociale" required name="nom" >
-                              <i class="fa-light fa-building"></i>
-                        </div>
-                        <div class="input-field field2">
-                              <input type="text" placeholder="Statut de l'entreprise" name="statu">
-                              <i class="fa-light fa-book"></i>
-                        </div>
-                        <div class="input-field field2">
-                              <input type="email" placeholder="E-mail de l'entreprise" name="email">
-                              <i class="fa-light fa-envelope"></i>
-                        </div>
-                        <div class="input-field field2">
-                              <input type="text" placeholder="Votre adresse ici" required name="adresse">
-                              <i class="fa-light fa-map-location-dot"></i>
-                        </div>
-                        <div class="input-field field2">
-                              <input type="text" placeholder="Numéro de téléphone 1" required name="telephone1">
-                              <i class="fa-light fa-phone"></i>
-                        </div>
-                        <div class="input-field field2">
-                              <input type="text" placeholder="Numéro de téléphone 2" name="telephone2">
-                              <i class="fa-light fa-phone"></i>
-                        </div>
-                        </div>
+                              <div class="input-field field2">
+                                    <select class="form-select" name="souscategorie_id">
+                                          <option class="placeholder" value="" disabled selected>Secteur d'activité</option>
+                                          @foreach ($souscategories as $souscategorie)
+                                                <option value="{{ $souscategorie->id }}">{{ $souscategorie->libelle }}</option>
+                                          @endforeach
+                                    </select>
+                                    <i class="fa-light fa-briefcase"></i>
+                              </div>
+                              <div class="input-field field2">
+                                    <input type="text" placeholder="Raison sociale" required name="nom" >
+                                    <i class="fa-light fa-building"></i>
+                              </div>
+                              {{-- <div class="input-field field2">
+                                    <input type="text" placeholder="Statut de l'entreprise" name="statu">
+                                    <i class="fa-light fa-book"></i>
+                              </div> --}}
+                              <div class="input-field field2">
+                                    <input type="email" placeholder="E-mail de l'entreprise" name="email">
+                                    <i class="fa-light fa-envelope"></i>
+                              </div>
+                              <div class="input-field field2">
+                                    <input type="text" placeholder="Votre adresse ici" required name="adresse">
+                                    <i class="fa-light fa-map-location-dot"></i>
+                              </div>
+                              <div class="input-field field2">
+                                    <input type="text" placeholder="Numéro de téléphone 1" required name="telephone1">
+                                    <i class="fa-light fa-phone"></i>
+                              </div>
+                              <div class="input-field field2">
+                                    <input type="text" placeholder="Numéro de téléphone 2" name="telephone2">
+                                    <i class="fa-light fa-phone"></i>
+                              </div>
+                              </div>
 
-                        <div class="fields">
-                        <div class="input-field field2">
-                              <input type="text" placeholder="Numéro de téléphone 3"  name="telephone3">
-                              <i class="fa-light fa-phone"></i>
-                        </div>
-                        <div class="input-field field2">
-                              <input type="text" placeholder="Numéro de téléphone 4"  name="telephone4">
-                              <i class="fa-light fa-phone"></i>
-                        </div>
-                        <div class="input-field field2">
-                              <input type="text" placeholder="Site web de l'entreprise"  name="siteweb">
-                              <i class="fa-light fa-globe"></i>
-                        </div>
-                        <div class="input-field field2">
-                              <select class="form-select" name="pays">
-                                    <option class="placeholder" value="" disabled selected>Sélectionnez le pays</option>
-                                    @foreach ($pays as $pay)
-                                          <option value="{{ $pay->libelle }}">{{ $pay->libelle }}</option>
-                                    @endforeach
-                              </select>
-                              <i class="fa-light fa-flag"></i>
-                        </div>
-                        <div class="input-field field2">
-                              <select class="form-select" name="ville">
-                                    <option class="placeholder" value="" disabled selected>Sélectionnez la ville</option>
-                                    @foreach ($villes as $ville)
-                                          <option>{{ $ville->libelle }}</option>
-                                    @endforeach
-                              </select>
-                              <i class="fa-light fa-city"></i>
-                        </div>
-                        <div class="input-field field2">
-                              <select class="form-select" name="souscategorie_id">
-                                    <option class="placeholder" value="" disabled selected>Secteur d'activité</option>
-                                    @foreach ($souscategories as $souscategorie)
-                                          <option value="{{ $souscategorie->id }}">{{ $souscategorie->libelle }}</option>
-                                    @endforeach
-                              </select>
-                              <i class="fa-light fa-briefcase"></i>
-                        </div>
+                              <div class="fields">
+                              <div class="input-field field2">
+                                    <input type="text" placeholder="Numéro de téléphone 3"  name="telephone3">
+                                    <i class="fa-light fa-phone"></i>
+                              </div>
+                              <div class="input-field field2">
+                                    <input type="text" placeholder="Numéro de téléphone 4"  name="telephone4">
+                                    <i class="fa-light fa-phone"></i>
+                              </div>
+                              <div class="input-field field2">
+                                    <input type="text" placeholder="Site web de l'entreprise"  name="siteweb">
+                                    <i class="fa-light fa-globe"></i>
+                              </div>
+                              {{-- <div class="input-field field2">
+                                    <select class="form-select" name="pays">
+                                          <option class="placeholder" value="" disabled selected>Sélectionnez le pays</option>
+                                          @foreach ($pays as $pay)
+                                                <option value="{{ $pay->libelle }}">{{ $pay->libelle }}</option>
+                                          @endforeach
+                                    </select>
+                                    <i class="fa-light fa-flag"></i>
+                              </div>
+                              <div class="input-field field2">
+                                    <select class="form-select" name="ville">
+                                          <option class="placeholder" value="" disabled selected>Sélectionnez la ville</option>
+                                          @foreach ($villes as $ville)
+                                                <option>{{ $ville->libelle }}</option>
+                                          @endforeach
+                                    </select>
+                                    <i class="fa-light fa-city"></i>
+                              </div> --}}
+                        
                         </div>
 
                         <div class="input-field-upload">
