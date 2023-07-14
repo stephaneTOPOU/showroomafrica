@@ -18,7 +18,7 @@ class EntrepriseController extends Controller
         $entreprises = DB::table('categories')
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')->where('sous_categories.id', $sousCategorie_id)
             ->join('entreprises', 'sous_categories.id', '=', 'souscategorie_id')
-            ->select('*', 'categories.pays_id as code')
+            ->select('*', 'categories.pays_id as pays')
             ->orderBy('entreprises.id', 'desc')
             ->paginate(100);
 
@@ -37,7 +37,7 @@ class EntrepriseController extends Controller
         $entreprisePopulaire = DB::table('categories')
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->join('entreprises', 'sous_categories.id', '=', 'souscategorie_id')
-            ->select('*', 'categories.pays_id as code')
+            ->select('*', 'categories.pays_id as pays')
             ->where('vue', '>=', 500)
             ->inRandomOrder()
             ->limit(4)

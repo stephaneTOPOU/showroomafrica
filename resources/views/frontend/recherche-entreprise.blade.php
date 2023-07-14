@@ -118,7 +118,7 @@
                 </button>
             </form>
         </div>
-
+        
         <div class="search-bar" style="margin-bottom:2em;">
             <form class="search-form">
                 <style>
@@ -186,6 +186,7 @@
         </div>
         <!-- END MODAL -->
 
+
         <div class="companies-list">
             <div class="companies">
 
@@ -212,10 +213,10 @@
                                     
                                     @if ($recherche->telephone1)
                                         <li><i class="fa-light fa-phone"></i>@if ($recherche->code == 14)
-                                                    (+228) 
-                                                @elseif ($recherche->code == 6)
-                                                    (+225)
-                                                @endif<b>{{ $recherche->telephone1 }}</b>
+                                                        (+228) 
+                                                    @elseif ($recherche->code == 6)
+                                                        (+225)
+                                                    @endif<b>{{ $recherche->telephone1 }}</b>
                                             @if ($recherche->telephone2)
                                                 <b>
                                                     • {{ $recherche->telephone2 }}

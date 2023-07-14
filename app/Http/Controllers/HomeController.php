@@ -237,7 +237,7 @@ class HomeController extends Controller
         $parametres = Parametre::find(1);
 
         $slider = SliderRecherche::all();
-
+        
         $subcat = SousCategories::all();
 
         return view('frontend.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat'));
@@ -470,8 +470,9 @@ class HomeController extends Controller
             ->get();
 
         $slider = SliderRecherche::all();
-
+        
         $subcat = SousCategories::all();
+
         return view('frontend.tg.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat'));
     }
     //*********************************End Recherche*********************************************//

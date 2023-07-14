@@ -117,7 +117,7 @@
                 </button>
             </form>
         </div>
-
+        
         <div class="search-bar" style="margin-bottom:2em;">
             <form class="search-form">
                 <style>
@@ -215,9 +215,9 @@
                                     @endif
                                     
                                     @if ($entreprise->telephone1)
-                                        <li><i class="fa-light fa-phone"></i> @if ($entreprise->code == 14)
+                                        <li><i class="fa-light fa-phone"></i>@if ($entreprise->pays == 14)
                                             (+228) 
-                                        @elseif ($entreprise->code == 6)
+                                        @elseif ($entreprise->pays == 6)
                                             (+225)
                                         @endif<b>{{ $entreprise->telephone1 }} </b>
                                             @if ($entreprise->telephone2)
@@ -253,7 +253,7 @@
         <div class="top-research">
             <h3>Sociétés les plus recherchées</h3>
             <div class="top-companies">
-                @foreach ($entreprisePopulaire as $entreprisePopulair)
+              @foreach ($entreprisePopulaire as $entreprisePopulair)
                     <div class="top-company-info">
                         <h4><a href="{{ route('entreprise.profil',['entreprise_id'=>$entreprisePopulair->id]) }}">{{ $entreprisePopulair->nom }}</a></h4>
                         <ul>
@@ -261,11 +261,12 @@
                                 <i class="fa-solid fa-location-dot"></i>
                                 {{ $entreprisePopulair->adresse }}
                             </li>
-                            <li><i class="fa-solid fa-phone"></i> @if ($entreprisePopulair->code == 14)
-                                (+228) 
-                            @elseif ($entreprisePopulair->code == 6)
-                                (+225)
-                            @endif <b>{{ $entreprisePopulair->telephone1 }}</b></li>
+                            <li><i class="fa-solid fa-phone"></i>@if ($entreprisePopulair->pays == 14)
+                                            (+228) 
+                                        @elseif ($entreprisePopulair->pays == 6)
+                                            (+225)
+                                        @endif
+                                        <b>{{ $entreprisePopulair->telephone1 }}</b></li>
                         </ul>
                     </div>
                 @endforeach

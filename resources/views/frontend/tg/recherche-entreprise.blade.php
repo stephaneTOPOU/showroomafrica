@@ -119,7 +119,7 @@
                 </button>
             </form>
         </div>
-
+        
         <div class="search-bar" style="margin-bottom:2em;">
             <form class="search-form">
                 <style>
@@ -186,6 +186,7 @@
             </div>
         </div>
         <!-- END MODAL -->
+
         <div class="companies-list">
             <div class="companies">
 

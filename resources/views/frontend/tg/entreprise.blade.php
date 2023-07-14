@@ -116,7 +116,7 @@
                 </button>
             </form>
         </div>
-
+        
         <div class="search-bar" style="margin-bottom:2em;">
             <form class="search-form">
                 <style>
@@ -186,10 +186,11 @@
         @endforeach
         <!-- END MODAL -->
 
+
         <div class="companies-list">
-        @foreach ($sousCategories as $sousCategorie)
+          @foreach ($sousCategories as $sousCategorie)
             <h2>{{ $sousCategorie->libelle }}</h2>
-        @endforeach
+          @endforeach
             <div class="companies">
 
                 @foreach ($entreprises as $entreprise)
