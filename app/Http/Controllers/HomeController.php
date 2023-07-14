@@ -17,6 +17,7 @@ use App\Models\Slider3;
 use App\Models\SliderLateral;
 use App\Models\SliderLateralBas;
 use App\Models\SliderRecherche;
+use App\Models\SousCategories;
 use App\Models\Stat;
 use App\Models\User;
 use App\Models\Ville;
@@ -237,7 +238,9 @@ class HomeController extends Controller
 
         $slider = SliderRecherche::all();
 
-        return view('frontend.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider'));
+        $subcat = SousCategories::all();
+
+        return view('frontend.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat'));
     }
 
     //*************Pour le togo*******************
@@ -468,7 +471,8 @@ class HomeController extends Controller
 
         $slider = SliderRecherche::all();
 
-        return view('frontend.tg.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider'));
+        $subcat = SousCategories::all();
+        return view('frontend.tg.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat'));
     }
     //*********************************End Recherche*********************************************//
 

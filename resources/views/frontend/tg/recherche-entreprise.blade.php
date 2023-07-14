@@ -1,6 +1,7 @@
 @include('frontend.tg.header.header')
 @include('frontend.tg.header.header1')
 @include('frontend.tg.header.header2')
+<link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />
 @include('frontend.tg.header.header3')
 
 <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
@@ -19,9 +20,9 @@
 @include('frontend.tg.navbar')
 <div class="container">
 
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
     <!-- ADS BIG SLIDER -->
     <div class="img-slider first-slider">
@@ -119,6 +120,72 @@
             </form>
         </div>
 
+        <div class="search-bar" style="margin-bottom:2em;">
+            <form class="search-form">
+                <style>
+                    #devisbtn{
+                        /* background-color: #073465 !important; */
+                        width: auto;
+                    }
+                </style>
+
+                <a class="search-button" id="devisbtn">
+                    Demande de devis
+                </a>
+            </form>
+        </div>
+
+        <!-- MODAL -->
+        <div id="devismodal" class="devis-modal">
+            <!-- Modal content -->
+            <div class="contact devis-modal-content">
+                <span class="close" id="closedevis"><i class="fa-regular fa-xmark"></i></span>
+                <span class="titre">Demande de devis</span>
+                <div><h4>Demande de devis sans engagement de votre part</h4></div>
+                @if(Session::has('succes'))
+                    <div class="alert alert-success" role="alert">{{Session::get('succes') }}</div>
+                @endif
+                <form action="{{ route('devis.tg.recherche',['pays_id'=>14]) }}" method="POST">
+                    @csrf
+                    <div class="select-box">
+                        <select name="souscategorie_id" id="souscategorie_id">
+                            <option class="placeholder" value="" disabled selected>Secteur d'activité</option>
+                            @foreach ($subcat as $souscategorie)
+                                <option value="{{ $souscategorie->id }}">{{ $souscategorie->libelle }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="select-box">
+                        <select name="type_demande" id="type_demande">
+                            <option class="placeholder" value="" disabled selected>Type de demande</option>
+                            <option value="Demande d'information">Demande d'information</option>
+                            <option value="Demande de produits">Demande de produits</option>
+                            <option value="Demande de services">Demande de services</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Ville" required name="ville" required>
+                    </div>
+                    <div class="input-box">
+                        <input class="nom" type="text" placeholder="Nom" required name="nom" required>
+                        <input class="prenom" type="text" placeholder="Prenoms" required name="prenom" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" placeholder="Votre e-mail" required name="email" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Téléphone" required name="telephone">
+                    </div>
+                    <div class="input-box message-box">
+                        <textarea placeholder="Votre devis" required name="demande" required></textarea>
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Envoyer" id="envoibtn">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END MODAL -->
         <div class="companies-list">
             <div class="companies">
 
@@ -223,6 +290,7 @@
 
 @include('frontend.tg.footer.footer')
 <script src="{{ asset('assets/js/script.js') }}"></script>
+<script src="{{ asset('assets/js/devis-modal.js') }}"></script>
 @include('frontend.tg.footer.footer1')
 @include('frontend.tg.footer.footer2')
 

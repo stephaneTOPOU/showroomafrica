@@ -2,158 +2,191 @@
   width: 100%;
   height: auto;
 }
-.overflow { overflow: hidden; }
-.form-container .forms{
-    display: flex;
-    align-items: center;
-    height: 27.5em;
-    width: 200%;
-    transition: height 0.2s ease;
+
+.overflow {
+  overflow: hidden;
 }
-.form-container .form{
-    width: 50%;
-    padding: 0 30px;
-    background-color: #fff;
-    transition: margin-left 0.18s ease;
+
+.form-container .forms {
+  display: flex;
+  align-items: center;
+  height: 27.5em;
+  width: 200%;
+  transition: height 0.2s ease;
 }
-.form-container.active-form .login{
-    margin-left: -50%;
-    opacity: 0;
-    transition: margin-left 0.18s ease, opacity 0.15s ease;
+
+.form-container .form {
+  width: 50%;
+  padding: 0 30px;
+  background-color: #fff;
+  transition: margin-left 0.18s ease;
 }
-.form-container .signup{
-    opacity: 0;
-    transition: opacity 0.09s ease;
+
+.form-container.active-form .login {
+  margin-left: -50%;
+  opacity: 0;
+  transition: margin-left 0.18s ease, opacity 0.15s ease;
 }
-.form-container.active-form .signup{
-    opacity: 1;
-    transition: opacity 0.2s ease;
-    height: inherit;
-    overflow-y: scroll;
+
+.form-container .signup {
+  opacity: 0;
+  transition: opacity 0.09s ease;
 }
-.form-container.active-form .forms{
-    height: 600px;
+
+.form-container.active-form .signup {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  height: inherit;
+  overflow-y: scroll;
 }
-.form .title{
-    position: relative;
-    font-size: 1.5em;
-    font-weight: 600;
+
+.form-container.active-form .forms {
+  height: 600px;
 }
-.form .title::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 30px;
-    background-color: var(--color-primary);
-    border-radius: 25px;
+
+.form .title {
+  position: relative;
+  font-size: 1.5em;
+  font-weight: 600;
 }
+
+.form .title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background-color: var(--color-primary);
+  border-radius: 25px;
+}
+
 .form .fields {
   display: flex;
   flex-wrap: wrap;
 }
+
 .form .fields .field {
   width: 48%;
 }
+
 .form .fields .field2 {
   width: 32%;
 }
+
 .form .fields .field:nth-child(2) {
   margin-left: auto;
 }
+
 .form .fields .field2:nth-child(2),
 .form .fields .field2:nth-child(3n+0),
 .form .fields .field2:nth-child(5) {
   margin-left: 2%;
 }
-.form .input-field{
-    position: relative;
-    height: 50px;
-    width: 100%;
-    margin-top: 30px;
+
+.form .input-field {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
 }
-.input-field input, .input-field select {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    padding: 0 35px;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    border-bottom: 2px solid #ccc;
-    border-top: 2px solid transparent;
-    transition: all 0.2s ease;
+
+.input-field input,
+.input-field select {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0 35px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid transparent;
+  transition: all 0.2s ease;
 }
+
 .input-field textarea {
-    position: absolute;
-    resize: none;
-    width: 100%;
-    padding: 0 35px;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    font-family: Poppins;
-    margin-bottom: 2em;
-    border-bottom: 2px solid #ccc;
-    border-top: 2px solid transparent;
-}
-.input-field select { color: var(--text-color); }
-.input-field input:is(:focus, :valid){
-    border-bottom-color: var(--color-primary);
-}
-.input-field i{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #999;
-    font-size: 23px;
-    transition: all 0.2s ease;
-}
-.input-field input:is(:focus, :valid) ~ i{
-    color: var(--color-primary);
-}
-.input-field i.icon{
-    left: 0;
-}
-.input-field i.showHidePw{
-    right: 0;
-    cursor: pointer;
-    padding: 10px;
+  position: absolute;
+  resize: none;
+  width: 100%;
+  padding: 0 35px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: Poppins;
+  margin-bottom: 2em;
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid transparent;
 }
 
-.form .text{
-    color: #333;
-    font-size: 14px;
-}
-.form a.text{
-    color: var(--color-primary);
-    text-decoration: none;
-}
-.form a:hover{
-    text-decoration: underline;
-}
-.form .button{
-    margin-top: 35px;
-}
-.form .button input{
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border-radius: 6px;
-    background-color: var(--color-primary);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-.button input:hover{
-    background-color: var(--color-secondary);
+.input-field select {
+  color: var(--text-color);
 }
 
-.form .login-signup{
-    margin-top: 30px;
-    text-align: center;
+.input-field input:is(:focus, :valid) {
+  border-bottom-color: var(--color-primary);
+}
+
+.input-field i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 23px;
+  transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid)~i {
+  color: var(--color-primary);
+}
+
+.input-field i.icon {
+  left: 0;
+}
+
+.input-field i.showHidePw {
+  right: 0;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.form .text {
+  color: #333;
+  font-size: 14px;
+}
+
+.form a.text {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.form a:hover {
+  text-decoration: underline;
+}
+
+.form .button {
+  margin-top: 35px;
+}
+
+.form .button input {
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  background-color: var(--color-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button input:hover {
+  background-color: var(--color-secondary);
+}
+
+.form .login-signup {
+  margin-top: 30px;
+  text-align: center;
 }
 
 .container .form-container {
@@ -168,7 +201,7 @@
   margin-top: 4em;
   background-color: #fff;
   border-radius: 1em;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1),0 6px 20px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* UPLOAD LOGO */
@@ -177,43 +210,52 @@
   padding: 2em 0;
 }
 
-.input-field-upload .image-container img{
-    display: block;
-    position: relative;
-    max-width: 100%;
-    max-height: 4em;
-    margin: auto;
-}
-figcaption{
-    margin: 1em 0;
-    text-align: center;
-    color: #2a292a;
-}
-.input-field-upload input[type="file"]{
-    display: none;
-}
-.input-field-upload label{
-    display: block;
-    position: relative;
-    background-color: var(--color-secondary);
-    color: #ffffff;
-    text-align: center;
-    width: 20em;
-    padding: 18px 0;
-    border-radius: 5px;
-    margin: auto;
-    cursor: pointer;
-    text-shadow: 5px 5px 10px rgb(140 88 0 / 64%);
-}
-.input-field-upload label:hover {
-    background-color: #b4790d;
+.input-field-upload .image-container img {
+  display: block;
+  position: relative;
+  max-width: 100%;
+  max-height: 4em;
+  margin: auto;
 }
 
-#s_button { margin-bottom: 2em; }
-#s_button input { margin-top: 1.5em; }
+figcaption {
+  margin: 1em 0;
+  text-align: center;
+  color: #2a292a;
+}
+
+.input-field-upload input[type="file"] {
+  display: none;
+}
+
+.input-field-upload label {
+  display: block;
+  position: relative;
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  text-align: center;
+  width: 20em;
+  padding: 18px 0;
+  border-radius: 5px;
+  margin: auto;
+  cursor: pointer;
+  text-shadow: 5px 5px 10px rgb(140 88 0 / 64%);
+}
+
+.input-field-upload label:hover {
+  background-color: #b4790d;
+}
+
+#s_button {
+  margin-bottom: 2em;
+}
+
+#s_button input {
+  margin-top: 1.5em;
+}
 
 /* CONTACT FORM STYLE */
-.form-container .content{
+.form-container .content {
   margin-top: -4em;
   display: flex;
   align-items: center;
@@ -223,7 +265,8 @@ figcaption{
   padding: 4em;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-.form-container .content .left-side{
+
+.form-container .content .left-side {
   width: 30%;
   height: 100%;
   display: flex;
@@ -233,7 +276,8 @@ figcaption{
   margin-top: 15px;
   position: relative;
 }
-.content .left-side::before{
+
+.content .left-side::before {
   content: '';
   position: absolute;
   height: 70%;
@@ -243,54 +287,62 @@ figcaption{
   transform: translateY(-50%);
   background: var(--color-secondary);
 }
-.content .left-side .details{
+
+.content .left-side .details {
   margin: 14px;
   text-align: center;
 }
-.content .left-side .details i{
+
+.content .left-side .details i {
   font-size: 30px;
   color: var(--color-primary);
   margin-bottom: 10px;
 }
-.content .left-side .details .topic{
+
+.content .left-side .details .topic {
   color: var(--color-primary);
   font-size: 18px;
   font-weight: 500;
 }
+
 .content .left-side .details .text-one,
-.content .left-side .details .text-two{
+.content .left-side .details .text-two {
   font-size: 14px;
   color: var(--text-color);
 }
 
 
-.form-container .content .right-side{
+.form-container .content .right-side {
   width: 70%;
   margin-left: 75px;
 }
-.content .right-side .topic-text{
+
+.content .right-side .topic-text {
   position: relative;
   font-size: 1.5em;
   font-weight: 600;
   margin-bottom: 1em;
 }
-.content .right-side .topic-text::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 30px;
-    background-color: var(--color-primary);
-    border-radius: 25px;
+
+.content .right-side .topic-text::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background-color: var(--color-primary);
+  border-radius: 25px;
 }
-.right-side .input-box{
-    height: 50px;
-    width: 100%;
-    margin: 12px 0;
+
+.right-side .input-box {
+  height: 50px;
+  width: 100%;
+  margin: 12px 0;
 }
+
 .right-side .input-box input,
-.right-side .input-box textarea{
+.right-side .input-box textarea {
   height: 100%;
   width: 100%;
   border: none;
@@ -302,17 +354,21 @@ figcaption{
   resize: none;
   font-family: Poppins;
 }
-.right-side .message-box{
+
+.right-side .message-box {
   min-height: 110px;
 }
-.right-side .input-box textarea{
+
+.right-side .input-box textarea {
   padding-top: 6px;
 }
-.right-side .button{
+
+.right-side .button {
   display: inline-block;
   margin-top: 12px;
 }
-.right-side .button input[type="submit"]{
+
+.right-side .button input[type="submit"] {
   color: #fff;
   font-size: 18px;
   outline: none;
@@ -323,56 +379,68 @@ figcaption{
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.button input[type="button"]:hover{
+
+.button input[type="button"]:hover {
   background: var(--color-secondary);
 }
 
 @media (max-width: 950px) {
-  .form-container{
-    padding: 30px 40px 40px 35px ;
+  .form-container {
+    padding: 30px 40px 40px 35px;
   }
-  .form-container .content .right-side{
-   margin-left: 55px;
+
+  .form-container .content .right-side {
+    margin-left: 55px;
+  }
 }
-}
+
 @media (max-width: 820px) {
-  .form-container{
+  .form-container {
     margin: 40px 0;
     height: 100%;
   }
-  .form-container .content{
+
+  .form-container .content {
     flex-direction: column-reverse;
   }
- .form-container .content .left-side{
-   width: 100%;
-   flex-direction: row;
-   margin-top: 40px;
-   justify-content: center;
-   flex-wrap: wrap;
- }
- .form-container .content .left-side::before{
-   display: none;
- }
- .form-container .content .right-side{
-   width: 100%;
-   margin-left: 0;
- }
+
+  .form-container .content .left-side {
+    width: 100%;
+    flex-direction: row;
+    margin-top: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .form-container .content .left-side::before {
+    display: none;
+  }
+
+  .form-container .content .right-side {
+    width: 100%;
+    margin-left: 0;
+  }
 }
+
 /* END CONTACT FORM STYLE */
 
 @media (max-width: 900px) {
   .container .form-container {
     margin-top: 4em;
   }
+
   .form .fields .field {
     width: 100%;
   }
+
   .form .fields .field2 {
     width: 48%;
   }
+
   .form .fields .field2:nth-child(even) {
     margin-left: auto;
   }
+
   .form .fields .field2:nth-child(odd) {
     margin-left: 0;
   }

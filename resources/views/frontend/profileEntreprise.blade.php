@@ -288,6 +288,10 @@
                         <p>
                           {{$service->libelle}}
                         </p>
+                        @if ($service->photo4)
+                          <br />
+                          <video src="{{ asset('assets/videos') }}/{{ $service->photo4 }}" autoplay muted controls width="100%" style="border-radius: 1em"></video>
+                        @endif
                       </div>
 
                       <div class="presentation-section">
@@ -342,6 +346,7 @@
                 @endforeach
               </div>
             @endforeach
+            
             @if ($Profil_entreprise->partenaire == 1)
               @foreach ($premiums as $premium)
                 <div class="company-info">
@@ -352,7 +357,7 @@
                         @foreach ($partenaires as $partenaire)
                           <div class="card swiper-slide">
                             <div class="image-box">
-                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $partenaire->image }}" />
+                              <img src="{{ asset('assets/images/partenaires') }}/{{ $partenaire->image }}" />
                             </div>
                             {{-- <div class="product-details">
                               <h4 class="name">{{ $partenaire->description }}</h4>
@@ -378,7 +383,7 @@
                         @foreach ($partenaires as $partenaire)
                           <div class="card swiper-slide">
                             <div class="image-box">
-                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $partenaire->image }}" />
+                              <img src="{{ asset('assets/images/partenaires') }}/{{ $partenaire->image }}" />
                             </div>
                             {{-- <div class="product-details">
                               <h4 class="name">{{ $partenaire->description }}</h4>
@@ -451,7 +456,7 @@
               @if(Session::has('ok'))
                 <div class="alert alert-success" role="alert">{{Session::get('ok') }}</div>
               @endif
-              <form action="{{ route('entreprise.commentaire',['entreprise_id'=>$Profil_entreprise->id]) }}" method="POST">
+              <form action="{{ route('entreprise.commentaire',['entreprise_id'=>$Profil_entreprise->identifiant]) }}" method="POST">
                 @csrf
                 <div class="feedback">
                   <div class="rating">

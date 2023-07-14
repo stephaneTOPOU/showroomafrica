@@ -168,6 +168,10 @@ Route::post('/ajouter-entreprise', [\App\Http\Controllers\ActionEntrepriseContro
 
 Route::get('/siteweb', [\App\Http\Controllers\ServiceController::class, 'siteweb'])->name('service.siteweb');
 
+Route::post('/rechercher-entreprise', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.recherche');
+
+Route::post('/entreprise/{entreprise_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.entreprise');
+
 //****************************************************end Afrique************************************************//
 
 
@@ -204,6 +208,10 @@ Route::post('/tg/authentification/{pays_id}', [\App\Http\Controllers\AuthControl
 Route::post('/tg/ajouter-entreprise/{pays_id}', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.tg.add');
 
 Route::get('/tg/siteweb/{pays_id}', [\App\Http\Controllers\ServiceController::class, 'siteweb_tg'])->name('service.tg.siteweb');
+
+Route::post('/tg/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.tg.recherche');
+
+Route::post('/tg/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.tg.entreprise');
 
 //****************************************************End Pour le Togo***********************************************//
 

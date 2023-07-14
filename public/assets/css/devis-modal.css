@@ -1,0 +1,178 @@
+.devis-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    padding-bottom: 2em;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.devis-modal-content {
+    position: sticky;
+    background-color: #fff;
+    margin: auto;
+    width: 60%;
+
+    border-radius: 1em;
+    padding: 2.5em;
+    box-shadow: 0 5px 10px rgb(100 100 100 / 12%);
+
+
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    transition-duration: 20000s;
+
+
+}
+
+.devis-modal-content h4 {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 1em;
+}
+
+.titre {
+    position: relative;
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.titre::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background-color: var(--color-primary);
+    border-radius: 1.5em;
+}
+
+.contact .input-box,
+.contact .select-box {
+    height: 2.5em;
+    width: 100%;
+    margin: 12px 0;
+}
+
+.contact .input-box input,
+.contact .select-box select,
+.contact .input-box textarea {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: #F0F1F8;
+    border-radius: .5em;
+    padding: 0 1em;
+    resize: none;
+    font-family: Poppins;
+}
+
+.contact .input-box {
+    white-space: nowrap;
+}
+
+.contact .input-box .prenom,
+.contact .input-box .nom {
+    display: inline-block;
+    height: 100%;
+    width: 50%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: #F0F1F8;
+    border-radius: .5em;
+    padding: 0 1em;
+    resize: none;
+    font-family: Poppins;
+}
+
+.contact .message-box {
+    min-height: 6em;
+}
+
+.contact .input-box textarea {
+    padding-top: 4px;
+}
+
+.contact .button {
+    display: inline-block;
+    margin-top: 12px;
+}
+
+.contact .button input {
+    color: #fff;
+    font-size: 1em;
+    outline: none;
+    border: none;
+    padding: .5em 1em;
+    border-radius: .5em;
+    background: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact .button input:hover {
+    background: var(--color-secondary);
+}
+
+/* Show modal Animation */
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .modal-content {
+        width: 75%;
+    }
+}
+
+@media (max-width: 590px) {
+    .modal-content {
+        width: 90%;
+    }
+}

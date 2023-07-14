@@ -30,7 +30,7 @@ class EntrepriseController extends Controller
 
         $sousCategories = DB::table('sous_categories')->where('sous_categories.id', $sousCategorie_id)
             ->join('entreprises', 'sous_categories.id', '=', 'souscategorie_id')
-            ->select('sous_categories.libelle')
+            ->select('sous_categories.libelle', 'sous_categories.id as identifiant')
             ->limit(1)
             ->get();
 
@@ -83,7 +83,7 @@ class EntrepriseController extends Controller
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->where('sous_categories.id', $sousCategorie_id)
             ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('sous_categories.libelle')
+            ->select('sous_categories.libelle', 'sous_categories.id as identifiant')
             ->limit(1)
             ->get();
 
