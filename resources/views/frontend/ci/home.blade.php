@@ -230,7 +230,7 @@
             </div>
 
             <div class="category-link">
-                <a href="{{ route('categorie') }}">
+                <a href="{{ route('categorie.ci',['pays_id'=>6]) }}">
                     <i class="fa-regular fa-plus"></i>
                     Voir tous les secteurs d'activité
                 </a>

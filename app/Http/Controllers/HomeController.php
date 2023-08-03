@@ -1922,7 +1922,6 @@ public function index_ci($pays_id)
         ->select('*')
         ->where('entreprises.honneur', '=', '1')
         ->orderBy('entreprises.id', 'desc')
-        ->take(3)
         ->get();
 
     $nombresEntreprise = DB::table('entreprises')->count();
