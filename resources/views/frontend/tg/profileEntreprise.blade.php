@@ -64,9 +64,9 @@
                   @endphp
                   @for ($i = 1; $i<= 5; $i++)
                     @if ($i <=$moyene)
-                      <i class="fa-solid fa-star"></i>
+                      <i class="fas fa-star" style="color: #ffd500;"></i>
                     @else
-                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
                     @endif
                   @endfor
                   <a href="#" class="count-review" > @php
@@ -284,9 +284,9 @@
                         <p>
                           {{$service->libelle}}
                         </p>
-                        @if ($service->photo4)
+                        @if ($service->video)
                           <br />
-                          <video src="{{ asset('assets/videos') }}/{{ $service->photo4 }}" autoplay muted controls width="100%" style="border-radius: 1em"></video>
+                          <video src="{{ asset('assets/videos') }}/{{ $service->video }}" autoplay muted controls width="100%" style="border-radius: 1em"></video>
                         @endif
 
                       </div>

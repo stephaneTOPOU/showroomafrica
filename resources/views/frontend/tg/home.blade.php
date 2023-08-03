@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/video-player.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets/css/autocompletion.css') }}" />
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}" />
+
 @include('frontend.tg.header.header4')
 @include('frontend.tg.header.header5')
 @include('frontend.tg.header.header6')
@@ -170,55 +174,55 @@
 
             <div class="categories-block">
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>1]) }}">
                         <i class="fa-duotone fa-bullhorn"></i>
                         <p>Communication & Publicité</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>2]) }}">
                         <i class="fa-duotone fa-person-digging"></i>
                         <p>Bâtiments & Constructions</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>3]) }}">
                         <i class="fa-duotone fa-user-tie"></i>
                         <p>Administrations</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>4]) }}">
                         <i class="fa-duotone fa-car"></i>
                         <p>Automobiles</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>5]) }}">
                         <i class="fa-duotone fa-tower-broadcast"></i>
                         <p>Télécoms & Téléphonie</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>6]) }}">
                         <i class="fa-duotone fa-scale-balanced"></i>
                         <p>Comptabilité & Conseils juridiques</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>7]) }}">
                         <i class="fa-duotone fa-buildings"></i>
                         <p>Immobilier</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>8]) }}">
                         <i class="fa-duotone fa-island-tropical"></i>
                         <p>Tourisme & Loisirs</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>9]) }}">
                         <i class="fa-duotone fa-shop"></i>
                         <p>Commerce</p>
                     </a>
@@ -226,7 +230,7 @@
             </div>
 
             <div class="category-link">
-                <a href="{{ route('categorie') }}">
+                <a href="{{ route('categorie.tg',['pays_id'=>14]) }}">
                     <i class="fa-regular fa-plus"></i>
                     Voir tous les secteurs d'activité
                 </a>
@@ -361,6 +365,7 @@
         @endforeach
     </div>
     <!-- END REPORTAGE -->
+{{-- 
     <!-- HIGHLIGHTED COMPANIES -->
     <div class="section-one">
         <h1>Entreprises du mois</h1>
@@ -383,6 +388,24 @@
         </div>
     </div>
     <!-- END HIGHLIGHTED COMPANIES -->
+     --}}
+
+    <!-- NEWCOMERS -->
+    <div class="section-one">
+        <h1>Entreprises du mois</h1>
+        <div class="highlights">
+            <div class="autoplay">
+                @foreach ($honeures as $honeure)
+                    <a href="{{ route('entreprise.tg.profil',['pays_id'=>$honeure->pays_id,'entreprise_id'=>$honeure->id]) }}">
+                        <div class="img-div"><img src="{{ asset('assets/images/highlights') }}/{{ $honeure->photo4 }}"></div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+        
+    </div>
+    <!-- END NEWCOMERS -->
+
     <!-- ADVERTORIAL -->
     <div class="section-one">
         <h1>Publireportage</h1>
@@ -561,9 +584,14 @@
 <script src="{{ asset('assets/js/script.js') }}"></script>
 @include('frontend.tg.footer.footer1')
 <script src="{{ asset('assets/js/video-modal.js') }}"></script>
-@include('frontend.tg.footer.footer2')0
+@include('frontend.tg.footer.footer2')
 <script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/autocompletion.js') }}"></script>
+
+<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-migrate-3.3.2.js"></script> --}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="{{ asset('assets/js/home.js') }}"></script>
 
 <script type="text/javascript">
     var counter = 1;

@@ -43,7 +43,7 @@
 </div>
 
 @include('frontend.ci.footer.footer')
-  <script src="{{ asset('assets/js/script.js') }}"></script>
-  @include('frontend.ci.footer.footer1')
-  @include('frontend.ci.footer.footer2')
-  @include('frontend.ci.footer.footer3')
+<script src="{{ asset('assets/js/script.js') }}"></script>
+@include('frontend.ci.footer.footer1')
+@include('frontend.ci.footer.footer2')
+@include('frontend.ci.footer.footer3')

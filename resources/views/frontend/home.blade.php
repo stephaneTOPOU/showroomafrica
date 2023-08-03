@@ -168,55 +168,55 @@
 
             <div class="categories-block">
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat',['categorie_id'=>1]) }}">
                         <i class="fa-duotone fa-bullhorn"></i>
                         <p>Communication & Publicité</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat',['categorie_id'=>2]) }}">
                         <i class="fa-duotone fa-person-digging"></i>
                         <p>Bâtiments & Constructions</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat',['categorie_id'=>3]) }}">
                         <i class="fa-duotone fa-user-tie"></i>
                         <p>Administrations</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat',['categorie_id'=>4]) }}">
                         <i class="fa-duotone fa-car"></i>
                         <p>Automobiles</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat',['categorie_id'=>5]) }}">
                         <i class="fa-duotone fa-tower-broadcast"></i>
                         <p>Télécoms & Téléphonie</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat',['categorie_id'=>6]) }}">
                         <i class="fa-duotone fa-scale-balanced"></i>
                         <p>Comptabilité & Conseils juridiques</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat',['categorie_id'=>7]) }}">
                         <i class="fa-duotone fa-buildings"></i>
                         <p>Immobilier</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat',['categorie_id'=>8]) }}">
                         <i class="fa-duotone fa-island-tropical"></i>
                         <p>Tourisme & Loisirs</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="#">
+                    <a href="{{ route('subcat',['categorie_id'=>9]) }}">
                         <i class="fa-duotone fa-shop"></i>
                         <p>Commerce</p>
                     </a>
@@ -350,13 +350,13 @@
     <!-- REPORTAGE -->
     <div class="section-one blue-bkg">
         <h1>Reportage</h1>
-        @foreach ($reportages as $reportage)
-            <iframe class="youtube-video" src="{{ $reportage->video }}"
-                title="Découvrons {{ $reportage->libelle }}" frameborder="0"
+        {{-- @foreach ($reportages as $reportage) --}}
+            <iframe class="youtube-video" src="{{ $reportages->video }}"
+                title="Découvrons {{ $reportages->libelle }}" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
             </iframe>
-        @endforeach
+        {{-- @endforeach --}}
     </div>
     <!-- END REPORTAGE -->
     <!-- HIGHLIGHTED COMPANIES -->

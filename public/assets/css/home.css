@@ -1,0 +1,44 @@
+
+.autoplay {
+  width: 100%;
+  margin: 0 auto;
+}
+
+a{
+    margin: 0 15px;
+}
+
+.img-div {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 1em;
+}
+
+.img-div img {
+  background: center no-repeat;
+  background-size: cover;
+  width: 100%;
+  border-radius: 1em;
+  
+}
+
+
+
+@media (max-width: 900px) {
+  #annonce {margin-top: 4em;}
+  .section-text {width: 100% !important;}
+  .section-annonce {width: 100% !important;}
+}
+
+@media (max-width: 800px) {
+  #annonce {margin-top: 4em;}
+  .section-text {width: 100% !important;}
+  .section-annonce {width: 100% !important;}
+}
+
+@media (max-width: 640px) {
+  #annonce {margin-top: 4em;}
+  .section-text {width: 100% !important;}
+  .section-annonce {width: 100% !important;}
+}

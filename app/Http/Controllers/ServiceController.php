@@ -32,5 +32,22 @@ class ServiceController extends Controller
 //**********************************************************End site web Togo************************************* */
 
 
+
+
+//**********************************************************site web  côte d'ivoire************************************* */
+public function siteweb_ci($pays_id)
+{
+    $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+        ->where('parametres.id', 2)
+        ->select('*')
+        ->get();
+    
+    return view('frontend.ci.siteweb', compact('parametres'));
+}
+
+//**********************************************************End site web côte d'ivoire************************************* */
+
+
 //**********************************************************End site web ************************************* */
 }

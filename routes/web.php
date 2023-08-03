@@ -146,6 +146,8 @@ Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'save']
 
 Route::get('/categories', [\App\Http\Controllers\CategoriesController::class, 'categories'])->name('categorie');
 
+Route::get('/sous-categories/{categorie_id}', [\App\Http\Controllers\SousCategoriesController::class, 'Souscategories'])->name('subcat');
+
 Route::get('/entreprise/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise'])->name('entreprise');
 
 Route::post('/entreprise-commentaire/{entreprise_id}', [\App\Http\Controllers\CommentaireController::class, 'commentaire'])->name('entreprise.commentaire');
@@ -190,6 +192,8 @@ Route::get('/tg/professionnel/{pays_id}', [\App\Http\Controllers\ProfessionnelCo
 Route::get('/tg/contact/{pays_id}', [\App\Http\Controllers\ContactController::class, 'contact_tg'])->name('contact.tg');
 
 Route::get('/tg/categories/{pays_id}', [\App\Http\Controllers\CategoriesController::class, 'categories_tg'])->name('categorie.tg');
+
+Route::get('/tg/sous-categories/{pays_id}/{categorie_id}', [\App\Http\Controllers\SousCategoriesController::class, 'Souscategories_tg'])->name('subcat.tg');
 
 Route::get('/tg/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_tg'])->name('entreprise.tg');
 
@@ -266,6 +270,42 @@ Route::get('/cg/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_
 
 //****************************************************Pour Cote divoire***********************************************//
 Route::get('/ci/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_ci'])->name('home.ci');
+
+Route::get('/ci/autocomplete/{pays_id}', [App\Http\Controllers\HomeController::class, 'autocompletion_ci'])->name('autocomplete.ci');
+
+Route::get('/ci/rechercher-entreprise/{pays_id}', [App\Http\Controllers\HomeController::class, 'recherche_ci'])->name('recherche.ci');
+
+Route::get('/ci/enregistrer-entreprise/{pays_id}', [\App\Http\Controllers\AuthController::class, 'entreprise_ci'])->name('entreprise.register.ci');
+
+Route::get('/ci/professionnel/{pays_id}', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel_ci'])->name('professionnel.ci');
+
+Route::get('/ci/contact/{pays_id}', [\App\Http\Controllers\ContactController::class, 'contact_ci'])->name('contact.ci');
+
+Route::get('/ci/categories/{pays_id}', [\App\Http\Controllers\CategoriesController::class, 'categories_ci'])->name('categorie.ci');
+
+Route::get('/ci/sous-categories/{pays_id}/{categorie_id}', [\App\Http\Controllers\SousCategoriesController::class, 'Souscategories_ci'])->name('subcat.ci');
+
+Route::get('/ci/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_ci'])->name('entreprise.ci');
+
+Route::get('/ci/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_ci'])->name('entreprise.ci.profil');
+
+Route::get('/ci/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_ci'])->name('pharmacie.ci');
+
+Route::get('/ci/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 'login_ci'])->name('login.ci');
+
+Route::get('/ci/logout/{pays_id}', [\App\Http\Controllers\AuthController::class, 'logout_ci'])->name('logout.ci');
+
+Route::post('/ci/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_ci'])->name('user.ci.add');
+
+Route::post('/ci/authentification/{pays_id}', [\App\Http\Controllers\AuthController::class, 'authentification_ci'])->name('authenticate.ci');
+
+Route::post('/ci/ajouter-entreprise/{pays_id}', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.ci.add');
+
+Route::get('/ci/siteweb/{pays_id}', [\App\Http\Controllers\ServiceController::class, 'siteweb_ci'])->name('service.ci.siteweb');
+
+Route::post('/ci/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.ci.recherche');
+
+Route::post('/ci/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.ci.entreprise');
 
 //****************************************************Pour Cote divoire***********************************************//
 

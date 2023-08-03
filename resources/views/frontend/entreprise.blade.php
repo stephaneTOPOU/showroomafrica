@@ -219,6 +219,8 @@
                                             (+228) 
                                         @elseif ($entreprise->pays == 6)
                                             (+225)
+                                        @elseif ($entreprise->pays == 11)
+                                            (+227)
                                         @endif<b>{{ $entreprise->telephone1 }} </b>
                                             @if ($entreprise->telephone2)
                                                 <b>
@@ -265,6 +267,8 @@
                                             (+228) 
                                         @elseif ($entreprisePopulair->pays == 6)
                                             (+225)
+                                        @elseif ($entreprisePopulair->pays == 11)
+                                            (+227)
                                         @endif
                                         <b>{{ $entreprisePopulair->telephone1 }}</b></li>
                         </ul>

@@ -1,6 +1,7 @@
 @include('frontend.ci.header.header')
 @include('frontend.ci.header.header1')
 @include('frontend.ci.header.header2')
+<link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />
 @include('frontend.ci.header.header3')
 
 <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
@@ -30,23 +31,49 @@
         </div>
         @foreach ($slider as $sliders)
             <div class="slide">
-                <img src="{{ asset('assets/images/sliders/main') }}/{{ $sliders->image }}" alt="">
+                <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}" alt="">
             </div>
         @endforeach
     </div>
     <!-- END ADS BIG SLIDER -->
 
+    <!-- ADS BIG SLIDER 2 -->
+    <div class="img-slider" hidden>
+        <div class="slide-two active-two">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+        </div>
+        @foreach ($slider as $slider2)
+            <div class="slide-two">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="">
+            </div>
+        @endforeach
+    </div>
+    <!-- END ADS BIG SLIDER 2 -->
+
+    <!-- ADS BIG SLIDER 3 -->
+    <div class="img-slider" hidden>
+        <div class="slide-three active-three">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+        </div>
+        @foreach ($slider as $slider3)
+        <div class="slide-three">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="">
+        </div>
+        @endforeach
+    </div>
+    <!-- END ADS BIG SLIDER 3 -->
+
     <div class="companies-container">
 
         <div class="search-bar" style="margin-bottom:2em;">
-            <form action="{{ route('recherche') }}" autocomplete="off" class="search-form" method="GET">
+            <form action="{{ route('recherche.ci',['pays_id'=>6]) }}" autocomplete="off" class="search-form" method="GET">
                 <div class="search-field autocomplete">
                     <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel" required="" name="nom">
                     <i id="searchicon" class="fa-light fa-buildings"></i>
                 </div>
 
                 <script type="text/javascript">
-                    var path = "{{ route('autocomplete') }}";
+                    var path = "{{ route('autocomplete.ci',['pays_id'=>6]) }}";
                     $( "#searchfield" ).autocomplete({
                         source: function( request, response ) {
                             $.ajax({
@@ -92,6 +119,73 @@
                 </button>
             </form>
         </div>
+        
+        <div class="search-bar" style="margin-bottom:2em;">
+            <form class="search-form">
+                <style>
+                    #devisbtn{
+                        /* background-color: #073465 !important; */
+                        width: auto;
+                    }
+                </style>
+
+                <a class="search-button" id="devisbtn">
+                    Demande de devis
+                </a>
+            </form>
+        </div>
+
+        <!-- MODAL -->
+        <div id="devismodal" class="devis-modal">
+            <!-- Modal content -->
+            <div class="contact devis-modal-content">
+                <span class="close" id="closedevis"><i class="fa-regular fa-xmark"></i></span>
+                <span class="titre">Demande de devis</span>
+                <div><h4>Demande de devis sans engagement de votre part</h4></div>
+                @if(Session::has('succes'))
+                    <div class="alert alert-success" role="alert">{{Session::get('succes') }}</div>
+                @endif
+                <form action="{{ route('devis.ci.recherche',['pays_id'=>6]) }}" method="POST">
+                    @csrf
+                    <div class="select-box">
+                        <select name="souscategorie_id" id="souscategorie_id">
+                            <option class="placeholder" value="" disabled selected>Secteur d'activité</option>
+                            @foreach ($subcat as $souscategorie)
+                                <option value="{{ $souscategorie->id }}">{{ $souscategorie->libelle }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="select-box">
+                        <select name="type_demande" id="type_demande">
+                            <option class="placeholder" value="" disabled selected>Type de demande</option>
+                            <option value="Demande d'information">Demande d'information</option>
+                            <option value="Demande de produits">Demande de produits</option>
+                            <option value="Demande de services">Demande de services</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Ville" required name="ville" required>
+                    </div>
+                    <div class="input-box">
+                        <input class="nom" type="text" placeholder="Nom" required name="nom" required>
+                        <input class="prenom" type="text" placeholder="Prenoms" required name="prenom" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" placeholder="Votre e-mail" required name="email" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Téléphone" required name="telephone">
+                    </div>
+                    <div class="input-box message-box">
+                        <textarea placeholder="Votre devis" required name="demande" required></textarea>
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Envoyer" id="envoibtn">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- END MODAL -->
 
         <div class="companies-list">
             <div class="companies">
@@ -100,7 +194,7 @@
                     <div class="company-info">
                         <div class="left">
                             <div class="header">
-                                <h3 class="company-name"><a href="{{ route('entreprise.profil',['entreprise_id'=>$recherche->id]) }}">{{$recherche->nom}}</a></h3>
+                                <h3 class="company-name"><a href="{{ route('entreprise.ci.profil',['pays_id'=>$recherche->pays_id,'entreprise_id'=>$recherche->id]) }}">{{$recherche->nom}}</a></h3>
                                 <span class="company-category">{{ $recherche->sousCategorie }}</span>
                                 @if ($recherche->premium == 1)
                                     <div class="premium">
@@ -118,7 +212,7 @@
                                     @endif
                                     
                                     @if ($recherche->telephone1)
-                                        <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $recherche->telephone1 }}</b>
+                                        <li><i class="fa-light fa-phone"></i> (+225) <b>{{ $recherche->telephone1 }}</b>
                                             @if ($recherche->telephone2)
                                                 <b>
                                                     • {{ $recherche->telephone2 }}
@@ -158,13 +252,13 @@
             <div class="top-companies">
                 @foreach ($entreprisePopulaire as $entreprisePopulair)
                     <div class="top-company-info">
-                        <h4><a href="#">{{ $entreprisePopulair->nom }}</a></h4>
+                        <h4><a href="{{ route('entreprise.ci.profil',['pays_id'=>$entreprisePopulair->pays_id,'entreprise_id'=>$entreprisePopulair->id]) }}">{{ $entreprisePopulair->nom }}</a></h4>
                         <ul>
                             <li>
                                 <i class="fa-solid fa-location-dot"></i>
                                 {{ $entreprisePopulair->adresse }}
                             </li>
-                            <li><i class="fa-solid fa-phone"></i> (+228) <b>{{ $entreprisePopulair->telephone1 }}</b></li>
+                            <li><i class="fa-solid fa-phone"></i> (+225) <b>{{ $entreprisePopulair->telephone1 }}</b></li>
                         </ul>
                     </div>
                 @endforeach
@@ -183,7 +277,7 @@
                                 <i class="fa-solid fa-location-dot"></i>
                                 {{ $entreprisePopulair->adresse }}
                                 </li>
-                                <li><i class="fa-solid fa-phone"></i> (+228) <b>{{ $entreprisePopulair->telephone1 }}</b></li>
+                                <li><i class="fa-solid fa-phone"></i> (+225) <b>{{ $entreprisePopulair->telephone1 }}</b></li>
                             </ul>
                         </div>
                     @endforeach
@@ -197,6 +291,7 @@
 
 @include('frontend.ci.footer.footer')
 <script src="{{ asset('assets/js/script.js') }}"></script>
+<script src="{{ asset('assets/js/devis-modal.js') }}"></script>
 @include('frontend.ci.footer.footer1')
 @include('frontend.ci.footer.footer2')
 

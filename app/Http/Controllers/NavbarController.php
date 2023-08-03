@@ -25,5 +25,19 @@ class NavbarController extends Controller
         
         return view('frontend.tg.navbar', compact('parametres'));
     }
-    //******************************************End Navbar Togo*********************************************** */
+
+
+
+    //******************************************Navbar côte d'ivoire*********************************************** */
+    public function navBar_ci($pays_id)
+    {
+        $parametres = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+            ->where('parametres.id', 2)
+            ->select('*')
+            ->get();
+        
+        return view('frontend.ci.navbar', compact('parametres'));
+    }
+    //******************************************End Navbar côte d'ivoire*********************************************** */
 }

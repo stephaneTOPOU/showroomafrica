@@ -39,6 +39,19 @@ class AuthController extends Controller
 //***********************************************************End Login Togo**************************************************** */
 
 
+//***********************************************************Login côte d'ivoire**************************************************** */
+public function login_ci()
+{
+    if (Auth::check()) {
+        // The user is logged in...
+        return redirect()->route('home.ci',['pays_id'=>6]);
+    } else {
+        return view("frontend.ci.home");
+    }
+}
+//***********************************************************End Login côte d'ivoire**************************************************** */
+
+
 //***********************************************************End Login**************************************************** */c
 
 
@@ -56,6 +69,15 @@ class AuthController extends Controller
         return redirect()->route('home.tg',['pays_id'=>14]);
     }
 //***********************************************************End Logout Togo**************************************************** */
+
+
+//***********************************************************Logout côte d'ivoire**************************************************** */
+public function logout_ci()
+{
+    auth()->logout();
+    return redirect()->route('home.ci',['pays_id'=>6]);
+}
+//***********************************************************End Logout côte d'ivoire**************************************************** */
 
 //***********************************************************End Logout**************************************************** */
 
@@ -179,8 +201,38 @@ class AuthController extends Controller
 //***********************************************************End authentification Togo**************************************************** */
 
 
+//***********************************************************authentification côte d'ivoire**************************************************** */
+public function authentification_ci($pays_id, Request $request, User $user)
+{
+    $credentials = $request->only('email', 'password');
+    $login = $request->email;
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+
+    try {
+        if (User::where('email', $login)->count() > 0) {
+            if (Auth::attempt(['email' => $login, 'password' => $request->password])) {
+                return redirect()->route('home.ci',['pays_id'=>6]);
+                //return 'Connexion reussi avec success';
+            } else {
+                return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!1");
+            }
+        } else {
+            return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!2");
+        }
+    } catch (Exception $e) {
+        return redirect()->back()->with('connexion', $e->getMessage());
+    }
+}
+//***********************************************************End authentification côte d'ivoire**************************************************** */
+
+
 
 //***********************************************************End authentification**************************************************** */
+
+
 
 
 //***********************************************************Entreprise**************************************************** */
@@ -225,6 +277,35 @@ class AuthController extends Controller
         return view('frontend.tg.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
     }
 //***********************************************************End Entreprise Togo**************************************************** */
+
+
+
+
+//***********************************************************Entreprise côte d'ivoire**************************************************** */
+
+public function entreprise_ci($pays_id)
+{
+    $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+        ->where('parametres.id', 2)
+        ->select('*')
+        ->get();
+
+    $pays = Pays::all();
+    $villes = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('villes', 'pays.id', '=', 'villes.pays_id')
+        ->select('*')
+        ->get();
+
+    $souscategories = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('categories', 'pays.id', '=', 'categories.pays_id')
+        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        ->select('*')
+        ->get();
+
+    return view('frontend.ci.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+}
+//***********************************************************End Entreprise côte d'ivoire**************************************************** */
 
 
 //***********************************************************End Entreprise**************************************************** */
