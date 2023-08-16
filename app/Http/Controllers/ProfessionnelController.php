@@ -78,4 +78,34 @@ class ProfessionnelController extends Controller
     }
 
     //*********************************************End professionnel côte d'ivoire*************************************** */
+
+
+
+
+
+    //*********************************************professionnel Niger*************************************** */
+    public function professionnel_ne($pays_id)
+    {
+        $parametres = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+            ->where('parametres.id', 3)
+            ->select('*')
+            ->get();
+
+        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->select('*')
+            ->take(4)
+            ->get();
+
+        $professionels = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('users', 'pays.id', '=', 'users.pays_id')
+            ->select('*')
+            ->get();
+
+        return view('frontend.ne.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
+    }
+
+    //*********************************************End professionnel Niger*************************************** */
 }

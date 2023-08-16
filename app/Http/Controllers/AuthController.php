@@ -52,6 +52,22 @@ public function login_ci()
 //***********************************************************End Login côte d'ivoire**************************************************** */
 
 
+//***********************************************************Login Niger**************************************************** */
+public function login_ne()
+{
+    if (Auth::check()) {
+        // The user is logged in...
+        return redirect()->route('home.ne',['pays_id'=>11]);
+    } else {
+        return view("frontend.ne.home");
+    }
+}
+//***********************************************************End Login Niger**************************************************** */
+
+
+
+
+
 //***********************************************************End Login**************************************************** */c
 
 
@@ -78,6 +94,19 @@ public function logout_ci()
     return redirect()->route('home.ci',['pays_id'=>6]);
 }
 //***********************************************************End Logout côte d'ivoire**************************************************** */
+
+
+
+//***********************************************************Logout Niger**************************************************** */
+public function logout_ne()
+{
+    auth()->logout();
+    return redirect()->route('home.ne',['pays_id'=>11]);
+}
+//***********************************************************End Logout Niger**************************************************** */
+
+
+
 
 //***********************************************************End Logout**************************************************** */
 
@@ -230,6 +259,36 @@ public function authentification_ci($pays_id, Request $request, User $user)
 
 
 
+
+//***********************************************************authentification Niger**************************************************** */
+public function authentification_ne($pays_id, Request $request, User $user)
+{
+    $credentials = $request->only('email', 'password');
+    $login = $request->email;
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+
+    try {
+        if (User::where('email', $login)->count() > 0) {
+            if (Auth::attempt(['email' => $login, 'password' => $request->password])) {
+                return redirect()->route('home.ne',['pays_id'=>11]);
+                //return 'Connexion reussi avec success';
+            } else {
+                return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!1");
+            }
+        } else {
+            return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!2");
+        }
+    } catch (Exception $e) {
+        return redirect()->back()->with('connexion', $e->getMessage());
+    }
+}
+//***********************************************************End authentification Niger**************************************************** */
+
+
+
 //***********************************************************End authentification**************************************************** */
 
 
@@ -252,6 +311,11 @@ public function authentification_ci($pays_id, Request $request, User $user)
 
         return view('frontend.entreprise.enregistrer', compact('parametres', 'sousCategorieNavs', 'pays', 'villes', 'souscategories'));
     }
+
+//***********************************************************End Entreprise**************************************************** */
+
+
+
 //***********************************************************Entreprise Togo**************************************************** */
 
     public function entreprise_tg($pays_id)
@@ -306,6 +370,36 @@ public function entreprise_ci($pays_id)
     return view('frontend.ci.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
 }
 //***********************************************************End Entreprise côte d'ivoire**************************************************** */
+
+
+
+
+//***********************************************************Entreprise Niger**************************************************** */
+
+public function entreprise_ne($pays_id)
+{
+    $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+        ->where('parametres.id', 3)
+        ->select('*')
+        ->get();
+
+    $pays = Pays::all();
+    $villes = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('villes', 'pays.id', '=', 'villes.pays_id')
+        ->select('*')
+        ->get();
+
+    $souscategories = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('categories', 'pays.id', '=', 'categories.pays_id')
+        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        ->select('*')
+        ->get();
+
+    return view('frontend.ne.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+}
+//***********************************************************End Entreprise Niger**************************************************** */
+
 
 
 //***********************************************************End Entreprise**************************************************** */

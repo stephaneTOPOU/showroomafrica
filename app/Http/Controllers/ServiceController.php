@@ -49,5 +49,24 @@ public function siteweb_ci($pays_id)
 //**********************************************************End site web côte d'ivoire************************************* */
 
 
+
+
+
+
+//**********************************************************site web  Niger************************************* */
+public function siteweb_ne($pays_id)
+{
+    $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+        ->where('parametres.id', 3)
+        ->select('*')
+        ->get();
+    
+    return view('frontend.ne.siteweb', compact('parametres'));
+}
+
+//**********************************************************End site web Niger************************************* */
+
+
 //**********************************************************End site web ************************************* */
 }

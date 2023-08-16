@@ -27,7 +27,7 @@
                 <div class="professional-info">
                     <div class="left">
                         <div class="header">
-                            <h3 class="professional-name"><b><a href="{{ route('entreprise.profil',['entreprise_id'=>$pharmacie->id]) }}">{{ $pharmacie->nom }}</a></b></h3>
+                            <h3 class="professional-name"><b><a href="{{ route('entreprise.ne.profil',['pays_id'=>$pharmacie->pays_id,'entreprise_id'=>$pharmacie->id]) }}">{{ $pharmacie->nom }}</a></b></h3>
                             <ul>
                                 <li><i class="fa-light fa-location-dot"></i> {{ $pharmacie->adresse }}</li>
                                 <li><i class="fa-light fa-phone"></i> {{ $pharmacie->telephone1 }}</li>

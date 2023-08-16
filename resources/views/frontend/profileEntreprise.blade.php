@@ -122,6 +122,8 @@
                               (+225)
                           @elseif ($Profil_entreprise->code == 11)
                               (+227)
+                          @elseif ($Profil_entreprise->code == 2)
+                              (+226)
                           @endif<b>{{ $Profil_entreprise->telephone1 }} </b> 
                       @if ($Profil_entreprise->telephone2) 
                         <b>

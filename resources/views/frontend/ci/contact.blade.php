@@ -30,7 +30,7 @@
             <div class="address details">
               <i class="fa-light fa-location-dot"></i>
               <div class="topic">Adresse</div>
-              <div class="text-one">Derrière la pharmacie <b>Laus Deo</b></div>
+              <div class="text-one"> <b> </b></div>
               <div class="text-two">{{ $parametre->adresse }}</div>
             </div>
             <div class="phone details">
