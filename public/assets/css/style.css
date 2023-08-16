@@ -1454,14 +1454,14 @@ nav ul i {
 
 @media(min-width: 801px){
   .footer-col:nth-child(2) {
-    width: 25%;
+    width: 60%;
   }
   .footer-col:first-child,
   .footer-col:nth-child(4) {
     width: 20%;
   }
   .footer-col:nth-child(3) {
-    width: 35%;
+    width: 20%;
   }
 
   .footer-col .download-app {
@@ -1473,6 +1473,20 @@ nav ul i {
     padding: 4px;
     border-radius: 1em;
   }
+}
+
+.pays_flag{
+  width: 100%;
+}
+
+.pays_flag a{
+  text-decoration: none;
+}
+.pays_flag span{
+  font-size: 1.5em ;
+  border-radius: 4px ;
+  margin-bottom: 1em ;
+  margin-left: 3px;
 }
 
 @media(max-width: 800px){
