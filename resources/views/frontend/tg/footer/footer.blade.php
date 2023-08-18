@@ -43,7 +43,7 @@
                         </div>
                         <div class="download-app">
                             <a href="https://play.google.com/store/apps/details?id=com.showroomafrica.annuaire">
-                                <img src="{{ asset('assets/images/playstore-button.jpg') }}" alt="Playstore">
+                                <img src="{{ asset('assets/images/store/playstore-button.jpg') }}" alt="Playstore">
                             </a>
                             {{-- <a href="#">
                                 <img src="{{ asset('assets/images/appstore-button.jpg') }}" alt="Appstore">

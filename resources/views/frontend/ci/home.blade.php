@@ -38,7 +38,7 @@
     <div class="modal-content">
         <span class="close" id="closepop"><i class="fa-regular fa-xmark"></i></span>
         <div class="popup-container">
-            <img src="{{ asset('assets/images') }}/{{ $popups->image }}" alt="PUB" id="image"> 
+            <img src="{{ asset('assets/images/popup') }}/{{ $popups->image }}" alt="PUB" id="image"> 
         </div>
     </div>
 </div>
@@ -49,7 +49,7 @@
 <div class="container">
     <style>
         .sb-container {
-            background-image: url('{{ asset('assets/images') }}/{{ $banner->image }}');
+            background-image: url('{{ asset('assets/images/banner') }}/{{ $banner->image }}');
         }
     </style>
 
