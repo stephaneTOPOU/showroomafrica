@@ -66,6 +66,20 @@ public function login_ne()
 
 
 
+//***********************************************************Login Burkina faso**************************************************** */
+public function login_bf()
+{
+    if (Auth::check()) {
+        // The user is logged in...
+        return redirect()->route('home.ne',['pays_id'=>2]);
+    } else {
+        return view("frontend.bf.home");
+    }
+}
+//***********************************************************End Login Burkina faso**************************************************** */
+
+
+
 
 
 //***********************************************************End Login**************************************************** */c
@@ -105,6 +119,15 @@ public function logout_ne()
 }
 //***********************************************************End Logout Niger**************************************************** */
 
+
+
+//***********************************************************Logout Burkina faso**************************************************** */
+public function logout_bf()
+{
+    auth()->logout();
+    return redirect()->route('home.bf',['pays_id'=>2]);
+}
+//***********************************************************End Logout Burkina faso**************************************************** */
 
 
 
@@ -289,6 +312,34 @@ public function authentification_ne($pays_id, Request $request, User $user)
 
 
 
+//***********************************************************authentification Burkina faso**************************************************** */
+public function authentification_bf($pays_id, Request $request, User $user)
+{
+    $credentials = $request->only('email', 'password');
+    $login = $request->email;
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+
+    try {
+        if (User::where('email', $login)->count() > 0) {
+            if (Auth::attempt(['email' => $login, 'password' => $request->password])) {
+                return redirect()->route('home.bf',['pays_id'=>2]);
+                //return 'Connexion reussi avec success';
+            } else {
+                return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!1");
+            }
+        } else {
+            return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!2");
+        }
+    } catch (Exception $e) {
+        return redirect()->back()->with('connexion', $e->getMessage());
+    }
+}
+//***********************************************************End authentification Burkina faso**************************************************** */
+
+
 //***********************************************************End authentification**************************************************** */
 
 
@@ -399,6 +450,35 @@ public function entreprise_ne($pays_id)
     return view('frontend.ne.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
 }
 //***********************************************************End Entreprise Niger**************************************************** */
+
+
+
+
+//***********************************************************Entreprise Burkina faso**************************************************** */
+
+public function entreprise_bf($pays_id)
+{
+    $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+        ->where('parametres.id', 4)
+        ->select('*')
+        ->get();
+
+    $pays = Pays::all();
+    $villes = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('villes', 'pays.id', '=', 'villes.pays_id')
+        ->select('*')
+        ->get();
+
+    $souscategories = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('categories', 'pays.id', '=', 'categories.pays_id')
+        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        ->select('*')
+        ->get();
+
+    return view('frontend.bf.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+}
+//***********************************************************End Entreprise Burkina faso**************************************************** */
 
 
 

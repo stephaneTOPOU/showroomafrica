@@ -124,4 +124,37 @@ public function categories_ne($pays_id)
 }
 
 //***********************************************End Categorie Niger********************************************** */
+
+
+
+
+/***********************************************Categorie Burkina faso********************************************** */
+public function categories_bf($pays_id)
+{
+    $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+        ->where('parametres.id', 4)
+        ->select('*')
+        ->get();
+
+    $categories = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('categories', 'pays.id', '=', 'categories.pays_id')
+        ->select('*','categories.libelle as cat', 'categories.id as idCat')
+        ->get();                        
+
+    $souscategories = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('categories', 'pays.id', '=', 'categories.pays_id')
+        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        ->select('*', 'sous_categories.libelle as subcat', 'sous_categories.categorie_id as id2', 'sous_categories.id as idSousCat', 'categories.id as id1')
+        ->get();
+
+    $slider = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
+        ->select('*')
+        ->get();
+
+    return view('frontend.bf.categories', compact('parametres', 'categories', 'souscategories', 'slider'));
+}
+
+//***********************************************End Categorie Burkina faso********************************************** */
 }

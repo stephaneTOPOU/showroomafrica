@@ -246,23 +246,23 @@
             </div>
 
         </div>
-
+        
+        <style>
+            .top-research{
+                top: 6em;
+                position: sticky;
+                height: fit-content;
+            }
+        </style>
         <div class="top-research">
-            <h3>Sociétés les plus recherchées</h3>
-            <div class="top-companies">
-                @foreach ($entreprisePopulaire as $entreprisePopulair)
-                    <div class="top-company-info">
-                        <h4><a href="{{ route('entreprise.tg.profil',['pays_id'=>$entreprisePopulair->pays_id,'entreprise_id'=>$entreprisePopulair->id]) }}">{{ $entreprisePopulair->nom }}</a></h4>
-                        <ul>
-                            <li>
-                                <i class="fa-solid fa-location-dot"></i>
-                                {{ $entreprisePopulair->adresse }}
-                            </li>
-                            <li><i class="fa-solid fa-phone"></i> (+228) <b>{{ $entreprisePopulair->telephone1 }}</b></li>
-                        </ul>
-                    </div>
-                @endforeach
+            <div>
+                <img src="{{ asset('assets/1.jpg') }}" alt="" style="display: block; width: 50%; margin: auto;" width="100">
             </div>
+            <br/>
+            <div>
+                <img src="{{ asset('assets/1.jpg') }}" alt="" style="display: block; width: 50%; margin: auto;" width="100">
+            </div>
+            
         </div>
 
         {{-- <div class="top-research">

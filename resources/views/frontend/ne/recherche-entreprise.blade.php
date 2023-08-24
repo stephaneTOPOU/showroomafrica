@@ -145,7 +145,7 @@
                 @if(Session::has('succes'))
                     <div class="alert alert-success" role="alert">{{Session::get('succes') }}</div>
                 @endif
-                <form action="{{ route('devis.ne.recherche',['pays_id'=>6]) }}" method="POST">
+                <form action="{{ route('devis.ne.recherche',['pays_id'=>11]) }}" method="POST">
                     @csrf
                     <div class="select-box">
                         <select name="souscategorie_id" id="souscategorie_id">

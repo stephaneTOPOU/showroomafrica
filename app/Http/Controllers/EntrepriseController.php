@@ -223,4 +223,62 @@ class EntrepriseController extends Controller
     }
 
     //**********************************************End Entreprise Niger********************************************************* */
+
+
+
+
+    //**********************************************Entreprise Burkina faso********************************************************* */
+    public function entreprise_bf($pays_id, $sousCategorie_id)
+    {
+        $entreprises = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+            ->where('sous_categories.id', $sousCategorie_id)
+            ->select('*')
+            ->orderBy('entreprises.id', 'desc')
+            ->paginate(100);
+
+        $parametres = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+            ->where('parametres.id', 4)
+            ->select('*')
+            ->get();
+        
+        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->select('*')
+            ->take(4)
+            ->get();
+
+        $sousCategories = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->where('sous_categories.id', $sousCategorie_id)
+            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+            ->select('sous_categories.libelle', 'sous_categories.id as identifiant')
+            ->limit(1)
+            ->get();
+
+        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+            ->select('*')
+            ->where('vue', '>=', 500)
+            ->inRandomOrder()
+            ->limit(4)
+            ->get();
+
+        $slider = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
+            ->select('*')
+            ->get();
+
+        return view('frontend.bf.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
+    'entreprisePopulaire', 'slider', 'parametres'));
+    }
+
+    //**********************************************End Entreprise Burkina faso********************************************************* */
 }

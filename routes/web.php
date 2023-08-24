@@ -291,7 +291,7 @@ Route::get('/bf/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 
 
 Route::get('/bf/logout/{pays_id}', [\App\Http\Controllers\AuthController::class, 'logout_bf'])->name('logout.bf');
 
-Route::post('/bf/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_bf'])->name('user.bf.add');
+Route::post('/bf/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_tg'])->name('user.bf.add');
 
 Route::post('/bf/authentification/{pays_id}', [\App\Http\Controllers\AuthController::class, 'authentification_bf'])->name('authenticate.bf');
 
@@ -367,7 +367,7 @@ Route::get('/ci/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 
 
 Route::get('/ci/logout/{pays_id}', [\App\Http\Controllers\AuthController::class, 'logout_ci'])->name('logout.ci');
 
-Route::post('/ci/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_ci'])->name('user.ci.add');
+Route::post('/ci/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_tg'])->name('user.ci.add');
 
 Route::post('/ci/authentification/{pays_id}', [\App\Http\Controllers\AuthController::class, 'authentification_ci'])->name('authenticate.ci');
 
@@ -468,7 +468,7 @@ Route::get('/ne/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 
 
 Route::get('/ne/logout/{pays_id}', [\App\Http\Controllers\AuthController::class, 'logout_ne'])->name('logout.ne');
 
-Route::post('/ne/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_ne'])->name('user.ne.add');
+Route::post('/ne/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_tg'])->name('user.ne.add');
 
 Route::post('/ne/authentification/{pays_id}', [\App\Http\Controllers\AuthController::class, 'authentification_ne'])->name('authenticate.ne');
 

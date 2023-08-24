@@ -38,8 +38,8 @@
                             <a href="{{ $parametre->lienface }}"><i class="fa-brands fa-facebook-f"></i></a>
                             <a href="{{ $parametre->lientwitter }}"><i class="fa-brands fa-twitter"></i></a>
                             <a href="{{ $parametre->lieninsta }}"><i class="fa-brands fa-instagram"></i></a>
-                            {{-- <a href="{{ $parametre->lienyoutube }}"><i class="fa-brands fa-linkedin-in"></i></a> --}}
-                            <a href="{{ $parametre->lienyoutube }}"><i class="fa-brands fa-youtube"></i></a>
+                            {{-- <a href="{{ $parametre->lienyoutube }}"><i class="fa-brands fa-youtube"></i></a> --}}
+                            <a href="{{ $parametre->lienyoutube }}"><i class="fa-brands fa-linkedin-in"></i></a>
                         </div>
                         <div class="download-app">
                             <a href="https://play.google.com/store/apps/details?id=com.showroomafrica.annuaire">

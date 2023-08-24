@@ -281,26 +281,6 @@
             </div>
         </div>
 
-        {{-- <div class="top-research">
-            <h3>Sociétés les plus recherchées</h3>
-            <div class="top-companies wrapper">
-                <div class="outer">
-                    @foreach ($entreprisePopulaire as $entreprisePopulair)
-                        <div class="top-company-info card" style="--delay:2;">
-                            <h4><a href="#">{{ $entreprisePopulair->nom }}</a></h4>
-                            <ul>
-                                <li>
-                                <i class="fa-solid fa-location-dot"></i>
-                                {{ $entreprisePopulair->adresse }}
-                                </li>
-                                <li><i class="fa-solid fa-phone"></i> (+228) <b>{{ $entreprisePopulair->telephone1 }}</b></li>
-                            </ul>
-                        </div>
-                    @endforeach
-                </div>
-                </div>
-            </div> --}}
-
     </div>
 
 </div>

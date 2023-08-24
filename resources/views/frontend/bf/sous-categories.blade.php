@@ -18,17 +18,16 @@
 
     <!-- ADS BIG SLIDER -->
     <div class="img-slider first-slider">
-        <div class="slide active" data-bs-interval="1">
+        <div class="slide active">
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider as $sliders)
-            <div class="slide" data-bs-interval="1">
+            <div class="slide">
                 <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}" alt="">
             </div>
         @endforeach
     </div>
     <!-- END ADS BIG SLIDER -->
-
     <!-- ADS BIG SLIDER 2 -->
     <div class="img-slider" hidden>
         <div class="slide-two active-two">
@@ -56,24 +55,19 @@
     <!-- END ADS BIG SLIDER 3 -->
 
     <div class="categories-container">
-        <h1>Toutes les catégories</h1>
+        @foreach ($categories as $categorie)
+            <h1>{{ $categorie->nom }}</h1>
+        @endforeach
+        
         <div class="categories-list">
-            @foreach ($categories as $categorie)
+            @foreach ($souscategories as $souscategorie)
                 <div class="accordion-item">
-                    <header class="accordion-header">
-                        <i class='fa-regular fa-plus accordion-icon'></i>
-                        <h3 class="accordion-title">{{ $categorie->cat }}</h3>
-                    </header>
-
-                    <div class="accordion-content">
-                        <ul class="accordion-description">
-                            @foreach ($souscategories as $souscategorie)
-                                @if ($categorie->idCat == $souscategorie->id1)
-                                    <li><a href="{{ route('entreprise.bf',['pays_id'=>$categorie->pays_id,'souscategorie_id'=>$souscategorie->idSousCat])}}">{{ $souscategorie->subcat }}</a></li>
-                                @endif
-                            @endforeach
-                        </ul>
-                    </div>
+                    <a href="{{ route('entreprise.bf',['pays_id'=>11,'souscategorie_id'=>$souscategorie->identifiant])}}" style="text-decoration: none">
+                        <header class="accordion-header">
+                            <h3 class="accordion-title">{{ $souscategorie->nom }}</h3>
+                        </header>
+                    </a>
+                    
                 </div>
             @endforeach
         </div>
