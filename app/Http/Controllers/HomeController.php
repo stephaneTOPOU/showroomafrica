@@ -1629,8 +1629,8 @@ public function autocompletion_bj(Request $request, $pays_id)
         $slider2s = Slider2::all();
         $slider3s = Slider3::all();
 
-        $sliderLaterals = SliderLateral::all();
-        $sliderLateralBas = SliderLateralBas::all();
+        $sliderLaterals = SliderLateral::find(2);
+        $sliderLateralBas = SliderLateralBas::find(2);
 
         $rejoints = DB::table('entreprises')
             ->select('*')

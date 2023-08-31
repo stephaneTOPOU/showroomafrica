@@ -243,11 +243,11 @@
                     <div class="slider-slide first">
                         <img src="{{ asset('assets/images/sliders/side/1.jpg') }}">
                     </div>
-                    @foreach ($sliderLaterals as $sliderLateral)
+                    {{-- @foreach ($sliderLaterals as $sliderLateral) --}}
                         <div class="slider-slide">
-                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateral->image }}">
+                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLaterals->image }}">
                         </div>
-                    @endforeach
+                    {{-- @endforeach --}}
                     <div class="navigation-auto">
                         <div class="auto-btn1"></div>
                         <div class="auto-btn2"></div>
@@ -266,11 +266,11 @@
                     <div class="slider-slide second">
                         <img src="{{ asset('assets/images/sliders/side/3.jpg') }}">
                     </div>
-                    @foreach ($sliderLateralBas as $sliderLateralBa)
+                    {{-- @foreach ($sliderLateralBas as $sliderLateralBa) --}}
                         <div class="slider-slide">
-                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateralBa->image }}">
+                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateralBas->image }}">
                         </div>
-                    @endforeach
+                    {{-- @endforeach --}}
                     <div class="navigation-auto">
                         <div class="auto-btn1"></div>
                         <div class="auto-btn2"></div>
