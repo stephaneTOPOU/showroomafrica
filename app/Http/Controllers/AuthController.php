@@ -71,7 +71,7 @@ public function login_bf()
 {
     if (Auth::check()) {
         // The user is logged in...
-        return redirect()->route('home.ne',['pays_id'=>2]);
+        return redirect()->route('home.bf',['pays_id'=>2]);
     } else {
         return view("frontend.bf.home");
     }
@@ -80,9 +80,42 @@ public function login_bf()
 
 
 
+//***********************************************************Login Bénin**************************************************** */
+public function login_bj()
+{
+    if (Auth::check()) {
+        // The user is logged in...
+        return redirect()->route('home.bj',['pays_id'=>1]);
+    } else {
+        return view("frontend.bj.home");
+    }
+}
+//***********************************************************End Login Bénin**************************************************** */
+
+
+
 
 
 //***********************************************************End Login**************************************************** */c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //***********************************************************Logout**************************************************** */
@@ -131,7 +164,37 @@ public function logout_bf()
 
 
 
+//***********************************************************Logout Bénin**************************************************** */
+public function logout_bj()
+{
+    auth()->logout();
+    return redirect()->route('home.bj',['pays_id'=>1]);
+}
+//***********************************************************End Logout Bénin**************************************************** */
+
+
+
 //***********************************************************End Logout**************************************************** */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -197,6 +260,28 @@ public function logout_bf()
 
 
 //***********************************************************End addUser**************************************************** */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //***********************************************************authentification**************************************************** */
@@ -340,7 +425,50 @@ public function authentification_bf($pays_id, Request $request, User $user)
 //***********************************************************End authentification Burkina faso**************************************************** */
 
 
+
+
+//***********************************************************authentification Bénin**************************************************** */
+public function authentification_bj($pays_id, Request $request, User $user)
+{
+    $credentials = $request->only('email', 'password');
+    $login = $request->email;
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+
+    try {
+        if (User::where('email', $login)->count() > 0) {
+            if (Auth::attempt(['email' => $login, 'password' => $request->password])) {
+                return redirect()->route('home.bj',['pays_id'=>1]);
+                //return 'Connexion reussi avec success';
+            } else {
+                return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!1");
+            }
+        } else {
+            return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!2");
+        }
+    } catch (Exception $e) {
+        return redirect()->back()->with('connexion', $e->getMessage());
+    }
+}
+//***********************************************************End authentification Bénin**************************************************** */
+
 //***********************************************************End authentification**************************************************** */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -480,6 +608,35 @@ public function entreprise_bf($pays_id)
 }
 //***********************************************************End Entreprise Burkina faso**************************************************** */
 
+
+
+
+
+//***********************************************************Entreprise Bénin**************************************************** */
+
+public function entreprise_bj($pays_id)
+{
+    $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+        ->where('parametres.id', 5)
+        ->select('*')
+        ->get();
+
+    $pays = Pays::all();
+    $villes = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('villes', 'pays.id', '=', 'villes.pays_id')
+        ->select('*')
+        ->get();
+
+    $souscategories = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('categories', 'pays.id', '=', 'categories.pays_id')
+        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        ->select('*')
+        ->get();
+
+    return view('frontend.bj.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+}
+//***********************************************************End Entreprise Bénin**************************************************** */
 
 
 //***********************************************************End Entreprise**************************************************** */

@@ -45,7 +45,11 @@
           <div class="left">
             <div class="header">
               <h1 class="company-name">{{ $Profil_entreprise->nom }}</h1>
-              <span>{{ $Profil_entreprise->libelle }}</span>
+              @if ($Profil_entreprise->premium == 1)
+                <span class="category">{{ $Profil_entreprise->libelle }}</span>
+              @else
+                <span>{{ $Profil_entreprise->libelle }}</span>
+              @endif
               <div class="page-views">
                 <p><b>{{ $Profil_entreprise->vue }}</b> vues</p>
                 <div class="product-rating">
@@ -60,9 +64,9 @@
                   @endphp
                   @for ($i = 1; $i<= 5; $i++)
                     @if ($i <=$moyene)
-                      <i class="fa-solid fa-star"></i>
+                      <i class="fas fa-star" style="color: #ffd500;"></i>
                     @else
-                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
                     @endif
                   @endfor
                   <a href="#" class="count-review" > @php
@@ -112,7 +116,7 @@
                   @endif
                   
                   @if ($Profil_entreprise->telephone1)
-                    <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $Profil_entreprise->telephone1 }} </b> 
+                    <li><i class="fa-light fa-phone"></i> (+229) <b>{{ $Profil_entreprise->telephone1 }} </b> 
                       @if ($Profil_entreprise->telephone2) 
                         <b>
                           • {{ $Profil_entreprise->telephone2 }}
@@ -222,7 +226,7 @@
                               <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" />
                             </div>
                             <div class="product-details">
-                              <h4 class="name">Comptabilité</h4>
+                              <h4 class="name">{{ $serviceImage->description }}</h4>
                             </div>
                           </div>
                         @endforeach
@@ -280,6 +284,11 @@
                         <p>
                           {{$service->libelle}}
                         </p>
+                        @if ($service->video)
+                          <br />
+                          <video src="{{ asset('assets/videos') }}/{{ $service->video }}" autoplay muted controls width="100%" style="border-radius: 1em"></video>
+                        @endif
+
                       </div>
 
                       <div class="presentation-section">
@@ -357,17 +366,70 @@
               </div>
             @endforeach
 
+            @if ($Profil_entreprise->partenaire == 1)
+              @foreach ($premiums as $premium)
+                <div class="company-info">
+                  <div class="contact-form-header">Partenaires</div>
+                  <div class="swiper">
+                    <div class="slide-container">
+                      <div class="card-wrapper swiper-wrapper">
+                        @foreach ($partenaires as $partenaire)
+                          <div class="card swiper-slide">
+                            <div class="image-box">
+                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $partenaire->image }}" />
+                            </div>
+                            {{-- <div class="product-details">
+                              <h4 class="name">{{ $partenaire->description }}</h4>
+                            </div> --}}
+                          </div>
+                        @endforeach
+                      
+                      </div>
+                    </div>
+                    <div class="swiper-button-next swiper-navBtn"></div>
+                    <div class="swiper-button-prev swiper-navBtn"></div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+                </div>
+              @endforeach
+
+              @foreach ($basics as $basic)
+                <div class="company-info">
+                  <div class="contact-form-header">Partenaires</div>
+                  <div class="swiper">
+                    <div class="slide-container">
+                      <div class="card-wrapper swiper-wrapper">
+                        @foreach ($partenaires as $partenaire)
+                          <div class="card swiper-slide">
+                            <div class="image-box">
+                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $partenaire->image }}" />
+                            </div>
+                            {{-- <div class="product-details">
+                              <h4 class="name">{{ $partenaire->description }}</h4>
+                            </div> --}}
+                          </div>
+                        @endforeach
+                          
+                      </div>
+                    </div>
+                    <div class="swiper-button-next swiper-navBtn"></div>
+                    <div class="swiper-button-prev swiper-navBtn"></div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+                </div>
+              @endforeach
+            @endif
+
             @foreach ($basics as $basic)
               <div class="company-info">
                 <div class="contact-form-header">Horaires de service</div>
                 <div class="premium">
                   @if ($basic->pharmacie_de_garde == 1)
-                  <span><i class="fa-regular fa-check"></i> <b>Garde</b></span>
-                @else
-                  <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span>
-                @endif
-                {{-- <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span> --}}
-                <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
+                    <span><i class="fa-regular fa-check"></i> <b>Garde</b></span>
+                  @else
+                    <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span>
+                    <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
+                  @endif
                 </div>
                 <table class="company-table">
                   <tbody>

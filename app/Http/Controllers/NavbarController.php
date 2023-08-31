@@ -73,4 +73,21 @@ class NavbarController extends Controller
         return view('frontend.bf.navbar', compact('parametres'));
     }
     //******************************************End Navbar Burkina faso*********************************************** */
+
+
+
+
+
+    //******************************************Navbar Bénin*********************************************** */
+    public function navBar_bj($pays_id)
+    {
+        $parametres = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+            ->where('parametres.id', 5)
+            ->select('*')
+            ->get();
+        
+        return view('frontend.bj.navbar', compact('parametres'));
+    }
+    //******************************************End Navbar Bénin*********************************************** */
 }

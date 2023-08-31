@@ -85,5 +85,24 @@ public function siteweb_bf($pays_id)
 //**********************************************************End site web Burkina faso************************************* */
 
 
+
+
+
+
+//**********************************************************site web  Bénin************************************* */
+public function siteweb_bj($pays_id)
+{
+    $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+        ->where('parametres.id', 5)
+        ->select('*')
+        ->get();
+    
+    return view('frontend.bj.siteweb', compact('parametres'));
+}
+
+//**********************************************************End site web Bénin************************************* */
+
+
 //**********************************************************End site web ************************************* */
 }

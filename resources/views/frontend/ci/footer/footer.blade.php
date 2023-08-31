@@ -13,7 +13,7 @@
                             {{-- <a href="{{ route('home') }}" class="country_flag" style="margin-top: 50%;"><img src="{{ asset('assets/afrik.png') }}" alt="afrique"></a> --}}
                             <a href="{{ route('home.bj',['pays_id'=>1]) }}" class="country_flag"><span class="flag fi fi-bj"></span> </a>
                             <a href="{{ route('home.bf',['pays_id'=>2]) }}" class="country_flag"><span class="flag fi fi-bf"></span> </a>
-                            <a href="{{ route('home.bi',['pays_id'=>21]) }}" class="country_flag"><span class="flag fi fi-bi"></span> </a>
+                            {{-- <a href="{{ route('home.bi',['pays_id'=>21]) }}" class="country_flag"><span class="flag fi fi-bi"></span> </a> --}}
                             <a href="{{ route('home.cm',['pays_id'=>3]) }}" class="country_flag"><span class="flag fi fi-cm"></span> </a>
                             <a href="{{ route('home.cf',['pays_id'=>4]) }}" class="country_flag"><span class="flag fi fi-cf"></span> </a>
                             <a href="{{ route('home.cg',['pays_id'=>5]) }}" class="country_flag"><span class="flag fi fi-cg"></span> </a>

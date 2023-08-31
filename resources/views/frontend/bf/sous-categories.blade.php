@@ -62,7 +62,7 @@
         <div class="categories-list">
             @foreach ($souscategories as $souscategorie)
                 <div class="accordion-item">
-                    <a href="{{ route('entreprise.bf',['pays_id'=>11,'souscategorie_id'=>$souscategorie->identifiant])}}" style="text-decoration: none">
+                    <a href="{{ route('entreprise.bf',['pays_id'=>2,'souscategorie_id'=>$souscategorie->identifiant])}}" style="text-decoration: none">
                         <header class="accordion-header">
                             <h3 class="accordion-title">{{ $souscategorie->nom }}</h3>
                         </header>

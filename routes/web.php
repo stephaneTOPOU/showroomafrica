@@ -248,7 +248,7 @@ Route::get('/bj/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 
 
 Route::get('/bj/logout/{pays_id}', [\App\Http\Controllers\AuthController::class, 'logout_bj'])->name('logout.bj');
 
-Route::post('/bj/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_bj'])->name('user.bj.add');
+Route::post('/bj/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_tg'])->name('user.bj.add');
 
 Route::post('/bj/authentification/{pays_id}', [\App\Http\Controllers\AuthController::class, 'authentification_bj'])->name('authenticate.bj');
 

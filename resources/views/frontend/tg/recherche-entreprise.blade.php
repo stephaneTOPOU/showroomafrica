@@ -50,18 +50,6 @@
     </div>
     <!-- END ADS BIG SLIDER 2 -->
 
-    <!-- ADS BIG SLIDER 3 -->
-    <div class="img-slider" hidden>
-        <div class="slide-three active-three">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
-        </div>
-        @foreach ($slider as $slider3)
-        <div class="slide-three">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="">
-        </div>
-        @endforeach
-    </div>
-    <!-- END ADS BIG SLIDER 3 -->
 
     <div class="companies-container">
 
@@ -189,8 +177,23 @@
 
         <div class="companies-list">
             <div class="companies">
-
-                @foreach ($recherches as $recherche)
+                @foreach ($recherches as $key => $recherche)
+                    @if ($loop->iteration % 10 === 0)
+                        <div class="company-slider" style="display: flex; flex-flow: row wrap; margin: 0 15px;">
+                            <!-- ADS BIG SLIDER 3 -->
+                            <div class="img-slider">
+                                <div class="slide-three active-three">
+                                    <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+                                </div>
+                                @foreach ($slider as $slider3)
+                                <div class="slide-three">
+                                    <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="">
+                                </div>
+                                @endforeach
+                            </div>
+                            <!-- END ADS BIG SLIDER 3 -->
+                        </div>
+                    @else
                     <div class="company-info">
                         <div class="left">
                             <div class="header">
@@ -235,13 +238,15 @@
                                 </ul>
                             </div>
                         </div>
+
                         <div class="right">
                             @if ($recherche->logo)
                                 <img src="{{ asset('assets/images/companies/logos')}}/{{ $recherche->logo }}" alt="{{$recherche->nom}}">
                             @endif
                         </div>
-
                     </div>
+                    @endif
+                    
                 @endforeach
             </div>
 
@@ -288,6 +293,99 @@
     </div>
 
 </div>
+
+{{-- <script>
+    // Création de l'élément d'image
+    var imageElement = document.createElement('img');
+    imageElement.src = '{{ asset('assets/images/sliders/main/4.jpg') }}';
+    imageElement.alt = 'showroom africa';
+
+    // Sélection de l'élément où vous souhaitez insérer les images
+    var container = document.getElementById('imageContainer');
+
+    // Boucle pour insérer l'image plusieurs fois
+    for (var i = 0; i < 5; i++) {
+    container.appendChild(imageElement.cloneNode(true));
+    }
+
+</script> --}}
+
+{{-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var slider = @json($slider); // Convertir les données PHP en objet JavaScript
+
+        var imageContainer = document.getElementById('imageContainer');
+
+        slider.forEach(function(sliders) {
+            var img = document.createElement('img');
+            img.src = '{{ asset('assets/images/sliders/main/') }}';
+            img.alt = 'showroom africa';
+            imageContainer.appendChild(img);
+        });
+    });
+</script> --}}
+
+{{-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var slider = @json($slider); // Convertir les données PHP en objet JavaScript
+        var imageContainer = document.getElementById('imageContainer');
+        var currentIndex = 0;
+
+        function insertImage() {
+            var imageUrl = slider[currentIndex % slider.length];
+            
+            var img = document.createElement('img');
+            img.src = '{{ asset('assets/images/sliders/main/4.jpg') }}';
+            img.alt = 'showroom africa';
+            imageContainer.appendChild(img);
+            
+            currentIndex++;
+        }
+
+        // Insérer une nouvelle image toutes les 3 secondes
+        var intervalId = setInterval(insertImage, 3000);
+
+        // Arrêter l'insertion périodique après un certain nombre d'itérations
+        var maxIterations = 10;
+        var currentIteration = 0;
+
+        function checkIteration() {
+            if (currentIteration >= maxIterations) {
+                clearInterval(intervalId); // Arrêter l'insertion périodique
+            }
+            currentIteration++;
+        }
+
+        // Vérifier l'itération après chaque insertion
+        imageContainer.addEventListener('DOMNodeInserted', checkIteration);
+    });
+</script> --}}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var slider = @json($slider); // Convertir les données PHP en objet JavaScript
+        var imageContainer = document.getElementById('imageContainer');
+        var currentIndex = 0;
+
+        function insertNextImage() {
+            var imageUrl = slider[currentIndex % slider.length];
+            
+            var img = document.createElement('img');
+            img.src = '{{ asset('assets/images/sliders/main/4.jpg') }}';
+            img.alt = 'showroom africa';
+            imageContainer.appendChild(img);
+            
+            currentIndex++;
+        }
+
+        // Insérer une nouvelle image alternativement
+        insertNextImage();
+        insertNextImage(); // Insérer la première image
+        
+        // Répéter l'insertion alternée toutes les 2 secondes
+        var intervalId = setInterval(insertNextImage, 2000);
+    });
+</script>
 
 @include('frontend.tg.footer.footer')
 <script src="{{ asset('assets/js/script.js') }}"></script>

@@ -18,16 +18,42 @@
 
     <!-- ADS BIG SLIDER -->
     <div class="img-slider first-slider">
-        <div class="slide active">
+        <div class="slide active" data-bs-interval="1">
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider as $sliders)
-            <div class="slide">
-                <img src="{{ asset('assets/images/sliders/main') }}/{{ $sliders->image }}" alt="">
+            <div class="slide" data-bs-interval="1">
+                <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}" alt="">
             </div>
         @endforeach
     </div>
     <!-- END ADS BIG SLIDER -->
+
+    <!-- ADS BIG SLIDER 2 -->
+    <div class="img-slider" hidden>
+        <div class="slide-two active-two">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+        </div>
+        @foreach ($slider as $slider2)
+            <div class="slide-two">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="">
+            </div>
+        @endforeach
+    </div>
+    <!-- END ADS BIG SLIDER 2 -->
+
+    <!-- ADS BIG SLIDER 3 -->
+    <div class="img-slider" hidden>
+        <div class="slide-three active-three">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+        </div>
+        @foreach ($slider as $slider3)
+        <div class="slide-three">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="">
+        </div>
+        @endforeach
+    </div>
+    <!-- END ADS BIG SLIDER 3 -->
 
     <div class="categories-container">
         <h1>Toutes les catégories</h1>
@@ -42,7 +68,9 @@
                     <div class="accordion-content">
                         <ul class="accordion-description">
                             @foreach ($souscategories as $souscategorie)
-                                <li><a href="{{ route('entreprise',['souscategorie_id'=>$souscategorie->id])}}">{{ $souscategorie->subcat }}</a></li>
+                                @if ($categorie->idCat == $souscategorie->id1)
+                                    <li><a href="{{ route('entreprise.bj',['pays_id'=>$categorie->pays_id,'souscategorie_id'=>$souscategorie->idSousCat])}}">{{ $souscategorie->subcat }}</a></li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>

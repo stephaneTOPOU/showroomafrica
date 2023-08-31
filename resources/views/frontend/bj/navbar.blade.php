@@ -2,11 +2,10 @@
 <nav>
 
     @foreach ($parametres as $parametre)
-        <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
+        <a href="{{ route('home.bj',['pays_id'=>1]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
             <img src="{{ asset('assets/images') }}/{{ $parametre->logo_header }}" alt="logo">
         </a>
     @endforeach
-
     <div class="main-navlinks">
         <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
             <span></span>
@@ -16,10 +15,10 @@
         <div class="navlinks-container">
             <ul>
             <li>
-                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-bj"></span> Bénin </a>
+                <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-bj"></span>Benin</a>
             </li>
             <li>
-                <a href="{{ route('categorie') }}">Entreprises</a>
+                <a href="{{ route('categorie.bj',['pays_id'=>1]) }}">Entreprises</a>
             </li>
             {{-- <li class="dropdown">
                 <a href="#">Entreprise<i class="fa-regular fa-chevron-down"></i></a>
@@ -30,7 +29,7 @@
                 </div>
             </li> --}}
             <li>
-                <a href="{{ route('professionnel') }}">Professionnels</a>
+                <a href="{{ route('professionnel.bj',['pays_id'=>1]) }}">Professionnels</a>
             </li>
             <li class="dropdown">
                 <a href="#">Opportunités<i class="fa-regular fa-chevron-down"></i></a>
@@ -44,12 +43,12 @@
                 <div class="dropdown-content">
                 <a href="#">Comptabilité</a><br>
                 <a href="#">Audit</a><br>
-                <a href="{{ route('service.siteweb') }}">Sites web</a><br>
+                <a href="{{ route('service.bj.siteweb',['pays_id'=>1]) }}">Sites web</a><br>
                 <a href="#">Centres d'appel</a><br>
                 </div>
             </li>
             <li>
-                <a href="{{ route('contact') }}">Contact</a>
+                <a href="{{ route('contact.bj',['pays_id'=>1]) }}">Contact</a>
             </li>
             </ul>
             
@@ -59,9 +58,9 @@
                     <div class="dropdown-content">
                         <span class="name"><b>{{ Auth::user()->name }}</b> {{ Auth::user()->prenoms }}</span><br>
                         <a href="#"><i class="fa-solid fa-address-card"></i> Mon profil</a><br>
-                        <form method="Get" action="{{ route('logout') }}">
+                        <form method="Get" action="{{ route('logout.bj',['pays_id'=>1]) }}">
                             @csrf
-                            <a href="{{ route('logout') }}" type="submit"><i class="fa-regular fa-arrow-right-from-bracket"></i> Déconnexion</a><br>
+                            <a href="{{ route('logout.bj',['pays_id'=>1]) }}" type="submit"><i class="fa-regular fa-arrow-right-from-bracket"></i> Déconnexion</a><br>
                         </form>
                         
                     </div>
@@ -78,9 +77,8 @@
 </nav>
 @else
 <nav>
-
     @foreach ($parametres as $parametre)
-        <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
+        <a href="{{ route('home.bj',['pays_id'=>1]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
             <img src="{{ asset('assets/images') }}/{{ $parametre->logo_header }}" alt="logo">
         </a>
     @endforeach
@@ -97,18 +95,10 @@
                 <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-bj"></span> Bénin </a>
             </li>
             <li>
-                <a href="{{ route('categorie') }}">Entreprises</a>
+                <a href="{{ route('categorie.bj',['pays_id'=>1]) }}">Entreprises</a>
             </li>
-            {{-- <li class="dropdown">
-                <a href="#">Entreprise<i class="fa-regular fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                    @foreach ($sousCategorieNavs as $sousCategorieNav)
-                        <a href="{{ route('entreprise',['souscategorie_id'=>$sousCategorieNav->id]) }}">{{ $sousCategorieNav->libelle }}</a><br>
-                    @endforeach
-                </div>
-            </li> --}}
             <li>
-                <a href="{{ route('professionnel') }}">Professionnels</a>
+                <a href="{{ route('professionnel.bj',['pays_id'=>1]) }}">Professionnels</a>
             </li>
             <li class="dropdown">
                 <a href="#">Opportunités<i class="fa-regular fa-chevron-down"></i></a>
@@ -122,12 +112,12 @@
                 <div class="dropdown-content">
                 <a href="#">Comptabilité</a><br>
                 <a href="#">Audit</a><br>
-                <a href="{{ route('service.siteweb') }}">Sites web</a><br>
+                <a href="{{ route('service.bj.siteweb',['pays_id'=>1]) }}">Sites web</a><br>
                 <a href="#">Centres d'appel</a><br>
                 </div>
             </li>
             <li>
-                <a href="{{ route('contact') }}">Contact</a>
+                <a href="{{ route('contact.bj',['pays_id'=>1]) }}">Contact</a>
             </li>
             </ul>               
         </div>
@@ -160,7 +150,7 @@
                     @if(Session::has('connexion'))
                         <div class="alert alert-success" role="alert">{{Session::get('connexion') }}</div>
                     @endif
-                    <form action="{{ route('authenticate') }}" method="POST">
+                    <form action="{{ route('authenticate.bj',['pays_id'=>1]) }}" method="POST">
                         @csrf
                         <div class="input-field">
                             <input type="email" placeholder="Votre email ici" required name="email">
@@ -182,7 +172,7 @@
                             <b><a href="#" class="text signup-link">Inscrivez-vous</a></b>
                         </span>
                         <span class="text">ou
-                            <b><a href="{{ route('entreprise.register') }}" class="text signup-link">Enregistrez votre entreprise</a></b>
+                            <b><a href="{{ route('entreprise.register.bj',['pays_id'=>1]) }}" class="text signup-link">Enregistrez votre entreprise</a></b>
                         </span>
                     </div>
                 </div>
@@ -193,7 +183,7 @@
                     @if(Session::has('user'))
                         <div class="alert alert-success" role="alert">{{Session::get('user') }}</div>
                     @endif
-                    <form action="{{ route('user.add') }}" method="POST">
+                    <form action="{{ route('user.bj.add',['pays_id'=>1]) }}" method="POST">
                         @csrf
                         <div class="fields">
                             <div class="input-field field">
@@ -272,7 +262,7 @@
                     <a href="{{ route('home') }}" class="country_flag"><img src="{{ asset('assets/afrique.jpg') }}" alt="afrique"></a>
                     <a href="{{ route('home.bj',['pays_id'=>1]) }}" class="country_flag selected"><span class="flag fi fi-bj"></span> Bénin</a>
                     <a href="{{ route('home.bf',['pays_id'=>2]) }}" class="country_flag"><span class="flag fi fi-bf"></span> Burkina Faso</a>
-                    <a href="{{ route('home.bi',['pays_id'=>21]) }}" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a>
+                    {{-- <a href="{{ route('home.bi',['pays_id'=>21]) }}" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a> --}}
                     <a href="{{ route('home.cm',['pays_id'=>3]) }}" class="country_flag"><span class="flag fi fi-cm"></span> Cameroun</a>
                     <a href="{{ route('home.cf',['pays_id'=>4]) }}" class="country_flag"><span class="flag fi fi-cf"></span> Centrafrique</a>
                     <a href="{{ route('home.cg',['pays_id'=>5]) }}" class="country_flag"><span class="flag fi fi-cg"></span> Congo - Brazzaville</a>

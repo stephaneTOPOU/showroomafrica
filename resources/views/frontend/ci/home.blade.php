@@ -232,7 +232,7 @@
             <div class="category-link">
                 <a href="{{ route('categorie.ci',['pays_id'=>6]) }}">
                     <i class="fa-regular fa-plus"></i>
-                    Voir tous les secteurs d'activité
+                    Explorez les secteurs d'activité
                 </a>
             </div>
 
@@ -511,7 +511,7 @@
     }
     @endphp                                         
     <div class="section-one">
-        <h1>Le mois dernier</h1>
+        <h1>DÉCOUVREZ UNE SÉLECTION D'ENTREPRISES</h1>
         <div class="statistics">
         <div class="statistic-detail">
             <label class="statistic-title">Total vue</label>
@@ -533,7 +533,7 @@
         <div class="statistic-detail">
             <label class="statistic-title">Entreprises</label>
             <div>
-                <label class="statistic-score">@php echo pretty_number( $nombresEntreprise + 10000)@endphp</label>
+                <label class="statistic-score">@php echo pretty_number( $nombresEntreprise + 100000)@endphp</label>
                 <span><b>+ 5</b>%</span>
             </div>
         </div>

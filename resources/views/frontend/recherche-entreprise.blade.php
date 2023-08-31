@@ -220,6 +220,8 @@
                                                         (+225)
                                                     @elseif ($recherche->code == 2)
                                                         (+226)
+                                                    @elseif ($recherche->code == 1)
+                                                        (+229)
                                                     @endif<b>{{ $recherche->telephone1 }}</b>
                                             @if ($recherche->telephone2)
                                                 <b>
@@ -274,6 +276,8 @@
                                 (+225)
                             @elseif ($entreprisePopulair->code == 2)
                                 (+226)
+                            @elseif ($recherche->code == 1)
+                                (+229)
                             @endif<b>{{ $entreprisePopulair->telephone1 }}</b></li>
                         </ul>
                     </div>

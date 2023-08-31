@@ -137,4 +137,36 @@ class ProfessionnelController extends Controller
     }
 
     //*********************************************End professionnel Burkina faso*************************************** */
+
+
+
+
+
+
+
+    //*********************************************professionnel Bénin*************************************** */
+    public function professionnel_bj($pays_id)
+    {
+        $parametres = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+            ->where('parametres.id', 5)
+            ->select('*')
+            ->get();
+
+        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->select('*')
+            ->take(4)
+            ->get();
+
+        $professionels = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('users', 'pays.id', '=', 'users.pays_id')
+            ->select('*')
+            ->get();
+
+        return view('frontend.bj.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
+    }
+
+    //*********************************************End professionnel Bénin*************************************** */
 }

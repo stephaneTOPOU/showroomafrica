@@ -262,7 +262,7 @@
                     <a href="{{ route('home') }}" class="country_flag"><img src="{{ asset('assets/afrique.jpg') }}" alt="afrique"></a>
                     <a href="{{ route('home.bj',['pays_id'=>1]) }}" class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
                     <a href="{{ route('home.bf',['pays_id'=>2]) }}" class="country_flag"><span class="flag fi fi-bf"></span> Burkina Faso</a>
-                    <a href="{{ route('home.bi',['pays_id'=>21]) }}" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a>
+                    {{-- <a href="{{ route('home.bi',['pays_id'=>21]) }}" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a> --}}
                     <a href="{{ route('home.cm',['pays_id'=>3]) }}" class="country_flag"><span class="flag fi fi-cm"></span> Cameroun</a>
                     <a href="{{ route('home.cf',['pays_id'=>4]) }}" class="country_flag"><span class="flag fi fi-cf"></span> Centrafrique</a>
                     <a href="{{ route('home.cg',['pays_id'=>5]) }}" class="country_flag"><span class="flag fi fi-cg"></span> Congo - Brazzaville</a>

@@ -232,7 +232,7 @@
             <div class="category-link">
                 <a href="{{ route('categorie.ne',['pays_id'=>11]) }}">
                     <i class="fa-regular fa-plus"></i>
-                    Voir tous les secteurs d'activité
+                    Explorez les secteurs d'activité
                 </a>
             </div>
 
@@ -392,7 +392,7 @@
 
     <!-- NEWCOMERS -->
     <div class="section-one">
-        <h1>Entreprises du mois</h1>
+        <h1>DÉCOUVREZ UNE SÉLECTION D'ENTREPRISES</h1>
         <div class="highlights">
             <div class="autoplay">
                 @foreach ($honeures as $honeure)
@@ -533,7 +533,7 @@
         <div class="statistic-detail">
             <label class="statistic-title">Entreprises</label>
             <div>
-                <label class="statistic-score">@php echo pretty_number( $nombresEntreprise + 10000)@endphp</label>
+                <label class="statistic-score">@php echo pretty_number( $nombresEntreprise + 100000)@endphp</label>
                 <span><b>+ 5</b>%</span>
             </div>
         </div>
