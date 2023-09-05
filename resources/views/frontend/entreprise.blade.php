@@ -5,6 +5,7 @@
 @include('frontend.header.header3')
 
 <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
+<link rel="stylesheet" href="{{ asset('assets/css/search.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/css/categories.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/companies.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/autocompletion.css') }}" />
@@ -188,70 +189,79 @@
         <!-- END MODAL -->
 
         <div class="companies-list">
-          @foreach ($sousCategories as $sousCategorie)
-            <h2>{{ $sousCategorie->libelle }}</h2>
-          @endforeach
+            @foreach ($sousCategories as $sousCategorie)
+                <h2>{{ $sousCategorie->libelle }}</h2>
+            @endforeach
             <div class="companies">
+                @foreach ($entreprises as $key => $entreprise)
+                    @if ($loop->iteration % 10 === 0)
+                        <div class="company-slider" style="display: flex; flex-flow: row wrap; margin: 0 15px;">
+                            <div class="img-search">
+                                <div class="search active">
+                                    <img src="{{ asset('assets/images/sliders/main') }}/{{ $search->image }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="company-info">
+                            <div class="left">
+                                <div class="header">
+                                    <h3 class="company-name"><a href="{{ route('entreprise.profil',['entreprise_id'=>$entreprise->id]) }}">{{$entreprise->nom}}</a></h3>
+                                    <span class="company-category">{{ $entreprise->libelle }}</span>
+                                    @if ($entreprise->premium == 1)
+                                        <div class="premium">
+                                            <span><i class="fa-regular fa-gem"></i> PREMIUM</span>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="contacts">
+                                    <ul>
+                                        @if ($entreprise->adresse)
+                                            <li>
+                                                <i class="fa-light fa-location-dot"></i>
+                                                {{ $entreprise->adresse }}
+                                            </li>
+                                        @endif
+                                        
+                                        @if ($entreprise->telephone1)
+                                            <li><i class="fa-light fa-phone"></i>@if ($entreprise->pays == 14)
+                                                (+228) 
+                                            @elseif ($entreprise->pays == 6)
+                                                (+225)
+                                            @elseif ($entreprise->pays == 11)
+                                                (+227)
+                                            @elseif ($entreprise->pays == 2)
+                                                (+226)
+                                            @elseif ($entreprise->pays == 1)
+                                                (+229)
+                                            @endif<b>{{ $entreprise->telephone1 }} </b>
+                                                @if ($entreprise->telephone2)
+                                                    <b>
+                                                        • {{ $entreprise->telephone2 }}
+                                                    </b> 
+                                            @endif </li>
+                                        @endif
 
-                @foreach ($entreprises as $entreprise)
-                    <div class="company-info">
-                        <div class="left">
-                            <div class="header">
-                                <h3 class="company-name"><a href="{{ route('entreprise.profil',['entreprise_id'=>$entreprise->id]) }}">{{$entreprise->nom}}</a></h3>
-                                <span class="company-category">{{ $entreprise->libelle }}</span>
-                                @if ($entreprise->premium == 1)
-                                    <div class="premium">
-                                        <span><i class="fa-regular fa-gem"></i> PREMIUM</span>
-                                    </div>
+                                        @if ($entreprise->siteweb)
+                                            <li>
+                                                <i class="fa-light fa-globe"></i>
+                                                <a href="{{ $entreprise->siteweb }}" class="website-link">{{ $entreprise->siteweb }}</a>
+                                            </li>
+                                        @endif
+                                        
+                                        @if ($entreprise->itineraire)
+                                            <li><i class="fa-light fa-map-location-dot"></i><a href="{{ $entreprise->itineraire }}" class="website-link">Itineraire</a></li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="right">
+                                @if ($entreprise->logo)
+                                    <img src="{{ asset('assets/images/companies/logos') }}/{{ $entreprise->logo }}" alt="{{$entreprise->nom}}">
                                 @endif
                             </div>
-                            <div class="contacts">
-                                <ul>
-                                    @if ($entreprise->adresse)
-                                        <li>
-                                            <i class="fa-light fa-location-dot"></i>
-                                            {{ $entreprise->adresse }}
-                                        </li>
-                                    @endif
-                                    
-                                    @if ($entreprise->telephone1)
-                                        <li><i class="fa-light fa-phone"></i>@if ($entreprise->pays == 14)
-                                            (+228) 
-                                        @elseif ($entreprise->pays == 6)
-                                            (+225)
-                                        @elseif ($entreprise->pays == 11)
-                                            (+227)
-                                        @elseif ($entreprise->pays == 2)
-                                            (+226)
-                                        @elseif ($entreprise->pays == 1)
-                                            (+229)
-                                        @endif<b>{{ $entreprise->telephone1 }} </b>
-                                            @if ($entreprise->telephone2)
-                                                <b>
-                                                    • {{ $entreprise->telephone2 }}
-                                                </b> 
-                                        @endif </li>
-                                    @endif
-
-                                    @if ($entreprise->siteweb)
-                                        <li>
-                                            <i class="fa-light fa-globe"></i>
-                                            <a href="{{ $entreprise->siteweb }}" class="website-link">{{ $entreprise->siteweb }}</a>
-                                        </li>
-                                    @endif
-                                    
-                                    @if ($entreprise->itineraire)
-                                        <li><i class="fa-light fa-map-location-dot"></i><a href="{{ $entreprise->itineraire }}" class="website-link">Itineraire</a></li>
-                                    @endif
-                                </ul>
-                            </div>
                         </div>
-                        <div class="right">
-                            @if ($entreprise->logo)
-                                <img src="{{ asset('assets/images/companies/logos') }}/{{ $entreprise->logo }}" alt="{{$entreprise->nom}}">
-                            @endif
-                        </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>

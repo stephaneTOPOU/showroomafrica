@@ -12,7 +12,7 @@ $('.search1').slick({
   
   
   
-  $('.search2').slick({
+  $('.search').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,

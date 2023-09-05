@@ -236,7 +236,7 @@ class HomeController extends Controller
             ->select('*', 'categories.pays_id as code')
             ->where('vue', '>=', 500)
             ->inRandomOrder()
-            ->limit(4)
+            ->limit(8)
             ->get();
 
         $parametres = Parametre::find(1);
@@ -247,7 +247,9 @@ class HomeController extends Controller
         
         $subcat = SousCategories::all();
 
-        return view('frontend.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops'));
+        $search = Slider1::inRandomOrder()->first();
+
+        return view('frontend.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'search'));
     }
 //********************************************************************End Pour l'Afrique*****************************************************************
 
@@ -475,11 +477,6 @@ class HomeController extends Controller
             ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
             ->select('*')
             ->get();
-
-        $tops = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
-            ->select('*')
-            ->get();
         
         $subcat = DB::table('pays')->where('pays.id', $pays_id)
             ->join('categories', 'pays.id', '=', 'categories.pays_id')
@@ -487,7 +484,22 @@ class HomeController extends Controller
             ->select('*')
             ->get();
 
-        return view('frontend.tg.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops'));
+        $tops = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
+            ->select('*')
+            ->get();
+    
+        $top2s = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        $search = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        return view('frontend.tg.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
     }
 //*************************************************************************End Pour le Togo**************************************************************************
 
@@ -723,7 +735,22 @@ class HomeController extends Controller
             ->select('*')
             ->get();
 
-        return view('frontend.ci.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat'));
+        $tops = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
+            ->select('*')
+            ->get();
+    
+        $top2s = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        $search = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        return view('frontend.ci.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
 
     }
 
@@ -962,7 +989,22 @@ class HomeController extends Controller
             ->select('*')
             ->get();
 
-        return view('frontend.ne.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat'));
+        $tops = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
+            ->select('*')
+            ->get();
+    
+        $top2s = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        $search = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        return view('frontend.ne.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
 
     }
 
@@ -1201,7 +1243,22 @@ class HomeController extends Controller
             ->select('*')
             ->get();
 
-        return view('frontend.bf.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat'));
+        $tops = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
+            ->select('*')
+            ->get();
+    
+        $top2s = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        $search = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        return view('frontend.bf.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
 
     }
 
@@ -1440,7 +1497,21 @@ public function recherche_bj(Request $request, $pays_id)
         ->select('*')
         ->get();
 
-    return view('frontend.bj.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat'));
+    $tops = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
+        ->select('*')
+        ->get();
+
+    $top2s = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
+        ->inRandomOrder()
+        ->first();
+
+    $search = DB::table('pays')->where('pays.id', $pays_id)
+        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+        ->inRandomOrder()
+        ->first();
+    return view('frontend.bj.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
 
 }
 
@@ -1635,6 +1706,7 @@ public function autocompletion_bj(Request $request, $pays_id)
         $rejoints = DB::table('entreprises')
             ->select('*')
             ->where('est_souscrit', '=', '1')
+            //->orWhere('entreprises.logo', '!=', null)
             ->orderBy('id', 'desc')
             ->get();
 
@@ -1761,6 +1833,7 @@ public function autocompletion_bj(Request $request, $pays_id)
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->select('*')
                 ->where('entreprises.est_souscrit', '=', '1')
+                //->orWhere('entreprises.logo', '!=', null)
                 ->orderBy('entreprises.id', 'desc')
                 ->get();
     
@@ -1904,6 +1977,7 @@ public function index_bj($pays_id)
         ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
         ->select('*')
         ->where('entreprises.est_souscrit', '=', '1')
+        //->orWhere('entreprises.logo', '!=', null)
         ->orderBy('entreprises.id', 'desc')
         ->get();
 
@@ -2048,6 +2122,7 @@ public function index_bf($pays_id)
         ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
         ->select('*')
         ->where('entreprises.est_souscrit', '=', '1')
+        //->orWhere('entreprises.logo', '!=', null)
         ->orderBy('entreprises.id', 'desc')
         ->get();
 
@@ -2752,6 +2827,7 @@ public function index_ci($pays_id)
         ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
         ->select('*')
         ->where('entreprises.est_souscrit', '=', '1')
+        //->orWhere('entreprises.logo', '!=', null)
         ->orderBy('entreprises.id', 'desc')
         ->get();
 
@@ -3738,6 +3814,7 @@ public function index_ne($pays_id)
         ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
         ->select('*')
         ->where('entreprises.est_souscrit', '=', '1')
+        //->orWhere('entreprises.logo', '!=', null)
         ->orderBy('entreprises.id', 'desc')
         ->get();
 

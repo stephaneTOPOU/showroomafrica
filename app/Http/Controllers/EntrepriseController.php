@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Entreprise;
 use App\Models\Parametre;
+use App\Models\Slider1;
 use App\Models\SliderEntreprise;
 use App\Models\SliderRecherche;
 use Illuminate\Http\Request;
@@ -45,9 +46,12 @@ class EntrepriseController extends Controller
 
         $slider = SliderRecherche::all();
 
+        $search = Slider1::inRandomOrder()->first();
+
         $parametres = Parametre::find(1);
+        
         return view('frontend.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres'));
+    'entreprisePopulaire', 'slider', 'parametres', 'search'));
     }
 //**********************************************End Entreprise********************************************************* */
 
@@ -102,8 +106,23 @@ class EntrepriseController extends Controller
             ->select('*')
             ->get();
 
+        $tops = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
+            ->select('*')
+            ->get();
+    
+        $top2s = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        $search = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+            ->inRandomOrder()
+            ->first();
+
         return view('frontend.tg.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres'));
+    'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
     }
 
     //**********************************************End Entreprise Togo********************************************************* */
@@ -159,8 +178,23 @@ class EntrepriseController extends Controller
             ->select('*')
             ->get();
 
+        $tops = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
+            ->select('*')
+            ->get();
+    
+        $top2s = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        $search = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+            ->inRandomOrder()
+            ->first();
+
         return view('frontend.ci.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres'));
+    'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
     }
 
     //**********************************************End Entreprise côte d'ivoire********************************************************* */
@@ -218,8 +252,23 @@ class EntrepriseController extends Controller
             ->select('*')
             ->get();
 
+        $tops = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
+            ->select('*')
+            ->get();
+    
+        $top2s = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        $search = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+            ->inRandomOrder()
+            ->first();
+
         return view('frontend.ne.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres'));
+    'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
     }
 
     //**********************************************End Entreprise Niger********************************************************* */
@@ -276,8 +325,23 @@ class EntrepriseController extends Controller
             ->select('*')
             ->get();
 
+        $tops = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
+            ->select('*')
+            ->get();
+    
+        $top2s = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        $search = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+            ->inRandomOrder()
+            ->first();
+
         return view('frontend.bf.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres'));
+    'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
     }
 
     //**********************************************End Entreprise Burkina faso********************************************************* */
@@ -337,8 +401,23 @@ class EntrepriseController extends Controller
             ->select('*')
             ->get();
 
+        $tops = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
+            ->select('*')
+            ->get();
+    
+        $top2s = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
+            ->inRandomOrder()
+            ->first();
+
+        $search = DB::table('pays')->where('pays.id', $pays_id)
+            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+            ->inRandomOrder()
+            ->first();
+
         return view('frontend.bj.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres'));
+    'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
     }
 
     //**********************************************End Entreprise Bénin********************************************************* */

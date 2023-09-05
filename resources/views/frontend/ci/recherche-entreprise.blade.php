@@ -5,10 +5,14 @@
 @include('frontend.ci.header.header3')
 
 <link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
+<link rel="stylesheet" href="{{ asset('assets/css/search.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets/css/categories.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/companies.css') }}" />
 {{-- <link rel="stylesheet" href="{{ asset('assets/css/vertical-carousel.css') }}" /> --}}
 <link rel="stylesheet" href="{{ asset('assets/css/autocompletion.css') }}" />
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
 @include('frontend.ci.header.header4')
 @include('frontend.ci.header.header5')
@@ -189,80 +193,92 @@
 
         <div class="companies-list">
             <div class="companies">
+                @foreach ($recherches as $key => $recherche)
+                    @if ($loop->iteration % 10 === 0)
+                        <div class="company-slider" style="display: flex; flex-flow: row wrap; margin: 0 15px;">
+                            <div class="img-search">
+                                <div class="search active">
+                                    <img src="{{ asset('assets/images/sliders/main') }}/{{ $search->image }}" alt=""> 
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="company-info">
+                            <div class="left">
+                                <div class="header">
+                                    <h3 class="company-name"><a href="{{ route('entreprise.ci.profil',['pays_id'=>$recherche->pays_id,'entreprise_id'=>$recherche->id]) }}">{{$recherche->nom}}</a></h3>
+                                    <span class="company-category">{{ $recherche->sousCategorie }}</span>
+                                    @if ($recherche->premium == 1)
+                                        <div class="premium">
+                                            <span><i class="fa-regular fa-gem"></i> PREMIUM</span>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="contacts">
+                                    <ul>
+                                        @if ($recherche->adresse)
+                                            <li>
+                                                <i class="fa-light fa-location-dot"></i>
+                                                {{ $recherche->adresse }}
+                                            </li>
+                                        @endif
+                                        
+                                        @if ($recherche->telephone1)
+                                            <li><i class="fa-light fa-phone"></i> (+225) <b>{{ $recherche->telephone1 }}</b>
+                                                @if ($recherche->telephone2)
+                                                    <b>
+                                                        • {{ $recherche->telephone2 }}
+                                                    </b>
+                                            @endif 
+                                        </li>
 
-                @foreach ($recherches as $recherche)
-                    <div class="company-info">
-                        <div class="left">
-                            <div class="header">
-                                <h3 class="company-name"><a href="{{ route('entreprise.ci.profil',['pays_id'=>$recherche->pays_id,'entreprise_id'=>$recherche->id]) }}">{{$recherche->nom}}</a></h3>
-                                <span class="company-category">{{ $recherche->sousCategorie }}</span>
-                                @if ($recherche->premium == 1)
-                                    <div class="premium">
-                                        <span><i class="fa-regular fa-gem"></i> PREMIUM</span>
-                                    </div>
+                                        @endif
+                                        
+                                        @if ($recherche->siteweb)
+                                            <li>
+                                                <i class="fa-light fa-globe"></i>
+                                                <a href="{{ $recherche->siteweb }}" class="website-link">{{ $recherche->siteweb }}</a>
+                                            </li>
+                                        @endif
+                                        
+                                        @if ($recherche->itineraire)
+                                        <li><i class="fa-light fa-map-location-dot"></i><a href="{{ $recherche->itineraire }}" class="website-link">Itineraire</a></li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="right">
+                                @if ($recherche->logo)
+                                    <img src="{{ asset('assets/images/companies/logos')}}/{{ $recherche->logo }}" alt="{{$recherche->nom}}">
                                 @endif
                             </div>
-                            <div class="contacts">
-                                <ul>
-                                    @if ($recherche->adresse)
-                                        <li>
-                                            <i class="fa-light fa-location-dot"></i>
-                                            {{ $recherche->adresse }}
-                                        </li>
-                                    @endif
-                                    
-                                    @if ($recherche->telephone1)
-                                        <li><i class="fa-light fa-phone"></i> (+225) <b>{{ $recherche->telephone1 }}</b>
-                                            @if ($recherche->telephone2)
-                                                <b>
-                                                    • {{ $recherche->telephone2 }}
-                                                </b>
-                                        @endif 
-                                    </li>
 
-                                    @endif
-                                    
-                                    @if ($recherche->siteweb)
-                                        <li>
-                                            <i class="fa-light fa-globe"></i>
-                                            <a href="{{ $recherche->siteweb }}" class="website-link">{{ $recherche->siteweb }}</a>
-                                        </li>
-                                    @endif
-                                    
-                                    @if ($recherche->itineraire)
-                                    <li><i class="fa-light fa-map-location-dot"></i><a href="{{ $recherche->itineraire }}" class="website-link">Itineraire</a></li>
-                                    @endif
-                                </ul>
-                            </div>
                         </div>
-                        <div class="right">
-                            @if ($recherche->logo)
-                                <img src="{{ asset('assets/images/companies/logos')}}/{{ $recherche->logo }}" alt="{{$recherche->nom}}">
-                            @endif
-                        </div>
-
-                    </div>
+                    @endif
                 @endforeach
             </div>
-
         </div>
 
+        <style>
+            .top-research{
+                top: 6em;
+                position: sticky;
+                height: fit-content;
+            }
+        </style>
         <div class="top-research">
-            <h3>Sociétés les plus recherchées</h3>
-            <div class="top-companies">
-                @foreach ($entreprisePopulaire as $entreprisePopulair)
-                    <div class="top-company-info">
-                        <h4><a href="{{ route('entreprise.ci.profil',['pays_id'=>$entreprisePopulair->pays_id,'entreprise_id'=>$entreprisePopulair->id]) }}">{{ $entreprisePopulair->nom }}</a></h4>
-                        <ul>
-                            <li>
-                                <i class="fa-solid fa-location-dot"></i>
-                                {{ $entreprisePopulair->adresse }}
-                            </li>
-                            <li><i class="fa-solid fa-phone"></i> (+225) <b>{{ $entreprisePopulair->telephone1 }}</b></li>
-                        </ul>
+            <div class="search">
+                @foreach ($tops as $top)
+                    <div class="img-div">
+                        <img src="{{ asset('assets/images/sliders/search-side') }}/{{ $top->image }}" alt="" style="display: block; width: 50%; margin: auto;" width="100">
                     </div>
                 @endforeach
             </div>
+            <br/>
+            <div>
+                <img src="{{ asset('assets/images/sliders/search-side') }}/{{ $top2s->image }}" alt="" style="display: block; width: 50%; margin: auto;" width="100">
+            </div>
+            
         </div>
 
         {{-- <div class="top-research">
