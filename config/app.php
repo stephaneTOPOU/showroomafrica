@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+
     ],
 
     /*
@@ -231,6 +234,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
 
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+
     ],
+    
 
 ];

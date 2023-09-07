@@ -6,7 +6,6 @@
                     <h4>Showroom</h4>
                     <img height="40" src="{{ asset('assets/images') }}/{{ $parametres->logo_footer }}" alt="Logo">
                 </div>
-                
                 <div class="footer-col">
                     <div class="pays_flag">
                         <h4 class="title">Sélectionnez votre pays</h4>
@@ -35,25 +34,38 @@
                         {{-- <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="country_flag"><span class="flag fi fi-tg"></span> </a> --}}
                     </div>     
                 </div>
-                
                 <div class="footer-col">
-                <h4>nos réseaux sociaux</h4>
-                <div class="social-links">
-                    <a href="{{ $parametres->lienface }}"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="{{ $parametres->lientwitter }}"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="{{ $parametres->lieninsta }}"><i class="fa-brands fa-instagram"></i></a>
-                    {{-- <a href="{{ $parametre->lienyoutube }}"><i class="fa-brands fa-youtube"></i></a> --}}
-                    <a href="{{ $parametres->lienyoutube }}"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
-                <div class="download-app">
-                    <a href="https://play.google.com/store/apps/details?id=com.showroomafrica.annuaire">
-                        <img src="{{ asset('assets/images/store/playstore-button.jpg') }}" alt="Playstore">
-                    </a>
-                    {{-- <a href="#">
-                        <img src="{{ asset('assets/images/appstore-button.jpg') }}" alt="Appstore">
-                    </a> --}}
+                    <h4>nos réseaux sociaux</h4>
+                    <div class="social-links">
+                        <a target="_blank" href="{{ $parametres->lienface }}"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a target="_blank" href="{{ $parametres->lientwitter }}"><i class="fa-brands fa-twitter"></i></a>
+                        <a target="_blank" href="{{ $parametres->lieninsta }}"><i class="fa-brands fa-instagram"></i></a>
+                        <a target="_blank" href="{{ $parametres->lienyoutube }}"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a target="_blank" href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <div class="download-app">
+                        <a href="https://play.google.com/store/apps/details?id=com.showroomafrica.annuaire" target="_blank">
+                            <img src="{{ asset('assets/images/store/playstore-button.jpg') }}" alt="Playstore">
+                        </a>
+                        {{-- <a href="#">
+                            <img src="{{ asset('assets/images/appstore-button.jpg') }}" alt="Appstore">
+                        </a> --}}
+                    </div>
                 </div>
             </div>
+
+            <div class="row">
+                <style>
+                    
+                </style>
+                <div class="privacy">
+                    <div class="privacy-item">
+                        <a class="blog" href="#">Blog</a>
+                        <a class="cookie" href="{{ route('cgu') }}">Condition générale d'utilisation</a>
+                        <a class="cookie" href="{{ route('cp') }}">Politique de confidentialité</a>
+                        <a class="cookie" href="{{ route('cookie') }}">politique de cookie</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

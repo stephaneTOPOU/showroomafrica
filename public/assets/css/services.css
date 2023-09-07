@@ -6,8 +6,12 @@
   padding: 0 2em;
 }
 
-.service-details img {
+.service-details .image {
   width: 36%;
+}
+
+.service-details img {
+  width: 100%;
   padding: 1em;
 }
 
@@ -24,4 +28,21 @@
 
 @media (max-width: 900px) {
   #website {margin-top: 4em;}
+  .service-details {display: block;}
+  .section-text {width: 100% !important;}
+  .service-details .image {width: 100% !important;}
+}
+
+@media (max-width: 800px) {
+  #website {margin-top: 4em;}
+  .service-details {display: block;}
+  .section-text {width: 100% !important;}
+  .service-details .image {width: 100% !important;}
+}
+
+@media (max-width: 640px) {
+  #website {margin-top: 4em;}
+  .service-details {display: block;}
+  .section-text {width: 100% !important;}
+  .service-details .image {width: 100% !important;}
 }

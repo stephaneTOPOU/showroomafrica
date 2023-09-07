@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $geoipInfo = geoip()->getLocation($_SERVER['REMOTE_ADDR']);
     // return $geoipInfo->iso_code;
-    if ($geoipInfo->iso_code == 'US') {
+    if ($geoipInfo->iso_code == 'TG') {
         return redirect()->action(
             [App\Http\Controllers\HomeController::class, 'index_tg'],
             ['pays_id' => 14]
@@ -125,6 +125,19 @@ Route::get('/', function () {
 });
 
 //Route::redirect('/geoip', '/');
+
+
+Route::get('/blog',[App\Http\Controllers\BlogController::class, 'Blog'])->name('blog');
+
+Route::get('/cgu',[App\Http\Controllers\CguController::class, 'Cgu'])->name('cgu');
+
+Route::get('/confidentialite',[App\Http\Controllers\ConfidentialiteController::class, 'Confidentialite'])->name('cp');
+
+Route::get('/cookie',[App\Http\Controllers\CookieController::class, 'Cookie'])->name('cookie');
+
+
+
+
 //******************************************Pour l'Afrique***************************************************//
 Route::get('/annuaire',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

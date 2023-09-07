@@ -1,59 +1,75 @@
 #annonce {margin-top: 8em;}
 
+.annonce-one h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Lato, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif !important;
+  font-size: 20px;
+  margin: auto;
+  color: var(--text-color);
+  margin-bottom: 1.5em;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+.annonce-one {
+  width: 90%;
+}
+
 hr{
   color: #ccc;
   border: 1px solid;
 }
-.service-details {
+.annonce-details {
   display: flex;
   flex-flow: row wrap;
   padding: 0 2em;
 }
 
-.service-details .section-annonce {
+.annonce-details .section-annonce {
   width: 40%;
   padding: 1em;
 }
 
-.service-details .section-text {
+.annonce-details .annonce-text {
   width: 60%;
   text-align: justify;
   padding: .5em;
 }
 
-.service-details .section-text img {
+.annonce-details .annonce-text img {
   border-radius: 1em;
 }
 
-.service-details .section-text video {
+.annonce-details .annonce-text video {
   border-radius: 1em;
 }
 
-.service-details .section-text h3 {
+.annonce-details .annonce-text h3 {
   color: var(--color-primary);
   margin: 1em 0;
 }
 
-.service-details .section-annonce h3 {
+.annonce-details .section-annonce h3 {
   color: var(--color-primary);
   text-align: center;
   margin: 1em 0;
 }
 
-.service-details .section-annonce video {
+.annonce-details .section-annonce video {
   border-radius: 1em;
   width: 100%;
 }
 
 
-.section-text .input-box{
+.annonce-text .input-box{
   height: 50px;
   width: 100%;
   margin: 12px 0;
 }
 
-.section-text .input-box input,
-.section-text .input-box textarea{
+.annonce-text .input-box input,
+.annonce-text .input-box textarea{
   height: 100%;
   width: 100%;
   border: none;
@@ -66,17 +82,17 @@ hr{
   font-family: Poppins;
 }
 
-.section-text .message-box{
+.annonce-text .message-box{
   min-height: 110px;
 }
-.section-text .input-box textarea{
+.annonce-text .input-box textarea{
   padding-top: 6px;
 }
-.section-text .button{
+.annonce-text .button{
   display: inline-block;
   margin-top: 12px;
 }
-.section-text .button input[type="submit"]{
+.annonce-text .button input[type="submit"]{
   color: #fff;
   font-size: 18px;
   outline: none;
@@ -111,22 +127,30 @@ hr{
   
 }
 
+@media (min-width: 901px) {
+  .annonce-one h1 {width: 35vw;}
+}
+
+@media (min-width: 1128px) {
+  .annonce-one h1 {width: 25vw;}
+}
 
 
 @media (max-width: 900px) {
   #annonce {margin-top: 4em;}
-  .section-text {width: 100% !important;}
+  .annonce-text {width: 100% !important;}
   .section-annonce {width: 100% !important;}
+  .annonce-one h1 {width: 50vw;}
 }
 
 @media (max-width: 800px) {
   #annonce {margin-top: 4em;}
-  .section-text {width: 100% !important;}
+  .annonce-text {width: 100% !important;}
   .section-annonce {width: 100% !important;}
 }
 
 @media (max-width: 640px) {
   #annonce {margin-top: 4em;}
-  .section-text {width: 100% !important;}
+  .annonce-text {width: 100% !important;}
   .section-annonce {width: 100% !important;}
 }

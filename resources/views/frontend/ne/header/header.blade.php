@@ -5,28 +5,17 @@
     <meta charset="UTF-8" />
     
     <meta http-equiv="Content-Language" content="fr-NE" />
-    <meta name="robots" content="index, follow">
     <meta name="geo.country" content="NE" />
     <meta name="country" content="NE" />
-    <meta name="description" content="<strong>Annuaire</strong> des <strong>entreprises</strong> et des <strong>professionnels</strong> en réseau pour une émergence <strong>économique</strong> du Togo et de l’Afrique. Guide pour <strong>l’investissement</strong>,
-    l’annuaire showroom africa est une liste des sociétés répertoriées par secteurs d’activités. Pour faciliter les recherches, showroom africa positionne votre entreprise dans votre secteur et votre activité se retrouve booster .">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#6777ef"/>
-    <meta name="keyword" content="annuaire showroom africa, annuaire des entreprises, répertoire des professionnels, service, devis, offre, emploi ..." />
-    <meta property="og:title" content="Annuaire Showroom Africa" />
-    <meta property="og:image" content="https://showroomafrica.com/assets/images/showroom/logo.png" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Showroom Africa" />
     <meta property="og:locale" content="fr-NE" />
     <meta property="og:url" content="https://showroomafrica.com/ne/11" />
     <meta property="og:country-name" content="Niger" />
-    <meta property="og:description" content="<strong>Annuaire</strong> des <strong>entreprises</strong> et des <strong>professionnels</strong> en réseau pour une émergence <strong>économique</strong> du Togo et de l’Afrique. Guide pour <strong>l’investissement</strong>,
-    l’annuaire showroom africa est une liste des sociétés répertoriées par secteurs d’activités. Pour faciliter les recherches, showroom africa positionne votre entreprise dans votre secteur et votre activité se retrouve booster ." />
     
     
     
-    <title>Annuaire Showroom Africa</title>
+    {!! SEO::generate(true) !!}
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/showroom/favicon.ico') }}" />
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
@@ -64,6 +53,17 @@
         gtag('js', new Date());
         
         gtag('config', 'G-WKGQRXLQ4V');
+    </script>
+
+    <meta name="msvalidate.01" content="BECBE541F8BD5B432CEC32B25CB70CCB" />
+    
+    <!-- Clarity tracking code for https://showroomafrica.com/ -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]function(){(c[a].q=c[a].q[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "iqijivxkqa");
     </script>
 
     

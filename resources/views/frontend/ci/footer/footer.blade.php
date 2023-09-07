@@ -38,14 +38,14 @@
                     <div class="footer-col">
                         <h4>nos réseaux sociaux</h4>
                         <div class="social-links">
-                            <a href="{{ $parametre->lienface }}"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="{{ $parametre->lientwitter }}"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="{{ $parametre->lieninsta }}"><i class="fa-brands fa-instagram"></i></a>
-                            {{-- <a href="{{ $parametre->lienyoutube }}"><i class="fa-brands fa-youtube"></i></a> --}}
-                            <a href="{{ $parametre->lienyoutube }}"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a target="_blank" href="{{ $parametre->lienface }}"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a target="_blank" href="{{ $parametre->lientwitter }}"><i class="fa-brands fa-twitter"></i></a>
+                            <a target="_blank" href="{{ $parametre->lieninsta }}"><i class="fa-brands fa-instagram"></i></a>
+                            <a target="_blank" href="{{ $parametre->lienyoutube }}"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a target="_blank" href="#"><i class="fa-brands fa-youtube"></i></a>
                         </div>
                         <div class="download-app">
-                            <a href="https://play.google.com/store/apps/details?id=com.showroomafrica.annuaire">
+                            <a href="https://play.google.com/store/apps/details?id=com.showroomafrica.annuaire" target="_blank">
                                 <img src="{{ asset('assets/images/store/playstore-button.jpg') }}" alt="Playstore">
                             </a>
                             {{-- <a href="#">
@@ -54,6 +54,20 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <div class="row">
+                <style>
+                    
+                </style>
+                <div class="privacy">
+                    <div class="privacy-item">
+                        <a class="blog" href="#">Blog</a>
+                        <a class="cookie" href="{{ route('cgu') }}">Condition générale d'utilisation</a>
+                        <a class="cookie" href="{{ route('cp') }}">Politique de confidentialité</a>
+                        <a class="cookie" href="{{ route('cookie') }}">politique de cookie</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

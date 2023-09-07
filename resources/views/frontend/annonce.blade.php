@@ -20,31 +20,33 @@
 <div class="container">
 
     <!-- ADVERTORIAL -->
-    <div class="section-one white-bkg" id="annonce">
+    <div class="annonce-one white-bkg" id="annonce">
         @foreach ($annonces as $annonce)
             <h1>{{ $annonce->titre }}</h1>
         @endforeach
-        <div class="service-details">
+        <div class="annonce-details">
             
-            <div class="section-text">
+            <div class="annonce-text">
                 @foreach ($annonces as $annonce)
-                    {{-- <h3>Création de site web</h3> --}}
                     <p>
                         {{$annonce->text1}}
                     </p>
                     <br />
-
-                    {{-- <h3>Refonte de site web</h3> --}}
-                    <img src="{{ asset('assets/images/advertorial') }}/{{ $annonce->image1 }}" width="100%">
-                    <br />
-                    <br />
+                    @if ($annonce->image1)
+                        <img src="{{ asset('assets/images/annonce/images') }}/{{ $annonce->image1 }}" width="100%">
+                        <br />
+                        <br />
+                    @endif
                     <p>
                         {{$annonce->text2}}
                     </p>
                     <br />
-                    <img src="{{ asset('assets/images/advertorial') }}/{{ $annonce->image2 }}" width="100%">
-                    <br/>
-                    <br/>
+                    @if ($annonce->image2)
+                        <img src="{{ asset('assets/images/annonce/images') }}/{{ $annonce->image2 }}" width="100%">
+                        <br/>
+                        <br/>
+                    @endif
+                    
                     <p>
                         {{$annonce->text3}}
                     </p>
@@ -52,18 +54,12 @@
                         <br>
                         <hr>
                         <h3>Les commentaires</h3>
-                        {{-- @if(Session::has('comment'))
-                            <div class="alert alert-success" role="alert">{{Session::get('comment') }}</div>
-                        @endif --}}
                         <form action="{{ route('annonce.commentaire',['annonce_id'=>$annonce->id]) }}" method="POST">
                             @csrf
                             <div class="input-box">
                                 <input type="text" placeholder="Votre pseudo" required name="pseudo">
                             </div>
-                            {{-- <div class="input-box">
-                                <input type="email" placeholder="Nom et prénom(s)" required name="email">
-                            </div> --}}
-    
+                        
                             <div class="input-box message-box">
                                 <textarea placeholder="Votre message" name="commentaire"></textarea>
                             </div>
@@ -100,26 +96,25 @@
                         </div>
                     </section>
                 @endforeach
-                
-                
-
             </div>
             
             <div class="section-annonce">
                 @foreach ($annonces as $annonce)
                     @if ($annonce->image3)
-                        <video src="{{ asset('assets/videos') }}/{{ $annonce->image3 }}" autoplay muted controls></video>
+                        <video src="{{ asset('assets/images/annonce/videos') }}/{{ $annonce->image3 }}" autoplay muted controls></video>
                     @endif
                     <br />
                     <br />
                 @endforeach
 
-            <h3>Actualités récentes</h3>
+                <h3>Actualités récentes</h3>
                 <div class="slider">
                     @foreach ($actualites as $actualite)
-                        <a href="{{ route('annonce',['annonce_id'=>$actualite->id]) }}">
-                            <div class="img-div"><img src="{{ asset('assets/images/advertorial') }}/{{ $actualite->image1 }}"></div>
-                        </a>
+                        @if ($actualite->image1)
+                            <a href="{{ route('annonce',['annonce_id'=>$actualite->id]) }}">
+                                <div class="img-div"><img src="{{ asset('assets/images/annonce/images') }}/{{ $actualite->image1 }}"></div>
+                            </a>
+                        @endif
                     @endforeach
                 </div>
             </div>
