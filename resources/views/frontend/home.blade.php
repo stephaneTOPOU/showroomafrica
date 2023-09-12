@@ -1,4 +1,6 @@
 @include('frontend.header.header')
+<meta property="og:url" content="https://showroomafrica.com/annuaire" />
+<link rel="canonicail" href="https://showroomafrica.com/annuaire">
 @include('frontend.header.header1')
 @include('frontend.header.header2')
 @include('frontend.header.header3')
@@ -34,7 +36,7 @@
     <div class="modal-content">
         <span class="close" id="closepop"><i class="fa-regular fa-xmark"></i></span>
         <div class="popup-container">
-            <img src="{{ asset('assets/images/popup') }}/{{ $popups->image }}" alt="PUB" id="image">
+            <img src="{{ asset('assets/images/popup') }}/{{ $popups->image }}" alt="{{ $popups->image }}" id="image">
         </div>
     </div>
 </div>
@@ -52,8 +54,7 @@
     <!-- BANNER -->
     <div class="sb-container"> 
         <div class="search-text">
-            <h1>Trouvez les meilleurs services & produits aux meilleurs prix en contactant directement les entreprises!
-            </h1>
+            <h1>Annuaire des professionnels de l'Afrique</h1>
         </div>
 
         <div class="search-dualbutton">
@@ -152,11 +153,11 @@
     <!-- ADS BIG SLIDER -->
     <div class="img-slider first-slider">
         <div class="slide active" data-bs-interval="1">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
         </div>
         @foreach ($slider1s as $slider1)
         <div class="slide" data-bs-interval="1">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider1->image }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider1->image }}" alt="{{ $slider1->image }}">
         </div>
         @endforeach
     </div>
@@ -243,11 +244,9 @@
                     <div class="slider-slide first">
                         <img src="{{ asset('assets/images/sliders/side/1.jpg') }}">
                     </div>
-                    {{-- @foreach ($sliderLaterals as $sliderLateral) --}}
-                        <div class="slider-slide">
-                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLaterals->image }}">
-                        </div>
-                    {{-- @endforeach --}}
+                    <div class="slider-slide">
+                        <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLaterals->image }}" alt="{{ $sliderLaterals->image }}">
+                    </div>
                     <div class="navigation-auto">
                         <div class="auto-btn1"></div>
                         <div class="auto-btn2"></div>
@@ -266,11 +265,9 @@
                     <div class="slider-slide second">
                         <img src="{{ asset('assets/images/sliders/side/3.jpg') }}">
                     </div>
-                    {{-- @foreach ($sliderLateralBas as $sliderLateralBa) --}}
-                        <div class="slider-slide">
-                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateralBas->image }}">
-                        </div>
-                    {{-- @endforeach --}}
+                    <div class="slider-slide">
+                        <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateralBas->image }}" alt="{{ $sliderLateralBas->image }}">
+                    </div>
                     <div class="navigation-auto">
                         <div class="auto-btn1"></div>
                         <div class="auto-btn2"></div>
@@ -289,7 +286,7 @@
             <div class="carousel">
                 @foreach ($rejoints as $rejoint)
                     @if ($rejoint->logo)
-                        <img src="{{ asset('assets/images/companies/logos') }}/{{ $rejoint->logo }}" alt="{{ $rejoint->nom }}" />
+                        <img src="{{ asset('assets/images/companies/logos') }}/{{ $rejoint->logo }}" alt="{{ $rejoint->nom }}"/>
                     @else
                         <div class="carousel-text"> <b>{{ $rejoint->nom }}</b></div>
                     @endif
@@ -308,40 +305,14 @@
     </div>
     <!-- END NEWCOMERS -->
 
-    <!-- SPOTS -->
-    {{-- <div class="section-one">
-        <h1>Mini-Spots</h1>
-        <div class="row">
-            @foreach ($minispots as $minispot)
-                <div class="video-list">
-                    <div class="video-list-inner video">
-                        <img class="play" src="{{ asset('assets/videos') }}/{{ $minispot->image }}">
-                        <div class="play">
-                            <i class="fa-regular fa-circle-play"></i>
-                        </div>
-                        <video class="hide" muted src="{{ asset('assets/videos') }}/{{ $minispot->video }}" controls
-                            poster="{{ asset('assets/videos') }}/{{ $minispot->image }}">
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-        <div class="video-container">
-            <i class="fa-solid fa-circle-xmark close"></i>
-            <video src="" autoplay controls poster=""></video>
-        </div>
-
-    </div> --}}
-    <!-- END SPOTS -->
-
     <!-- ADS BIG SLIDER 2 -->
     <div class="img-slider" hidden>
         <div class="slide-two active-two">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
         </div>
         @foreach ($slider2s as $slider2)
         <div class="slide-two">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="{{ $slider2->image }}">
         </div>
         @endforeach
     </div>
@@ -359,35 +330,14 @@
         {{-- @endforeach --}}
     </div>
     <!-- END REPORTAGE -->
-    <!-- HIGHLIGHTED COMPANIES -->
-    {{-- <div class="section-one">
-        <h1>Entreprises du mois</h1>
-            <div class="highlights">
-                @foreach ($honeures as $honeure)
-                    <div class="hightlighted-company">
-                        <img src="{{ asset('assets/images') }}/{{ $honeure->photo4 }}" alt="{{ $honeure->nom }}">
-                        <div class="highlight-links">
-                        <button type="button">
-                            <i class="fa-regular fa-plus"></i>
-                            <a href="{{ route('entreprise.profil',['entreprise_id'=>$honeure->id]) }}">Découvrir</a>
-                        </button>
-                        <button type="button">
-                            <i class="fa-regular fa-phone"></i>
-                            <a href="tel:{{ $honeure->telephone1 }}">Contacter</a>
-                        </button>
-                        </div>
-                    </div>
-                @endforeach
-        </div>
-    </div> --}}
-    <!-- END HIGHLIGHTED COMPANIES -->
+    
     <!-- ADVERTORIAL -->
     <div class="section-one">
         <h1>Actualités</h1>
         <div class="advertorials">
             @foreach ($annonces as $annonce)
                 <div class="advertorial">
-                    <img src="{{ asset('assets/images/annonce/images') }}/{{ $annonce->image1 }}">
+                    <img src="{{ asset('assets/images/annonce/images') }}/{{ $annonce->image1 }}" alt="{{ $annonce->titre }}"/>
                     <div class="overlay"></div>
                     <a href="{{ route('annonce',['annonce_id'=>$annonce->id]) }}">
                         {{ Str::limit($annonce->titre, 40) }}
@@ -397,36 +347,7 @@
         </div>
     </div>
     <!-- END ADVERTORIAL -->
-    <!-- TOWER -->
-    {{-- <div class="section-one">
-        <h1>Pharmacies de garde</h1>
-        <div class="tower-ctn">
-            @foreach ($pharmacies as $pharmacie)
-                <div class="drugstore">
-                    <img src="{{ asset('assets/images') }}/{{ $pharmacie->photo1 }}">
-                    <h3>{{ $pharmacie->nom }}</h3>
-                    <ul>
-                    <li>
-                        <i class="fa-solid fa-location-dot"></i>
-                        {{ $pharmacie->adresse }}
-                    </li>
-                    <li><i class="fa-solid fa-phone"></i> (+228) <b>{{ $pharmacie->telephone1 }}</b></li>
-                    </ul>
-                </div>
-            @endforeach
-        </div>
-        <br />
-        <br />
-        <br />
-        <div class="category-link" style="text-align: center">
-            <a href="{{ route('pharmacie') }}">
-                <i class="fa-regular fa-plus"></i>
-                Liste des pharmacie de garde
-            </a>
-        </div>
-    </div> --}}
-    <!-- END TOWER -->
-
+    
     <!-- STATISTICS -->
     @php
         function pretty_number(int $n): string {
@@ -480,39 +401,16 @@
     <!-- ADS BIG SLIDER 3 -->
     <div class="img-slider" hidden>
         <div class="slide-three active-three">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
         </div>
         @foreach ($slider3s as $slider3)
         <div class="slide-three">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}">
         </div>
         @endforeach
     </div>
     <!-- END ADS BIG SLIDER 3 -->
 
-    <!-- MAGAZINES -->
-    {{-- <div class="section-one white-bkg">
-        <h1>Magazines</h1>
-        <div class="magazines">
-            @foreach ($magazines as $magazine)
-            <div class="magazine">
-                <div class="magazine-details">
-                    <img class="magazine-img" src="{{ asset('assets/images') }}/{{ $magazine->magazineimage1 }}">
-                    <button type="button" class="discover-btn">
-                        <a href="{{ route('entreprise.profil',['entreprise_id'=>$magazine->id]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
-                    </button>
-                    <div class="social-links">
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-
-    </div> --}}
-    <!-- END MAGAZINES -->
 </div>
 <!-- END CONTAINER-->
 @include('frontend.footer.footer')

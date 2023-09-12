@@ -1,4 +1,8 @@
 @include('frontend.header.header')
+@foreach ($annonces as $annonce)
+    <meta property="og:url" content="https://www.showroomafrica.com/annonce/{{ $annonce->id }}" />
+    <link rel="canonicail" href="https://www.showroomafrica.com/annonce/{{ $annonce->id }}">
+@endforeach
 @include('frontend.header.header1')
 @include('frontend.header.header2')
 @include('frontend.header.header3')
@@ -33,7 +37,7 @@
                     </p>
                     <br />
                     @if ($annonce->image1)
-                        <img src="{{ asset('assets/images/annonce/images') }}/{{ $annonce->image1 }}" width="100%">
+                        <img src="{{ asset('assets/images/annonce/images') }}/{{ $annonce->image1 }}" width="100%" alt="{{ $annonce->titre }}">
                         <br />
                         <br />
                     @endif
@@ -42,7 +46,7 @@
                     </p>
                     <br />
                     @if ($annonce->image2)
-                        <img src="{{ asset('assets/images/annonce/images') }}/{{ $annonce->image2 }}" width="100%">
+                        <img src="{{ asset('assets/images/annonce/images') }}/{{ $annonce->image2 }}" width="100%" alt="{{ $annonce->titre }}">
                         <br/>
                         <br/>
                     @endif
@@ -78,7 +82,7 @@
                                 @foreach ($commentaires as $commentaire)
                                     <div class="commentaires">
                                         <div class="user">
-                                            <img src="{{ asset('assets/images/user.png') }}" alt="">
+                                            <img src="{{ asset('assets/images/user.png') }}" alt="utilisateur">
                                             <div class="user-info">
                                                 <h3>{{ $commentaire->pseudo }}</h3>
                                             </div>
@@ -112,7 +116,7 @@
                     @foreach ($actualites as $actualite)
                         @if ($actualite->image1)
                             <a href="{{ route('annonce',['annonce_id'=>$actualite->id]) }}">
-                                <div class="img-div"><img src="{{ asset('assets/images/annonce/images') }}/{{ $actualite->image1 }}"></div>
+                                <div class="img-div"><img src="{{ asset('assets/images/annonce/images') }}/{{ $actualite->image1 }}" alt="{{ $actualite->titre }}"></div>
                             </a>
                         @endif
                     @endforeach
