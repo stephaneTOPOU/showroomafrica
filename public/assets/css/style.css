@@ -491,6 +491,10 @@ nav ul i {
   width: 100%;
 }
 
+.blog-one {
+  width: 100%;
+}
+
 .advertising {
   display: flex;
   flex-direction: column;
@@ -609,7 +613,24 @@ nav ul i {
   justify-content: center;
 }
 
+.blog-one:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+
 .section-one h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Lato, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif !important;
+  font-size: 20px;
+  margin: auto;
+  color: var(--text-color);
+  margin-bottom: 1.5em;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+.blog-one h1 {
   text-align: center;
   text-transform: uppercase;
   font-family: Lato, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif !important;
@@ -740,6 +761,14 @@ nav ul i {
   margin: 0 6%;
 }
 
+.blogs {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 88%;
+  margin: 0 6%;
+}
+
 .highlights .hightlighted-company {
   width: 32%;
   background: #fff;
@@ -834,12 +863,31 @@ nav ul i {
   align-items: center;
 }
 
+.blogs .blog {
+  width: 30%;
+  position: relative;
+  margin-top: 0.75em;
+  display: flex;
+  align-items: center;
+}
+
 .advertorials .advertorial:nth-child(3n+0),
 .advertorials .advertorial:nth-child(3n-1) {
   margin-left: 2%;
 }
 
+.blogs .blog{
+  margin-left: 2%;
+  margin-bottom: 2%;
+}
+
 .advertorial img {
+  border-radius: 1em;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.blog img {
   border-radius: 1em;
   width: 100%;
   aspect-ratio: 16/9;
@@ -860,12 +908,37 @@ nav ul i {
   z-index: 2;
 }
 
+.blog a {
+  font-size: 14px;
+  text-decoration: none;
+  background-color: #fff;
+  border-radius: 1em;
+  color: var(--text-color);
+  padding: .5em 1em;
+  box-shadow: 0 5px 10px rgb(100 100 100 / 10%);
+  position: absolute;
+  bottom: 1.5em;
+  top: inherit;
+  left: 1em;
+  z-index: 2;
+}
+
 .advertorial a:hover {
   margin-left: 1em;
   transition: all .3s ease-out;
 }
 
+.blog a:hover {
+  margin-left: 1em;
+  transition: all .3s ease-out;
+}
+
 .advertorial a i {
+  margin-right: .5em;
+  color: var(--color-primary);
+}
+
+.blog a i {
   margin-right: .5em;
   color: var(--color-primary);
 }
@@ -883,13 +956,34 @@ nav ul i {
   border-radius: 1em;
 }
 
+.blog .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .25s ease;
+  border-radius: 1em;
+}
+
 .advertorial:hover .overlay {
   width: 100%;
 }
 
+.blog:hover .overlay{
+  width: 100%;
+}
 
 @media (max-width: 800px) {
   .advertorials .advertorial {
+    width: 48%;
+    margin-top: 1.2em;
+  }
+
+  .blogs .blog {
     width: 48%;
     margin-top: 1.2em;
   }
@@ -899,7 +993,16 @@ nav ul i {
     margin-left: 0;
   }
 
+  .blogs .blog:nth-child(3n+0),
+  .blogs .blog:nth-child(3n-1) {
+    margin-left: 0;
+  }
+
   .advertorials .advertorial:nth-child(2n+0) {
+    margin-left: 4%;
+  }
+
+  .blogs .blog:nth-child(2n+0) {
     margin-left: 4%;
   }
 }
@@ -909,7 +1012,15 @@ nav ul i {
     width: 96%;
   }
 
+  .blogs .blog {
+    width: 96%;
+  }
+
   .advertorials .advertorial:nth-child(2n+0) {
+    margin-left: 0;
+  }
+
+  .blogs .blog:nth-child(2n+0) {
     margin-left: 0;
   }
 }
@@ -1936,6 +2047,10 @@ nav ul i {
   .section-one h1 {
     width: 25vw;
   }
+
+  .blog-one h1 {
+    width: 25vw;
+  }
 }
 
 @media (min-width: 901px) {
@@ -1961,7 +2076,15 @@ nav ul i {
     margin: 3.5em 3.5em;
   }
 
+  .blog-one {
+    margin: 3.5em 0;
+  }
+
   .section-one h1 {
+    width: 35vw;
+  }
+
+  .blog-one h1 {
     width: 35vw;
   }
 
@@ -2002,6 +2125,10 @@ nav ul i {
   .section-one {
     margin: 1.5em 3.5em;
   }
+
+  .blog-one {
+    margin: 1.5em 3.5em;
+  }
 }
 
 @media (max-width: 900px) {
@@ -2028,7 +2155,15 @@ nav ul i {
     margin: 1.5em 2em;
   }
 
+  .blog-one {
+    margin: 1.5em 2em;
+  }
+
   .section-one h1 {
+    width: 50vw;
+  }
+
+  .blog-one h1 {
     width: 50vw;
   }
 
@@ -2195,6 +2330,14 @@ nav ul i {
 
   .section-one {
     margin: 1.5em 2em;
+  }
+
+  .blog-one {
+    margin: 1.5em 2em;
+  }
+
+  .blog-one {
+    margin: 1.5em 0;
   }
 
   .categories {
