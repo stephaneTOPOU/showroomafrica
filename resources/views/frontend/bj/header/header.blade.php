@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#6777ef"/>
     <meta property="og:locale" content="fr-BJ" />
-    <meta property="og:url" content="https://showroomafrica.com/bj/1" />
     <meta property="og:country-name" content="Bénin" />
     
     
@@ -18,7 +17,6 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/showroom/favicon.ico') }}" />
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
-    <link rel="canonicail" href="https://showroomafrica.com/bj/1">
 
     <link rel="alternate" href="https://showroomafrica.com/annuaire" hreflang="fr"/>
     
