@@ -1,4 +1,8 @@
 @include('frontend.ci.header.header')
+@foreach ($entreprises as $entreprise)
+    <meta property="og:url" content="https://www.showroomafrica.com/ci/entreprise/6/{{ $entreprise->id }}"  />
+    <link rel="canonicail" href="https://www.showroomafrica.com/ci/entreprise/6/{{ $entreprise->id }}" />
+@endforeach
 @include('frontend.ci.header.header1')
 @include('frontend.ci.header.header2')
 <link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />
@@ -28,11 +32,11 @@
     <!-- ADS BIG SLIDER -->
     <div class="img-slider first-slider">
         <div class="slide active">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
         </div>
         @foreach ($slider as $sliders)
             <div class="slide">
-                <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}" alt="">
+                <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}" alt="{{ $sliders->image }}">
             </div>
         @endforeach
     </div>
@@ -41,11 +45,11 @@
     <!-- ADS BIG SLIDER 2 -->
     <div class="img-slider" hidden>
         <div class="slide-two active-two">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
         </div>
         @foreach ($slider as $slider2)
             <div class="slide-two">
-                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="{{ $slider2->image }}">
             </div>
         @endforeach
     </div>
@@ -54,11 +58,11 @@
     <!-- ADS BIG SLIDER 3 -->
     <div class="img-slider" hidden>
         <div class="slide-three active-three">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
         </div>
         @foreach ($slider as $slider3)
         <div class="slide-three">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}">
         </div>
         @endforeach
     </div>
@@ -201,7 +205,7 @@
                         <div class="company-slider" style="display: flex; flex-flow: row wrap; margin: 0 15px;">
                             <div class="img-search">
                                 <div class="search active">
-                                    <img src="{{ asset('assets/images/sliders/main') }}/{{ $search->image }}" alt=""> 
+                                    <img src="{{ asset('assets/images/sliders/main') }}/{{ $search->image }}" alt="{{ $search->image }}"> 
                                 </div>
                             </div>
                         </div>
@@ -270,13 +274,13 @@
             <div class="search">
                 @foreach ($tops as $top)
                     <div class="img-div">
-                        <img src="{{ asset('assets/images/sliders/search-side') }}/{{ $top->image }}" alt="" style="display: block; width: 50%; margin: auto;" width="100">
+                        <img src="{{ asset('assets/images/sliders/search-side') }}/{{ $top->image }}" alt="{{ $top->image }}" style="display: block; width: 50%; margin: auto;" width="100">
                     </div>
                 @endforeach
             </div>
             <br/>
             <div>
-                <img src="{{ asset('assets/images/sliders/search-side') }}/{{ $top2s->image }}" alt="" style="display: block; width: 50%; margin: auto;" width="100">
+                <img src="{{ asset('assets/images/sliders/search-side') }}/{{ $top2s->image }}" alt="{{ $top2s->image }}" style="display: block; width: 50%; margin: auto;" width="100">
             </div>
             
         </div>

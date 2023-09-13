@@ -1,4 +1,6 @@
 @include('frontend.ci.header.header')
+<meta property="og:url" content="https://showroomafrica.com/ci/6" />
+<link rel="canonicail" href="https://showroomafrica.com/ci/6">
 @include('frontend.ci.header.header1')
 @include('frontend.ci.header.header2')
 @include('frontend.ci.header.header3')
@@ -38,7 +40,7 @@
     <div class="modal-content">
         <span class="close" id="closepop"><i class="fa-regular fa-xmark"></i></span>
         <div class="popup-container">
-            <img src="{{ asset('assets/images/popup') }}/{{ $popups->image }}" alt="PUB" id="image"> 
+            <img src="{{ asset('assets/images/popup') }}/{{ $popups->image }}" alt="{{ $popups->image }}" id="image" /> 
         </div>
     </div>
 </div>
@@ -158,11 +160,11 @@
     <!-- ADS BIG SLIDER -->
     <div class="img-slider first-slider">
         <div class="slide active" data-bs-interval="1">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa" />
         </div>
         @foreach ($slider1s as $slider1)
             <div class="slide" data-bs-interval="1">
-                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider1->image }}" alt="">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider1->image }}" alt="{{ $slider1->image }}" />
             </div>
         @endforeach
     </div>
@@ -247,11 +249,11 @@
                     <input type="radio" name="radio-btn" id="radio2">
 
                     <div class="slider-slide first">
-                        <img src="{{ asset('assets/images/sliders/side/4.jpg') }}">
+                        <img src="{{ asset('assets/images/sliders/side/4.jpg') }}" alt="slider1" />
                     </div>
                     @foreach ($sliderLaterals as $sliderLateral)
                         <div class="slider-slide">
-                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateral->image }}">
+                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateral->image }}" alt="{{ $sliderLateral->image }}" />
                         </div>
                     @endforeach
                     <div class="navigation-auto">
@@ -270,11 +272,11 @@
                     <input type="radio" name="radio-btn" id="rdo2">
 
                     <div class="slider-slide second">
-                        <img src="{{ asset('assets/images/sliders/side/4.jpg') }}">
+                        <img src="{{ asset('assets/images/sliders/side/4.jpg') }}" alt="slider2">
                     </div>
                     @foreach ($sliderLateralBas as $sliderLateralBa)
                         <div class="slider-slide">
-                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateralBa->image }}">
+                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateralBa->image }}" alt="{{ $sliderLateralBa->image }}" />
                         </div>
                     @endforeach
                     <div class="navigation-auto">
@@ -321,7 +323,7 @@
             @foreach ($minispots as $minispot)
                 <div class="video-list">
                     <div class="video-list-inner video">
-                        <img class="play" src="{{ asset('assets/videos/posters') }}/{{ $minispot->image }}">
+                        <img class="play" src="{{ asset('assets/videos/posters') }}/{{ $minispot->image }}" alt="{{ $minispot->image }}" />
                         <div class="play">
                             <i class="fa-regular fa-circle-play"></i>
                         </div>
@@ -343,11 +345,11 @@
     <!-- ADS BIG SLIDER 2 -->
     <div class="img-slider">
         <div class="slide-two active-two">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
         </div>
         @foreach ($slider2s as $slider2)
             <div class="slide-two">
-                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="{{ $slider2->image }}">
             </div>
         @endforeach
     </div>
@@ -365,31 +367,7 @@
         @endforeach
     </div>
     <!-- END REPORTAGE -->
-    {{-- 
-    <!-- HIGHLIGHTED COMPANIES -->
-    <div class="section-one">
-        <h1>Entreprises du mois</h1>
-            <div class="highlights">
-                @foreach ($honeures as $honeure)
-                    <div class="hightlighted-company">
-                        <img src="{{ asset('assets/images/highlights') }}/{{ $honeure->photo4 }}" alt="{{ $honeure->nom }}">
-                        <div class="highlight-links">
-                        <button type="button">
-                            <i class="fa-regular fa-plus"></i>
-                            <a href="{{ route('entreprise.tg.profil',['pays_id'=>$honeure->pays_id,'entreprise_id'=>$honeure->id]) }}">Découvrir</a>
-                        </button>
-                        <button type="button">
-                            <i class="fa-regular fa-phone"></i>
-                            <a href="tel:{{ $honeure->telephone1 }}">Contacter</a>
-                        </button>
-                        </div>
-                    </div>
-                @endforeach
-        </div>
-    </div>
-    <!-- END HIGHLIGHTED COMPANIES -->
-     --}}
-
+    
     <!-- NEWCOMERS -->
     <div class="section-one">
         <h1>Entreprises du mois</h1>
@@ -397,7 +375,7 @@
             <div class="autoplay">
                 @foreach ($honeures as $honeure)
                     <a href="{{ route('entreprise.ci.profil',['pays_id'=>$honeure->pays_id,'entreprise_id'=>$honeure->id]) }}">
-                        <div class="img-div"><img src="{{ asset('assets/images/highlights') }}/{{ $honeure->photo4 }}"></div>
+                        <div class="img-div"><img src="{{ asset('assets/images/highlights') }}/{{ $honeure->photo4 }}" alt="{{ $honeure->nom }}"></div>
                     </a>
                 @endforeach
             </div>
@@ -411,7 +389,7 @@
         <h1>Publireportage</h1>
         <div class="advertorials">
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}">
+                <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}" alt="telephonie">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-phone"></i> Téléphonie
@@ -419,7 +397,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}">
+                <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}" alt="commerce">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-shopping-bag"></i> Commerce
@@ -427,7 +405,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/education.jpg') }}">
+                <img src="{{ asset('assets/images/advertorial/education.jpg') }}" alt="education">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-backpack"></i> Education
@@ -435,7 +413,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}">
+                <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}" alt="medecine">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-user-doctor"></i> Medecine
@@ -443,7 +421,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}">
+                <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}" alt="alimentation">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-utensils"></i>Alimentation</span>
@@ -451,7 +429,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/divers.jpg') }}">
+                <img src="{{ asset('assets/images/advertorial/divers.jpg') }}" alt="divers">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-arrow-right"></i> Divers</span>
@@ -467,7 +445,7 @@
         <div class="tower-ctn">
             @foreach ($pharmacies as $pharmacie)
                 <div class="drugstore">
-                    <img src="{{ asset('assets/images') }}/{{ $pharmacie->photo1 }}">
+                    <img src="{{ asset('assets/images') }}/{{ $pharmacie->photo1 }}" alt="{{ $pharmacie->nom }}" />
                     <h3>{{ $pharmacie->nom }}</h3>
                     <ul>
                     <li>
@@ -545,11 +523,11 @@
     <!-- ADS BIG SLIDER 3 -->
     <div class="img-slider">
         <div class="slide-three active-three">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa" />
         </div>
         @foreach ($slider3s as $slider3)
         <div class="slide-three">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}" />
         </div>
         @endforeach
     </div>
@@ -562,7 +540,7 @@
             @foreach ($magazines as $magazine)
             <div class="magazine">
                 <div class="magazine-details">
-                    <img class="magazine-img" src="{{ asset('assets/images/magazines') }}/{{ $magazine->magazineimage1 }}">
+                    <img class="magazine-img" src="{{ asset('assets/images/magazines') }}/{{ $magazine->magazineimage1 }}" alt="{{ $magazine->nom }}" />
                     <button type="button" class="discover-btn">
                         <a href="{{ route('entreprise.ci.profil',['pays_id'=>$magazine->pays_id,'entreprise_id'=>$magazine->id]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
                     </button>
