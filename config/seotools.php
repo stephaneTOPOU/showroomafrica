@@ -37,7 +37,7 @@ return [
          */
         'defaults' => [
             'title'       => "Annuaire Showroom Africa", // set false to total remove
-            'description' => "Annuaire des entreprises et des professionnels en réseau pour une émergence économique du Togo et de l’Afrique. Guide pour l’investissement, l’annuaire showroom africa est une liste des sociétés répertoriées par secteurs d’activités. Pour faciliter les recherches, showroom africa positionne votre entreprise dans votre secteur et votre activité se retrouve booster .", // set false to total remove
+            'description' => "Bienvenue sur le site officiel de Showroom Africa, votre annuaire qui répertorie toutes les entreprises africaines....", // set false to total remove
             'url'         => "https://showroomafrica.com", // Set null for using Url::current(), set false to total remove
             'type'        => "website",
             'site_name'   => "Annuaire Showroom Africa",
@@ -59,7 +59,7 @@ return [
          */
         'defaults' => [
             'title'       => 'Annuaire Showroom Africa', // set false to total remove
-            'description' => "Annuaire des entreprises et des professionnels en réseau pour une émergence économique du Togo et de l’Afrique. Guide pour l’investissement, l’annuaire showroom africa est une liste des sociétés répertoriées par secteurs d’activités. Pour faciliter les recherches, showroom africa positionne votre entreprise dans votre secteur et votre activité se retrouve booster .", // set false to total remove
+            'description' => "Bienvenue sur le site officiel de Showroom Africa, votre annuaire qui répertorie toutes les entreprises africaines....", // set false to total remove
             'url'         => 'https://showroomafrica.com', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => ['https://showroomafrica.com/assets/images/showroom/logo.png'],
