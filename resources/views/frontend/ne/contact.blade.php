@@ -1,4 +1,6 @@
 @include('frontend.ne.header.header')
+<meta property="og:url" content="https://www.showroomafrica.com/ne/contact/11" />
+<link rel="canonicail" href="https://www.showroomafrica.com/ne/contact/11">
 @include('frontend.ne.header.header1')
 @include('frontend.ne.header.header2')
 @include('frontend.ne.header.header3')
