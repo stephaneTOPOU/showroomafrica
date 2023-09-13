@@ -1,4 +1,8 @@
 @include('frontend.bf.header.header')
+@foreach ($souscategories as $souscategorie)
+    <meta property="og:url" content="https://www.showroomafrica.com/bf/sous-categories/2/{{ $souscategorie->identifiant }}" />
+    <link rel="canonicail" href="https://www.showroomafrica.com/bf/sous-categories/2/{{ $souscategorie->identifiant }}">
+@endforeach
 @include('frontend.bf.header.header1')
 @include('frontend.bf.header.header2')
 @include('frontend.bf.header.header3')
