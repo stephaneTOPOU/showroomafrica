@@ -34,7 +34,7 @@
         </div>
         @if ($Profil_entreprise->photo2)
           <div class="slide">
-            <img src="{{ asset('assets/images/sliders/couverture') }}/{{ $Profil_entreprise->photo2 }}" alt="{{ $Profil_entreprise->photo2 }}" />
+            <img src="{{ asset('assets/images/sliders/couverture') }}/{{ $Profil_entreprise->photo2 }}" alt="{{ $Profil_entreprise->nom }}" />
           </div>
         @else
           <div class="slide">
