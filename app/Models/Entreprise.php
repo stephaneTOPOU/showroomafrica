@@ -42,7 +42,13 @@ class Entreprise extends Model
         'a_magazine',
         'magazineimage1',
         'magazineimage2',
-        'magazineimage3'
+        'magazineimage3',
+        'ville',
+        'pays',
+        'premium',
+        'basic',
+        'partenaire',
+        'video'
     ];
 
     public function sousCategorie()

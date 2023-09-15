@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Categories;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -189,7 +192,30 @@ Route::post('/entreprise/{entreprise_id}', [\App\Http\Controllers\DevisControlle
 
 //****************************************************end Afrique************************************************//
 
+Route::get('genrate-sitemap', function(){
 
+    // create new sitemap object
+    $sitemap = App::make("sitemap");
+
+    // add items to the sitemap (url, date, priority, freq)
+    $sitemap->add(URL::to('home'), '2023-09-25T20:10:00+02:00', '1.0', 'daily');
+    $sitemap->add(URL::to('devis.entreprise'), '2023-09-26T12:30:00+02:00', '0.9', 'monthly');
+
+    // get all posts from db
+    $categories = Categories::all();
+
+    // add every post to the sitemap
+    foreach ($categories as $category)
+    {
+        $sitemap->add(URL::to('categories/'.$category->id.'/edit'), $category->updated_at, '1.0', 'daily');
+    }
+
+    // generate your sitemap (format, filename)
+    $sitemap->store('xml', 'sitemap');
+    // this will generate file mysitemap.xml to your public folder
+
+    return redirect(url('sitemap.xml'));
+});
 
 //****************************************************Pour le Togo***********************************************//
 Route::get('/tg/{pays_id}', [App\Http\Controllers\HomeController::class, 'index_tg'])->name('home.tg');
