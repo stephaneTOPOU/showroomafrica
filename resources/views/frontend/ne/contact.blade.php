@@ -38,8 +38,8 @@
             <div class="phone details">
               <i class="fa-light fa-phone"></i>
               <div class="topic">Téléphone</div>
-              <div class="text-one">(+227) <b>{{ $parametre->telephone1 }}</b></div>
-              <div class="text-two">(+227) <b>{{ $parametre->telephone2 }}</b></div>
+              <div class="text-one">(+228) <b>{{ $parametre->telephone1 }}</b></div>
+              <div class="text-two">(+228) <b>{{ $parametre->telephone2 }}</b></div>
             </div>
             <div class="email details">
               <i class="fa-light fa-envelope"></i>
