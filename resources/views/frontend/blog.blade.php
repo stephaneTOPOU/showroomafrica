@@ -204,53 +204,17 @@
             <div class="privacy-text">
                 <div class="blog-one">
                     <div class="blogs">
-                        <div class="blog">
-                            <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}">
-                            <div class="overlay"></div>
-                            <a href="#">
-                            <i class="fa-solid fa-phone"></i> Téléphonie
+                        @foreach ($blogs as $blog)
+                            <a class="blog" href="{{ route('blog.detail',['blog_id'=>$blog->id]) }}">
+                                <img src="{{ asset('assets/images/blog/images') }}/{{ $blog->image1 }}">
+                                <div class="description">
+                                    <h3>{{ $blog->titre }}</h3>
+                                    <p>
+                                        {{ Str::limit( $blog->description1, 200) }}
+                                    </p>
+                                </div>
                             </a>
-                        </div>
-            
-                        <div class="blog">
-                            <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}">
-                            <div class="overlay"></div>
-                            <a href="#">
-                            <i class="fa-solid fa-shopping-bag"></i> Commerce
-                            </a>
-                        </div>
-            
-                        <div class="blog">
-                            <img src="{{ asset('assets/images/advertorial/education.jpg') }}">
-                            <div class="overlay"></div>
-                            <a href="#">
-                            <i class="fa-solid fa-backpack"></i> Education
-                            </a>
-                        </div>
-            
-                        <div class="blog">
-                            <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}">
-                            <div class="overlay"></div>
-                            <a href="#">
-                            <i class="fa-solid fa-user-doctor"></i> Medecine
-                            </a>
-                        </div>
-            
-                        <div class="blog">
-                            <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}">
-                            <div class="overlay"></div>
-                            <a href="#">
-                            <i class="fa-solid fa-utensils"></i>Alimentation</span>
-                            </a>
-                        </div>
-            
-                        <div class="blog">
-                            <img src="{{ asset('assets/images/advertorial/divers.jpg') }}">
-                            <div class="overlay"></div>
-                            <a href="#">
-                            <i class="fa-solid fa-arrow-right"></i> Divers</span>
-                            </a>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

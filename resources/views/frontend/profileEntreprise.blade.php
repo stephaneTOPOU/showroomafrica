@@ -590,6 +590,16 @@
           @endif
           <form action="{{ route('entreprise.form',['entreprise_id'=>$Profil_entreprise->id]) }}" method="POST">
             @csrf
+            <div class="input-box" hidden>
+              <input type="text" placeholder="{{ $Profil_entreprise->nom }}" required value="{{ $Profil_entreprise->nom }}" name="entrprise_nom">
+            </div>
+            <div class="input-box" hidden>
+              @if ($Profil_entreprise->email)
+                <input type="text" placeholder="{{ $Profil_entreprise->email }}" required value="{{ $Profil_entreprise->email }}" name="entrprise_email">
+              @else
+                <input type="text" placeholder="contact@showroomafrica.com" required value="contact@showroomafrica.com" name="entrprise_email">
+              @endif
+            </div>
             <div class="input-box">
                 <input type="text" placeholder="Nom et prénom(s)" required name="nom">
             </div>

@@ -132,6 +132,8 @@ Route::get('/', function () {
 
 Route::get('/blog',[\App\Http\Controllers\BlogController::class, 'Blog'])->name('blog');
 
+Route::get('/blog-detail/{blog_id}', [\App\Http\Controllers\BlogController::class, 'BlogDetail'])->name('blog.detail');
+
 Route::get('/cgu',[\App\Http\Controllers\CguController::class, 'Cgu'])->name('cgu');
 
 Route::get('/confidentialite',[\App\Http\Controllers\ConfidentialiteController::class, 'Confidentialite'])->name('cp');
@@ -238,6 +240,8 @@ Route::get('/tg/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers
 
 Route::get('/tg/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_tg'])->name('entreprise.tg.profil');
 
+Route::post('/tg/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.tg.form');
+
 Route::get('/tg/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_tg'])->name('pharmacie.tg');
 
 Route::get('/tg/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 'login_tg'])->name('login.tg');
@@ -281,6 +285,8 @@ Route::get('/bj/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers
 
 Route::get('/bj/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_bj'])->name('entreprise.bj.profil');
 
+Route::post('/bj/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.bj.form');
+
 Route::get('/bj/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_bj'])->name('pharmacie.bj');
 
 Route::get('/bj/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 'login_bj'])->name('login.bj');
@@ -323,6 +329,8 @@ Route::get('/bf/sous-categories/{pays_id}/{categorie_id}', [\App\Http\Controller
 Route::get('/bf/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_bf'])->name('entreprise.bf');
 
 Route::get('/bf/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_bf'])->name('entreprise.bf.profil');
+
+Route::post('/bf/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.bf.form');
 
 Route::get('/bf/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_bf'])->name('pharmacie.bf');
 
@@ -399,6 +407,8 @@ Route::get('/ci/sous-categories/{pays_id}/{categorie_id}', [\App\Http\Controller
 Route::get('/ci/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_ci'])->name('entreprise.ci');
 
 Route::get('/ci/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_ci'])->name('entreprise.ci.profil');
+
+Route::post('/ci/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.ci.form');
 
 Route::get('/ci/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_ci'])->name('pharmacie.ci');
 
@@ -500,6 +510,8 @@ Route::get('/ne/sous-categories/{pays_id}/{categorie_id}', [\App\Http\Controller
 Route::get('/ne/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_ne'])->name('entreprise.ne');
 
 Route::get('/ne/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_ne'])->name('entreprise.ne.profil');
+
+Route::post('/ne/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.ne.form');
 
 Route::get('/ne/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_ne'])->name('pharmacie.ne');
 

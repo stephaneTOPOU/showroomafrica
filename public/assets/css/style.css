@@ -864,6 +864,7 @@ nav ul i {
 }
 
 .blogs .blog {
+  margin-bottom: 15%;
   width: 30%;
   position: relative;
   margin-top: 0.75em;
@@ -876,9 +877,9 @@ nav ul i {
   margin-left: 2%;
 }
 
-.blogs .blog{
+.blogs .blog:nth-child(3n-1),
+.blogs .blog:nth-child(3n+0) {
   margin-left: 2%;
-  margin-bottom: 2%;
 }
 
 .advertorial img {
@@ -908,27 +909,23 @@ nav ul i {
   z-index: 2;
 }
 
-.blog a {
+.blog .description {
   font-size: 14px;
   text-decoration: none;
   background-color: #fff;
   border-radius: 1em;
   color: var(--text-color);
   padding: .5em 1em;
-  box-shadow: 0 5px 10px rgb(100 100 100 / 10%);
+  box-shadow: 0 5px 10px rgba(18, 15, 15, 0.1);
   position: absolute;
-  bottom: 1.5em;
-  top: inherit;
+  top: 8em;
+  margin-bottom: 10%;
   left: 1em;
+  right: 1em;
   z-index: 2;
 }
 
 .advertorial a:hover {
-  margin-left: 1em;
-  transition: all .3s ease-out;
-}
-
-.blog a:hover {
   margin-left: 1em;
   transition: all .3s ease-out;
 }
@@ -938,25 +935,7 @@ nav ul i {
   color: var(--color-primary);
 }
 
-.blog a i {
-  margin-right: .5em;
-  color: var(--color-primary);
-}
-
 .advertorial .overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  overflow: hidden;
-  width: 0;
-  height: 100%;
-  transition: .25s ease;
-  border-radius: 1em;
-}
-
-.blog .overlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -977,52 +956,52 @@ nav ul i {
   width: 100%;
 }
 
-@media (max-width: 800px) {
-  .advertorials .advertorial {
-    width: 48%;
-    margin-top: 1.2em;
-  }
-
-  .blogs .blog {
-    width: 48%;
-    margin-top: 1.2em;
-  }
-
-  .advertorials .advertorial:nth-child(3n+0),
-  .advertorials .advertorial:nth-child(3n-1) {
-    margin-left: 0;
-  }
-
+@media (max-width: 950px) {
+  .blogs{margin: 0;}
+  .blogs .blog {width: 48%; margin-top: 1.2em; margin-bottom: 15%;  }
+  .blog .description {font-size: 12px; top: 8em; left: 1em; right: 1em; z-index: 2;}
   .blogs .blog:nth-child(3n+0),
-  .blogs .blog:nth-child(3n-1) {
-    margin-left: 0;
-  }
+  .blogs .blog:nth-child(3n-1) {margin-left: 0; }
+  .blogs .blog:nth-child(2n+0) {margin-left: 4%;}
+}
 
-  .advertorials .advertorial:nth-child(2n+0) {
-    margin-left: 4%;
-  }
-
-  .blogs .blog:nth-child(2n+0) {
-    margin-left: 4%;
-  }
+@media (max-width: 801px) {
+  .advertorials .advertorial {width: 48%; margin-top: 1.2em;}
+  .blogs .blog {margin-top: 1.2em; margin-bottom: 10%;}
+  .advertorials .advertorial:nth-child(3n+0),
+  .advertorials .advertorial:nth-child(3n-1) {margin-left: 0; }
+  .blogs .blog:nth-child(3n+0),
+  .blogs .blog:nth-child(3n-1) {margin-left: 0;}
+  .advertorials .advertorial:nth-child(2n+0) {margin-left: 4%;}
+  .blogs .blog:nth-child(2n+0) {margin-left: 2%;}
+  .blog .description {font-size: 9px; top: 8em; left: 1em; right: 1em; z-index: 2;}
 }
 
 @media (max-width: 600px) {
-  .advertorials .advertorial {
-    width: 96%;
-  }
+  .blogs{margin: auto}
+  .advertorials .advertorial {width: 96%;}
+  .blogs .blog {width: 96%; margin-bottom: 20%; }
+  .advertorials .advertorial:nth-child(2n+0) {margin-left: 0;}
+  .blogs .blog:nth-child(2n+0) {margin-left: 0;}
+  .blog .description {font-size: 12px; top: 8em; left: 1em; right: 1em; z-index: 2;}
+}
 
-  .blogs .blog {
-    width: 96%;
-  }
+@media (max-width: 450px) {
+  .blogs{margin: auto;}
+  .blogs .blog {margin-top: 1.2em; margin-bottom: 25%;  }
+  .blog .description {font-size: 9px; top: 8em; left: 1em; right: 1em; z-index: 2;}
+  .blogs .blog:nth-child(3n+0),
+  .blogs .blog:nth-child(3n-1) {margin-left: 0; }
+  .blogs .blog:nth-child(2n+0) {margin-left: 4%;}
+}
 
-  .advertorials .advertorial:nth-child(2n+0) {
-    margin-left: 0;
-  }
-
-  .blogs .blog:nth-child(2n+0) {
-    margin-left: 0;
-  }
+@media (max-width: 380px) {
+  .blogs{margin: auto;}
+  .blogs .blog {margin-top: 1.2em; margin-bottom: 25%;  }
+  .blog .description {font-size: 8px; top: 8em; left: 1em; right: 1em; z-index: 2;}
+  .blogs .blog:nth-child(3n+0),
+  .blogs .blog:nth-child(3n-1) {margin-left: 0; }
+  .blogs .blog:nth-child(2n+0) {margin-left: 4%;}
 }
 
 /* END ADVERTORIAL */

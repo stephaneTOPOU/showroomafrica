@@ -33,6 +33,10 @@ class ProfileEntrepriseController extends Controller
         try {
             //  Envoi de mail
             Mail::send('frontend.contact-mail', array(
+                /**Ajouter les informations de l'entreprise */
+                'entreprise_name' => $request->input('entrprise_nom'),
+                'entreprise_email' => $request->input('entrprise_email'),
+                /**Fin Ajouter les informations de l'entreprise */
                 'name' => $request->input('nom'),
                 'email' => $request->input('email'),
                 'subject' => $request->input('objet'),
@@ -147,7 +151,7 @@ class ProfileEntrepriseController extends Controller
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
             ->where('entreprises.id', $entreprise_id)
-            ->select('*', 'entreprises.id as identifiant')
+            ->select('*', 'entreprises.id as identifiant', 'pays.id as pays_id')
             ->get();
 
         $premiums = DB::table('pays')->where('pays.id', $pays_id)
@@ -267,7 +271,7 @@ public function ProfileEntreprise_ci($pays_id, $entreprise_id)
         ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
         ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
         ->where('entreprises.id', $entreprise_id)
-        ->select('*', 'entreprises.id as identifiant')
+        ->select('*', 'entreprises.id as identifiant', 'pays.id as pays_id')
         ->get();
 
     $premiums = DB::table('pays')->where('pays.id', $pays_id)
@@ -389,7 +393,7 @@ public function ProfileEntreprise_ne($pays_id, $entreprise_id)
         ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
         ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
         ->where('entreprises.id', $entreprise_id)
-        ->select('*', 'entreprises.id as identifiant')
+        ->select('*', 'entreprises.id as identifiant', 'pays.id as pays_id')
         ->get();
 
     $premiums = DB::table('pays')->where('pays.id', $pays_id)
@@ -509,7 +513,7 @@ public function ProfileEntreprise_bf($pays_id, $entreprise_id)
         ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
         ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
         ->where('entreprises.id', $entreprise_id)
-        ->select('*', 'entreprises.id as identifiant')
+        ->select('*', 'entreprises.id as identifiant' , 'pays.id as pays_id')
         ->get();
 
     $premiums = DB::table('pays')->where('pays.id', $pays_id)
@@ -632,7 +636,7 @@ public function ProfileEntreprise_bj($pays_id, $entreprise_id)
         ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
         ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
         ->where('entreprises.id', $entreprise_id)
-        ->select('*', 'entreprises.id as identifiant')
+        ->select('*', 'entreprises.id as identifiant', 'pays.id as pays_id')
         ->get();
 
     $premiums = DB::table('pays')->where('pays.id', $pays_id)

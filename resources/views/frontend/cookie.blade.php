@@ -287,7 +287,7 @@
             </style>
             <div class="privacy">
                 <div class="privacy-item">
-                    <a class="blog" href="#">Blog</a>
+                    <a class="blog" href="{{ route('blog') }}">Blog</a>
                     <a class="cookie" href="{{ route('cgu') }}">Condition générale d'utilisation</a>
                     <a class="cookie" href="{{ route('cp') }}">Politique de confidentialité</a>
                     <a class="cookie" href="{{ route('cookie') }}">politique de cookie</a>
