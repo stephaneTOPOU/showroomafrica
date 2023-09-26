@@ -207,27 +207,27 @@
         <div class="privacy-details">
             @foreach ($blogs as $blog)
                 <div class="privacy-text">
-                    <p style="margin-bottom: 1em;">{{ $blog->description1 }}</p>
+                    <p style="margin-bottom: 1em;">{!! $blog->description1 !!}</p>
                     @if ( $blog->image1)
                         <img src="{{ asset('assets/images/blog/images') }}/{{ $blog->image1 }}" alt="{{ $blog->titre }}" style="margin: auto; width: 100%; border-radius: 1em;">
                     @endif
 
-                    <p style="margin-bottom: 1em;">{{ $blog->description2 }}</p>
+                    <p style="margin-bottom: 1em;">{!! $blog->description2 !!}</p>
                     @if ( $blog->image2)
                         <img src="{{ asset('assets/images/blog/images') }}/{{ $blog->image2 }}" alt="{{ $blog->titre }}" style="margin: auto; width: 100%; border-radius: 1em;">
                     @endif
 
-                    <p style="margin-bottom: 1em;">{{ $blog->description3 }}</p>
+                    <p style="margin-bottom: 1em;">{!! $blog->description3 !!}</p>
                     @if ( $blog->image3)
                         <img src="{{ asset('assets/images/blog/images') }}/{{ $blog->image3 }}" alt="{{ $blog->titre }}" style="margin: auto; width: 100%; border-radius: 1em;">
                     @endif
 
-                    <p style="margin-bottom: 1em;">{{ $blog->description4 }}</p>
+                    <p style="margin-bottom: 1em;">{!! $blog->description4 !!}</p>
                     @if ( $blog->video1)
                         <video src="{{ asset('assets/images/blog/videos') }}/{{ $blog->video1 }}" autoplay muted controls style="width: 100%; border-radius: 1em;"></video>
                     @endif
 
-                    <p style="margin-bottom: 1em;">{{ $blog->description5 }}</p>
+                    <p style="margin-bottom: 1em;">{!! $blog->description5 !!}</p>
                     @if ( $blog->video2)
                         <video src="{{ asset('assets/images/blog/videos') }}/{{ $blog->video2 }}" autoplay muted controls style="width: 100%; border-radius: 1em;"></video>
                     @endif
