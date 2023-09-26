@@ -208,7 +208,7 @@
                             <a class="blog" href="{{ route('blog.detail',['blog_id'=>$blog->id]) }}">
                                 <img src="{{ asset('assets/images/blog/images') }}/{{ $blog->image1 }}">
                                 <div class="description">
-                                    <h3>{{ $blog->titre }}</h3>
+                                    <h3>{{ Str::limit( $blog->titre, 20) }}</h3>
                                     <p>
                                         {{ Str::limit( $blog->description1, 200) }}
                                     </p>

@@ -33,7 +33,7 @@ class ContactController extends Controller
 
             Contact::create($request->all());
             //  Envoi de mail
-            Mail::send('frontend.contact-mail', array(
+            Mail::send('frontend.contact2-mail', array(
                 'name' => $request->input('nom'),
                 'email' => $request->input('email'),
                 'subject' => $request->input('objet'),
