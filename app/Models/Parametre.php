@@ -18,7 +18,11 @@ class Parametre extends Model
         'lienface',
         'lientwitter',
         'lieninsta',
-        'lienyoutube'
+        'lienyoutube',
+        'logo_header',
+        'logo_footer',
+        'pays_id',
+        'lienlinkedin'
 
     ];
 }

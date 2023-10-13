@@ -42,7 +42,7 @@
                         <a target="_blank" href="{{ $parametre->lientwitter }}"><i class="fa-brands fa-twitter"></i></a>
                         <a target="_blank" href="{{ $parametre->lieninsta }}"><i class="fa-brands fa-instagram"></i></a>
                         <a target="_blank" href="{{ $parametre->lienyoutube }}"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a target="_blank" href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a target="_blank" href="{{ $parametre->lienlinkedin }}"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                     <div class="download-app">
                         <a href="https://play.google.com/store/apps/details?id=com.showroomafrica.annuaire" target="_blank">
