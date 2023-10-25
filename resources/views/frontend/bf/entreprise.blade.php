@@ -1,8 +1,7 @@
 @include('frontend.bf.header.header')
 @foreach ($entreprises as $entreprise)
-    <meta property="og:url" content="https://www.showroomafrica.com/bf/{{ $entreprise->slug_entreprise }}"  />
-    <link rel="canonicail" href="https://www.showroomafrica.com/bf/{{ $entreprise->slug_entreprise }}" />
-@endforeach
+<meta property="og:url" content="https://www.showroomafrica.com/bf/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}"  />
+<link rel="canonicail" href="https://www.showroomafrica.com/bf/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}" />
 @include('frontend.bf.header.header1')
 @include('frontend.bf.header.header2')
 <link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Categories;
+use App\Models\Entreprise;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
@@ -205,12 +206,12 @@ Route::get('genrate-sitemap', function(){
     $sitemap->add(URL::to('devis.entreprise'), '2023-09-26T12:30:00+02:00', '0.9', 'monthly');
 
     // get all posts from db
-    $categories = Categories::all();
+    $entreprises = Entreprise::all();
 
     // add every post to the sitemap
-    foreach ($categories as $category)
+    foreach ($entreprises as $entreprise)
     {
-        $sitemap->add(URL::to('categories/'.$category->id.'/edit'), $category->updated_at, '1.0', 'daily');
+        $sitemap->add(URL::to('entreprises/'.$entreprise->slug_entreprise.'/edit'), $entreprise->updated_at, '1.0', 'daily');
     }
 
     // generate your sitemap (format, filename)

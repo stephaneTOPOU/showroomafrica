@@ -1,7 +1,7 @@
 @include('frontend.ne.header.header')
 @foreach ($souscategories as $souscategorie)
-    <meta property="og:url" content="https://www.showroomafrica.com/ne/{{ $souscategorie->slug_souscategorie }}" />
-    <link rel="canonicail" href="https://www.showroomafrica.com/ne/{{ $souscategorie->slug_souscategorie }}">
+<meta property="og:url" content="https://www.showroomafrica.com/ne/{{ $souscategorie->slug_categorie }}" />
+<link rel="canonicail" href="https://www.showroomafrica.com/ne/{{ $souscategorie->slug_categorie }}">
 @endforeach
 @include('frontend.ne.header.header1')
 @include('frontend.ne.header.header2')

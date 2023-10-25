@@ -1,7 +1,7 @@
 @include('frontend.ci.header.header')
 @foreach ($Profil_entreprises as $Profil_entreprise)
-  <meta property="og:url" content="https://www.showroomafrica.com/ci/{{ $Profil_entreprise->slug_entreprise }}" />
-  <link rel="canonicail" href="https://www.showroomafrica.com/ci/{{ $Profil_entreprise->slug_entreprise }}">
+<meta property="og:url" content="https://www.showroomafrica.com/ci/{{ $Profil_entreprise->slug_categorie }}/{{ $Profil_entreprise->slug_souscategorie }}/{{ $Profil_entreprise->slug_entreprise }}" />
+<link rel="canonicail" href="https://www.showroomafrica.com/ci/{{ $Profil_entreprise->slug_categorie }}/{{ $Profil_entreprise->slug_souscategorie }}/{{ $Profil_entreprise->slug_entreprise }}">
 @endforeach
 
 @include('frontend.ci.header.header1')
