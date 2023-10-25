@@ -1893,14 +1893,14 @@ nav ul i {
 
 
 .privacy{
-  border-top: 2px solid #FFA500;
-  border-bottom: 2px solid #FFA500;
+  /* border-top: 2px solid #FFA500;
+  border-bottom: 2px solid #FFA500; */
   width: 100%;
-  
+  margin-bottom: -2rem;
 }
 .privacy-item {
   margin-top: 10px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 .privacy-item a{
   text-decoration: none;

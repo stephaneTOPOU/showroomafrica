@@ -1,6 +1,6 @@
 @include('frontend.bf.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/bf/categories/2" />
-<link rel="canonicail" href="https://www.showroomafrica.com/bf/categories/2">
+<meta property="og:url" content="https://www.showroomafrica.com/bf/categorie" />
+<link rel="canonicail" href="https://www.showroomafrica.com/bf/categorie">
 @include('frontend.bf.header.header1')
 @include('frontend.bf.header.header2')
 @include('frontend.bf.header.header3')
@@ -34,11 +34,11 @@
     <!-- ADS BIG SLIDER 2 -->
     <div class="img-slider" hidden>
         <div class="slide-two active-two">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider as $slider2)
             <div class="slide-two">
-                <img src="{{ asset('assets/images/sliders/search') }}/{{ $slider2->image }}" alt="{{ $slider2->image }}">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="{{ $slider2->image }}">
             </div>
         @endforeach
     </div>
@@ -47,11 +47,11 @@
     <!-- ADS BIG SLIDER 3 -->
     <div class="img-slider" hidden>
         <div class="slide-three active-three">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider as $slider3)
         <div class="slide-three">
-            <img src="{{ asset('assets/images/sliders/search') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}">
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}">
         </div>
         @endforeach
     </div>
@@ -71,7 +71,7 @@
                         <ul class="accordion-description">
                             @foreach ($souscategories as $souscategorie)
                                 @if ($categorie->idCat == $souscategorie->id1)
-                                    <li><a href="{{ route('entreprise.bf',['pays_id'=>$categorie->pays_id,'souscategorie_id'=>$souscategorie->idSousCat])}}">{{ $souscategorie->subcat }}</a></li>
+                                    <li><a href="{{ route('entreprise.pays',['slug_pays'=>$categorie->slug_pays,'slug_categorie'=>$categorie->slug_categorie,'slug_souscategorie'=>$souscategorie->slug_souscategorie])}}">{{ $souscategorie->subcat }}</a></li>
                                 @endif
                             @endforeach
                         </ul>

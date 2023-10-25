@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
-//***********************************************************Login**************************************************** */
+    //***********************************************************Login**************************************************** */
     public function login()
     {
         if (Auth::check()) {
@@ -26,77 +26,138 @@ class AuthController extends Controller
         }
     }
 
-//***********************************************************Login Togo**************************************************** */
-    public function login_tg()
+    //***********************************************************Login pays**************************************************** */
+    public function login_pays()
     {
         if (Auth::check()) {
             // The user is logged in...
-            return redirect()->route('home.tg',['pays_id'=>14]);
+            return redirect()->route('home.pays', ['slug_pays' => 'tg']);
         } else {
             return view("frontend.tg.home");
         }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'bj']);
+        } else {
+            return view("frontend.bj.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'bf']);
+        } else {
+            return view("frontend.bf.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'ci']);
+        } else {
+            return view("frontend.ci.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'ne']);
+        } else {
+            return view("frontend.ne.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'cm']);
+        } else {
+            return view("frontend.cm.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'cf']);
+        } else {
+            return view("frontend.cf.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'cg']);
+        } else {
+            return view("frontend.cg.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'dj']);
+        } else {
+            return view("frontend.dj.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'ga']);
+        } else {
+            return view("frontend.ga.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'gn']);
+        } else {
+            return view("frontend.gn.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'mg']);
+        } else {
+            return view("frontend.mg.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'ml']);
+        } else {
+            return view("frontend.ml.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'mr']);
+        } else {
+            return view("frontend.mr.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'cd']);
+        } else {
+            return view("frontend.cd.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'rw']);
+        } else {
+            return view("frontend.rw.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'sn']);
+        } else {
+            return view("frontend.sn.home");
+        }
+
+        if (Auth::check()) {
+            // The user is logged in...
+            return redirect()->route('home.pays', ['slug_pays' => 'td']);
+        } else {
+            return view("frontend.td.home");
+        }
     }
-//***********************************************************End Login Togo**************************************************** */
+    //***********************************************************End Login pays**************************************************** */
 
-
-//***********************************************************Login côte d'ivoire**************************************************** */
-public function login_ci()
-{
-    if (Auth::check()) {
-        // The user is logged in...
-        return redirect()->route('home.ci',['pays_id'=>6]);
-    } else {
-        return view("frontend.ci.home");
-    }
-}
-//***********************************************************End Login côte d'ivoire**************************************************** */
-
-
-//***********************************************************Login Niger**************************************************** */
-public function login_ne()
-{
-    if (Auth::check()) {
-        // The user is logged in...
-        return redirect()->route('home.ne',['pays_id'=>11]);
-    } else {
-        return view("frontend.ne.home");
-    }
-}
-//***********************************************************End Login Niger**************************************************** */
-
-
-
-//***********************************************************Login Burkina faso**************************************************** */
-public function login_bf()
-{
-    if (Auth::check()) {
-        // The user is logged in...
-        return redirect()->route('home.bf',['pays_id'=>2]);
-    } else {
-        return view("frontend.bf.home");
-    }
-}
-//***********************************************************End Login Burkina faso**************************************************** */
-
-
-
-//***********************************************************Login Bénin**************************************************** */
-public function login_bj()
-{
-    if (Auth::check()) {
-        // The user is logged in...
-        return redirect()->route('home.bj',['pays_id'=>1]);
-    } else {
-        return view("frontend.bj.home");
-    }
-}
-//***********************************************************End Login Bénin**************************************************** */
-
-
-
-
-
-//***********************************************************End Login**************************************************** */c
+    //***********************************************************End Login**************************************************** */c
 
 
 
@@ -118,63 +179,59 @@ public function login_bj()
 
 
 
-//***********************************************************Logout**************************************************** */
+    //***********************************************************Logout**************************************************** */
     public function logout()
     {
         auth()->logout();
         return redirect()->route('home');
     }
 
-//***********************************************************Logout Togo**************************************************** */
-    public function logout_tg()
+    //***********************************************************Logout Pays**************************************************** */
+    public function logout_pays($slug_pays)
     {
         auth()->logout();
-        return redirect()->route('home.tg',['pays_id'=>14]);
+        if ($slug_pays == 'tg') {
+            return redirect()->route('home.pays', ['slug_pays' => 'tg']);
+        } elseif ($slug_pays == 'bf') {
+            return redirect()->route('home.pays', ['slug_pays' => 'bf']);
+        } elseif ($slug_pays == 'bj') {
+            return redirect()->route('home.pays', ['slug_pays' => 'bj']);
+        } elseif ($slug_pays == 'ci') {
+            return redirect()->route('home.pays', ['slug_pays' => 'ci']);
+        } elseif ($slug_pays == 'ne') {
+            return redirect()->route('home.pays', ['slug_pays' => 'ne']);
+        } elseif ($slug_pays == 'cm') {
+            return redirect()->route('home.pays', ['slug_pays' => 'cm']);
+        } elseif ($slug_pays == 'cf') {
+            return redirect()->route('home.pays', ['slug_pays' => 'cf']);
+        } elseif ($slug_pays == 'dj') {
+            return redirect()->route('home.pays', ['slug_pays' => 'dj']);
+        } elseif ($slug_pays == 'ga') {
+            return redirect()->route('home.pays', ['slug_pays' => 'ga']);
+        } elseif ($slug_pays == 'gn') {
+            return redirect()->route('home.pays', ['slug_pays' => 'gn']);
+        } elseif ($slug_pays == 'mg') {
+            return redirect()->route('home.pays', ['slug_pays' => 'mg']);
+        } elseif ($slug_pays == 'ml') {
+            return redirect()->route('home.pays', ['slug_pays' => 'ml']);
+        } elseif ($slug_pays == 'mr') {
+            return redirect()->route('home.pays', ['slug_pays' => 'mr']);
+        } elseif ($slug_pays == 'cd') {
+            return redirect()->route('home.pays', ['slug_pays' => 'cd']);
+        } elseif ($slug_pays == 'rw') {
+            return redirect()->route('home.pays', ['slug_pays' => 'rw']);
+        } elseif ($slug_pays == 'sn') {
+            return redirect()->route('home.pays', ['slug_pays' => 'sn']);
+        } elseif ($slug_pays == 'td') {
+            return redirect()->route('home.pays', ['slug_pays' => 'td']);
+        } else {
+            return redirect()->route('home');
+        }
     }
-//***********************************************************End Logout Togo**************************************************** */
+    //***********************************************************End Logout Pays**************************************************** */
 
 
-//***********************************************************Logout côte d'ivoire**************************************************** */
-public function logout_ci()
-{
-    auth()->logout();
-    return redirect()->route('home.ci',['pays_id'=>6]);
-}
-//***********************************************************End Logout côte d'ivoire**************************************************** */
-
-
-
-//***********************************************************Logout Niger**************************************************** */
-public function logout_ne()
-{
-    auth()->logout();
-    return redirect()->route('home.ne',['pays_id'=>11]);
-}
-//***********************************************************End Logout Niger**************************************************** */
-
-
-
-//***********************************************************Logout Burkina faso**************************************************** */
-public function logout_bf()
-{
-    auth()->logout();
-    return redirect()->route('home.bf',['pays_id'=>2]);
-}
-//***********************************************************End Logout Burkina faso**************************************************** */
-
-
-
-//***********************************************************Logout Bénin**************************************************** */
-public function logout_bj()
-{
-    auth()->logout();
-    return redirect()->route('home.bj',['pays_id'=>1]);
-}
-//***********************************************************End Logout Bénin**************************************************** */
-
-
-
-//***********************************************************End Logout**************************************************** */
+    //***********************************************************End Logout**************************************************** */
 
 
 
@@ -198,7 +255,7 @@ public function logout_bj()
 
 
 
-//***********************************************************addUser**************************************************** */
+    //***********************************************************addUser**************************************************** */
     public function addUser(Request $request)
     {
         $data = $request->validate([
@@ -223,9 +280,10 @@ public function logout_bj()
     }
 
 
-//***********************************************************addUser Pays**************************************************** */
-    public function addUser_tg($pays_id, Request $request)
+    //***********************************************************addUser Pays**************************************************** */
+    public function addUser_pays($slug_pays, Request $request)
     {
+        $pays_id = DB::table('pays')->where('slug_pays', $slug_pays)->select('id')->get();
         $data = $request->validate([
             'name' => 'required|string',
             'prenoms' => 'required|string',
@@ -248,21 +306,18 @@ public function logout_bj()
             $data->fonction = $request->fonction;
             $data->telephone1 = $request->telephone1;
             $data->password = $d['password'];
-            $data->pays_id = $pays_id;
+            $data->pays_id = $pays_id[0]->id;
             $data->save();
             //User::create($data);
-            return redirect()->back()->with('user', "Nouveau compte creer avec success !!!");
+            return redirect()->back()->with('user', "Votre compte a été créé avec success !!!");
         } catch (Exception $e) {
             return redirect()->back()->with('user', $e->getMessage());
         }
     }
-//***********************************************************End addUser Pays**************************************************** */
+    //***********************************************************End addUser Pays**************************************************** */
 
 
-//***********************************************************End addUser**************************************************** */
-
-
-
+    //***********************************************************End addUser**************************************************** */
 
 
 
@@ -284,7 +339,11 @@ public function logout_bj()
 
 
 
-//***********************************************************authentification**************************************************** */
+
+
+
+    //***********************************************************authentification**************************************************** */
+    //***********************************************************authentification Afrique**************************************************** */
     public function authentification(Request $request, User $user)
     {
         $credentials = $request->only('email', 'password');
@@ -309,11 +368,12 @@ public function logout_bj()
             return redirect()->back()->with('connexion', $e->getMessage());
         }
     }
-
-//***********************************************************authentification Togo**************************************************** */
-    public function authentification_tg($pays_id, Request $request, User $user)
+    //***********************************************************authentification Afrique**************************************************** */
+    //***********************************************************authentification Pays**************************************************** */
+    public function authentification_pays($slug_pays, Request $request, User $user)
     {
-        $credentials = $request->only('email', 'password');
+        // $pays_id = DB::table('pays')->where('slug_pays', $slug_pays)->select('id')->get();
+        // $credentials = $request->only('email', 'password');
         $login = $request->email;
         $request->validate([
             'email' => 'required|email',
@@ -323,8 +383,44 @@ public function logout_bj()
         try {
             if (User::where('email', $login)->count() > 0) {
                 if (Auth::attempt(['email' => $login, 'password' => $request->password])) {
-                    return redirect()->route('home.tg',['pays_id'=>14]);
                     //return 'Connexion reussi avec success';
+                    if ($slug_pays == 'tg') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'tg']);
+                    } elseif ($slug_pays == 'bf') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'bf']);
+                    } elseif ($slug_pays == 'bj') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'bj']);
+                    } elseif ($slug_pays == 'ci') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'ci']);
+                    } elseif ($slug_pays == 'ne') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'ne']);
+                    } elseif ($slug_pays == 'cm') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'cm']);
+                    } elseif ($slug_pays == 'cf') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'cf']);
+                    } elseif ($slug_pays == 'dj') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'dj']);
+                    } elseif ($slug_pays == 'ga') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'ga']);
+                    } elseif ($slug_pays == 'gn') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'gn']);
+                    } elseif ($slug_pays == 'mg') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'mg']);
+                    } elseif ($slug_pays == 'ml') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'ml']);
+                    } elseif ($slug_pays == 'mr') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'mr']);
+                    } elseif ($slug_pays == 'cd') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'cd']);
+                    } elseif ($slug_pays == 'rw') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'rw']);
+                    } elseif ($slug_pays == 'sn') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'sn']);
+                    } elseif ($slug_pays == 'td') {
+                        return redirect()->route('home.pays', ['slug_pays' => 'td']);
+                    } else {
+                        return redirect()->route('home');
+                    }
                 } else {
                     return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!1");
                 }
@@ -335,126 +431,9 @@ public function logout_bj()
             return redirect()->back()->with('connexion', $e->getMessage());
         }
     }
-//***********************************************************End authentification Togo**************************************************** */
+    //***********************************************************End authentification Pays**************************************************** */
 
-
-//***********************************************************authentification côte d'ivoire**************************************************** */
-public function authentification_ci($pays_id, Request $request, User $user)
-{
-    $credentials = $request->only('email', 'password');
-    $login = $request->email;
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required'
-    ]);
-
-    try {
-        if (User::where('email', $login)->count() > 0) {
-            if (Auth::attempt(['email' => $login, 'password' => $request->password])) {
-                return redirect()->route('home.ci',['pays_id'=>6]);
-                //return 'Connexion reussi avec success';
-            } else {
-                return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!1");
-            }
-        } else {
-            return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!2");
-        }
-    } catch (Exception $e) {
-        return redirect()->back()->with('connexion', $e->getMessage());
-    }
-}
-//***********************************************************End authentification côte d'ivoire**************************************************** */
-
-
-
-
-//***********************************************************authentification Niger**************************************************** */
-public function authentification_ne($pays_id, Request $request, User $user)
-{
-    $credentials = $request->only('email', 'password');
-    $login = $request->email;
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required'
-    ]);
-
-    try {
-        if (User::where('email', $login)->count() > 0) {
-            if (Auth::attempt(['email' => $login, 'password' => $request->password])) {
-                return redirect()->route('home.ne',['pays_id'=>11]);
-                //return 'Connexion reussi avec success';
-            } else {
-                return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!1");
-            }
-        } else {
-            return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!2");
-        }
-    } catch (Exception $e) {
-        return redirect()->back()->with('connexion', $e->getMessage());
-    }
-}
-//***********************************************************End authentification Niger**************************************************** */
-
-
-
-//***********************************************************authentification Burkina faso**************************************************** */
-public function authentification_bf($pays_id, Request $request, User $user)
-{
-    $credentials = $request->only('email', 'password');
-    $login = $request->email;
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required'
-    ]);
-
-    try {
-        if (User::where('email', $login)->count() > 0) {
-            if (Auth::attempt(['email' => $login, 'password' => $request->password])) {
-                return redirect()->route('home.bf',['pays_id'=>2]);
-                //return 'Connexion reussi avec success';
-            } else {
-                return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!1");
-            }
-        } else {
-            return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!2");
-        }
-    } catch (Exception $e) {
-        return redirect()->back()->with('connexion', $e->getMessage());
-    }
-}
-//***********************************************************End authentification Burkina faso**************************************************** */
-
-
-
-
-//***********************************************************authentification Bénin**************************************************** */
-public function authentification_bj($pays_id, Request $request, User $user)
-{
-    $credentials = $request->only('email', 'password');
-    $login = $request->email;
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required'
-    ]);
-
-    try {
-        if (User::where('email', $login)->count() > 0) {
-            if (Auth::attempt(['email' => $login, 'password' => $request->password])) {
-                return redirect()->route('home.bj',['pays_id'=>1]);
-                //return 'Connexion reussi avec success';
-            } else {
-                return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!1");
-            }
-        } else {
-            return redirect()->back()->with('connexion', "Vos identifiants ne correspondent pas !!!2");
-        }
-    } catch (Exception $e) {
-        return redirect()->back()->with('connexion', $e->getMessage());
-    }
-}
-//***********************************************************End authentification Bénin**************************************************** */
-
-//***********************************************************End authentification**************************************************** */
+    //***********************************************************End authentification**************************************************** */
 
 
 
@@ -473,7 +452,7 @@ public function authentification_bj($pays_id, Request $request, User $user)
 
 
 
-//***********************************************************Entreprise**************************************************** */
+    //***********************************************************Entreprise**************************************************** */
     public function entreprise()
     {
         $parametres = Parametre::find(1);
@@ -491,153 +470,94 @@ public function authentification_bj($pays_id, Request $request, User $user)
         return view('frontend.entreprise.enregistrer', compact('parametres', 'sousCategorieNavs', 'pays', 'villes', 'souscategories'));
     }
 
-//***********************************************************End Entreprise**************************************************** */
+    //***********************************************************End Entreprise**************************************************** */
 
 
 
-//***********************************************************Entreprise Togo**************************************************** */
+    //***********************************************************Entreprise pays**************************************************** */
 
-    public function entreprise_tg($pays_id)
+    public function entreprise_pays($slug_pays)
     {
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 1)
-            ->select('*')
-            ->get();
+        $pays_id = DB::table('pays')->where('slug_pays', $slug_pays)->select('id')->get();
 
         $pays = Pays::all();
-        $villes = DB::table('pays')->where('pays.id', $pays_id)
+        $villes = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('villes', 'pays.id', '=', 'villes.pays_id')
             ->select('*')
             ->get();
 
-        $souscategories = DB::table('pays')->where('pays.id', $pays_id)
+        $souscategories = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('categories', 'pays.id', '=', 'categories.pays_id')
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->select('*')
             ->get();
 
-        return view('frontend.tg.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        if ($slug_pays == 'tg') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
+            return view('frontend.tg.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'bf') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 4)
+                ->select('*')
+                ->get();
+            return view('frontend.bf.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'bj') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 5)
+                ->select('*')
+                ->get();
+            return view('frontend.bj.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'ci') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 2)
+                ->select('*')
+                ->get();
+            return view('frontend.ci.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'ne') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
+            return view('frontend.ne.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'cm') {
+            return view('frontend.cm.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'cf') {
+            return view('frontend.cf.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'dj') {
+            return view('frontend.dj.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'ga') {
+            return view('frontend.ga.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'gn') {
+            return view('frontend.gn.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'mg') {
+            return view('frontend.mg.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'ml') {
+            return view('frontend.ml.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'mr') {
+            return view('frontend.mr.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'cd') {
+            return view('frontend.cd.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'rw') {
+            return view('frontend.rw.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'sn') {
+            return view('frontend.sn.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } elseif ($slug_pays == 'td') {
+            return view('frontend.td.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
+        } else {
+            return view('frontend.entreprise.enregistrer', compact('parametres', 'sousCategorieNavs', 'pays', 'villes', 'souscategories'));
+        }
     }
-//***********************************************************End Entreprise Togo**************************************************** */
+    //***********************************************************End Entreprise pays**************************************************** */
 
 
 
-
-//***********************************************************Entreprise côte d'ivoire**************************************************** */
-
-public function entreprise_ci($pays_id)
-{
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $souscategories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->select('*')
-        ->get();
-
-    return view('frontend.ci.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
-}
-//***********************************************************End Entreprise côte d'ivoire**************************************************** */
-
-
-
-
-//***********************************************************Entreprise Niger**************************************************** */
-
-public function entreprise_ne($pays_id)
-{
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 3)
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $souscategories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->select('*')
-        ->get();
-
-    return view('frontend.ne.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
-}
-//***********************************************************End Entreprise Niger**************************************************** */
-
-
-
-
-//***********************************************************Entreprise Burkina faso**************************************************** */
-
-public function entreprise_bf($pays_id)
-{
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 4)
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $souscategories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->select('*')
-        ->get();
-
-    return view('frontend.bf.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
-}
-//***********************************************************End Entreprise Burkina faso**************************************************** */
-
-
-
-
-
-//***********************************************************Entreprise Bénin**************************************************** */
-
-public function entreprise_bj($pays_id)
-{
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 5)
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $souscategories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->select('*')
-        ->get();
-
-    return view('frontend.bj.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
-}
-//***********************************************************End Entreprise Bénin**************************************************** */
-
-
-//***********************************************************End Entreprise**************************************************** */
+    //***********************************************************End Entreprise**************************************************** */
 }

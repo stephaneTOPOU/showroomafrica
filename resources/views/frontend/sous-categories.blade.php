@@ -1,7 +1,7 @@
 @include('frontend.header.header')
 @foreach ($souscategories as $souscategorie)
-    <meta property="og:url" content="https://www.showroomafrica.com/annonce/{{ $souscategorie->id }}" />
-    <link rel="canonicail" href="https://www.showroomafrica.com/annonce/{{ $souscategorie->id }}">
+    <meta property="og:url" content="https://www.showroomafrica.com/annuaire/{{ $souscategorie->slug_souscategorie }}" />
+    <link rel="canonicail" href="https://www.showroomafrica.com/annuaire/{{ $souscategorie->slug_souscategorie }}">
 @endforeach
 @include('frontend.header.header1')
 @include('frontend.header.header2')
@@ -66,7 +66,7 @@
         <div class="categories-list">
             @foreach ($souscategories as $souscategorie)
                 <div class="accordion-item">
-                    <a href="{{ route('entreprise',['souscategorie_id'=>$souscategorie->id])}}" style="text-decoration: none">
+                    <a href="{{ route('entreprise',['slug_categorie'=>$souscategorie->slug_categorie,'slug_souscategorie'=>$souscategorie->slug_souscategorie])}}" style="text-decoration: none">
                         <header class="accordion-header">
                             <h3 class="accordion-title">{{ $souscategorie->libelle }}</h3>
                         </header>

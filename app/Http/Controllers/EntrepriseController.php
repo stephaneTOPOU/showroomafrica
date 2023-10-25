@@ -12,33 +12,35 @@ use Illuminate\Support\Facades\DB;
 
 class EntrepriseController extends Controller
 {
-    
-//**********************************************Entreprise********************************************************* */
-    public function entreprise($sousCategorie_id)
+
+    //**********************************************Entreprise********************************************************* */
+    public function entreprise($slug_categorie, $slug_souscategorie)
     {
-        $entreprises = DB::table('categories')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')->where('sous_categories.id', $sousCategorie_id)
+        $categorie_id = DB::table('categories')->where('slug_categorie', $slug_categorie)->select('id')->get();
+        $sousCategorie_id = DB::table('sous_categories')->where('slug_souscategorie', $slug_souscategorie)->select('id')->get();
+
+        $entreprises = DB::table('pays')
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')->where('categories.id', $categorie_id[0]->id)
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->where('sous_categories.id', $sousCategorie_id[0]->id)
             ->join('entreprises', 'sous_categories.id', '=', 'souscategorie_id')
             ->select('*', 'categories.pays_id as pays')
             ->orderBy('entreprises.id', 'desc')
             ->paginate(100);
 
-            $sousCategorieNavs = DB::table('categories')
+        $sousCategories = DB::table('categories')->where('categories.id', $categorie_id[0]->id)
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
-
-        $sousCategories = DB::table('sous_categories')->where('sous_categories.id', $sousCategorie_id)
+            ->where('sous_categories.id', $sousCategorie_id[0]->id)
             ->join('entreprises', 'sous_categories.id', '=', 'souscategorie_id')
-            ->select('sous_categories.libelle', 'sous_categories.id as identifiant')
+            ->select('*', 'sous_categories.libelle', 'sous_categories.id as identifiant')
             ->limit(1)
             ->get();
 
-        $entreprisePopulaire = DB::table('categories')
+        $entreprisePopulaire = DB::table('pays')
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->join('entreprises', 'sous_categories.id', '=', 'souscategorie_id')
-            ->select('*', 'categories.pays_id as pays')
+            ->select('*')
             ->where('vue', '>=', 500)
             ->inRandomOrder()
             ->limit(4)
@@ -49,51 +51,45 @@ class EntrepriseController extends Controller
         $search = Slider1::inRandomOrder()->first();
 
         $parametres = Parametre::find(1);
-        
-        return view('frontend.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres', 'search'));
+
+        return view('frontend.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'search' ));
     }
-//**********************************************End Entreprise********************************************************* */
+    //**********************************************End Entreprise********************************************************* */
 
 
 
-//**********************************************Entreprise Togo********************************************************* */
-    public function entreprise_tg($pays_id, $sousCategorie_id)
+    //**********************************************Entreprise Pays********************************************************* */
+    public function entreprise_pays($slug_pays, $slug_categorie, $slug_souscategorie)
     {
-        $entreprises = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        $pays_id = DB::table('pays')->where('slug_pays', $slug_pays)->select('id')->get();
+        $categorie_id = DB::table('categories')->where('slug_categorie', $slug_categorie)->select('id')->get();
+        $sousCategorie_id = DB::table('sous_categories')->where('slug_souscategorie', $slug_souscategorie)->select('id')->get();
+
+        $entreprises = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')->where('categories.id', $categorie_id[0]->id)
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')->where('sous_categories.id', $sousCategorie_id[0]->id)
             ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('sous_categories.id', $sousCategorie_id)
             ->select('*')
             ->orderBy('entreprises.id', 'desc')
             ->paginate(100);
 
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-        
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
 
-        $sousCategories = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->where('sous_categories.id', $sousCategorie_id)
+        $sousCategories = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')->where('categories.id', $categorie_id[0]->id)
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')->where('sous_categories.id', $sousCategorie_id[0]->id)
             ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
             ->select('sous_categories.libelle', 'sous_categories.id as identifiant')
             ->limit(1)
             ->get();
 
-        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')->where('categories.id', $categorie_id[0]->id)
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')->where('sous_categories.id', $sousCategorie_id[0]->id)
             ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
             ->select('*')
             ->where('vue', '>=', 500)
@@ -101,324 +97,89 @@ class EntrepriseController extends Controller
             ->limit(4)
             ->get();
 
-        $slider = DB::table('pays')->where('pays.id', $pays_id)
+        $slider = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
             ->select('*')
             ->get();
 
-        $tops = DB::table('pays')->where('pays.id', $pays_id)
+        $tops = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
             ->select('*')
             ->get();
-    
-        $top2s = DB::table('pays')->where('pays.id', $pays_id)
+
+        $top2s = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
             ->inRandomOrder()
             ->first();
 
-        $search = DB::table('pays')->where('pays.id', $pays_id)
+        $search = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
             ->inRandomOrder()
             ->first();
 
-        return view('frontend.tg.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        if ($slug_pays == 'tg') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
+            return view('frontend.tg.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'bf') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 4)
+                ->select('*')
+                ->get();
+            return view('frontend.bf.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'bj') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 5)
+                ->select('*')
+                ->get();
+            return view('frontend.bj.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'ci') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 2)
+                ->select('*')
+                ->get();
+            return view('frontend.ci.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'ne') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
+            return view('frontend.ne.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'cm') {
+            return view('frontend.cm.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'cf') {
+            return view('frontend.cf.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'dj') {
+            return view('frontend.dj.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'ga') {
+            return view('frontend.ga.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'gn') {
+            return view('frontend.gn.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'mg') {
+            return view('frontend.mg.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'ml') {
+            return view('frontend.ml.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'mr') {
+            return view('frontend.mr.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'cd') {
+            return view('frontend.cd.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'rw') {
+            return view('frontend.rw.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'sn') {
+            return view('frontend.sn.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'td') {
+            return view('frontend.td.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
+        } else {
+            return view('frontend.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'search' ));
+        }
     }
 
-    //**********************************************End Entreprise Togo********************************************************* */
-
-
-
-    //**********************************************Entreprise côte d'ivoire********************************************************* */
-    public function entreprise_ci($pays_id, $sousCategorie_id)
-    {
-        $entreprises = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('sous_categories.id', $sousCategorie_id)
-            ->select('*')
-            ->orderBy('entreprises.id', 'desc')
-            ->paginate(100);
-
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 2)
-            ->select('*')
-            ->get();
-        
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
-
-        $sousCategories = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->where('sous_categories.id', $sousCategorie_id)
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('sous_categories.libelle', 'sous_categories.id as identifiant')
-            ->limit(1)
-            ->get();
-
-        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('*')
-            ->where('vue', '>=', 500)
-            ->inRandomOrder()
-            ->limit(4)
-            ->get();
-
-        $slider = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
-            ->select('*')
-            ->get();
-
-        $tops = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
-            ->select('*')
-            ->get();
-    
-        $top2s = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        $search = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        return view('frontend.ci.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
-    }
-
-    //**********************************************End Entreprise côte d'ivoire********************************************************* */
-
-
-
-
-    
-    //**********************************************Entreprise Niger********************************************************* */
-    public function entreprise_ne($pays_id, $sousCategorie_id)
-    {
-        $entreprises = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('sous_categories.id', $sousCategorie_id)
-            ->select('*')
-            ->orderBy('entreprises.id', 'desc')
-            ->paginate(100);
-
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 3)
-            ->select('*')
-            ->get();
-        
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
-
-        $sousCategories = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->where('sous_categories.id', $sousCategorie_id)
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('sous_categories.libelle', 'sous_categories.id as identifiant')
-            ->limit(1)
-            ->get();
-
-        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('*')
-            ->where('vue', '>=', 500)
-            ->inRandomOrder()
-            ->limit(4)
-            ->get();
-
-        $slider = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
-            ->select('*')
-            ->get();
-
-        $tops = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
-            ->select('*')
-            ->get();
-    
-        $top2s = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        $search = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        return view('frontend.ne.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
-    }
-
-    //**********************************************End Entreprise Niger********************************************************* */
-
-
-
-
-    //**********************************************Entreprise Burkina faso********************************************************* */
-    public function entreprise_bf($pays_id, $sousCategorie_id)
-    {
-        $entreprises = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('sous_categories.id', $sousCategorie_id)
-            ->select('*')
-            ->orderBy('entreprises.id', 'desc')
-            ->paginate(100);
-
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 4)
-            ->select('*')
-            ->get();
-        
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
-
-        $sousCategories = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->where('sous_categories.id', $sousCategorie_id)
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('sous_categories.libelle', 'sous_categories.id as identifiant')
-            ->limit(1)
-            ->get();
-
-        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('*')
-            ->where('vue', '>=', 500)
-            ->inRandomOrder()
-            ->limit(4)
-            ->get();
-
-        $slider = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
-            ->select('*')
-            ->get();
-
-        $tops = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
-            ->select('*')
-            ->get();
-    
-        $top2s = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        $search = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        return view('frontend.bf.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
-    }
-
-    //**********************************************End Entreprise Burkina faso********************************************************* */
-
-
-
-
-
-
-
-    //**********************************************Entreprise Bénin********************************************************* */
-    public function entreprise_bj($pays_id, $sousCategorie_id)
-    {
-        $entreprises = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('sous_categories.id', $sousCategorie_id)
-            ->select('*')
-            ->orderBy('entreprises.id', 'desc')
-            ->paginate(100);
-
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 5)
-            ->select('*')
-            ->get();
-        
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
-
-        $sousCategories = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->where('sous_categories.id', $sousCategorie_id)
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('sous_categories.libelle', 'sous_categories.id as identifiant')
-            ->limit(1)
-            ->get();
-
-        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('*')
-            ->where('vue', '>=', 500)
-            ->inRandomOrder()
-            ->limit(4)
-            ->get();
-
-        $slider = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
-            ->select('*')
-            ->get();
-
-        $tops = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
-            ->select('*')
-            ->get();
-    
-        $top2s = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        $search = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        return view('frontend.bj.entreprise', compact('entreprises', 'sousCategorieNavs', 'sousCategories', 'entreprisePopulaire',
-    'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
-    }
-
-    //**********************************************End Entreprise Bénin********************************************************* */
+    //**********************************************End Entreprise Pays********************************************************* */
 }

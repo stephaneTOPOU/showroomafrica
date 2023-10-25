@@ -27,98 +27,98 @@ Route::get('/', function () {
     // return $geoipInfo->iso_code;
     if ($geoipInfo->iso_code == 'TG') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_tg'],
-            ['pays_id' => 14]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'tg']
         );
     } elseif ($geoipInfo->iso_code == 'BJ') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_bj'],
-            ['pays_id' => 1]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'bj']
         );
     } elseif ($geoipInfo->iso_code == 'BF') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_bf'],
-            ['pays_id' => 2]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'bf']
         );
     } elseif ($geoipInfo->iso_code == 'BI') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_bi'],
-            ['pays_id' => 21]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'bi']
         );
     } elseif ($geoipInfo->iso_code == 'CM') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_cm'],
-            ['pays_id' => 3]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'cm']
         );
     } elseif ($geoipInfo->iso_code == 'CF') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_cf'],
-            ['pays_id' => 4]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'cf']
         );
     } elseif ($geoipInfo->iso_code == 'CG') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_cg'],
-            ['pays_id' => 5]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'cg']
         );
     } elseif ($geoipInfo->iso_code == 'CI') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_ci'],
-            ['pays_id' => 6]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'ci']
         );
     } elseif ($geoipInfo->iso_code == 'DJ') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_dj'],
-            ['pays_id' => 22]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'dj']
         );
     } elseif ($geoipInfo->iso_code == 'GA') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_ga'],
-            ['pays_id' => 7]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'ga']
         );
     } elseif ($geoipInfo->iso_code == 'GN') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_gn'],
-            ['pays_id' => 26]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'gn']
         );
     } elseif ($geoipInfo->iso_code == 'MG') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_mg'],
-            ['pays_id' => 23]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'mg']
         );
     } elseif ($geoipInfo->iso_code == 'ML') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_ml'],
-            ['pays_id' => 10]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'ml']
         );
     } elseif ($geoipInfo->iso_code == 'MR') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_bj'],
-            ['pays_id' => 24]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'mr']
         );
     } elseif ($geoipInfo->iso_code == 'NE') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_ne'],
-            ['pays_id' => 11]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'ne']
         );
     } elseif ($geoipInfo->iso_code == 'CD') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_cd'],
-            ['pays_id' => 15]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'cd']
         );
     } elseif ($geoipInfo->iso_code == 'RW') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_rw'],
-            ['pays_id' => 25]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'rw']
         );
     } elseif ($geoipInfo->iso_code == 'SN') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_sn'],
-            ['pays_id' => 12]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'sn']
         );
     } elseif ($geoipInfo->iso_code == 'TD') {
         return redirect()->action(
-            [\App\Http\Controllers\HomeController::class, 'index_td'],
-            ['pays_id' => 13]
+            [\App\Http\Controllers\HomeController::class, 'index_pays'],
+            ['slug_pays' => 'td']
         );
     } else {
         return redirect()->action(
@@ -130,70 +130,71 @@ Route::get('/', function () {
 //Route::redirect('/geoip', '/');
 
 
-Route::get('/blog',[\App\Http\Controllers\BlogController::class, 'Blog'])->name('blog');
-
-Route::get('/blog-detail/{blog_id}', [\App\Http\Controllers\BlogController::class, 'BlogDetail'])->name('blog.detail');
-
-Route::get('/cgu',[\App\Http\Controllers\CguController::class, 'Cgu'])->name('cgu');
-
-Route::get('/confidentialite',[\App\Http\Controllers\ConfidentialiteController::class, 'Confidentialite'])->name('cp');
-
-Route::get('/cookie',[\App\Http\Controllers\CookieController::class, 'Cookie'])->name('cookie');
-
-
-
-
 //******************************************Pour l'Afrique***************************************************//
 Route::get('/annuaire',[\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/annonce/{annonce_id}',[\App\Http\Controllers\AnnonceController::class, 'annonce'])->name('annonce');
+Route::get('/annuaire/blog',[\App\Http\Controllers\BlogController::class, 'Blog'])->name('blog');
 
-Route::post('/annonce/{annonce_id}',[\App\Http\Controllers\AnnonceController::class, 'commentaire'])->name('annonce.commentaire');
+Route::get('/annuaire/cgu',[\App\Http\Controllers\CguController::class, 'Cgu'])->name('cgu');
 
-Route::get('/autocomplete',[\App\Http\Controllers\HomeController::class, 'autocompletion'])->name('autocomplete');
+Route::get('/annuaire/confidentialite',[\App\Http\Controllers\ConfidentialiteController::class, 'Confidentialite'])->name('cp');
 
-Route::get('/rechercher-entreprise', [\App\Http\Controllers\HomeController::class, 'recherche'])->name('recherche');
+Route::get('/annuaire/cookie',[\App\Http\Controllers\CookieController::class, 'Cookie'])->name('cookie');
 
-Route::get('/enregistrer-entreprise', [\App\Http\Controllers\AuthController::class, 'entreprise'])->name('entreprise.register');
+Route::get('/annuaire/annonce/{slug_annonce}',[\App\Http\Controllers\AnnonceController::class, 'annonce'])->name('annonce');
 
-Route::get('/professionnel', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel'])->name('professionnel');
+Route::post('/annuaire/annonce/{slug_annonce}',[\App\Http\Controllers\AnnonceController::class, 'commentaire'])->name('annonce.commentaire');
 
-Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
+Route::get('/annuaire/blog/{slug_blog}', [\App\Http\Controllers\BlogController::class, 'BlogDetail'])->name('blog.detail');
 
-Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'save'])->name('contact.save');
+Route::get('/annuaire/autocomplete',[\App\Http\Controllers\HomeController::class, 'autocompletion'])->name('autocomplete');
 
-Route::get('/categories', [\App\Http\Controllers\CategoriesController::class, 'categories'])->name('categorie');
+Route::get('/annuaire/rechercher-entreprise', [\App\Http\Controllers\HomeController::class, 'recherche'])->name('recherche');
 
-Route::get('/sous-categories/{categorie_id}', [\App\Http\Controllers\SousCategoriesController::class, 'Souscategories'])->name('subcat');
+Route::post('/annuaire/rechercher-entreprise', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.recherche');
 
-Route::get('/entreprise/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise'])->name('entreprise');
+Route::post('/annuaire/entreprise-devis', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.entreprise');
 
-Route::post('/entreprise-commentaire/{entreprise_id}', [\App\Http\Controllers\CommentaireController::class, 'commentaire'])->name('entreprise.commentaire');
+Route::get('/annuaire/enregistrer-entreprise', [\App\Http\Controllers\AuthController::class, 'entreprise'])->name('entreprise.register');
 
-Route::get('/entreprise-profil/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise'])->name('entreprise.profil');
+Route::get('/annuaire/professionnel', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel'])->name('professionnel');
 
-Route::post('/entreprise-profil/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.form');
+Route::get('/annuaire/contact', [\App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
 
-Route::get('/pharmacie', [\App\Http\Controllers\PharmacieController::class, 'pharmacie'])->name('pharmacie');
+Route::post('/annuaire/contact', [\App\Http\Controllers\ContactController::class, 'save'])->name('contact.save');
 
-Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::get('/annuaire/pharmacie', [\App\Http\Controllers\PharmacieController::class, 'pharmacie'])->name('pharmacie');
 
-Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+Route::get('/annuaire/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
 
-Route::post('/ajouter-user', [\App\Http\Controllers\AuthController::class, 'addUser'])->name('user.add');
+Route::get('/annuaire/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
-Route::post('/authentification', [\App\Http\Controllers\AuthController::class, 'authentification'])->name('authenticate');
+Route::post('/annuaire/ajouter-user', [\App\Http\Controllers\AuthController::class, 'addUser'])->name('user.add');
 
-Route::post('/ajouter-entreprise', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.add');
+Route::post('/annuaire/authentification', [\App\Http\Controllers\AuthController::class, 'authentification'])->name('authenticate');
 
-Route::get('/siteweb', [\App\Http\Controllers\ServiceController::class, 'siteweb'])->name('service.siteweb');
+Route::post('/annuaire/ajouter-entreprise', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.add');
 
-Route::post('/rechercher-entreprise', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.recherche');
+Route::get('/annuaire/service-siteweb', [\App\Http\Controllers\ServiceController::class, 'siteweb'])->name('service.siteweb');
 
-Route::post('/entreprise/{entreprise_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.entreprise');
+Route::get('/annuaire/categorie', [\App\Http\Controllers\CategoriesController::class, 'categories'])->name('categorie');
 
-//****************************************************end Afrique************************************************//
+Route::get('/annuaire/categorie/{slug_categorie}', [\App\Http\Controllers\SousCategoriesController::class, 'Souscategories'])->name('subcat');
 
+Route::get('/annuaire/{slug_categorie}/{slug_souscategorie}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise'])->name('entreprise');
+
+Route::post('/annuaire/{slug_souscategorie}/{slug_entreprise}', [\App\Http\Controllers\CommentaireController::class, 'commentaire'])->name('entreprise.commentaire');
+
+Route::get('/annuaire/{slug_categorie}/{slug_souscategorie}/{slug_entreprise}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise'])->name('entreprise.profil');
+
+Route::post('/annuaire/{slug_categorie}/{slug_souscategorie}/{slug_entreprise}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.form');
+
+//****************************************************end Afrique***************************************************************************************//
+
+
+
+
+/*********************************************************generer les liens*************************************************************************************** */
 Route::get('genrate-sitemap', function(){
 
     // create new sitemap object
@@ -219,352 +220,51 @@ Route::get('genrate-sitemap', function(){
     return redirect(url('sitemap.xml'));
 });
 
-//****************************************************Pour le Togo***********************************************//
-Route::get('/tg/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_tg'])->name('home.tg');
+/*********************************************************End generer les liens*************************************************************************************** */
 
-Route::get('/tg/autocomplete/{pays_id}', [\App\Http\Controllers\HomeController::class, 'autocompletion_tg'])->name('autocomplete.tg');
 
-Route::get('/tg/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\HomeController::class, 'recherche_tg'])->name('recherche.tg');
 
-Route::get('/tg/enregistrer-entreprise/{pays_id}', [\App\Http\Controllers\AuthController::class, 'entreprise_tg'])->name('entreprise.register.tg');
+//****************************************************************Pour les pays********************************************************************//
+Route::get('/{slug_pays}', [\App\Http\Controllers\HomeController::class, 'index_pays'])->name('home.pays');
 
-Route::get('/tg/professionnel/{pays_id}', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel_tg'])->name('professionnel.tg');
+Route::get('/{slug_pays}/autocomplete', [\App\Http\Controllers\HomeController::class, 'autocompletion_pays'])->name('autocomplete.pays');
 
-Route::get('/tg/contact/{pays_id}', [\App\Http\Controllers\ContactController::class, 'contact_tg'])->name('contact.tg');
+Route::get('/{slug_pays}/rechercher-entreprise', [\App\Http\Controllers\HomeController::class, 'recherche_pays'])->name('recherche.pays');
 
-Route::get('/tg/categories/{pays_id}', [\App\Http\Controllers\CategoriesController::class, 'categories_tg'])->name('categorie.tg');
+Route::post('/{slug_pays}/rechercher-entreprise', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.pays.recherche');
 
-Route::get('/tg/sous-categories/{pays_id}/{categorie_id}', [\App\Http\Controllers\SousCategoriesController::class, 'Souscategories_tg'])->name('subcat.tg');
+Route::get('/{slug_pays}/enregistrer-entreprise', [\App\Http\Controllers\AuthController::class, 'entreprise_pays'])->name('entreprise.register.pays');
 
-Route::get('/tg/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_tg'])->name('entreprise.tg');
+Route::get('/{slug_pays}/professionnel', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel_pays'])->name('professionnel.pays');
 
-Route::get('/tg/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_tg'])->name('entreprise.tg.profil');
+Route::get('/{slug_pays}/contact', [\App\Http\Controllers\ContactController::class, 'contact_pays'])->name('contact.pays');
 
-Route::post('/tg/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.tg.form');
+Route::get('/{slug_pays}/liste-pharmacie-de-garde', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_pays'])->name('pharmacie.pays');
 
-Route::get('/tg/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_tg'])->name('pharmacie.tg');
+Route::get('/{slug_pays}/login', [\App\Http\Controllers\AuthController::class, 'login_pays'])->name('login.pays');
 
-Route::get('/tg/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 'login_tg'])->name('login.tg');
+Route::get('/{slug_pays}/logout', [\App\Http\Controllers\AuthController::class, 'logout_pays'])->name('logout.pays');
 
-Route::get('/tg/logout/{pays_id}', [\App\Http\Controllers\AuthController::class, 'logout_tg'])->name('logout.tg');
+Route::post('/{slug_pays}/ajouter-user', [\App\Http\Controllers\AuthController::class, 'addUser_pays'])->name('user.pays.add');
 
-Route::post('/tg/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_tg'])->name('user.tg.add');
+Route::post('/{slug_pays}/authentification', [\App\Http\Controllers\AuthController::class, 'authentification_pays'])->name('authenticate.pays');
 
-Route::post('/tg/authentification/{pays_id}', [\App\Http\Controllers\AuthController::class, 'authentification_tg'])->name('authenticate.tg');
+Route::post('/{slug_pays}/ajouter-entreprise', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.pays.add');
 
-Route::post('/tg/ajouter-entreprise/{pays_id}', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.tg.add');
+Route::get('/{slug_pays}/service-siteweb', [\App\Http\Controllers\ServiceController::class, 'siteweb_pays'])->name('service.pays.siteweb');
 
-Route::get('/tg/siteweb/{pays_id}', [\App\Http\Controllers\ServiceController::class, 'siteweb_tg'])->name('service.tg.siteweb');
+Route::get('/{slug_pays}/categorie', [\App\Http\Controllers\CategoriesController::class, 'categories_pays'])->name('categorie.pays');
 
-Route::post('/tg/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.tg.recherche');
+Route::post('/{slug_pays}/entreprise-devis', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.pays.entreprise');
 
-Route::post('/tg/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.tg.entreprise');
+Route::get('/{slug_pays}/{slug_categorie}', [\App\Http\Controllers\SousCategoriesController::class, 'Souscategories_pays'])->name('subcat.pays');
 
-//****************************************************End Pour le Togo***********************************************//
+Route::get('/{slug_pays}/{slug_categorie}/{slug_souscategorie}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_pays'])->name('entreprise.pays');
 
+Route::get('/{slug_pays}/{slug_categorie}/{slug_souscategorie}/{slug_entreprise}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_pays'])->name('entreprise.pays.profil');
 
+Route::post('/{slug_pays}/{slug_categorie}/{slug_souscategorie}/{slug_entreprise}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.pays.form');
 
-//****************************************************Pour le Bénin***********************************************//
-Route::get('/bj/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_bj'])->name('home.bj');
+//***************************************************************End Pour les pays**************************************************************//
 
-Route::get('/bj/autocomplete/{pays_id}', [\App\Http\Controllers\HomeController::class, 'autocompletion_bj'])->name('autocomplete.bj');
 
-Route::get('/bj/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\HomeController::class, 'recherche_bj'])->name('recherche.bj');
-
-Route::get('/bj/enregistrer-entreprise/{pays_id}', [\App\Http\Controllers\AuthController::class, 'entreprise_bj'])->name('entreprise.register.bj');
-
-Route::get('/bj/professionnel/{pays_id}', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel_bj'])->name('professionnel.bj');
-
-Route::get('/bj/contact/{pays_id}', [\App\Http\Controllers\ContactController::class, 'contact_bj'])->name('contact.bj');
-
-Route::get('/bj/categories/{pays_id}', [\App\Http\Controllers\CategoriesController::class, 'categories_bj'])->name('categorie.bj');
-
-Route::get('/bj/sous-categories/{pays_id}/{categorie_id}', [\App\Http\Controllers\SousCategoriesController::class, 'Souscategories_bj'])->name('subcat.bj');
-
-Route::get('/bj/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_bj'])->name('entreprise.bj');
-
-Route::get('/bj/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_bj'])->name('entreprise.bj.profil');
-
-Route::post('/bj/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.bj.form');
-
-Route::get('/bj/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_bj'])->name('pharmacie.bj');
-
-Route::get('/bj/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 'login_bj'])->name('login.bj');
-
-Route::get('/bj/logout/{pays_id}', [\App\Http\Controllers\AuthController::class, 'logout_bj'])->name('logout.bj');
-
-Route::post('/bj/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_tg'])->name('user.bj.add');
-
-Route::post('/bj/authentification/{pays_id}', [\App\Http\Controllers\AuthController::class, 'authentification_bj'])->name('authenticate.bj');
-
-Route::post('/bj/ajouter-entreprise/{pays_id}', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.bj.add');
-
-Route::get('/bj/siteweb/{pays_id}', [\App\Http\Controllers\ServiceController::class, 'siteweb_bj'])->name('service.bj.siteweb');
-
-Route::post('/bj/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.bj.recherche');
-
-Route::post('/bj/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.bj.entreprise');
-
-//****************************************************Pour le Bénin***********************************************//
-
-
-
-//****************************************************Pour le Burkina faso***********************************************//
-Route::get('/bf/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_bf'])->name('home.bf');
-
-Route::get('/bf/autocomplete/{pays_id}', [\App\Http\Controllers\HomeController::class, 'autocompletion_bf'])->name('autocomplete.bf');
-
-Route::get('/bf/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\HomeController::class, 'recherche_bf'])->name('recherche.bf');
-
-Route::get('/bf/enregistrer-entreprise/{pays_id}', [\App\Http\Controllers\AuthController::class, 'entreprise_bf'])->name('entreprise.register.bf');
-
-Route::get('/bf/professionnel/{pays_id}', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel_bf'])->name('professionnel.bf');
-
-Route::get('/bf/contact/{pays_id}', [\App\Http\Controllers\ContactController::class, 'contact_bf'])->name('contact.bf');
-
-Route::get('/bf/categories/{pays_id}', [\App\Http\Controllers\CategoriesController::class, 'categories_bf'])->name('categorie.bf');
-
-Route::get('/bf/sous-categories/{pays_id}/{categorie_id}', [\App\Http\Controllers\SousCategoriesController::class, 'Souscategories_bf'])->name('subcat.bf');
-
-Route::get('/bf/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_bf'])->name('entreprise.bf');
-
-Route::get('/bf/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_bf'])->name('entreprise.bf.profil');
-
-Route::post('/bf/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.bf.form');
-
-Route::get('/bf/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_bf'])->name('pharmacie.bf');
-
-Route::get('/bf/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 'login_bf'])->name('login.bf');
-
-Route::get('/bf/logout/{pays_id}', [\App\Http\Controllers\AuthController::class, 'logout_bf'])->name('logout.bf');
-
-Route::post('/bf/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_tg'])->name('user.bf.add');
-
-Route::post('/bf/authentification/{pays_id}', [\App\Http\Controllers\AuthController::class, 'authentification_bf'])->name('authenticate.bf');
-
-Route::post('/bf/ajouter-entreprise/{pays_id}', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.bf.add');
-
-Route::get('/bf/siteweb/{pays_id}', [\App\Http\Controllers\ServiceController::class, 'siteweb_bf'])->name('service.bf.siteweb');
-
-Route::post('/bf/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.bf.recherche');
-
-Route::post('/bf/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.bf.entreprise');
-
-//****************************************************Pour le Burkina faso***********************************************//
-
-
-
-
-//****************************************************Pour Burundi***********************************************//
-Route::get('/bi/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_bi'])->name('home.bi');
-
-//****************************************************Pour Burundi***********************************************//
-
-
-
-//****************************************************Pour le Cameroun***********************************************//
-Route::get('/cm/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_cm'])->name('home.cm');
-
-//****************************************************Pour le Cameroun***********************************************//
-
-
-
-//****************************************************Pour Centrafrique ***********************************************//
-Route::get('/cf/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_cf'])->name('home.cf');
-
-//****************************************************Pour Centrafrique ***********************************************//
-
-
-
-
-
-//****************************************************Pour Congo Brazzaville ***********************************************//
-Route::get('/cg/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_cg'])->name('home.cg');
-
-//****************************************************Pour Congo Brazzaville ***********************************************//
-
-
-
-
-
-//****************************************************Pour Cote divoire***********************************************//
-Route::get('/ci/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_ci'])->name('home.ci');
-
-Route::get('/ci/autocomplete/{pays_id}', [\App\Http\Controllers\HomeController::class, 'autocompletion_ci'])->name('autocomplete.ci');
-
-Route::get('/ci/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\HomeController::class, 'recherche_ci'])->name('recherche.ci');
-
-Route::get('/ci/enregistrer-entreprise/{pays_id}', [\App\Http\Controllers\AuthController::class, 'entreprise_ci'])->name('entreprise.register.ci');
-
-Route::get('/ci/professionnel/{pays_id}', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel_ci'])->name('professionnel.ci');
-
-Route::get('/ci/contact/{pays_id}', [\App\Http\Controllers\ContactController::class, 'contact_ci'])->name('contact.ci');
-
-Route::get('/ci/categories/{pays_id}', [\App\Http\Controllers\CategoriesController::class, 'categories_ci'])->name('categorie.ci');
-
-Route::get('/ci/sous-categories/{pays_id}/{categorie_id}', [\App\Http\Controllers\SousCategoriesController::class, 'Souscategories_ci'])->name('subcat.ci');
-
-Route::get('/ci/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_ci'])->name('entreprise.ci');
-
-Route::get('/ci/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_ci'])->name('entreprise.ci.profil');
-
-Route::post('/ci/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.ci.form');
-
-Route::get('/ci/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_ci'])->name('pharmacie.ci');
-
-Route::get('/ci/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 'login_ci'])->name('login.ci');
-
-Route::get('/ci/logout/{pays_id}', [\App\Http\Controllers\AuthController::class, 'logout_ci'])->name('logout.ci');
-
-Route::post('/ci/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_tg'])->name('user.ci.add');
-
-Route::post('/ci/authentification/{pays_id}', [\App\Http\Controllers\AuthController::class, 'authentification_ci'])->name('authenticate.ci');
-
-Route::post('/ci/ajouter-entreprise/{pays_id}', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.ci.add');
-
-Route::get('/ci/siteweb/{pays_id}', [\App\Http\Controllers\ServiceController::class, 'siteweb_ci'])->name('service.ci.siteweb');
-
-Route::post('/ci/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.ci.recherche');
-
-Route::post('/ci/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.ci.entreprise');
-
-//****************************************************Pour Cote divoire***********************************************//
-
-
-
-
-
-
-//****************************************************Pour Djibouti***********************************************//
-Route::get('/dj/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_dj'])->name('home.dj');
-
-//****************************************************Pour Djibouti***********************************************//
-
-
-
-
-//****************************************************Pour le Gabon ***********************************************//
-Route::get('/ga/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_ga'])->name('home.ga');
-
-//****************************************************Pour le Gabon ***********************************************//
-
-
-
-
-
-
-//****************************************************Pour Guinée conakry***********************************************//
-Route::get('/gn/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_gn'])->name('home.gn');
-
-//****************************************************Pour Guinée conakry***********************************************//
-
-
-
-
-
-
-
-//****************************************************Pour MAdagascar ***********************************************//
-Route::get('/mg/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_mg'])->name('home.mg');
-
-//****************************************************Pour MAdagascar ***********************************************//
-
-
-
-
-
-
-//****************************************************Pour le Mali ***********************************************//
-Route::get('/ml/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_ml'])->name('home.ml');
-
-//****************************************************Pour le Mali ***********************************************//
-
-
-
-
-//****************************************************Pour Mauritanie ***********************************************//
-Route::get('/mr/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_mr'])->name('home.mr');
-
-//****************************************************Pour Mauritanie ***********************************************//
-
-
-
-
-//****************************************************Pour le Niger ***********************************************//
-Route::get('/ne/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_ne'])->name('home.ne');
-
-Route::get('/ne/autocomplete/{pays_id}', [\App\Http\Controllers\HomeController::class, 'autocompletion_ne'])->name('autocomplete.ne');
-
-Route::get('/ne/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\HomeController::class, 'recherche_ne'])->name('recherche.ne');
-
-Route::get('/ne/enregistrer-entreprise/{pays_id}', [\App\Http\Controllers\AuthController::class, 'entreprise_ne'])->name('entreprise.register.ne');
-
-Route::get('/ne/professionnel/{pays_id}', [\App\Http\Controllers\ProfessionnelController::class, 'professionnel_ne'])->name('professionnel.ne');
-
-Route::get('/ne/contact/{pays_id}', [\App\Http\Controllers\ContactController::class, 'contact_ne'])->name('contact.ne');
-
-Route::get('/ne/categories/{pays_id}', [\App\Http\Controllers\CategoriesController::class, 'categories_ne'])->name('categorie.ne');
-
-Route::get('/ne/sous-categories/{pays_id}/{categorie_id}', [\App\Http\Controllers\SousCategoriesController::class, 'Souscategories_ne'])->name('subcat.ne');
-
-Route::get('/ne/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\EntrepriseController::class, 'entreprise_ne'])->name('entreprise.ne');
-
-Route::get('/ne/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'ProfileEntreprise_ne'])->name('entreprise.ne.profil');
-
-Route::post('/ne/entreprise-profil/{pays_id}/{entreprise_id}', [\App\Http\Controllers\ProfileEntrepriseController::class, 'mail'])->name('entreprise.ne.form');
-
-Route::get('/ne/pharmacie/{pays_id}', [\App\Http\Controllers\PharmacieController::class, 'pharmacie_ne'])->name('pharmacie.ne');
-
-Route::get('/ne/login/{pays_id}', [\App\Http\Controllers\AuthController::class, 'login_ne'])->name('login.ne');
-
-Route::get('/ne/logout/{pays_id}', [\App\Http\Controllers\AuthController::class, 'logout_ne'])->name('logout.ne');
-
-Route::post('/ne/ajouter-user/{pays_id}', [\App\Http\Controllers\AuthController::class, 'addUser_tg'])->name('user.ne.add');
-
-Route::post('/ne/authentification/{pays_id}', [\App\Http\Controllers\AuthController::class, 'authentification_ne'])->name('authenticate.ne');
-
-Route::post('/ne/ajouter-entreprise/{pays_id}', [\App\Http\Controllers\ActionEntrepriseController::class, 'addEntreprise'])->name('entreprise.ne.add');
-
-Route::get('/ne/siteweb/{pays_id}', [\App\Http\Controllers\ServiceController::class, 'siteweb_ne'])->name('service.ne.siteweb');
-
-Route::post('/ne/rechercher-entreprise/{pays_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.ne.recherche');
-
-Route::post('/ne/entreprise/{pays_id}/{souscategorie_id}', [\App\Http\Controllers\DevisController::class, 'devis'])->name('devis.ne.entreprise');
-
-//****************************************************Pour le Niger ***********************************************//
-
-
-
-
-//****************************************************Pour RDC ***********************************************//
-Route::get('/cd/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_cd'])->name('home.cd');
-
-//****************************************************Pour RDC ***********************************************//
-
-
-
-
-//****************************************************Pour le rwanda ***********************************************//
-Route::get('/rw/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_rw'])->name('home.rw');
-
-//****************************************************Pour le rwanda ***********************************************//
-
-
-
-
-
-
-//****************************************************Pour le Senegal ***********************************************//
-Route::get('/sn/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_sn'])->name('home.sn');
-
-//****************************************************Pour le Senegal ***********************************************//
-
-
-
-
-
-
-//****************************************************Pour le Tchad ***********************************************//
-Route::get('/td/{pays_id}', [\App\Http\Controllers\HomeController::class, 'index_td'])->name('home.td');
-
-//****************************************************Pour le Tchad ***********************************************//

@@ -1,6 +1,6 @@
 @include('frontend.ci.header.header')
-<meta property="og:url" content="https://showroomafrica.com/ci/6" />
-<link rel="canonicail" href="https://showroomafrica.com/ci/6">
+<meta property="og:url" content="https://showroomafrica.com/ci" />
+<link rel="canonicail" href="https://showroomafrica.com/ci">
 @include('frontend.ci.header.header1')
 @include('frontend.ci.header.header2')
 @include('frontend.ci.header.header3')
@@ -35,15 +35,15 @@
 
 
 <!-- POPUP -->
-<div id="popup" class="modal">
-    <!-- popup content -->
-    <div class="modal-content">
-        <span class="close" id="closepop"><i class="fa-regular fa-xmark"></i></span>
-        <div class="popup-container">
-            <img src="{{ asset('assets/images/popup') }}/{{ $popups->image }}" alt="{{ $popups->image }}" id="image" /> 
+    <div id="popup" class="modal">
+        <!-- popup content -->
+        <div class="modal-content">
+            <span class="close" id="closepop"><i class="fa-regular fa-xmark"></i></span>
+            <div class="popup-container">
+                <img src="{{ asset('assets/images/popup') }}/{{ $popups->image }}" alt="{{ $popups->image }}" id="image">
+            </div>
         </div>
     </div>
-</div>
 <!-- END POPUP -->
 
 
@@ -56,115 +56,117 @@
     </style>
 
     <!-- BANNER -->
-    <div class="sb-container">
-        <div class="search-text">
-            <h1>Trouvez les meilleurs services & produits aux meilleurs prix en contactant directement les entreprises!
-            </h1>
-        </div>
+        <div class="sb-container">
+            <div class="search-text">
+                <h1>
+                    {{-- Trouvez les meilleurs services & produits aux meilleurs prix en contactant directement les entreprises! --}}
+                    Annuaire des professionnels au Togo
+                </h1>
+            </div>
 
-        <div class="search-dualbutton">
-            <button class="btn btn-active" id="annuaire" onclick="resetText()">Annuaire</button>
-            <button class="btn" id="annuaire_i" onclick="changeText()">Annuaire inversé</button>
-        </div>
+            <div class="search-dualbutton">
+                <button class="btn btn-active" id="annuaire" onclick="resetText()">Annuaire</button>
+                <button class="btn" id="annuaire_i" onclick="changeText()">Annuaire inversé</button>
+            </div>
 
-        <div class="search-bar">
-            <form action="{{ route('recherche.ci',['pays_id'=>6]) }}" method="GET" class="search-form">
-                <div class="search-field">
-                    <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel"
-                    name="nom">
-                    <i id="searchicon" class="fa-light fa-buildings"></i>
-                </div>
-                <script type="text/javascript">
-                    var path = "{{ route('autocomplete.ci',['pays_id'=>6]) }}" ;
-                    // path = path.replace(':pays_id', pays_id);
+            <div class="search-bar">
+                <form action="{{ route('recherche.pays',['slug_pays'=>'ci']) }}" method="GET" class="search-form">
+                    <div class="search-field">
+                        <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel"
+                        name="nom">
+                        <i id="searchicon" class="fa-light fa-buildings"></i>
+                    </div>
+                    <script type="text/javascript">
+                        var path = "{{ route('autocomplete.pays',['slug_pays'=>'ci']) }}" ;
+                        // path = path.replace(':pays_id', pays_id);
 
-                    $( "#searchfield" ).autocomplete({
-                        source: function( request, response ) {
-                            $.ajax({
-                            url: path,
-                            type: 'GET',
-                            dataType: "json",
-                            data: {
-                                searchfield: request.term
+                        $( "#searchfield" ).autocomplete({
+                            source: function( request, response ) {
+                                $.ajax({
+                                url: path,
+                                type: 'GET',
+                                dataType: "json",
+                                data: {
+                                    searchfield: request.term
+                                },
+                                success: function( data ) {
+                                    response( data );
+                                }
+                                });
                             },
-                            success: function( data ) {
-                                response( data );
+                            select: function (event, ui) {
+                                $('#searchfield').val(ui.item.label);
+                                console.log(ui.item); 
+                                return false;
                             }
                             });
-                        },
-                        select: function (event, ui) {
-                            $('#searchfield').val(ui.item.label);
-                            console.log(ui.item); 
-                            return false;
+                    </script>
+                    <style>
+                        .ui-menu {
+                            background: #fff;
+                            padding: .5em;
+                            border-radius: 1em;
+                            margin: .5em;
+                            box-shadow: 2px 4px 12px -2px rgb(0 0 0 / 36%);
+                            position: absolute;
                         }
-                        });
-                </script>
-                <style>
-                    .ui-menu {
-                        background: #fff;
-                        padding: .5em;
-                        border-radius: 1em;
-                        margin: .5em;
-                        box-shadow: 2px 4px 12px -2px rgb(0 0 0 / 36%);
-                        position: absolute;
-                    }
-                    .ui-menu-item {
-                        border: none;
-                        border-radius: 1em;
-                        outline: none;
-                        padding: .5em;
-                        margin: .5em;
-                    }
-                </style>
-                {{-- <div class="search-field">
-                    <select name="pays" id="pays">
-                        <option class="placeholder" value="" disabled selected style="width:100%; overflow-y: scroll;">Pays</option>
-                        @foreach ($pays as $pay)
-                        <option value="{{ $pay->iso }}">{{ $pay->libelle }}</option>
-                        @endforeach
-                    </select>
-                    <i class="fa-light fa-flag"></i>
-                </div>
+                        .ui-menu-item {
+                            border: none;
+                            border-radius: 1em;
+                            outline: none;
+                            padding: .5em;
+                            margin: .5em;
+                        }
+                    </style>
+                    {{-- <div class="search-field">
+                        <select name="pays" id="pays">
+                            <option class="placeholder" value="" disabled selected style="width:100%; overflow-y: scroll;">Pays</option>
+                            @foreach ($pays as $pay)
+                            <option value="{{ $pay->iso }}">{{ $pay->libelle }}</option>
+                            @endforeach
+                        </select>
+                        <i class="fa-light fa-flag"></i>
+                    </div>
 
-                <div class="search-field">
-                    <select name="ville" id="ville">
-                        <option class="placeholder" value="" disabled selected style="width:100%; overflow-y: scroll;">Ville</option>
-                        @foreach ($villes as $ville)
-                            <option value="{{ $ville->libelle }}">{{ $ville->libelle }}</option>
-                        @endforeach
-                    </select>
-                    <i class="fa-light fa-city"></i>
-                </div> --}}
+                    <div class="search-field">
+                        <select name="ville" id="ville">
+                            <option class="placeholder" value="" disabled selected style="width:100%; overflow-y: scroll;">Ville</option>
+                            @foreach ($villes as $ville)
+                                <option value="{{ $ville->libelle }}">{{ $ville->libelle }}</option>
+                            @endforeach
+                        </select>
+                        <i class="fa-light fa-city"></i>
+                    </div> --}}
 
-                <div class="search-field">
-                    <select class="form-select" name="secteur" id="secteur">
-                        <option class="placeholder" value="" disabled selected style="width:100%; overflow-y: scroll;">Secteur d'activités</option>
-                        @foreach ($categories as $categorie)
-                            <option value="{{ $categorie->libelle }}">{{ $categorie->libelle }}</option>
-                        @endforeach
-                    </select>
-                    <i class="fa-light fa-briefcase"></i>
-                </div>
+                    <div class="search-field">
+                        <select class="form-select" name="secteur" id="secteur">
+                            <option class="placeholder" value="" disabled selected style="width:100%; overflow-y: scroll;">Secteur d'activités</option>
+                            @foreach ($categories as $categorie)
+                                <option value="{{ $categorie->libelle }}">{{ $categorie->libelle }}</option>
+                            @endforeach
+                        </select>
+                        <i class="fa-light fa-briefcase"></i>
+                    </div>
 
-                <button type="submit" class="search-button">
-                    <i class="fa-solid fa-search"></i>
-                    Trouver
-                </button>
-            </form>
+                    <button type="submit" class="search-button">
+                        <i class="fa-solid fa-search"></i>
+                        Trouver
+                    </button>
+                </form>
+            </div>
+            <br />
+            <br />
         </div>
-        <br />
-        <br />
-    </div>
     <!-- END BANNER -->
 
     <!-- ADS BIG SLIDER -->
     <div class="img-slider first-slider">
         <div class="slide active" data-bs-interval="1">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa" />
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
         </div>
         @foreach ($slider1s as $slider1)
             <div class="slide" data-bs-interval="1">
-                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider1->image }}" alt="{{ $slider1->image }}" />
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider1->image }}" alt="{{ $slider1->image }}">
             </div>
         @endforeach
     </div>
@@ -176,55 +178,55 @@
 
             <div class="categories-block">
                 <div class="category">
-                    <a href="{{ route('subcat.ci',['pays_id'=>6,'categorie_id'=>38]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ci','slug_categorie'=>'communication']) }}">
                         <i class="fa-duotone fa-bullhorn"></i>
                         <p>Communication</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.ci',['pays_id'=>6,'categorie_id'=>35]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ci','slug_categorie'=>'batiment-construction']) }}">
                         <i class="fa-duotone fa-person-digging"></i>
                         <p>Bâtiments & Constructions</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.ci',['pays_id'=>6,'categorie_id'=>33]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ci','slug_categorie'=>'automotobateau']) }}">
                         <i class="fa-duotone fa-car"></i>
                         <p>Auto/moto/bateau</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.ci',['pays_id'=>6,'categorie_id'=>46]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ci','slug_categorie'=>'hotellerie']) }}">
                         <i class="fa-duotone fa-hotel"></i>
                         <p>Hôtellerie</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.ci',['pays_id'=>6,'categorie_id'=>59]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ci','slug_categorie'=>'telecommunications']) }}">
                         <i class="fa-duotone fa-tower-broadcast"></i>
                         <p>Télécommunications</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.ci',['pays_id'=>6,'categorie_id'=>36]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ci','slug_categorie'=>'bureau-conseil']) }}">
                         <i class="fa-duotone fa-scale-balanced"></i>
                         <p>Bureau & Conseil</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.ci',['pays_id'=>6,'categorie_id'=>47]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ci','slug_categorie'=>'immobilier-1']) }}">
                         <i class="fa-duotone fa-buildings"></i>
                         <p>Immobilier</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.ci',['pays_id'=>6,'categorie_id'=>60]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ci','slug_categorie'=>'tourismes-loisirs']) }}">
                         <i class="fa-duotone fa-island-tropical"></i>
                         <p>Tourismes & Loisirs</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.ci',['pays_id'=>6,'categorie_id'=>37]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ci','slug_categorie'=>'commerce-pmipme']) }}">
                         <i class="fa-duotone fa-shop"></i>
                         <p>Commerce (pmi/pme)</p>
                     </a>
@@ -232,7 +234,7 @@
             </div>
 
             <div class="category-link">
-                <a href="{{ route('categorie.ci',['pays_id'=>6]) }}">
+                <a href="{{ route('categorie.pays',['slug_pays'=>'ci']) }}">
                     <i class="fa-regular fa-plus"></i>
                     Explorez les secteurs d'activité
                 </a>
@@ -249,11 +251,11 @@
                     <input type="radio" name="radio-btn" id="radio2">
 
                     <div class="slider-slide first">
-                        <img src="{{ asset('assets/images/sliders/side/4.jpg') }}" alt="slider1" />
+                        <img src="{{ asset('assets/images/sliders/side/4.jpg') }}" alt="slider">
                     </div>
                     @foreach ($sliderLaterals as $sliderLateral)
                         <div class="slider-slide">
-                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateral->image }}" alt="{{ $sliderLateral->image }}" />
+                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateral->image }}" alt="{{ $sliderLateral->image }}">
                         </div>
                     @endforeach
                     <div class="navigation-auto">
@@ -272,11 +274,11 @@
                     <input type="radio" name="radio-btn" id="rdo2">
 
                     <div class="slider-slide second">
-                        <img src="{{ asset('assets/images/sliders/side/4.jpg') }}" alt="slider2">
+                        <img src="{{ asset('assets/images/sliders/side/4.jpg') }}" alt="slider">
                     </div>
                     @foreach ($sliderLateralBas as $sliderLateralBa)
                         <div class="slider-slide">
-                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateralBa->image }}" alt="{{ $sliderLateralBa->image }}" />
+                            <img src="{{ asset('assets/images/sliders/side') }}/{{ $sliderLateralBa->image }}" alt="{{ $sliderLateralBa->image }}">
                         </div>
                     @endforeach
                     <div class="navigation-auto">
@@ -323,7 +325,7 @@
             @foreach ($minispots as $minispot)
                 <div class="video-list">
                     <div class="video-list-inner video">
-                        <img class="play" src="{{ asset('assets/videos/posters') }}/{{ $minispot->image }}" alt="{{ $minispot->image }}" />
+                        <img class="play" src="{{ asset('assets/videos/posters') }}/{{ $minispot->image }}" alt="{{ $minispot->image }}">
                         <div class="play">
                             <i class="fa-regular fa-circle-play"></i>
                         </div>
@@ -367,14 +369,14 @@
         @endforeach
     </div>
     <!-- END REPORTAGE -->
-    
+
     <!-- NEWCOMERS -->
     <div class="section-one">
-        <h1>Entreprises du mois</h1>
+        <h1>DÉCOUVREZ UNE SÉLECTION D'ENTREPRISES</h1>
         <div class="highlights">
             <div class="autoplay">
                 @foreach ($honeures as $honeure)
-                    <a href="{{ route('entreprise.ci.profil',['pays_id'=>$honeure->pays_id,'entreprise_id'=>$honeure->id]) }}">
+                    <a href="{{ route('entreprise.pays.profil',['slug_pays'=>$honeure->slug_pays,'slug_categorie'=>$honeure->slug_categorie,'slug_souscategorie'=>$honeure->slug_souscategorie,'slug_entreprise'=>$honeure->slug_entreprise]) }}">
                         <div class="img-div"><img src="{{ asset('assets/images/highlights') }}/{{ $honeure->photo4 }}" alt="{{ $honeure->nom }}"></div>
                     </a>
                 @endforeach
@@ -389,15 +391,15 @@
         <h1>Publireportage</h1>
         <div class="advertorials">
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}" alt="telephonie">
+                <img src="{{ asset('assets/images/advertorial/131511819.jpg') }}" alt="Bravia Eco Hôtel">
                 <div class="overlay"></div>
                 <a href="#">
-                <i class="fa-solid fa-phone"></i> Téléphonie
+                <i class="fa-solid fa-hotel"></i> Bravia Eco Hôtel
                 </a>
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}" alt="commerce">
+                <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}" alt="commerce.jpg">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-shopping-bag"></i> Commerce
@@ -405,7 +407,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/education.jpg') }}" alt="education">
+                <img src="{{ asset('assets/images/advertorial/education.jpg') }}" alt="education.jpg">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-backpack"></i> Education
@@ -413,7 +415,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}" alt="medecine">
+                <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}" alt="medecine.jpg">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-user-doctor"></i> Medecine
@@ -421,7 +423,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}" alt="alimentation">
+                <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}" alt="alimentation.jpg">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-utensils"></i>Alimentation</span>
@@ -429,7 +431,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/divers.jpg') }}" alt="divers">
+                <img src="{{ asset('assets/images/advertorial/divers.jpg') }}" alt="divers.jpg">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-arrow-right"></i> Divers</span>
@@ -445,7 +447,7 @@
         <div class="tower-ctn">
             @foreach ($pharmacies as $pharmacie)
                 <div class="drugstore">
-                    <img src="{{ asset('assets/images') }}/{{ $pharmacie->photo1 }}" alt="{{ $pharmacie->nom }}" />
+                    <img src="{{ asset('assets/images') }}/{{ $pharmacie->photo1 }}" alt="{{ $pharmacie->nom }}">
                     <h3>{{ $pharmacie->nom }}</h3>
                     <ul>
                     <li>
@@ -461,7 +463,7 @@
         <br />
         <br />
         <div class="category-link" style="text-align: center">
-            <a href="{{ route('pharmacie.ci',['pays_id'=>6]) }}">
+            <a href="{{ route('pharmacie.pays',['slug_pays'=>'ci']) }}">
                 <i class="fa-regular fa-plus"></i>
                 Liste des pharmacie de garde
             </a>
@@ -489,7 +491,7 @@
     }
     @endphp                                         
     <div class="section-one">
-        <h1>DÉCOUVREZ UNE SÉLECTION D'ENTREPRISES</h1>
+        <h1>Le mois dernier</h1>
         <div class="statistics">
         <div class="statistic-detail">
             <label class="statistic-title">Total vue</label>
@@ -523,11 +525,11 @@
     <!-- ADS BIG SLIDER 3 -->
     <div class="img-slider">
         <div class="slide-three active-three">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa" />
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
         </div>
         @foreach ($slider3s as $slider3)
         <div class="slide-three">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}" />
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}">
         </div>
         @endforeach
     </div>
@@ -540,9 +542,9 @@
             @foreach ($magazines as $magazine)
             <div class="magazine">
                 <div class="magazine-details">
-                    <img class="magazine-img" src="{{ asset('assets/images/magazines') }}/{{ $magazine->magazineimage1 }}" alt="{{ $magazine->nom }}" />
+                    <img class="magazine-img" src="{{ asset('assets/images') }}/{{ $magazine->magazineimage1 }}" alt="{{ $magazine->nom }}">
                     <button type="button" class="discover-btn">
-                        <a href="{{ route('entreprise.ci.profil',['pays_id'=>$magazine->pays_id,'entreprise_id'=>$magazine->id]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
+                        <a href="{{ route('entreprise.pays.profil',['slug_pays'=>$magazine->slug_pays,'slug_categorie'=>$magazine->slug_categorie,'slug_souscategorie'=>$magazine->slug_souscategorie,'slug_entreprise'=>$magazine->slug_entreprise]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
                     </button>
                     <div class="social-links">
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -567,10 +569,9 @@
 <script src="{{ asset('assets/js/autocompletion.js') }}"></script>
 
 <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
-    {{-- <script src="https://code.jquery.com/jquery-migrate-3.3.2.js"></script> --}}
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-migrate-3.3.2.js"></script> --}}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="{{ asset('assets/js/home.js') }}"></script>
-
 
 <script type="text/javascript">
     var counter = 1;

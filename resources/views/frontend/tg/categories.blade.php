@@ -1,6 +1,6 @@
 @include('frontend.tg.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/tg/categories/14" />
-<link rel="canonicail" href="https://www.showroomafrica.com/tg/categories/14">
+<meta property="og:url" content="https://www.showroomafrica.com/tg/categorie" />
+<link rel="canonicail" href="https://www.showroomafrica.com/tg/categorie">
 @include('frontend.tg.header.header1')
 @include('frontend.tg.header.header2')
 @include('frontend.tg.header.header3')
@@ -71,7 +71,7 @@
                         <ul class="accordion-description">
                             @foreach ($souscategories as $souscategorie)
                                 @if ($categorie->idCat == $souscategorie->id1)
-                                    <li><a href="{{ route('entreprise.tg',['pays_id'=>$categorie->pays_id,'souscategorie_id'=>$souscategorie->idSousCat])}}">{{ $souscategorie->subcat }}</a></li>
+                                    <li><a href="{{ route('entreprise.pays',['slug_pays'=>$categorie->slug_pays,'slug_categorie'=>$categorie->slug_categorie,'slug_souscategorie'=>$souscategorie->slug_souscategorie])}}">{{ $souscategorie->subcat }}</a></li>
                                 @endif
                             @endforeach
                         </ul>

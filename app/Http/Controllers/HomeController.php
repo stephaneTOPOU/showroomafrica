@@ -32,11 +32,9 @@ use vue;
 
 class HomeController extends Controller
 {
-//*******************************************************************************Recherche**********************************************************************/
+    //*******************************************************Recherche*************************************************************************/
 
-
-
-//********************************************************************Pour Afrique*****************************************************************
+    //*******************************************************Pour Afrique***********************************************************************//
     public function recherche()
     {
         $nom = request()->input('nom');
@@ -45,7 +43,8 @@ class HomeController extends Controller
         $secteur = request()->input('secteur');
 
         if ($nom && $pays && $ville && $secteur) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.nom', 'LIKE', "%$nom%")
@@ -56,11 +55,12 @@ class HomeController extends Controller
                 ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $pays && $ville) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.nom', 'LIKE', "%$nom%")
@@ -70,11 +70,12 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $pays && $secteur) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.nom', 'LIKE', "%$nom%")
@@ -84,11 +85,12 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $ville && $secteur) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.nom', 'LIKE', "%$nom%")
@@ -98,21 +100,23 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays && $ville && $secteur) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $pays) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.nom', 'LIKE', "%$nom%")
@@ -121,11 +125,12 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $ville) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.nom', 'LIKE', "%$nom%")
@@ -134,11 +139,12 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $secteur) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.nom', 'LIKE', "%$nom%")
@@ -147,38 +153,42 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays && $ville) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays && $secteur) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($ville && $secteur) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.nom', 'LIKE', "%$nom%")
@@ -186,35 +196,39 @@ class HomeController extends Controller
                 ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
                 ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($ville) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($secteur) {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } else {
-            $recherches = DB::table('categories')
+            $recherches = DB::table('pays')
+                ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
                 ->where('entreprises.nom', 'LIKE', "%$nom%")
@@ -225,15 +239,16 @@ class HomeController extends Controller
                 ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
                 ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
                 ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id', 'categories.pays_id as code')
+                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         }
 
-        $entreprisePopulaire = DB::table('categories')
+        $entreprisePopulaire = DB::table('pays')
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->join('entreprises', 'sous_categories.id', '=', 'souscategorie_id')
-            ->select('*', 'categories.pays_id as code')
+            ->select('*')
             ->where('vue', '>=', 500)
             ->inRandomOrder()
             ->limit(8)
@@ -244,27 +259,29 @@ class HomeController extends Controller
         $slider = SliderRecherche::all();
 
         $tops = SliderRechercheLateral::all();
-        
+
         $subcat = SousCategories::all();
 
         $search = Slider1::inRandomOrder()->first();
 
         return view('frontend.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'search'));
     }
-//********************************************************************End Pour l'Afrique*****************************************************************
+    //*******************************************************End Pour l'Afrique*******************************************************************//
 
 
 
-//********************************************************************Pour le togo*****************************************************************
-    public function recherche_tg($pays_id)
+    //*******************************************************Pour les pays*********************************************************************//
+    public function recherche_pays($slug_pays)
     {
+        $pays_id = DB::table('pays')->where('slug_pays', $slug_pays)->select('id')->get();
+
         $nom = request()->input('nom');
         $pays = request()->input('pays');
         $ville = request()->input('ville');
         $secteur = request()->input('secteur');
 
         if ($nom && $pays && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -280,7 +297,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $pays && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -295,7 +312,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $pays && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -310,7 +327,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -325,7 +342,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -336,7 +353,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $pays) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -350,7 +367,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -364,7 +381,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -378,7 +395,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -388,7 +405,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -398,7 +415,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -408,7 +425,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($nom) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -421,7 +438,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($pays) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -430,7 +447,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -439,7 +456,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } elseif ($secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -448,7 +465,7 @@ class HomeController extends Controller
                 ->orderBy('entreprises.est_souscrit', 'desc')
                 ->get();
         } else {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
+            $recherches = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('categories', 'pays.id', '=', 'categories.pays_id')
                 ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
                 ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -457,7 +474,7 @@ class HomeController extends Controller
                 ->get();
         }
 
-        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
+        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('categories', 'pays.id', '=', 'categories.pays_id')
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -467,1080 +484,112 @@ class HomeController extends Controller
             ->limit(4)
             ->get();
 
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
 
-        $slider = DB::table('pays')->where('pays.id', $pays_id)
+        $slider = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
             ->select('*')
             ->get();
-        
-        $subcat = DB::table('pays')->where('pays.id', $pays_id)
+
+        $subcat = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('categories', 'pays.id', '=', 'categories.pays_id')
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->select('*')
             ->get();
 
-        $tops = DB::table('pays')->where('pays.id', $pays_id)
+        $tops = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
             ->select('*')
             ->get();
-    
-        $top2s = DB::table('pays')->where('pays.id', $pays_id)
+
+        $top2s = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
             ->inRandomOrder()
             ->first();
 
-        $search = DB::table('pays')->where('pays.id', $pays_id)
+        $search = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
             ->inRandomOrder()
             ->first();
 
-        return view('frontend.tg.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
-    }
-//*************************************************************************End Pour le Togo**************************************************************************
-
-
-
-
-//***********************************Pour le côte d'ivoire**************************************************************************
-    public function recherche_ci(Request $request, $pays_id)
-    {
-        $nom = request()->input('nom');
-        $pays = request()->input('pays');
-        $ville = request()->input('ville');
-        $secteur = request()->input('secteur');
-
-        if ($nom && $pays && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
+        if ($slug_pays == 'tg') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
                 ->get();
-        } elseif ($nom && $pays && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
+                return view('frontend.tg.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'bf') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 4)
+                ->select('*')
                 ->get();
-        } elseif ($nom && $pays && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
+            return view('frontend.bf.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'bj') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 5)
+                ->select('*')
                 ->get();
-        } elseif ($nom && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
+            return view('frontend.bj.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'ci') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 2)
+                ->select('*')
                 ->get();
-        } elseif ($pays && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
+            return view('frontend.ci.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'ne') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
                 ->get();
-        } elseif ($nom && $pays) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($pays && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($pays && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($pays) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
+            return view('frontend.ne.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'cm') {
+            return view('frontend.cm.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'cf') {
+            return view('frontend.cf.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'dj') {
+            return view('frontend.dj.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'ga') {
+            return view('frontend.ga.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'gn') {
+            return view('frontend.gn.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'mg') {
+            return view('frontend.mg.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'ml') {
+            return view('frontend.ml.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'mr') {
+            return view('frontend.mr.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'cd') {
+            return view('frontend.cd.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'rw') {
+            return view('frontend.rw.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'sn') {
+            return view('frontend.sn.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
+        } elseif ($slug_pays == 'td') {
+            return view('frontend.td.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
         } else {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
+            return view('frontend.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'search'));
         }
-
-        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('*')
-            ->where('entreprises.vue', '>=', 500)
-            ->inRandomOrder()
-            ->limit(4)
-            ->get();
-
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 2)
-            ->select('*')
-            ->get();
-
-        $slider = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
-            ->select('*')
-            ->get();
-        
-        $subcat = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->get();
-
-        $tops = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
-            ->select('*')
-            ->get();
-    
-        $top2s = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        $search = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        return view('frontend.ci.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
-
     }
+    //*******************************************************End Pour les pays**************************************************************************
 
-//***********************************End Pour le côte d'ivoire******************************************************************************//
+    //********************************************************End Recherche************************************************************************//
 
 
 
 
+    //********************************************************Autocompletion***********************************************************************//
 
-//***********************************Pour le Niger**************************************************************************
-    public function recherche_ne(Request $request, $pays_id)
-    {
-        $nom = request()->input('nom');
-        $pays = request()->input('pays');
-        $ville = request()->input('ville');
-        $secteur = request()->input('secteur');
 
-        if ($nom && $pays && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $pays && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $pays && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($pays && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $pays) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($pays && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($pays && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($pays) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } else {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        }
-
-        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('*')
-            ->where('entreprises.vue', '>=', 500)
-            ->inRandomOrder()
-            ->limit(4)
-            ->get();
-
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 3)
-            ->select('*')
-            ->get();
-
-        $slider = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
-            ->select('*')
-            ->get();
-        
-        $subcat = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->get();
-
-        $tops = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
-            ->select('*')
-            ->get();
-    
-        $top2s = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        $search = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        return view('frontend.ne.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
-
-    }
-
-//***********************************End Pour le Niger******************************************************************************//
-
-
-
-
-
-//***********************************Pour le Burkina faso**************************************************************************
-    public function recherche_bf(Request $request, $pays_id)
-    {
-        $nom = request()->input('nom');
-        $pays = request()->input('pays');
-        $ville = request()->input('ville');
-        $secteur = request()->input('secteur');
-
-        if ($nom && $pays && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $pays && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $pays && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($pays && $ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $pays) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($pays && $ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($pays && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($ville && $secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.ville', 'LIKE', "%$ville%")
-                ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($nom) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.nom', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-                ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($pays) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.pays', 'LIKE', "%$pays%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($ville) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('entreprises.ville', 'LIKE', "%$ville%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } elseif ($secteur) {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->where('categories.libelle', 'LIKE', "%$secteur%")
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        } else {
-            $recherches = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-                ->orderBy('entreprises.est_souscrit', 'desc')
-                ->get();
-        }
-
-        $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('*')
-            ->where('entreprises.vue', '>=', 500)
-            ->inRandomOrder()
-            ->limit(4)
-            ->get();
-
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 4)
-            ->select('*')
-            ->get();
-
-        $slider = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
-            ->select('*')
-            ->get();
-        
-        $subcat = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->get();
-
-        $tops = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
-            ->select('*')
-            ->get();
-    
-        $top2s = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        $search = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-            ->inRandomOrder()
-            ->first();
-
-        return view('frontend.bf.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
-
-    }
-
-//***********************************End Pour le Burkina faso******************************************************************************//
-
-
-
-
-
-//***********************************Pour le Bénin**************************************************************************
-public function recherche_bj(Request $request, $pays_id)
-{
-    $nom = request()->input('nom');
-    $pays = request()->input('pays');
-    $ville = request()->input('ville');
-    $secteur = request()->input('secteur');
-
-    if ($nom && $pays && $ville && $secteur) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.nom', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-            ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-            ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($nom && $pays && $ville) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.nom', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-            ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($nom && $pays && $secteur) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.nom', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-            ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($nom && $ville && $secteur) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.nom', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-            ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($pays && $ville && $secteur) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.pays', 'LIKE', "%$pays%")
-            ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-            ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($nom && $pays) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.nom', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.pays', 'LIKE', "%$pays%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($nom && $ville) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.nom', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($nom && $secteur) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.nom', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-            ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($pays && $ville) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.pays', 'LIKE', "%$pays%")
-            ->orWhere('entreprises.ville', 'LIKE', "%$ville%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($pays && $secteur) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.pays', 'LIKE', "%$pays%")
-            ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($ville && $secteur) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.ville', 'LIKE', "%$ville%")
-            ->orWhere('categories.libelle', 'LIKE', "%$secteur%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($nom) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.nom', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone1', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone2', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone3', 'LIKE', "%$nom%")
-            ->orWhere('entreprises.telephone4', 'LIKE', "%$nom%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($pays) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.pays', 'LIKE', "%$pays%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($ville) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.ville', 'LIKE', "%$ville%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } elseif ($secteur) {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('categories.libelle', 'LIKE', "%$secteur%")
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    } else {
-        $recherches = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('*', 'sous_categories.libelle as sousCategorie', 'entreprises.id')
-            ->orderBy('entreprises.est_souscrit', 'desc')
-            ->get();
-    }
-
-    $entreprisePopulaire = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.vue', '>=', 500)
-        ->inRandomOrder()
-        ->limit(4)
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 5)
-        ->select('*')
-        ->get();
-
-    $slider = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_recherches', 'pays.id', '=', 'slider_recherches.pays_id')
-        ->select('*')
-        ->get();
-    
-    $subcat = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->select('*')
-        ->get();
-
-    $tops = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_recherche_laterals', 'pays.id', '=', 'slider_recherche_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $top2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_recherche_lateral_bas', 'pays.id', '=', 'slider_recherche_lateral_bas.pays_id')
-        ->inRandomOrder()
-        ->first();
-
-    $search = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->inRandomOrder()
-        ->first();
-    return view('frontend.bj.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
-
-}
-
-//***********************************End Pour le Bénin******************************************************************************//
-
-
-
-
-    
-//******************************************************End Recherche************************************************************************//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//********************************************************Autocompletion***********************************************************************//
+    //********************************************************Afrque***********************************************************************//
     public function autocompletion(Request $request)
     {
         $data = Entreprise::select('nom as value', 'id')
@@ -1549,13 +598,15 @@ public function recherche_bj(Request $request, $pays_id)
             ->take(6);
         return response()->json($data);
     }
+    //********************************************************End Afrique***********************************************************************//
 
 
-
-//*********************************Pour le togo***********************************************//
-    public function autocompletion_tg(Request $request, $pays_id)
+    //*********************************************************Pour les pays***********************************************************************//
+    public function autocompletion_pays(Request $request, $slug_pays)
     {
-        $data = DB::table('pays')->where('pays.id', $pays_id)
+        $pays_id = DB::table('pays')->where('slug_pays', $slug_pays)->select('id')->get();
+
+        $data = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('categories', 'pays.id', '=', 'categories.pays_id')
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
             ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
@@ -1565,116 +616,17 @@ public function recherche_bj(Request $request, $pays_id)
             ->take(6);
         return response()->json($data);
     }
-//*********************************End Pour le togo***********************************************//
+    //*********************************************************End Pour les pays***********************************************************************//
 
-
-
-//*********************************Pour la côte d'ivoire***********************************************//
-    public function autocompletion_ci(Request $request, $pays_id)
-    {
-        $data = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('entreprises.nom as value', 'entreprises.id')
-            ->where('entreprises.nom', 'LIKE', '%' . $request->get('searchfield') . '%')
-            ->get()
-            ->take(6);
-        return response()->json($data);
-    }
-//*********************************End Pour la côte d'ivoire***********************************************//
-
-
-
-
-//*********************************Pour le Niger***********************************************//
-    public function autocompletion_ne(Request $request, $pays_id)
-    {
-        $data = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('entreprises.nom as value', 'entreprises.id')
-            ->where('entreprises.nom', 'LIKE', '%' . $request->get('searchfield') . '%')
-            ->get()
-            ->take(6);
-        return response()->json($data);
-    }
-//*********************************End Pour le Niger***********************************************//
+    //**********************************************************End Autocompletion***********************************************************************//
 
 
 
 
 
-//*********************************Pour le Burkina faso***********************************************//
-    public function autocompletion_bf(Request $request, $pays_id)
-    {
-        $data = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->select('entreprises.nom as value', 'entreprises.id')
-            ->where('entreprises.nom', 'LIKE', '%' . $request->get('searchfield') . '%')
-            ->get()
-            ->take(6);
-        return response()->json($data);
-    }
-//*********************************End Pour le Burkina faso***********************************************//
+    //***********************************************************Les index***********************************************************************//
 
-
-
-
-//*********************************Pour le Bénin***********************************************//
-public function autocompletion_bj(Request $request, $pays_id)
-{
-    $data = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('entreprises.nom as value', 'entreprises.id')
-        ->where('entreprises.nom', 'LIKE', '%' . $request->get('searchfield') . '%')
-        ->get()
-        ->take(6);
-    return response()->json($data);
-}
-//*********************************End Pour le Bénin***********************************************//
-
-
-
-
-
-    
-//********************************************************End Autocompletion***********************************************************************//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-//**********************************************************Les index******************************************************************//
-
-
-
-
-
-//*********************************************************Pour Afrique********************************************************************//
+    //***********************************************************Pour Afrique********************************************************************//
     public function index()
     {
 
@@ -1742,2741 +694,198 @@ public function autocompletion_bj(Request $request, $pays_id)
 
         $banner = Banner::inRandomOrder()->first();
 
-        $annonces = Annonce::take(6)->orderBy('id', 'desc')->get();
+        $annonces = DB::table('annonces')->select('*')->take(6)->orderBy('id', 'desc')->get();
 
         //$totalViews = Views($vue)->count();
         //dump( $visiteur);
 
-        return view('frontend.home', compact(
-            'banner',
-            'annonces',
-            'slider1s',
-            'slider2s',
-            'slider3s',
-            'sliderLaterals',
-            'sliderLateralBas',
-            'rejoints',
-            'minispots',
-            'reportages',
-            'magazines',
-            'parametres',
-            'villes',
-            'pays',
-            'categories',
-            'honeures',
-            'nombresEntreprise',
-            'pharmacies',
-            'inscrit',
-            'visiteur2',
-            'popups',
-            'geoipInfo'
-        ));
+        return view('frontend.home', compact('banner', 'annonces', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups', 'geoipInfo'));
     }
-//***********************************************************End pour l'afrique***********************************************************//
+    //***********************************************************End pour l'afrique**************************************************************//
+
+    //***********************************************************Pour les Pays******************************************************************//
+    public function index_pays($slug_pays)
+    {
+        $pays_id = DB::table('pays')->where('slug_pays', $slug_pays)->select('id')->get();
+
+        $inscrit = User::all()->count();
+
+        $visiteur = Stat::find(1);
+        $visiteur->increment('visiteur');
+        $visiteur->save();
+
+        $visiteur2 = DB::table('stats')->select('visiteur')->get();
+
+        $villes = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('villes', 'pays.id', '=', 'villes.pays_id')
+            ->select('*')
+            ->get();
+
+        $pays = Pays::all();
+
+        $categories = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->select('*')
+            ->get();
+
+        $slider1s = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
+            ->select('*')
+            ->get();
+
+        $slider2s = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
+            ->select('*')
+            ->get();
+
+        $slider3s = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
+            ->select('*')
+            ->get();
+
+        $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
+            ->select('*')
+            ->get();
+
+        $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
+            ->select('*')
+            ->get();
+
+        $rejoints = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+            ->select('*')
+            ->where('entreprises.est_souscrit', '=', '1')
+            //->orWhere('entreprises.logo', '!=', null)
+            ->orderBy('entreprises.id', 'desc')
+            ->get();
+
+        $minispots = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
+            ->select('*')
+            ->get();
+
+        $reportages = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
+            ->select('*')
+            ->get();
+
+        $magazines = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+            ->select('*')
+            ->where('entreprises.a_magazine', '=', '1')
+            ->orderBy('entreprises.id', 'desc')
+            ->get();
+
+        $honeures = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+            ->select('*')
+            ->where('entreprises.honneur', '=', '1')
+            ->orderBy('entreprises.id', 'desc')
+            ->get();
+        //dd($honeures);
+
+        $nombresEntreprise = DB::table('entreprises')->count();
+        //dump($nombresEntreprise);
+
+        $pharmacies = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('categories', 'pays.id', '=', 'categories.pays_id')
+            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
+            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+            ->select('*')
+            ->where('est_pharmacie', '=', '1')
+            ->where('entreprises.pharmacie_de_garde', '=', '1')
+            ->get();
 
 
+        $popups = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
+            ->inRandomOrder()
+            ->first();
 
+        $banner = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('banners', 'pays.id', '=', 'banners.pays_id')
+            ->inRandomOrder()
+            ->first();
+        
+        $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+            ->where('parametres.id', 1)
+            ->select('*')
+            ->get();
 
-
-//**************************************Pour le Togo************************************************//
-    public function index_tg($pays_id)
-        {
-            
-            $inscrit = User::all()->count();
-            
-            $visiteur = Stat::find(1);
-            $visiteur->increment('visiteur');
-            $visiteur->save();
-            
-            $visiteur2 = DB::table('stats')->select('visiteur')->get();
-    
-            $villes = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('villes', 'pays.id', '=', 'villes.pays_id')
-                ->select('*')
-                ->get();
-    
-            $pays = Pays::all();
-    
-            $categories = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->select('*')
-                ->get();
-    
-            $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-                ->select('*')
-                ->get();
-
-            $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-                ->select('*')
-                ->get();
-
-            $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-                ->select('*')
-                ->get();
-    
-            $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-                ->select('*')
-                ->get();
-
-            $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-                ->select('*')
-                ->get();
-    
-            $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->select('*')
-                ->where('entreprises.est_souscrit', '=', '1')
-                //->orWhere('entreprises.logo', '!=', null)
-                ->orderBy('entreprises.id', 'desc')
-                ->get();
-    
-            $minispots = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-                ->select('*')
-                ->get();
-    
-            $reportages = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-                ->select('*')
-                ->get();
-    
-            $magazines = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-                ->select('*')
-                ->where('entreprises.a_magazine', '=', '1')
-                ->orderBy('entreprises.id', 'desc')
-                ->get();
-    
-            $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        if ($slug_pays == 'tg') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
                 ->where('parametres.id', 1)
                 ->select('*')
                 ->get();
-    
-            $honeures = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+            return view('frontend.tg.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'bf') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 4)
                 ->select('*')
-                ->where('entreprises.honneur', '=', '1')
-                ->orderBy('entreprises.id', 'desc')
                 ->get();
-    
-            $nombresEntreprise = DB::table('entreprises')->count();
-            //dump($nombresEntreprise);
-    
-            $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('categories', 'pays.id', '=', 'categories.pays_id')
-                ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-                ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
+            return view('frontend.bf.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'bj') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 5)
                 ->select('*')
-                ->where('est_pharmacie', '=', '1')
-                ->where('entreprises.pharmacie_de_garde', '=', '1')
                 ->get();
-    
-
-            $popups = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-                ->inRandomOrder()
-                ->first();
-
-            $banner = DB::table('pays')->where('pays.id', $pays_id)
-                ->join('banners', 'pays.id', '=', 'banners.pays_id')
-                ->inRandomOrder()
-                ->first();
-    
-            //$totalViews = Views($vue)->count();
-            //dump( $visiteur);
-    
-            return view('frontend.tg.home', compact(
-                'banner',
-                'slider1s',
-                'slider2s',
-                'slider3s',
-                'sliderLaterals',
-                'sliderLateralBas',
-                'rejoints',
-                'minispots',
-                'reportages',
-                'magazines',
-                'parametres',
-                'villes',
-                'pays',
-                'categories',
-                'honeures',
-                'nombresEntreprise',
-                'pharmacies',
-                'inscrit',
-                'visiteur2',
-                'popups'
-            ));
+            return view('frontend.bj.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'ci') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 2)
+                ->select('*')
+                ->get();
+            return view('frontend.ci.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'ne') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
+            return view('frontend.ne.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'cm') {
+            return view('frontend.cm.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'cf') {
+            return view('frontend.cf.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'dj') {
+            return view('frontend.dj.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'ga') {
+            return view('frontend.ga.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'gn') {
+            return view('frontend.gn.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'mg') {
+            return view('frontend.mg.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'ml') {
+            return view('frontend.ml.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'mr') {
+            return view('frontend.mr.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'cd') {
+            return view('frontend.cd.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'rw') {
+            return view('frontend.rw.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'sn') {
+            return view('frontend.sn.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } elseif ($slug_pays == 'td') {
+            return view('frontend.td.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));
+        } else {
+            return view('frontend.home', compact('banner', 'annonces', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups', 'geoipInfo'));
         }
-//*****************************************End Togo*************************************************/
+    }
+    //***********************************************************End pour les pays**************************************************************/
 
-
-//**************************************Pour le Bienin************************************************/
-public function index_bj($pays_id)
-{
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        //->orWhere('entreprises.logo', '!=', null)
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 5)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->inRandomOrder()
-        ->first();
-
-    $banner = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('banners', 'pays.id', '=', 'banners.pays_id')
-        ->inRandomOrder()
-        ->first();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.bj.home', compact(
-        'banner',
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Benin*************************************************/
-
-
-//**************************************Pour le Burkina faso************************************************/
-public function index_bf($pays_id)
-{
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        //->orWhere('entreprises.logo', '!=', null)
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 4)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->inRandomOrder()
-        ->first();
-
-    $banner = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('banners', 'pays.id', '=', 'banners.pays_id')
-        ->inRandomOrder()
-        ->first();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.bf.home', compact(
-        'banner',
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Burkina Faso*************************************************/
-
-
-//**************************************Pour le Burundi************************************************/
-public function index_bi($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.bi.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Burundi*************************************************/
-
-
-
-//**************************************Pour le Cameroun************************************************/
-public function index_cm($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.cm.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Cameroun*************************************************/
-
-
-
-//**************************************Pour le Centrafrique************************************************/
-public function index_cf($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.cf.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Centrafique*************************************************/
-
-
-
-//**************************************Pour le Congo-Brazza************************************************/
-public function index_cg($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.cg.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Congo-Brazza*************************************************/
-
-
-//**************************************Pour le côte d'ivoire************************************************/
-public function index_ci($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        //->orWhere('entreprises.logo', '!=', null)
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->inRandomOrder()
-        ->first();
-
-    $banner = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('banners', 'pays.id', '=', 'banners.pays_id')
-        ->inRandomOrder()
-        ->first();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.ci.home', compact(
-        'banner',
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-//*****************************************End côte d'ivoire*************************************************/
-
-
-
-
-//**************************************Pour le Djibouti************************************************/
-public function index_dj($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.dj.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Djibouti*************************************************/
-
-
-
-//**************************************Pour le Gabon************************************************/
-public function index_ga($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.ga.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Gabon*************************************************/
-
-
-
-//**************************************Pour le Guinée-co************************************************/
-public function index_gn($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.gn.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Guinée-co*************************************************/
-
-
-
-//**************************************Pour le Madagascar************************************************/
-public function index_mg($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.mg.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Madagascar*************************************************/
-
-
-
-//**************************************Pour le Mali************************************************/
-public function index_ml($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.ml.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Mali*************************************************/
-
-
-
-//**************************************Pour la Mauritanie************************************************/
-public function index_mr($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.mr.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Mauritanie*************************************************/
-
-
-
-
-//**************************************Pour le Niger************************************************/
-public function index_ne($pays_id)
-{
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        //->orWhere('entreprises.logo', '!=', null)
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 3)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->inRandomOrder()
-        ->first();
-
-    $banner = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('banners', 'pays.id', '=', 'banners.pays_id')
-        ->inRandomOrder()
-        ->first();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.ne.home', compact(
-        'banner',
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Niger*************************************************/
-
-
-
-
-//**************************************Pour la RDC************************************************/
-public function index_cd($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.cd.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End RDC*************************************************/
-
-
-
-//**************************************Pour le Rwanda************************************************/
-public function index_rw($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.rw.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Rwanda*************************************************/
-
-
-
-//**************************************Pour le Sénégal************************************************/
-public function index_sn($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.sn.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Sénégal*************************************************/
-
-
-
-//**************************************Pour le Tchad************************************************/
-public function index_td($pays_id)
-{
-    
-    $inscrit = User::all()->count();
-    
-    $visiteur = Stat::find(1);
-    $visiteur->increment('visiteur');
-    $visiteur->save();
-    
-    $visiteur2 = DB::table('stats')->select('visiteur')->get();
-
-    $villes = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('villes', 'pays.id', '=', 'villes.pays_id')
-        ->select('*')
-        ->get();
-
-    $pays = Pays::all();
-
-    $categories = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider1s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider1s', 'pays.id', '=', 'slider1s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider2s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider2s', 'pays.id', '=', 'slider2s.pays_id')
-        ->select('*')
-        ->get();
-
-    $slider3s = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider3s', 'pays.id', '=', 'slider3s.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLaterals = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_laterals', 'pays.id', '=', 'slider_laterals.pays_id')
-        ->select('*')
-        ->get();
-
-    $sliderLateralBas = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('slider_lateral_bas', 'pays.id', '=', 'slider_lateral_bas.pays_id')
-        ->select('*')
-        ->get();
-
-    $rejoints = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.est_souscrit', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $minispots = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
-        ->select('*')
-        ->get();
-
-    $reportages = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('reportages', 'pays.id', '=', 'reportages.pays_id')
-        ->select('*')
-        ->get();
-
-    $magazines = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.a_magazine', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->get();
-
-    $parametres = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-        ->where('parametres.id', 2)
-        ->select('*')
-        ->get();
-
-    $honeures = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('entreprises.honneur', '=', '1')
-        ->orderBy('entreprises.id', 'desc')
-        ->take(3)
-        ->get();
-
-    $nombresEntreprise = DB::table('entreprises')->count();
-    //dump($nombresEntreprise);
-
-    $pharmacies = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('categories', 'pays.id', '=', 'categories.pays_id')
-        ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-        ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-        ->select('*')
-        ->where('est_pharmacie', '=', '1')
-        ->where('entreprises.pharmacie_de_garde', '=', '1')
-        ->get();
-
-    $popups = DB::table('pays')->where('pays.id', $pays_id)
-        ->join('pop_ups', 'pays.id', '=', 'pop_ups.pays_id')
-        ->select('*')
-        ->get();
-
-    //$totalViews = Views($vue)->count();
-    //dump( $visiteur);
-
-    return view('frontend.td.home', compact(
-        'slider1s',
-        'slider2s',
-        'slider3s',
-        'sliderLaterals',
-        'sliderLateralBas',
-        'rejoints',
-        'minispots',
-        'reportages',
-        'magazines',
-        'parametres',
-        'villes',
-        'pays',
-        'categories',
-        'honeures',
-        'nombresEntreprise',
-        'pharmacies',
-        'inscrit',
-        'visiteur2',
-        'popups'
-    ));
-}
-
-//*****************************************End Tchad*************************************************/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //**********************************************************End Les index********************************************************************//
 
 }

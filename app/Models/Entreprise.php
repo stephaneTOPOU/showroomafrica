@@ -49,7 +49,8 @@ class Entreprise extends Model
         'premium',
         'basic',
         'partenaire',
-        'video'
+        'video',
+        'slug_entreprise'
     ];
 
     use Sluggable;
@@ -57,7 +58,7 @@ class Entreprise extends Model
     public function Sluggable():array
     {
         return[
-            'slug' =>
+            'slug_entreprise' =>
             [
                 'source' => 'nom'
             ]
@@ -66,26 +67,26 @@ class Entreprise extends Model
 
     public function sousCategorie()
     {
-        return $this->hasMany(SousCategories::class);
+        return $this->belongsTo(SousCategories::class);
     }
 
     public function commentaire()
     {
-        return $this->belongsTo(Commentaire::class);
+        return $this->hasMany(Commentaire::class);
     }
 
     public function galerie()
     {
-        return $this->belongsTo(Gallerie_image::class);
+        return $this->hasMany(Gallerie_image::class);
     }
 
     public function horaire()
     {
-        return $this->belongsTo(Horaire::class);
+        return $this->hasMany(Horaire::class);
     }
 
     public function service()
     {
-        return $this->belongsTo(Service::class);
+        return $this->hasMany(Service::class);
     }
 }

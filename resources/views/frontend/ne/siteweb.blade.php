@@ -1,6 +1,6 @@
 @include('frontend.ne.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/ne/siteweb/11" />
-<link rel="canonicail" href="https://www.showroomafrica.com/ne/siteweb/11">
+<meta property="og:url" content="https://www.showroomafrica.com/ne/service-siteweb" />
+<link rel="canonicail" href="https://www.showroomafrica.com/ne/service-siteweb">
 @include('frontend.ne.header.header1')
 @include('frontend.ne.header.header2')
 @include('frontend.ne.header.header3')
@@ -19,10 +19,12 @@
     <!-- ADVERTORIAL -->
     <div class="section-one white-bkg" id="website">
         <h1>Sites web</h1>
+        
         <div class="service-details">
             <div class="image">
                 <img src="{{ asset('assets/images/services/website.png') }}" alt="website">
             </div>
+            
             <div class="section-text">
                 <h3>Création de site web</h3>
                 <p>
@@ -47,7 +49,7 @@
 </div>
 
 @include('frontend.ne.footer.footer')
-<script src="{{ asset('assets/js/script.js') }}"></script>
-@include('frontend.ne.footer.footer1')
-@include('frontend.ne.footer.footer2')
-@include('frontend.ne.footer.footer3')
+  <script src="{{ asset('assets/js/script.js') }}"></script>
+  @include('frontend.ne.footer.footer1')
+  @include('frontend.ne.footer.footer2')
+  @include('frontend.ne.footer.footer3')

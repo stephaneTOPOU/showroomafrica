@@ -10,29 +10,24 @@
                     <div class="footer-col">
                         <div class="pays_flag">
                             <h4 class="title">Sélectionnez votre pays</h4>
-                            {{-- <a href="{{ route('home') }}" class="country_flag" style="margin-top: 50%;"><img src="{{ asset('assets/afrik.png') }}" alt="afrique"></a> --}}
-                            <a href="{{ route('home.bj',['pays_id'=>1]) }}" class="country_flag"><span class="flag fi fi-bj"></span> </a>
-                            <a href="{{ route('home.bf',['pays_id'=>2]) }}" class="country_flag"><span class="flag fi fi-bf"></span> </a>
-                            <a href="{{ route('home.ci',['pays_id'=>6]) }}" class="country_flag"><span class="flag fi fi-ci"></span> </a>
-                            <a href="{{ route('home.ne',['pays_id'=>11]) }}" class="country_flag"><span class="flag fi fi-ne"></span> </a>
-                            <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="country_flag"><span class="flag fi fi-tg"></span> </a>
-                            {{-- <a href="{{ route('home.bi',['pays_id'=>21]) }}" class="country_flag"><span class="flag fi fi-bi"></span> </a> --}}
-                            <a href="{{ route('home.cm',['pays_id'=>3]) }}" class="country_flag"><span class="flag fi fi-cm"></span> </a>
-                            <a href="{{ route('home.cf',['pays_id'=>4]) }}" class="country_flag"><span class="flag fi fi-cf"></span> </a>
-                            <a href="{{ route('home.cg',['pays_id'=>5]) }}" class="country_flag"><span class="flag fi fi-cg"></span> </a>
-                            {{-- <a href="{{ route('home.ci',['pays_id'=>6]) }}" class="country_flag"><span class="flag fi fi-ci"></span> </a> --}}
-                            <a href="{{ route('home.dj',['pays_id'=>22]) }}" class="country_flag"><span class="flag fi fi-dj"></span> </a>
-                            <a href="{{ route('home.ga',['pays_id'=>7]) }}" class="country_flag"><span class="flag fi fi-ga"></span> </a>
-                            <a href="{{ route('home.gn',['pays_id'=>26]) }}" class="country_flag"><span class="flag fi fi-gn"></span> </a>
-                            <a href="{{ route('home.mg',['pays_id'=>23]) }}" class="country_flag"><span class="flag fi fi-mg"></span> </a>
-                            <a href="{{ route('home.ml',['pays_id'=>10]) }}" class="country_flag"><span class="flag fi fi-ml"></span> </a>
-                            <a href="{{ route('home.mr',['pays_id'=>24]) }}" class="country_flag"><span class="flag fi fi-mr"></span> </a>
-                            {{-- <a href="{{ route('home.ne',['pays_id'=>11]) }}" class="country_flag"><span class="flag fi fi-ne"></span> </a> --}}
-                            <a href="{{ route('home.cd',['pays_id'=>15]) }}" class="country_flag"><span class="flag fi fi-cd"></span>  </a>
-                            <a href="{{ route('home.rw',['pays_id'=>25]) }}" class="country_flag"><span class="flag fi fi-rw"></span> </a>
-                            <a href="{{ route('home.sn',['pays_id'=>12]) }}" class="country_flag"><span class="flag fi fi-sn"></span> </a>
-                            <a href="{{ route('home.td',['pays_id'=>13]) }}" class="country_flag"><span class="flag fi fi-td"></span> </a>
-                            {{-- <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="country_flag"><span class="flag fi fi-tg"></span> </a> --}}
+                            <a href="{{ route('home.pays',['slug_pays'=>'bj']) }}" class="country_flag"><span class="flag fi fi-bj"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'bf']) }}" class="country_flag"><span class="flag fi fi-bf"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'ci']) }}" class="country_flag"><span class="flag fi fi-ci"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'ne']) }}" class="country_flag"><span class="flag fi fi-ne"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'tg']) }}" class="country_flag"><span class="flag fi fi-tg"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'cm']) }}" class="country_flag"><span class="flag fi fi-cm"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'cf']) }}" class="country_flag"><span class="flag fi fi-cf"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'cg']) }}" class="country_flag"><span class="flag fi fi-cg"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'dj']) }}" class="country_flag"><span class="flag fi fi-dj"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'ga']) }}" class="country_flag"><span class="flag fi fi-ga"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'gn']) }}" class="country_flag"><span class="flag fi fi-gn"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'mg']) }}" class="country_flag"><span class="flag fi fi-mg"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'ml']) }}" class="country_flag"><span class="flag fi fi-ml"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'mr']) }}" class="country_flag"><span class="flag fi fi-mr"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'cd']) }}" class="country_flag"><span class="flag fi fi-cd"></span>  </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'rw']) }}" class="country_flag"><span class="flag fi fi-rw"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'sn']) }}" class="country_flag"><span class="flag fi fi-sn"></span> </a>
+                            <a href="{{ route('home.pays',['slug_pays'=>'td']) }}" class="country_flag"><span class="flag fi fi-td"></span> </a>
                         </div>    
                     </div>
                     <div class="footer-col">
@@ -57,9 +52,6 @@
             </div>
 
             <div class="row">
-                <style>
-                    
-                </style>
                 <div class="privacy">
                     <div class="privacy-item">
                         <a class="blog" href="{{ route('blog') }}">Blog</a>

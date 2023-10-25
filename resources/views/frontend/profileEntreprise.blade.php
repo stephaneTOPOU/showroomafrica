@@ -1,7 +1,7 @@
 @include('frontend.header.header')
 @foreach ($Profil_entreprises as $Profil_entreprise)
-    <meta property="og:url" content="https://www.showroomafrica.com/entreprise-profil/{{ $Profil_entreprise->id }}" />
-    <link rel="canonicail" href="https://www.showroomafrica.com/entreprise-profil/{{ $Profil_entreprise->id }}">
+    <meta property="og:url" content="https://www.showroomafrica.com/annuaire/entreprise-profil/{{ $Profil_entreprise->slug_entreprise }}" />
+    <link rel="canonicail" href="https://www.showroomafrica.com/annuaire/entreprise-profil/{{ $Profil_entreprise->slug_entreprise }}">
 @endforeach
 @include('frontend.header.header1')
 @include('frontend.header.header2')
@@ -120,16 +120,42 @@
                   @endif
                   
                   @if ($Profil_entreprise->telephone1)
-                    <li><i class="fa-light fa-phone"></i>@if ($Profil_entreprise->code == 14)
+                    <li><i class="fa-light fa-phone"></i>@if ($Profil_entreprise->slug_pays == 'tg')
                               (+228) 
-                          @elseif ($Profil_entreprise->code == 6)
+                            @elseif ($Profil_entreprise->slug_pays == 'ci')
                               (+225)
-                          @elseif ($Profil_entreprise->code == 11)
+                          @elseif ($Profil_entreprise->slug_pays == 'ne')
                               (+227)
-                          @elseif ($Profil_entreprise->code == 2)
+                          @elseif ($Profil_entreprise->slug_pays == 'bf')
                               (+226)
-                          @elseif ($Profil_entreprise->code == 1)
+                          @elseif ($Profil_entreprise->slug_pays == 'bj')
                               (+229)
+                          @elseif ($Profil_entreprise->slug_pays == 'cm')
+                              (+237)
+                          @elseif ($Profil_entreprise->slug_pays == 'cf')
+                              (+236)
+                          @elseif ($Profil_entreprise->slug_pays == 'cg')
+                              (+242)
+                          @elseif ($Profil_entreprise->slug_pays == 'dj')
+                              (+253)
+                          @elseif ($Profil_entreprise->slug_pays == 'ga')
+                              (+241)
+                          @elseif ($Profil_entreprise->slug_pays == 'gn')
+                              (+224)
+                          @elseif ($Profil_entreprise->slug_pays == 'mg')
+                              (+261)
+                          @elseif ($Profil_entreprise->slug_pays == 'ml')
+                              (+223)
+                          @elseif ($Profil_entreprise->slug_pays == 'mr')
+                              (+222)
+                          @elseif ($Profil_entreprise->slug_pays == 'cd')
+                              (+243)
+                          @elseif ($Profil_entreprise->slug_pays == 'rw')
+                              (+250)
+                          @elseif ($Profil_entreprise->slug_pays == 'sn')
+                              (+221)
+                          @elseif ($Profil_entreprise->slug_pays == 'td')
+                              (+235)
                           @endif<b>{{ $Profil_entreprise->telephone1 }} </b> 
                       @if ($Profil_entreprise->telephone2) 
                         <b>
@@ -466,7 +492,7 @@
               @if(Session::has('ok'))
                 <div class="alert alert-success" role="alert">{{Session::get('ok') }}</div>
               @endif
-              <form action="{{ route('entreprise.commentaire',['entreprise_id'=>$Profil_entreprise->identifiant]) }}" method="POST">
+              <form action="{{ route('entreprise.commentaire',['slug_souscategorie'=>$Profil_entreprise->slug_souscategorie, 'slug_entreprise'=>$Profil_entreprise->slug_entreprise]) }}" method="POST">
                 @csrf
                 <div class="feedback">
                   <div class="rating">
@@ -588,7 +614,7 @@
           @if(Session::has('success'))
             <div class="alert alert-success" role="alert">{{Session::get('success') }}</div>
           @endif
-          <form action="{{ route('entreprise.form',['entreprise_id'=>$Profil_entreprise->id]) }}" method="POST">
+          <form action="{{ route('entreprise.form',['slug_categorie'=>$Profil_entreprise->slug_categorie, 'slug_souscategorie'=>$Profil_entreprise->slug_souscategorie, 'slug_entreprise'=>$Profil_entreprise->slug_entreprise]) }}" method="POST">
             @csrf
             <div class="input-box" hidden>
               <input type="text" placeholder="{{ $Profil_entreprise->nom }}" required value="{{ $Profil_entreprise->nom }}" name="entrprise_nom">

@@ -1,6 +1,6 @@
 @include('frontend.tg.header.header')
-    <meta property="og:url" content="https://www.showroomafrica.com/tg/rechercher-entreprise/14" />
-    <link rel="canonicail" href="https://www.showroomafrica.com/tg/rechercher-entreprise/14">
+    <meta property="og:url" content="https://www.showroomafrica.com/tg/rechercher-entreprise" />
+    <link rel="canonicail" href="https://www.showroomafrica.com/tg/rechercher-entreprise">
 @include('frontend.tg.header.header1')
 @include('frontend.tg.header.header2')
 <link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />
@@ -73,14 +73,14 @@
     <div class="companies-container">
 
         <div class="search-bar" style="margin-bottom:2em;">
-            <form action="{{ route('recherche.tg',['pays_id'=>14]) }}" autocomplete="off" class="search-form" method="GET">
+            <form action="{{ route('recherche.pays',['slug_pays'=>'tg']) }}" autocomplete="off" class="search-form" method="GET">
                 <div class="search-field autocomplete">
                     <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel" required="" name="nom">
                     <i id="searchicon" class="fa-light fa-buildings"></i>
                 </div>
 
                 <script type="text/javascript">
-                    var path = "{{ route('autocomplete.tg',['pays_id'=>14]) }}";
+                    var path = "{{ route('autocomplete.pays',['slug_pays'=>'tg']) }}";
                     $( "#searchfield" ).autocomplete({
                         source: function( request, response ) {
                             $.ajax({
@@ -152,7 +152,7 @@
                 @if(Session::has('succes'))
                     <div class="alert alert-success" role="alert">{{Session::get('succes') }}</div>
                 @endif
-                <form action="{{ route('devis.tg.recherche',['pays_id'=>14]) }}" method="POST">
+                <form action="{{ route('devis.pays.recherche',['slug_pays'=>'tg']) }}" method="POST">
                     @csrf
                     <div class="select-box">
                         <select name="souscategorie_id" id="souscategorie_id">
@@ -209,7 +209,7 @@
                         <div class="company-info">
                             <div class="left">
                                 <div class="header">
-                                    <h3 class="company-name"><a href="{{ route('entreprise.tg.profil',['pays_id'=>$recherche->pays_id,'entreprise_id'=>$recherche->id]) }}">{{$recherche->nom}}</a></h3>
+                                    <h3 class="company-name"><a href="{{ route('entreprise.pays.profil',['slug_pays'=>$recherche->slug_pays,'slug_categorie'=>$recherche->slug_categorie,'slug_souscategorie'=>$recherche->slug_souscategorie,'slug_entreprise'=>$recherche->slug_entreprise]) }}">{{$recherche->nom}}</a></h3>
                                     <span class="company-category">{{ $recherche->sousCategorie }}</span>
                                     @if ($recherche->premium == 1)
                                         <div class="premium">

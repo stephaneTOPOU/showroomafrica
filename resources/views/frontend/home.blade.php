@@ -169,55 +169,55 @@
 
             <div class="categories-block">
                 <div class="category">
-                    <a href="{{ route('subcat',['categorie_id'=>1]) }}">
+                    <a href="{{ route('subcat',['slug_categorie'=>'communication-publicite']) }}">
                         <i class="fa-duotone fa-bullhorn"></i>
                         <p>Communication & Publicité</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat',['categorie_id'=>2]) }}">
+                    <a href="{{ route('subcat',['slug_categorie'=>'batiment-et-construction']) }}">
                         <i class="fa-duotone fa-person-digging"></i>
                         <p>Bâtiments & Constructions</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat',['categorie_id'=>3]) }}">
+                    <a href="{{ route('subcat',['slug_categorie'=>'administrations']) }}">
                         <i class="fa-duotone fa-user-tie"></i>
                         <p>Administrations</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat',['categorie_id'=>4]) }}">
+                    <a href="{{ route('subcat',['slug_categorie'=>'automobile-moto']) }}">
                         <i class="fa-duotone fa-car"></i>
-                        <p>Automobiles</p>
+                        <p>Automobile / Moto</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat',['categorie_id'=>5]) }}">
+                    <a href="{{ route('subcat',['slug_categorie'=>'telecom-telephonie']) }}">
                         <i class="fa-duotone fa-tower-broadcast"></i>
                         <p>Télécoms & Téléphonie</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat',['categorie_id'=>6]) }}">
+                    <a href="{{ route('subcat',['slug_categorie'=>'comptabilite-juridique-conseil']) }}">
                         <i class="fa-duotone fa-scale-balanced"></i>
                         <p>Comptabilité & Conseils juridiques</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat',['categorie_id'=>7]) }}">
+                    <a href="{{ route('subcat',['slug_categorie'=>'immobilier']) }}">
                         <i class="fa-duotone fa-buildings"></i>
                         <p>Immobilier</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat',['categorie_id'=>8]) }}">
+                    <a href="{{ route('subcat',['slug_categorie'=>'tourisme-et-loisirs']) }}">
                         <i class="fa-duotone fa-island-tropical"></i>
                         <p>Tourisme & Loisirs</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat',['categorie_id'=>9]) }}">
+                    <a href="{{ route('subcat',['slug_categorie'=>'commerces']) }}">
                         <i class="fa-duotone fa-shop"></i>
                         <p>Commerce</p>
                     </a>
@@ -339,7 +339,7 @@
                 <div class="advertorial">
                     <img src="{{ asset('assets/images/annonce/images') }}/{{ $annonce->image1 }}" alt="{{ $annonce->titre }}"/>
                     <div class="overlay"></div>
-                    <a href="{{ route('annonce',['annonce_id'=>$annonce->id]) }}">
+                    <a href="{{ route('annonce',['slug_annonce'=>$annonce->slug_annonce]) }}">
                         {{ Str::limit($annonce->titre, 40) }}
                     </a>
                 </div>

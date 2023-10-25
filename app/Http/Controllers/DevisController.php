@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Devis;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DevisController extends Controller
 {
@@ -34,8 +35,4 @@ class DevisController extends Controller
 
     }
 
-    public function devis_tg(Request $request, )
-    {
-        
-    }
 }

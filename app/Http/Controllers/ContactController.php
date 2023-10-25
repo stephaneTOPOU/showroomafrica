@@ -50,124 +50,83 @@ class ContactController extends Controller
     public function contact()
     {
         $parametres = Parametre::find(1);
-        
-        $sousCategorieNavs = DB::table('categories')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
             
-        return view('frontend.contact', compact('parametres', 'sousCategorieNavs'));
+        return view('frontend.contact', compact('parametres'));
     }
-    //******************************************Contact Togo******************************************************** */
-    public function contact_tg($pays_id)
+    //******************************************Contact Pays******************************************************** */
+    public function contact_pays($slug_pays)
     {
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
+        $pays_id = DB::table('pays')->where('slug_pays', $slug_pays)->select('id')->get();
+        $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-        
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
             
-        return view('frontend.tg.contact', compact('parametres', 'sousCategorieNavs'));
-    }
-    //************************************************End Contact Togo************************************************** */
-
-
-
-
-    //******************************************Contact côte d'ivoire******************************************************** */
-    public function contact_ci($pays_id)
-    {
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 2)
-            ->select('*')
-            ->get();
+            if ($slug_pays == 'tg') {
+                $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
+                return view('frontend.tg.contact', compact('parametres'));
+            } elseif ($slug_pays == 'bf') {
+                $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 4)
+                ->select('*')
+                ->get();
+                return view('frontend.bf.contact', compact('parametres'));
+            } elseif ($slug_pays == 'bj') {
+                $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 5)
+                ->select('*')
+                ->get();
+                return view('frontend.bj.contact', compact('parametres'));
+            } elseif ($slug_pays == 'ci') {
+                $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 2)
+                ->select('*')
+                ->get();
+                return view('frontend.ci.contact', compact('parametres'));
+            } elseif ($slug_pays == 'ne') {
+                $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
+                return view('frontend.ne.contact', compact('parametres'));
+            } elseif ($slug_pays == 'cm') {
+                return view('frontend.cm.contact', compact('parametres'));
+            } elseif ($slug_pays == 'cf') {
+                return view('frontend.cf.contact', compact('parametres'));
+            } elseif ($slug_pays == 'dj') {
+                return view('frontend.dj.contact', compact('parametres'));
+            } elseif ($slug_pays == 'ga') {
+                return view('frontend.ga.contact', compact('parametres'));
+            } elseif ($slug_pays == 'gn') {
+                return view('frontend.gn.contact', compact('parametres'));
+            } elseif ($slug_pays == 'mg') {
+                return view('frontend.mg.contact', compact('parametres'));
+            } elseif ($slug_pays == 'ml') {
+                return view('frontend.ml.contact', compact('parametres'));
+            } elseif ($slug_pays == 'mr') {
+                return view('frontend.mr.contact', compact('parametres'));
+            } elseif ($slug_pays == 'cd') {
+                return view('frontend.cd.contact', compact('parametres'));
+            } elseif ($slug_pays == 'rw') {
+                return view('frontend.rw.contact', compact('parametres'));
+            } elseif ($slug_pays == 'sn') {
+                return view('frontend.sn.contact', compact('parametres'));
+            } elseif ($slug_pays == 'td') {
+                return view('frontend.td.contact', compact('parametres'));
+            } else {
+                return view('frontend.contact', compact('parametres'));
+            }
         
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
-            
-        return view('frontend.ci.contact', compact('parametres', 'sousCategorieNavs'));
     }
-    //************************************************End Contact côte d'ivoire************************************************** */
+    //************************************************End Contact pays************************************************** */
 
-
-
-    //******************************************Contact Niger******************************************************** */
-    public function contact_ne($pays_id)
-    {
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 3)
-            ->select('*')
-            ->get();
-        
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
-            
-        return view('frontend.ne.contact', compact('parametres', 'sousCategorieNavs'));
-    }
-    //************************************************End Contact Niger************************************************** */
-
-
-
-    //******************************************Contact Burkina faso******************************************************** */
-    public function contact_bf($pays_id)
-    {
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 4)
-            ->select('*')
-            ->get();
-        
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
-            
-        return view('frontend.bf.contact', compact('parametres', 'sousCategorieNavs'));
-    }
-    //************************************************End Contact Burkina faso************************************************** */
-
-
-
-
-
-
-    //******************************************Contact Bénin******************************************************** */
-    public function contact_bj($pays_id)
-    {
-        $parametres = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 5)
-            ->select('*')
-            ->get();
-        
-        $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->select('*')
-            ->take(4)
-            ->get();
-            
-        return view('frontend.bj.contact', compact('parametres', 'sousCategorieNavs'));
-    }
-    //************************************************End Contact Bénin************************************************** */
 }

@@ -11,6 +11,6 @@ class Ville extends Model
 
     public function pays()
     {
-        return $this->hasMany(Pays::class);
+        return $this->belongsTo(Pays::class);
     }
 }

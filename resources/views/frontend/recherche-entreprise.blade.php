@@ -1,6 +1,6 @@
 @include('frontend.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/rechercher-entreprise" />
-<link rel="canonicail" href="https://www.showroomafrica.com/rechercher-entreprise">
+<meta property="og:url" content="https://www.showroomafrica.com/annuaire/rechercher-entreprise" />
+<link rel="canonicail" href="https://www.showroomafrica.com/annuaire/rechercher-entreprise">
 @include('frontend.header.header1')
 @include('frontend.header.header2')
 <link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />
@@ -205,7 +205,7 @@
                         <div class="company-info">
                             <div class="left">
                                 <div class="header">
-                                    <h3 class="company-name"><a href="{{ route('entreprise.profil',['entreprise_id'=>$recherche->id]) }}">{{$recherche->nom}}</a></h3>
+                                    <h3 class="company-name"><a href="{{ route('entreprise.profil',['slug_categorie'=>$recherche->slug_categorie, 'slug_souscategorie'=>$recherche->slug_souscategorie, 'slug_entreprise'=>$recherche->slug_entreprise]) }}">{{$recherche->nom}}</a></h3>
                                     <span class="company-category">{{ $recherche->sousCategorie }}</span>
                                     @if ($recherche->premium == 1)
                                         <div class="premium">
@@ -223,16 +223,42 @@
                                         @endif
                                         
                                         @if ($recherche->telephone1)
-                                            <li><i class="fa-light fa-phone"></i>@if ($recherche->code == 14)
+                                            <li><i class="fa-light fa-phone"></i>@if ($recherche->slug_pays == 'tg')
                                                             (+228) 
-                                                        @elseif ($recherche->code == 6)
+                                                        @elseif ($recherche->slug_pays == 'ci')
                                                             (+225)
-                                                        @elseif ($recherche->code == 11)
-                                                            (+225)
-                                                        @elseif ($recherche->code == 2)
+                                                        @elseif ($recherche->slug_pays == 'ne')
+                                                            (+227)
+                                                        @elseif ($recherche->slug_pays == 'bf')
                                                             (+226)
-                                                        @elseif ($recherche->code == 1)
+                                                        @elseif ($recherche->slug_pays == 'bj')
                                                             (+229)
+                                                        @elseif ($recherche->slug_pays == 'cm')
+                                                            (+237)
+                                                        @elseif ($recherche->slug_pays == 'cf')
+                                                            (+236)
+                                                        @elseif ($recherche->slug_pays == 'cg')
+                                                            (+242)
+                                                        @elseif ($recherche->slug_pays == 'dj')
+                                                            (+253)
+                                                        @elseif ($recherche->slug_pays == 'ga')
+                                                            (+241)
+                                                        @elseif ($recherche->slug_pays == 'gn')
+                                                            (+224)
+                                                        @elseif ($recherche->slug_pays == 'mg')
+                                                            (+261)
+                                                        @elseif ($recherche->slug_pays == 'ml')
+                                                            (+223)
+                                                        @elseif ($recherche->slug_pays == 'mr')
+                                                            (+222)
+                                                        @elseif ($recherche->slug_pays == 'cd')
+                                                            (+243)
+                                                        @elseif ($recherche->slug_pays == 'rw')
+                                                            (+250)
+                                                        @elseif ($recherche->slug_pays == 'sn')
+                                                            (+221)
+                                                        @elseif ($recherche->slug_pays == 'td')
+                                                            (+235)
                                                         @endif<b>{{ $recherche->telephone1 }}</b>
                                                 @if ($recherche->telephone2)
                                                     <b>
@@ -273,22 +299,48 @@
             <div class="top-companies">
                 @foreach ($entreprisePopulaire as $entreprisePopulair)
                     <div class="top-company-info">
-                        <h4><a href="{{ route('entreprise.profil',['entreprise_id'=>$entreprisePopulair->id]) }}">{{ $entreprisePopulair->nom }}</a></h4>
+                        <h4><a href="{{ route('entreprise.profil',['slug_categorie'=>$entreprisePopulair->slug_categorie, 'slug_souscategorie'=>$entreprisePopulair->slug_souscategorie, 'slug_entreprise'=>$entreprisePopulair->slug_entreprise]) }}">{{ $entreprisePopulair->nom }}</a></h4>
                         <ul>
                             <li>
                                 <i class="fa-solid fa-location-dot"></i>
                                 {{ $entreprisePopulair->adresse }}
                             </li>
-                            <li><i class="fa-solid fa-phone"></i>@if ($entreprisePopulair->code == 14)
+                            <li><i class="fa-solid fa-phone"></i>@if ($entreprisePopulair->slug_pays == 'tg')
                                 (+228) 
-                            @elseif ($entreprisePopulair->code == 6)
+                            @elseif ($entreprisePopulair->slug_pays == 'ci')
                                 (+225)
-                            @elseif ($entreprisePopulair->code == 11)
-                                (+225)
-                            @elseif ($entreprisePopulair->code == 2)
+                            @elseif ($entreprisePopulair->slug_pays == 'ne')
+                                (+227)
+                            @elseif ($entreprisePopulair->slug_pays == 'bf')
                                 (+226)
-                            @elseif ($recherche->code == 1)
+                            @elseif ($entreprisePopulair->slug_pays == 'bj')
                                 (+229)
+                            @elseif ($entreprisePopulair->slug_pays == 'cm')
+                                (+237)
+                            @elseif ($entreprisePopulair->slug_pays == 'cf')
+                                (+236)
+                            @elseif ($entreprisePopulair->slug_pays == 'cg')
+                                (+242)
+                            @elseif ($entreprisePopulair->slug_pays == 'dj')
+                                (+253)
+                            @elseif ($entreprisePopulair->slug_pays == 'ga')
+                                (+241)
+                            @elseif ($entreprisePopulair->slug_pays == 'gn')
+                                (+224)
+                            @elseif ($entreprisePopulair->slug_pays == 'mg')
+                                (+261)
+                            @elseif ($entreprisePopulair->slug_pays == 'ml')
+                                (+223)
+                            @elseif ($entreprisePopulair->slug_pays == 'mr')
+                                (+222)
+                            @elseif ($entreprisePopulair->slug_pays == 'cd')
+                                (+243)
+                            @elseif ($entreprisePopulair->slug_pays == 'rw')
+                                (+250)
+                            @elseif ($entreprisePopulair->slug_pays == 'sn')
+                                (+221)
+                            @elseif ($entreprisePopulair->slug_pays == 'td')
+                                (+235)
                             @endif<b>{{ $entreprisePopulair->telephone1 }}</b></li>
                         </ul>
                     </div>

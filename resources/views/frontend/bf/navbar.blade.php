@@ -2,7 +2,7 @@
 <nav>
 
     @foreach ($parametres as $parametre)
-        <a href="{{ route('home.bf',['pays_id'=>2]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
+        <a href="{{ route('home.pays',['slug_pays'=>'bf']) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
             <img src="{{ asset('assets/images') }}/{{ $parametre->logo_header }}" alt="logo">
         </a>
     @endforeach
@@ -18,7 +18,7 @@
                 <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-bf"></span> Burkina Faso </a>
             </li>
             <li>
-                <a href="{{ route('categorie.bf',['pays_id'=>2]) }}">Entreprises</a>
+                <a href="{{ route('categorie.pays',['slug_pays'=>'bf']) }}">Entreprises</a>
             </li>
             {{-- <li class="dropdown">
                 <a href="#">Entreprise<i class="fa-regular fa-chevron-down"></i></a>
@@ -29,7 +29,7 @@
                 </div>
             </li> --}}
             <li>
-                <a href="{{ route('professionnel.bf',['pays_id'=>2]) }}">Professionnels</a>
+                <a href="{{ route('professionnel.pays',['slug_pays'=>'bf']) }}">Professionnels</a>
             </li>
             <li class="dropdown">
                 <a href="#">Opportunités<i class="fa-regular fa-chevron-down"></i></a>
@@ -43,12 +43,12 @@
                 <div class="dropdown-content">
                 <a href="#">Comptabilité</a><br>
                 <a href="#">Audit</a><br>
-                <a href="{{ route('service.bf.siteweb',['pays_id'=>2]) }}">Sites web</a><br>
+                <a href="{{ route('service.pays.siteweb',['slug_pays'=>'bf']) }}">Sites web</a><br>
                 <a href="#">Centres d'appel</a><br>
                 </div>
             </li>
             <li>
-                <a href="{{ route('contact.bf',['pays_id'=>2]) }}">Contact</a>
+                <a href="{{ route('contact.pays',['slug_pays'=>'bf']) }}">Contact</a>
             </li>
             </ul>
             
@@ -58,9 +58,9 @@
                     <div class="dropdown-content">
                         <span class="name"><b>{{ Auth::user()->name }}</b> {{ Auth::user()->prenoms }}</span><br>
                         <a href="#"><i class="fa-solid fa-address-card"></i> Mon profil</a><br>
-                        <form method="Get" action="{{ route('logout.bf',['pays_id'=>2]) }}">
+                        <form method="GET" action="{{ route('logout.pays',['slug_pays'=>'bf']) }}">
                             @csrf
-                            <a href="{{ route('logout.bf',['pays_id'=>2]) }}" type="submit"><i class="fa-regular fa-arrow-right-from-bracket"></i> Déconnexion</a><br>
+                            <a href="{{ route('logout.pays',['slug_pays'=>'bf']) }}" type="submit"><i class="fa-regular fa-arrow-right-from-bracket"></i> Déconnexion</a><br>
                         </form>
                         
                     </div>
@@ -78,7 +78,7 @@
 @else
 <nav>
     @foreach ($parametres as $parametre)
-        <a href="{{ route('home.bf',['pays_id'=>2]) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
+        <a href="{{ route('home.pays',['slug_pays'=>'bf']) }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
             <img src="{{ asset('assets/images') }}/{{ $parametre->logo_header }}" alt="logo">
         </a>
     @endforeach
@@ -95,10 +95,10 @@
                 <a href="#" id="flag" aria-current="page" class="current"><span class="flag fi fi-bf"></span> Burkina Faso </a>
             </li>
             <li>
-                <a href="{{ route('categorie.bf',['pays_id'=>2]) }}">Entreprises</a>
+                <a href="{{ route('categorie.pays',['slug_pays'=>'bf']) }}">Entreprises</a>
             </li>
             <li>
-                <a href="{{ route('professionnel.bf',['pays_id'=>2]) }}">Professionnels</a>
+                <a href="{{ route('professionnel.pays',['slug_pays'=>'bf']) }}">Professionnels</a>
             </li>
             <li class="dropdown">
                 <a href="#">Opportunités<i class="fa-regular fa-chevron-down"></i></a>
@@ -112,12 +112,12 @@
                 <div class="dropdown-content">
                 <a href="#">Comptabilité</a><br>
                 <a href="#">Audit</a><br>
-                <a href="{{ route('service.bf.siteweb',['pays_id'=>2]) }}">Sites web</a><br>
+                <a href="{{ route('service.pays.siteweb',['slug_pays'=>'bf']) }}">Sites web</a><br>
                 <a href="#">Centres d'appel</a><br>
                 </div>
             </li>
             <li>
-                <a href="{{ route('contact.bf',['pays_id'=>2]) }}">Contact</a>
+                <a href="{{ route('contact.pays',['slug_pays'=>'bf']) }}">Contact</a>
             </li>
             </ul>               
         </div>
@@ -150,7 +150,7 @@
                     @if(Session::has('connexion'))
                         <div class="alert alert-success" role="alert">{{Session::get('connexion') }}</div>
                     @endif
-                    <form action="{{ route('authenticate.bf',['pays_id'=>2]) }}" method="POST">
+                    <form action="{{ route('authenticate.pays',['slug_pays'=>'bf']) }}" method="POST">
                         @csrf
                         <div class="input-field">
                             <input type="email" placeholder="Votre email ici" required name="email">
@@ -172,7 +172,7 @@
                             <b><a href="#" class="text signup-link">Inscrivez-vous</a></b>
                         </span>
                         <span class="text">ou
-                            <b><a href="{{ route('entreprise.register.bf',['pays_id'=>2]) }}" class="text signup-link">Enregistrez votre entreprise</a></b>
+                            <b><a href="{{ route('entreprise.register.pays',['slug_pays'=>'bf']) }}" class="text signup-link">Enregistrez votre entreprise</a></b>
                         </span>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
                     @if(Session::has('user'))
                         <div class="alert alert-success" role="alert">{{Session::get('user') }}</div>
                     @endif
-                    <form action="{{ route('user.bf.add',['pays_id'=>2]) }}" method="POST">
+                    <form action="{{ route('user.pays.add',['slug_pays'=>'bf']) }}" method="POST">
                         @csrf
                         <div class="fields">
                             <div class="input-field field">
@@ -260,28 +260,24 @@
                 <span class="title">Sélectionnez votre pays</span>
                 <div class="countries_flag">
                     <a href="{{ route('home') }}" class="country_flag"><img src="{{ asset('assets/afrique.jpg') }}" alt="afrique"></a>
-                    <a href="{{ route('home.bj',['pays_id'=>1]) }}" class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
-                    <a href="{{ route('home.bf',['pays_id'=>2]) }}" class="country_flag selected"><span class="flag fi fi-bf"></span> Burkina Faso</a>
-                    <a href="{{ route('home.ci',['pays_id'=>6]) }}" class="country_flag"><span class="flag fi fi-ci"></span> Côte d'Ivoire</a>
-                    <a href="{{ route('home.ne',['pays_id'=>11]) }}" class="country_flag"><span class="flag fi fi-ne"></span> Niger</a>
-                    <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="country_flag"><span class="flag fi fi-tg"></span> Togo</a>
-                    {{-- <a href="{{ route('home.bi',['pays_id'=>21]) }}" class="country_flag"><span class="flag fi fi-bi"></span> Burundi</a> --}}
-                    <a href="{{ route('home.cm',['pays_id'=>3]) }}" class="country_flag"><span class="flag fi fi-cm"></span> Cameroun</a>
-                    <a href="{{ route('home.cf',['pays_id'=>4]) }}" class="country_flag"><span class="flag fi fi-cf"></span> Centrafrique</a>
-                    <a href="{{ route('home.cg',['pays_id'=>5]) }}" class="country_flag"><span class="flag fi fi-cg"></span> Congo - Brazzaville</a>
-                    {{-- <a href="{{ route('home.ci',['pays_id'=>6]) }}" class="country_flag"><span class="flag fi fi-ci"></span> Côte d'Ivoire</a> --}}
-                    <a href="{{ route('home.dj',['pays_id'=>22]) }}" class="country_flag"><span class="flag fi fi-dj"></span> Djibouti</a>
-                    <a href="{{ route('home.ga',['pays_id'=>7]) }}" class="country_flag"><span class="flag fi fi-ga"></span> Gabon</a>
-                    <a href="{{ route('home.gn',['pays_id'=>26]) }}" class="country_flag"><span class="flag fi fi-gn"></span> Guinée - Conakry</a>
-                    <a href="{{ route('home.mg',['pays_id'=>23]) }}" class="country_flag"><span class="flag fi fi-mg"></span> Madagascar</a>
-                    <a href="{{ route('home.ml',['pays_id'=>10]) }}" class="country_flag"><span class="flag fi fi-ml"></span> Mali</a>
-                    <a href="{{ route('home.mr',['pays_id'=>24]) }}" class="country_flag"><span class="flag fi fi-mr"></span> Mauritanie</a>
-                    {{-- <a href="{{ route('home.ne',['pays_id'=>11]) }}" class="country_flag"><span class="flag fi fi-ne"></span> Niger</a> --}}
-                    <a href="{{ route('home.cd',['pays_id'=>15]) }}" class="country_flag"><span class="flag fi fi-cd"></span> République Démocratique du Congo</a>
-                    <a href="{{ route('home.rw',['pays_id'=>25]) }}" class="country_flag"><span class="flag fi fi-rw"></span> Rwanda</a>
-                    <a href="{{ route('home.sn',['pays_id'=>12]) }}" class="country_flag"><span class="flag fi fi-sn"></span> Sénégal</a>
-                    <a href="{{ route('home.td',['pays_id'=>13]) }}" class="country_flag"><span class="flag fi fi-td"></span> Tchad</a>
-                    {{-- <a href="{{ route('home.tg',['pays_id'=>14]) }}" class="country_flag"><span class="flag fi fi-tg"></span> Togo</a> --}}
+                    <a href="{{ route('home.pays',['slug_pays'=>'bj']) }}" class="country_flag"><span class="flag fi fi-bj"></span> Bénin</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'bf']) }}" class="country_flag selected"><span class="flag fi fi-bf"></span> Burkina Faso</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'ci']) }}" class="country_flag"><span class="flag fi fi-ci"></span> Côte d'Ivoire</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'ne']) }}" class="country_flag"><span class="flag fi fi-ne"></span> Niger</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'tg']) }}" class="country_flag"><span class="flag fi fi-tg"></span> Togo</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'cm']) }}" class="country_flag"><span class="flag fi fi-cm"></span> Cameroun</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'cf']) }}" class="country_flag"><span class="flag fi fi-cf"></span> Centrafrique</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'cg']) }}" class="country_flag"><span class="flag fi fi-cg"></span> Congo - Brazzaville</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'dj']) }}" class="country_flag"><span class="flag fi fi-dj"></span> Djibouti</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'ga']) }}" class="country_flag"><span class="flag fi fi-ga"></span> Gabon</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'gn']) }}" class="country_flag"><span class="flag fi fi-gn"></span> Guinée - Conakry</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'mg']) }}" class="country_flag"><span class="flag fi fi-mg"></span> Madagascar</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'ml']) }}" class="country_flag"><span class="flag fi fi-ml"></span> Mali</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'mr']) }}" class="country_flag"><span class="flag fi fi-mr"></span> Mauritanie</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'cd']) }}" class="country_flag"><span class="flag fi fi-cd"></span> République Démocratique du Congo</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'rw']) }}" class="country_flag"><span class="flag fi fi-rw"></span> Rwanda</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'sn']) }}" class="country_flag"><span class="flag fi fi-sn"></span> Sénégal</a>
+                    <a href="{{ route('home.pays',['slug_pays'=>'td']) }}" class="country_flag"><span class="flag fi fi-td"></span> Tchad</a>
                 </div>
             </div>
         </div>

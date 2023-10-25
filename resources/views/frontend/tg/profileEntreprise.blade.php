@@ -1,7 +1,7 @@
 @include('frontend.tg.header.header')
 @foreach ($Profil_entreprises as $Profil_entreprise)
-  <meta property="og:url" content="https://www.showroomafrica.com/tg/entreprise-profil/14/{{ $Profil_entreprise->id }}" />
-  <link rel="canonicail" href="https://www.showroomafrica.com/tg/entreprise-profil/14/{{ $Profil_entreprise->id }}">
+  <meta property="og:url" content="https://www.showroomafrica.com/tg/entreprise-profil/14/{{ $Profil_entreprise->slug_entreprise }}" />
+  <link rel="canonicail" href="https://www.showroomafrica.com/tg/entreprise-profil/14/{{ $Profil_entreprise->slug_entreprise }}">
 @endforeach
 
 @include('frontend.tg.header.header1')
@@ -457,7 +457,7 @@
               @if(Session::has('ok'))
                 <div class="alert alert-success" role="alert">{{Session::get('ok') }}</div>
               @endif
-              <form action="{{ route('entreprise.commentaire',['entreprise_id'=>$Profil_entreprise->id]) }}" method="POST">
+              <form action="{{ route('entreprise.commentaire',['slug_souscategorie'=>$Profil_entreprise->slug_souscategorie, 'slug_entreprise'=>$Profil_entreprise->slug_entreprise]) }}" method="POST">
                 @csrf
                 <div class="feedback">
                   <div class="rating">
@@ -579,7 +579,7 @@
           @if(Session::has('success'))
             <div class="alert alert-success" role="alert">{{Session::get('success') }}</div>
           @endif
-          <form action="{{ route('entreprise.tg.form',['pays_id'=>$Profil_entreprise->pays_id,'entreprise_id'=>$Profil_entreprise->id]) }}" method="POST">
+          <form action="{{ route('entreprise.pays.form',['slug_pays'=>$Profil_entreprise->slug_pays,'slug_categorie'=>$Profil_entreprise->slug_categorie,'slug_souscategorie'=>$Profil_entreprise->slug_souscategorie,'slug_entreprise'=>$Profil_entreprise->slug_entreprise]) }}" method="POST">
             @csrf
             <div class="input-box" hidden>
               <input type="text" placeholder="{{ $Profil_entreprise->nom }}" required value="{{ $Profil_entreprise->nom }}" name="entrprise_nom">

@@ -1,6 +1,6 @@
 @include('frontend.ci.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/ci/categories/6" />
-<link rel="canonicail" href="https://www.showroomafrica.com/ci/categories/6">
+<meta property="og:url" content="https://www.showroomafrica.com/ci/categorie" />
+<link rel="canonicail" href="https://www.showroomafrica.com/ci/categorie">
 @include('frontend.ci.header.header1')
 @include('frontend.ci.header.header2')
 @include('frontend.ci.header.header3')
@@ -34,7 +34,7 @@
     <!-- ADS BIG SLIDER 2 -->
     <div class="img-slider" hidden>
         <div class="slide-two active-two">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider as $slider2)
             <div class="slide-two">
@@ -47,7 +47,7 @@
     <!-- ADS BIG SLIDER 3 -->
     <div class="img-slider" hidden>
         <div class="slide-three active-three">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider as $slider3)
         <div class="slide-three">
@@ -71,7 +71,7 @@
                         <ul class="accordion-description">
                             @foreach ($souscategories as $souscategorie)
                                 @if ($categorie->idCat == $souscategorie->id1)
-                                    <li><a href="{{ route('entreprise.ci',['pays_id'=>$categorie->pays_id,'souscategorie_id'=>$souscategorie->idSousCat])}}">{{ $souscategorie->subcat }}</a></li>
+                                    <li><a href="{{ route('entreprise.pays',['slug_pays'=>$categorie->slug_pays,'slug_categorie'=>$categorie->slug_categorie,'slug_souscategorie'=>$souscategorie->slug_souscategorie])}}">{{ $souscategorie->subcat }}</a></li>
                                 @endif
                             @endforeach
                         </ul>

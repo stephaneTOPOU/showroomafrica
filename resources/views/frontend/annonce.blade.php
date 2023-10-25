@@ -1,7 +1,7 @@
 @include('frontend.header.header')
 @foreach ($annonces as $annonce)
-    <meta property="og:url" content="https://www.showroomafrica.com/annonce/{{ $annonce->id }}" />
-    <link rel="canonicail" href="https://www.showroomafrica.com/annonce/{{ $annonce->id }}">
+    <meta property="og:url" content="https://www.showroomafrica.com/annuaire/annonce/{{ $annonce->slug_annonce }}" />
+    <link rel="canonicail" href="https://www.showroomafrica.com/annuaire/annonce/{{ $annonce->slug_annonce }}">
 @endforeach
 @include('frontend.header.header1')
 @include('frontend.header.header2')
@@ -58,7 +58,7 @@
                         <br>
                         <hr>
                         <h3>Les commentaires</h3>
-                        <form action="{{ route('annonce.commentaire',['annonce_id'=>$annonce->id]) }}" method="POST">
+                        <form action="{{ route('annonce.commentaire',['slug_annonce'=>$annonce->slug_annonce]) }}" method="POST">
                             @csrf
                             <div class="input-box">
                                 <input type="text" placeholder="Votre pseudo" required name="pseudo">
@@ -115,7 +115,7 @@
                 <div class="slider">
                     @foreach ($actualites as $actualite)
                         @if ($actualite->image1)
-                            <a href="{{ route('annonce',['annonce_id'=>$actualite->id]) }}">
+                            <a href="{{ route('annonce',['slug_annonce'=>$actualite->slug_annonce]) }}">
                                 <div class="img-div"><img src="{{ asset('assets/images/annonce/images') }}/{{ $actualite->image1 }}" alt="{{ $actualite->titre }}"></div>
                             </a>
                         @endif

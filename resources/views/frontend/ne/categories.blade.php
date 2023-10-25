@@ -1,6 +1,6 @@
 @include('frontend.ne.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/ne/categories/11" />
-<link rel="canonicail" href="https://www.showroomafrica.com/ne/categories/11">
+<meta property="og:url" content="https://www.showroomafrica.com/ne/categorie" />
+<link rel="canonicail" href="https://www.showroomafrica.com/ne/categorie">
 @include('frontend.ne.header.header1')
 @include('frontend.ne.header.header2')
 @include('frontend.ne.header.header3')
@@ -21,11 +21,11 @@
     <!-- ADS BIG SLIDER -->
     <div class="img-slider first-slider">
         <div class="slide active" data-bs-interval="1">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa" />
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
         </div>
         @foreach ($slider as $sliders)
             <div class="slide" data-bs-interval="1">
-                <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}" alt="{{ $sliders->image }}" />
+                <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}" alt="{{ $sliders->image }}">
             </div>
         @endforeach
     </div>
@@ -34,11 +34,11 @@
     <!-- ADS BIG SLIDER 2 -->
     <div class="img-slider" hidden>
         <div class="slide-two active-two">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa" />
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider as $slider2)
             <div class="slide-two">
-                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="{{ $slider2->image }}" />
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="{{ $slider2->image }}">
             </div>
         @endforeach
     </div>
@@ -47,11 +47,11 @@
     <!-- ADS BIG SLIDER 3 -->
     <div class="img-slider" hidden>
         <div class="slide-three active-three">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa" />
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider as $slider3)
         <div class="slide-three">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}" />
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}">
         </div>
         @endforeach
     </div>
@@ -71,7 +71,7 @@
                         <ul class="accordion-description">
                             @foreach ($souscategories as $souscategorie)
                                 @if ($categorie->idCat == $souscategorie->id1)
-                                    <li><a href="{{ route('entreprise.ne',['pays_id'=>$categorie->pays_id,'souscategorie_id'=>$souscategorie->idSousCat])}}">{{ $souscategorie->subcat }}</a></li>
+                                    <li><a href="{{ route('entreprise.pays',['slug_pays'=>$categorie->slug_pays,'slug_categorie'=>$categorie->slug_categorie,'slug_souscategorie'=>$souscategorie->slug_souscategorie])}}">{{ $souscategorie->subcat }}</a></li>
                                 @endif
                             @endforeach
                         </ul>

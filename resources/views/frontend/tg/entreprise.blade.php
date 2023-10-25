@@ -1,7 +1,7 @@
 @include('frontend.tg.header.header')
 @foreach ($entreprises as $entreprise)
-    <meta property="og:url" content="https://www.showroomafrica.com/tg/entreprise/14/{{ $entreprise->id }}"  />
-    <link rel="canonicail" href="https://www.showroomafrica.com/tg/entreprise/14/{{ $entreprise->id }}" />
+    <meta property="og:url" content="https://www.showroomafrica.com/tg/entreprise/{{ $entreprise->slug_entreprise }}"  />
+    <link rel="canonicail" href="https://www.showroomafrica.com/tg/entreprise/{{ $entreprise->slug_entreprise }}" />
 @endforeach
 @include('frontend.tg.header.header1')
 @include('frontend.tg.header.header2')
@@ -71,14 +71,14 @@
     <div class="companies-container">
 
         <div class="search-bar" style="margin-bottom:2em;">
-            <form action="{{ route('recherche.tg',['pays_id'=>14]) }}" autocomplete="off" class="search-form" method="GET">
+            <form action="{{ route('recherche.pays',['slug_pays'=>'tg']) }}" autocomplete="off" class="search-form" method="GET">
                 <div class="search-field autocomplete">
                     <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel" required="" name="nom">
                     <i id="searchicon" class="fa-light fa-buildings"></i>
                 </div>
 
                 <script type="text/javascript">
-                    var path = "{{ route('autocomplete.tg',['pays_id'=>14]) }}";
+                    var path = "{{ route('autocomplete.pays',['slug_pays'=>'tg']) }}";
                     $( "#searchfield" ).autocomplete({
                         source: function( request, response ) {
                             $.ajax({
@@ -151,7 +151,7 @@
                     @if(Session::has('succes'))
                         <div class="alert alert-success" role="alert">{{Session::get('succes') }}</div>
                     @endif
-                    <form action="{{ route('devis.tg.entreprise',['pays_id'=>14,'souscategorie_id'=>$sousCategorie->identifiant]) }}" method="POST">
+                    <form action="{{ route('devis.pays.entreprise',['slug_pays'=>'tg','souscategorie_id'=>$sousCategorie->identifiant]) }}" method="POST">
                         @csrf
                         <div class="select-box">
                             <select name="souscategorie_id" id="souscategorie_id">
@@ -213,7 +213,7 @@
                         <div class="company-info">
                             <div class="left">
                                 <div class="header">
-                                    <h3 class="company-name"><a href="{{ route('entreprise.tg.profil',['pays_id'=>$entreprise->pays_id,'entreprise_id'=>$entreprise->id]) }}">{{$entreprise->nom}}</a></h3>
+                                    <h3 class="company-name"><a href="{{ route('entreprise.pays.profil',['slug_pays'=>$entreprise->slug_pays,'slug_categorie'=>$entreprise->slug_categorie,'slug_souscategorie'=>$entreprise->slug_souscategorie,'slug_entreprise'=>$entreprise->slug_entreprise]) }}">{{$entreprise->nom}}</a></h3>
                                     <span class="company-category">{{ $entreprise->libelle }}</span>
                                     @if ($entreprise->premium == 1)
                                         <div class="premium">

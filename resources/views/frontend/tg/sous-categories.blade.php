@@ -1,7 +1,7 @@
 @include('frontend.tg.header.header')
 @foreach ($souscategories as $souscategorie)
-    <meta property="og:url" content="https://www.showroomafrica.com/tg/sous-categories/14/{{ $souscategorie->identifiant }}" />
-    <link rel="canonicail" href="https://www.showroomafrica.com/tg/sous-categories/14/{{ $souscategorie->identifiant }}">
+    <meta property="og:url" content="https://www.showroomafrica.com/tg/sous-categories/14/{{ $souscategorie->slug_souscategorie }}" />
+    <link rel="canonicail" href="https://www.showroomafrica.com/tg/sous-categories/14/{{ $souscategorie->slug_souscategorie }}">
 @endforeach
 @include('frontend.tg.header.header1')
 @include('frontend.tg.header.header2')
@@ -66,7 +66,7 @@
         <div class="categories-list">
             @foreach ($souscategories as $souscategorie)
                 <div class="accordion-item">
-                    <a href="{{ route('entreprise.tg',['pays_id'=>14,'souscategorie_id'=>$souscategorie->identifiant])}}" style="text-decoration: none">
+                    <a href="{{ route('entreprise.pays',['slug_pays'=>$souscategorie->slug_pays,'slug_categorie'=>$souscategorie->slug_categorie,'slug_souscategorie'=>$souscategorie->slug_souscategorie])}}" style="text-decoration: none">
                         <header class="accordion-header">
                             <h3 class="accordion-title">{{ $souscategorie->nom }}</h3>
                         </header>

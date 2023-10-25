@@ -10,12 +10,17 @@ class SousCategories extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'categorie_id ', 'libelle', 'slug_souscategorie'
+    ];
+
+
     use Sluggable;
 
     public function Sluggable():array
     {
         return[
-            'slug' =>
+            'slug_souscategorie' =>
             [
                 'source' => 'libelle'
             ]
@@ -24,11 +29,11 @@ class SousCategories extends Model
 
     public function Categories()
     {
-        return $this->hasMany(Categories::class);
+        return $this->belongsTo(Categories::class);
     }
 
     public function entreprise()
     {
-        return $this->belongsTo(Entreprise::class);
+        return $this->hasMany(Entreprise::class);
     }
 }

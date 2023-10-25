@@ -1,6 +1,6 @@
 @include('frontend.bf.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/bf/rechercher-entreprise/2" />
-<link rel="canonicail" href="https://www.showroomafrica.com/bf/rechercher-entreprise/2">
+    <meta property="og:url" content="https://www.showroomafrica.com/bf/rechercher-entreprise" />
+    <link rel="canonicail" href="https://www.showroomafrica.com/bf/rechercher-entreprise">
 @include('frontend.bf.header.header1')
 @include('frontend.bf.header.header2')
 <link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />
@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="{{ asset('assets/css/companies.css') }}" />
 {{-- <link rel="stylesheet" href="{{ asset('assets/css/vertical-carousel.css') }}" /> --}}
 <link rel="stylesheet" href="{{ asset('assets/css/autocompletion.css') }}" />
+
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
@@ -72,14 +73,14 @@
     <div class="companies-container">
 
         <div class="search-bar" style="margin-bottom:2em;">
-            <form action="{{ route('recherche.bf',['pays_id'=>2]) }}" autocomplete="off" class="search-form" method="GET">
+            <form action="{{ route('recherche.pays',['slug_pays'=>'bf']) }}" autocomplete="off" class="search-form" method="GET">
                 <div class="search-field autocomplete">
                     <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel" required="" name="nom">
                     <i id="searchicon" class="fa-light fa-buildings"></i>
                 </div>
 
                 <script type="text/javascript">
-                    var path = "{{ route('autocomplete.bf',['pays_id'=>2]) }}";
+                    var path = "{{ route('autocomplete.pays',['slug_pays'=>'bf']) }}";
                     $( "#searchfield" ).autocomplete({
                         source: function( request, response ) {
                             $.ajax({
@@ -151,7 +152,7 @@
                 @if(Session::has('succes'))
                     <div class="alert alert-success" role="alert">{{Session::get('succes') }}</div>
                 @endif
-                <form action="{{ route('devis.bf.recherche',['pays_id'=>2]) }}" method="POST">
+                <form action="{{ route('devis.pays.recherche',['slug_pays'=>'bf']) }}" method="POST">
                     @csrf
                     <div class="select-box">
                         <select name="souscategorie_id" id="souscategorie_id">
@@ -208,7 +209,7 @@
                         <div class="company-info">
                             <div class="left">
                                 <div class="header">
-                                    <h3 class="company-name"><a href="{{ route('entreprise.bf.profil',['pays_id'=>$recherche->pays_id,'entreprise_id'=>$recherche->id]) }}">{{$recherche->nom}}</a></h3>
+                                    <h3 class="company-name"><a href="{{ route('entreprise.pays.profil',['slug_pays'=>$recherche->slug_pays,'slug_categorie'=>$recherche->slug_categorie,'slug_souscategorie'=>$recherche->slug_souscategorie,'slug_entreprise'=>$recherche->slug_entreprise]) }}">{{$recherche->nom}}</a></h3>
                                     <span class="company-category">{{ $recherche->sousCategorie }}</span>
                                     @if ($recherche->premium == 1)
                                         <div class="premium">
@@ -249,19 +250,20 @@
                                     </ul>
                                 </div>
                             </div>
+
                             <div class="right">
                                 @if ($recherche->logo)
                                     <img src="{{ asset('assets/images/companies/logos')}}/{{ $recherche->logo }}" alt="{{$recherche->nom}}">
                                 @endif
                             </div>
-
                         </div>
                     @endif
+                    
                 @endforeach
             </div>
 
         </div>
-
+        
         <style>
             .top-research{
                 top: 6em;
@@ -296,7 +298,7 @@
                                 <i class="fa-solid fa-location-dot"></i>
                                 {{ $entreprisePopulair->adresse }}
                                 </li>
-                                <li><i class="fa-solid fa-phone"></i> (+225) <b>{{ $entreprisePopulair->telephone1 }}</b></li>
+                                <li><i class="fa-solid fa-phone"></i> (+226) <b>{{ $entreprisePopulair->telephone1 }}</b></li>
                             </ul>
                         </div>
                     @endforeach
@@ -308,6 +310,99 @@
 
 </div>
 
+{{-- <script>
+    // Création de l'élément d'image
+    var imageElement = document.createElement('img');
+    imageElement.src = '{{ asset('assets/images/sliders/main/4.jpg') }}';
+    imageElement.alt = 'showroom africa';
+
+    // Sélection de l'élément où vous souhaitez insérer les images
+    var container = document.getElementById('imageContainer');
+
+    // Boucle pour insérer l'image plusieurs fois
+    for (var i = 0; i < 5; i++) {
+    container.appendChild(imageElement.cloneNode(true));
+    }
+
+</script> --}}
+
+{{-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var slider = @json($slider); // Convertir les données PHP en objet JavaScript
+
+        var imageContainer = document.getElementById('imageContainer');
+
+        slider.forEach(function(sliders) {
+            var img = document.createElement('img');
+            img.src = '{{ asset('assets/images/sliders/main/') }}';
+            img.alt = 'showroom africa';
+            imageContainer.appendChild(img);
+        });
+    });
+</script> --}}
+
+{{-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var slider = @json($slider); // Convertir les données PHP en objet JavaScript
+        var imageContainer = document.getElementById('imageContainer');
+        var currentIndex = 0;
+
+        function insertImage() {
+            var imageUrl = slider[currentIndex % slider.length];
+            
+            var img = document.createElement('img');
+            img.src = '{{ asset('assets/images/sliders/main/4.jpg') }}';
+            img.alt = 'showroom africa';
+            imageContainer.appendChild(img);
+            
+            currentIndex++;
+        }
+
+        // Insérer une nouvelle image toutes les 3 secondes
+        var intervalId = setInterval(insertImage, 3000);
+
+        // Arrêter l'insertion périodique après un certain nombre d'itérations
+        var maxIterations = 10;
+        var currentIteration = 0;
+
+        function checkIteration() {
+            if (currentIteration >= maxIterations) {
+                clearInterval(intervalId); // Arrêter l'insertion périodique
+            }
+            currentIteration++;
+        }
+
+        // Vérifier l'itération après chaque insertion
+        imageContainer.addEventListener('DOMNodeInserted', checkIteration);
+    });
+</script> --}}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var slider = @json($slider); // Convertir les données PHP en objet JavaScript
+        var imageContainer = document.getElementById('imageContainer');
+        var currentIndex = 0;
+
+        function insertNextImage() {
+            var imageUrl = slider[currentIndex % slider.length];
+            
+            var img = document.createElement('img');
+            img.src = '{{ asset('assets/images/sliders/main/4.jpg') }}';
+            img.alt = 'showroom africa';
+            imageContainer.appendChild(img);
+            
+            currentIndex++;
+        }
+
+        // Insérer une nouvelle image alternativement
+        insertNextImage();
+        insertNextImage(); // Insérer la première image
+        
+        // Répéter l'insertion alternée toutes les 2 secondes
+        var intervalId = setInterval(insertNextImage, 2000);
+    });
+</script>
+
 @include('frontend.bf.footer.footer')
 <script src="{{ asset('assets/js/script.js') }}"></script>
 <script src="{{ asset('assets/js/devis-modal.js') }}"></script>
@@ -317,6 +412,7 @@
 <script src="{{ asset('assets/js/slider.js') }}"></script>
 <script src="{{ asset('assets/js/accordion.js') }}"></script>
 <script src="{{ asset('assets/js/autocompletion.js') }}"></script>
+
 
 <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
 {{-- <script src="https://code.jquery.com/jquery-migrate-3.3.2.js"></script> --}}

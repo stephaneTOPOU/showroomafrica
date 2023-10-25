@@ -1,8 +1,9 @@
 @include('frontend.ci.header.header')
 @foreach ($Profil_entreprises as $Profil_entreprise)
-  <meta property="og:url" content="https://www.showroomafrica.com/ci/entreprise-profil/6/{{ $Profil_entreprise->id }}" />
-  <link rel="canonicail" href="https://www.showroomafrica.com/ci/entreprise-profil/6/{{ $Profil_entreprise->id }}">
+  <meta property="og:url" content="https://www.showroomafrica.com/ci/{{ $Profil_entreprise->slug_entreprise }}" />
+  <link rel="canonicail" href="https://www.showroomafrica.com/ci/{{ $Profil_entreprise->slug_entreprise }}">
 @endforeach
+
 @include('frontend.ci.header.header1')
 @include('frontend.ci.header.header2')
 @include('frontend.ci.header.header3')
@@ -30,15 +31,15 @@
     @foreach ($Profil_entreprises as $Profil_entreprise)
       <div class="img-slider company-slider">
         <div class="slide active">
-          <img src="{{ asset('assets/images/sliders/couverture/4.jpg') }}" alt="showroom africa" />
+          <img src="{{ asset('assets/images/sliders/couverture/4.jpg') }}" alt="showroom africa">
         </div>
         @if ($Profil_entreprise->photo2)
           <div class="slide">
-            <img src="{{ asset('assets/images/sliders/couverture') }}/{{ $Profil_entreprise->photo2 }}" alt="{{ $Profil_entreprise->nom }}" />
+            <img src="{{ asset('assets/images/sliders/couverture') }}/{{ $Profil_entreprise->photo2 }}" alt="{{ $Profil_entreprise->nom }}">
           </div>
         @else
           <div class="slide">
-            <img src="{{ asset('assets/images/sliders/couverture/4.jpg') }}" alt="showroom africa" />
+            <img src="{{ asset('assets/images/sliders/couverture/4.jpg') }}" alt="showroom africa">
           </div>
         @endif
       </div>
@@ -250,10 +251,10 @@
                 <div class="flex-boxes">
                   <div id="jLightroom" class="jlr">
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}" /></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
                     @endforeach
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}" /></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
                     @endforeach
                   </div>
                 </div>
@@ -266,10 +267,10 @@
                 <div class="flex-boxes">
                   <div id="jLightroom" class="jlr">
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}" /></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
                     @endforeach
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}" /></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
                     @endforeach
                   </div>
                 </div>
@@ -456,7 +457,7 @@
               @if(Session::has('ok'))
                 <div class="alert alert-success" role="alert">{{Session::get('ok') }}</div>
               @endif
-              <form action="{{ route('entreprise.commentaire',['entreprise_id'=>$Profil_entreprise->id]) }}" method="POST">
+              <form action="{{ route('entreprise.commentaire',['slug_souscategorie'=>$Profil_entreprise->slug_souscategorie, 'slug_entreprise'=>$Profil_entreprise->slug_entreprise]) }}" method="POST">
                 @csrf
                 <div class="feedback">
                   <div class="rating">
@@ -578,7 +579,7 @@
           @if(Session::has('success'))
             <div class="alert alert-success" role="alert">{{Session::get('success') }}</div>
           @endif
-          <form action="{{ route('entreprise.ci.form',['pays_id'=>$Profil_entreprise->pays_id,'entreprise_id'=>$Profil_entreprise->id]) }}" method="POST">
+          <form action="{{ route('entreprise.pays.form',['slug_pays'=>$Profil_entreprise->slug_pays,'slug_categorie'=>$Profil_entreprise->slug_categorie,'slug_souscategorie'=>$Profil_entreprise->slug_souscategorie,'slug_entreprise'=>$Profil_entreprise->slug_entreprise]) }}" method="POST">
             @csrf
             <div class="input-box" hidden>
               <input type="text" placeholder="{{ $Profil_entreprise->nom }}" required value="{{ $Profil_entreprise->nom }}" name="entrprise_nom">

@@ -1,7 +1,7 @@
 @include('frontend.bj.header.header')
 @foreach ($entreprises as $entreprise)
-    <meta property="og:url" content="https://www.showroomafrica.com/bj/entreprise/1/{{ $entreprise->id }}"  />
-    <link rel="canonicail" href="https://www.showroomafrica.com/bj/entreprise/1/{{ $entreprise->id }}" />
+    <meta property="og:url" content="https://www.showroomafrica.com/bj/{{ $entreprise->slug_entreprise }}"  />
+    <link rel="canonicail" href="https://www.showroomafrica.com/bj/{{ $entreprise->slug_entreprise }}" />
 @endforeach
 @include('frontend.bj.header.header1')
 @include('frontend.bj.header.header2')
@@ -32,11 +32,11 @@
     <!-- ADS BIG SLIDER -->
     <div class="img-slider first-slider">
         <div class="slide active">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa" />
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa">
         </div>
         @foreach ($slider as $sliders)
             <div class="slide">
-                <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}" alt="{{ $sliders->image }}" />
+                <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}" alt="{{ $sliders->image }}">
             </div>
         @endforeach
     </div>
@@ -45,11 +45,11 @@
     <!-- ADS BIG SLIDER 2 -->
     <div class="img-slider" hidden>
         <div class="slide-two active-two">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa" />
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider as $slider2)
             <div class="slide-two">
-                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="{{ $slider2->image }}" />
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="{{ $slider2->image }}">
             </div>
         @endforeach
     </div>
@@ -58,11 +58,11 @@
     <!-- ADS BIG SLIDER 3 -->
     <div class="img-slider" hidden>
         <div class="slide-three active-three">
-            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="showroom africa" />
+            <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider as $slider3)
         <div class="slide-three">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}" />
+            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}">
         </div>
         @endforeach
     </div>
@@ -71,14 +71,14 @@
     <div class="companies-container">
 
         <div class="search-bar" style="margin-bottom:2em;">
-            <form action="{{ route('recherche.bj',['pays_id'=>1]) }}" autocomplete="off" class="search-form" method="GET">
+            <form action="{{ route('recherche.pays',['slug_pays'=>'bj']) }}" autocomplete="off" class="search-form" method="GET">
                 <div class="search-field autocomplete">
                     <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel" required="" name="nom">
                     <i id="searchicon" class="fa-light fa-buildings"></i>
                 </div>
 
                 <script type="text/javascript">
-                    var path = "{{ route('autocomplete.bj',['pays_id'=>1]) }}";
+                    var path = "{{ route('autocomplete.pays',['slug_pays'=>'bj']) }}";
                     $( "#searchfield" ).autocomplete({
                         source: function( request, response ) {
                             $.ajax({
@@ -151,7 +151,7 @@
                     @if(Session::has('succes'))
                         <div class="alert alert-success" role="alert">{{Session::get('succes') }}</div>
                     @endif
-                    <form action="{{ route('devis.bj.entreprise',['pays_id'=>6,'souscategorie_id'=>$sousCategorie->identifiant]) }}" method="POST">
+                    <form action="{{ route('devis.pays.entreprise',['slug_pays'=>'bj','souscategorie_id'=>$sousCategorie->identifiant]) }}" method="POST">
                         @csrf
                         <div class="select-box">
                             <select name="souscategorie_id" id="souscategorie_id">
@@ -205,7 +205,7 @@
                         <div class="company-slider" style="display: flex; flex-flow: row wrap; margin: 0 15px;">
                             <div class="img-search">
                                 <div class="search active">
-                                    <img src="{{ asset('assets/images/sliders/main') }}/{{ $search->image }}" alt="{{ $search->image }}" />
+                                    <img src="{{ asset('assets/images/sliders/main') }}/{{ $search->image }}" alt="{{ $search->image }}">
                                 </div>
                             </div>
                         </div>
@@ -213,7 +213,7 @@
                         <div class="company-info">
                             <div class="left">
                                 <div class="header">
-                                    <h3 class="company-name"><a href="{{ route('entreprise.bj.profil',['pays_id'=>$entreprise->pays_id,'entreprise_id'=>$entreprise->id]) }}">{{$entreprise->nom}}</a></h3>
+                                    <h3 class="company-name"><a href="{{ route('entreprise.pays.profil',['slug_pays'=>$entreprise->slug_pays,'slug_categorie'=>$entreprise->slug_categorie,'slug_souscategorie'=>$entreprise->slug_souscategorie,'slug_entreprise'=>$entreprise->slug_entreprise]) }}">{{$entreprise->nom}}</a></h3>
                                     <span class="company-category">{{ $entreprise->libelle }}</span>
                                     @if ($entreprise->premium == 1)
                                         <div class="premium">

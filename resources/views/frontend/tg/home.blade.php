@@ -1,6 +1,6 @@
 @include('frontend.tg.header.header')
-<meta property="og:url" content="https://showroomafrica.com/tg/14" />
-<link rel="canonicail" href="https://showroomafrica.com/tg/14">
+<meta property="og:url" content="https://showroomafrica.com/tg" />
+<link rel="canonicail" href="https://showroomafrica.com/tg">
 @include('frontend.tg.header.header1')
 @include('frontend.tg.header.header2')
 @include('frontend.tg.header.header3')
@@ -70,14 +70,14 @@
             </div>
 
             <div class="search-bar">
-                <form action="{{ route('recherche.tg',['pays_id'=>14]) }}" method="GET" class="search-form">
+                <form action="{{ route('recherche.pays',['slug_pays'=>'tg']) }}" method="GET" class="search-form">
                     <div class="search-field">
                         <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel"
                         name="nom">
                         <i id="searchicon" class="fa-light fa-buildings"></i>
                     </div>
                     <script type="text/javascript">
-                        var path = "{{ route('autocomplete.tg',['pays_id'=>14]) }}" ;
+                        var path = "{{ route('autocomplete.pays',['slug_pays'=>'tg']) }}" ;
                         // path = path.replace(':pays_id', pays_id);
 
                         $( "#searchfield" ).autocomplete({
@@ -178,63 +178,63 @@
 
             <div class="categories-block">
                 <div class="category">
-                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>1]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'tg','slug_categorie'=>'communication-publicite']) }}">
                         <i class="fa-duotone fa-bullhorn"></i>
-                        <p>Communication & Publicité</p>
+                        <p>Communication, Publicité</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>2]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'tg','slug_categorie'=>'batiment-et-construction']) }}">
                         <i class="fa-duotone fa-person-digging"></i>
-                        <p>Bâtiments & Constructions</p>
+                        <p>Bâtiments et Constructions</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>3]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'tg','slug_categorie'=>'administrations']) }}">
                         <i class="fa-duotone fa-user-tie"></i>
                         <p>Administrations</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>4]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'tg','slug_categorie'=>'automobile-moto']) }}">
                         <i class="fa-duotone fa-car"></i>
-                        <p>Automobiles</p>
+                        <p>Automobile / Moto</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>5]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'tg','slug_categorie'=>'telecom-telephonie']) }}">
                         <i class="fa-duotone fa-tower-broadcast"></i>
                         <p>Télécoms & Téléphonie</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>6]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'tg','slug_categorie'=>'comptabilite-juridique-conseil']) }}">
                         <i class="fa-duotone fa-scale-balanced"></i>
-                        <p>Comptabilité & Conseils juridiques</p>
+                        <p>Comptabilité, Conseils & juridiques</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>7]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'tg','slug_categorie'=>'immobilier']) }}">
                         <i class="fa-duotone fa-buildings"></i>
                         <p>Immobilier</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>8]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'tg','slug_categorie'=>'tourisme-et-loisirs']) }}">
                         <i class="fa-duotone fa-island-tropical"></i>
-                        <p>Tourisme & Loisirs</p>
+                        <p>Tourisme et Loisirs</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.tg',['pays_id'=>14,'categorie_id'=>9]) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'tg','slug_categorie'=>'commerces']) }}">
                         <i class="fa-duotone fa-shop"></i>
-                        <p>Commerce</p>
+                        <p>Commerces</p>
                     </a>
                 </div>
             </div>
 
             <div class="category-link">
-                <a href="{{ route('categorie.tg',['pays_id'=>14]) }}">
+                <a href="{{ route('categorie.pays',['slug_pays'=>'tg']) }}">
                     <i class="fa-regular fa-plus"></i>
                     Explorez les secteurs d'activité
                 </a>
@@ -376,7 +376,7 @@
         <div class="highlights">
             <div class="autoplay">
                 @foreach ($honeures as $honeure)
-                    <a href="{{ route('entreprise.tg.profil',['pays_id'=>$honeure->pays_id,'entreprise_id'=>$honeure->id]) }}">
+                    <a href="{{ route('entreprise.pays.profil',['slug_pays'=>$honeure->slug_pays,'slug_categorie'=>$honeure->slug_categorie,'slug_souscategorie'=>$honeure->slug_souscategorie,'slug_entreprise'=>$honeure->slug_entreprise]) }}">
                         <div class="img-div"><img src="{{ asset('assets/images/highlights') }}/{{ $honeure->photo4 }}" alt="{{ $honeure->nom }}"></div>
                     </a>
                 @endforeach
@@ -393,7 +393,7 @@
             <div class="advertorial">
                 <img src="{{ asset('assets/images/advertorial/131511819.jpg') }}" alt="Bravia Eco Hôtel">
                 <div class="overlay"></div>
-                <a href="https://www.showroomafrica.com/tg/entreprise-profil/14/5177">
+                <a href="https://showroomafrica.com/tg/tourisme-et-loisirs/hotels/bravia-eco-hotel">
                 <i class="fa-solid fa-hotel"></i> Bravia Eco Hôtel
                 </a>
             </div>
@@ -463,7 +463,7 @@
         <br />
         <br />
         <div class="category-link" style="text-align: center">
-            <a href="{{ route('pharmacie.tg',['pays_id'=>14]) }}">
+            <a href="{{ route('pharmacie.pays',['slug_pays'=>'tg']) }}">
                 <i class="fa-regular fa-plus"></i>
                 Liste des pharmacie de garde
             </a>
@@ -544,7 +544,7 @@
                 <div class="magazine-details">
                     <img class="magazine-img" src="{{ asset('assets/images') }}/{{ $magazine->magazineimage1 }}" alt="{{ $magazine->nom }}">
                     <button type="button" class="discover-btn">
-                        <a href="{{ route('entreprise.tg.profil',['pays_id'=>$magazine->pays_id,'entreprise_id'=>$magazine->id]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
+                        <a href="{{ route('entreprise.pays.profil',['slug_pays'=>$magazine->slug_pays,'slug_categorie'=>$magazine->slug_categorie,'slug_souscategorie'=>$magazine->slug_souscategorie,'slug_entreprise'=>$magazine->slug_entreprise]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
                     </button>
                     <div class="social-links">
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    
+
     <meta http-equiv="Content-Language" content="fr-NE" />
     <meta name="geo.country" content="NE" />
     <meta name="country" content="NE" />
@@ -13,34 +13,33 @@
     <meta property="og:country-name" content="Niger" />
     
     
-    
     {!! SEO::generate(true) !!}
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/showroom/favicon.ico') }}" />
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
-
+    
     <link rel="alternate" href="https://showroomafrica.com/annuaire" hreflang="fr"/>
     
-    <link rel="alternate" href="https://showroomafrica.com/bj/1" hreflang="fr-BJ"/>
-    <link rel="alternate" href="https://showroomafrica.com/bf/2" hreflang="fr-CI"/>
-    <link rel="alternate" href="https://showroomafrica.com/bi/21" hreflang="fr-BI"/>
-    <link rel="alternate" href="https://showroomafrica.com/cm/3" hreflang="fr-CM"/>
-    <link rel="alternate" href="https://showroomafrica.com/cf/4" hreflang="fr-CF"/>
-    <link rel="alternate" href="https://showroomafrica.com/cg/5" hreflang="fr-CG"/>
-    <link rel="alternate" href="https://showroomafrica.com/ci/6" hreflang="fr-CI"/>
-    <link rel="alternate" href="https://showroomafrica.com/dj/22" hreflang="fr-DJ"/>
-    <link rel="alternate" href="https://showroomafrica.com/ga/4" hreflang="fr-GA"/>
-    <link rel="alternate" href="https://showroomafrica.com/gn/26" hreflang="fr-GN"/>
-    <link rel="alternate" href="https://showroomafrica.com/mg/23" hreflang="fr-MG"/>
-    <link rel="alternate" href="https://showroomafrica.com/ml/10" hreflang="fr-ML"/>
-    <link rel="alternate" href="https://showroomafrica.com/mr/24" hreflang="fr-MR"/>
-    <link rel="alternate" href="https://showroomafrica.com/cd/15" hreflang="fr-CD"/>
-    <link rel="alternate" href="https://showroomafrica.com/rw/25" hreflang="fr-RW"/>
-    <link rel="alternate" href="https://showroomafrica.com/sn/12" hreflang="fr-SN"/>
-    <link rel="alternate" href="https://showroomafrica.com/td/13" hreflang="fr-TD"/>
-    <link rel="alternate" href="https://showroomafrica.com/tg/14" hreflang="fr-TG"/>
-
-
+    <link rel="alternate" href="https://showroomafrica.com/bj" hreflang="fr-BJ"/>
+    <link rel="alternate" href="https://showroomafrica.com/bf" hreflang="fr-CI"/>
+    <link rel="alternate" href="https://showroomafrica.com/bi" hreflang="fr-BI"/>
+    <link rel="alternate" href="https://showroomafrica.com/cm" hreflang="fr-CM"/>
+    <link rel="alternate" href="https://showroomafrica.com/cf" hreflang="fr-CF"/>
+    <link rel="alternate" href="https://showroomafrica.com/cg" hreflang="fr-CG"/>
+    <link rel="alternate" href="https://showroomafrica.com/ci" hreflang="fr-CI"/>
+    <link rel="alternate" href="https://showroomafrica.com/dj" hreflang="fr-DJ"/>
+    <link rel="alternate" href="https://showroomafrica.com/ga" hreflang="fr-GA"/>
+    <link rel="alternate" href="https://showroomafrica.com/gn" hreflang="fr-GN"/>
+    <link rel="alternate" href="https://showroomafrica.com/mg" hreflang="fr-MG"/>
+    <link rel="alternate" href="https://showroomafrica.com/ml" hreflang="fr-ML"/>
+    <link rel="alternate" href="https://showroomafrica.com/mr" hreflang="fr-MR"/>
+    <link rel="alternate" href="https://showroomafrica.com/cd" hreflang="fr-CD"/>
+    <link rel="alternate" href="https://showroomafrica.com/rw" hreflang="fr-RW"/>
+    <link rel="alternate" href="https://showroomafrica.com/sn" hreflang="fr-SN"/>
+    <link rel="alternate" href="https://showroomafrica.com/td" hreflang="fr-TD"/>
+    <link rel="alternate" href="https://showroomafrica.com/tg" hreflang="fr-TG"/>
+    
+    
 
 
     <!-- Google tag (gtag.js) -->
@@ -63,7 +62,6 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "iqijivxkqa");
     </script>
-
     
 
     

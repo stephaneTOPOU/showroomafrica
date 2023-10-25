@@ -1,6 +1,6 @@
 @include('frontend.ci.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/ci/contact/6" />
-<link rel="canonicail" href="https://www.showroomafrica.com/ci/contact/6">
+<meta property="og:url" content="https://www.showroomafrica.com/ci/contact" />
+<link rel="canonicail" href="https://www.showroomafrica.com/ci/contact">
 @include('frontend.ci.header.header1')
 @include('frontend.ci.header.header2')
 @include('frontend.ci.header.header3')
@@ -32,7 +32,6 @@
             <div class="address details">
               <i class="fa-light fa-location-dot"></i>
               <div class="topic">Adresse</div>
-              <div class="text-one"> <b> </b></div>
               <div class="text-two">{{ $parametre->adresse }}</div>
             </div>
             <div class="phone details">

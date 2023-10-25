@@ -1,6 +1,6 @@
 @include('frontend.tg.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/tg/contact/14" />
-<link rel="canonicail" href="https://www.showroomafrica.com/tg/contact/14">
+<meta property="og:url" content="https://www.showroomafrica.com/tg/contact" />
+<link rel="canonicail" href="https://www.showroomafrica.com/tg/contact">
 @include('frontend.tg.header.header1')
 @include('frontend.tg.header.header2')
 @include('frontend.tg.header.header3')

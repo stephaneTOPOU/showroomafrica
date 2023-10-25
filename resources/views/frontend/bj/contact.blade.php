@@ -1,6 +1,6 @@
 @include('frontend.bj.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/bj/contact/1" />
-<link rel="canonicail" href="https://www.showroomafrica.com/bj/contact/1">
+<meta property="og:url" content="https://www.showroomafrica.com/bj/contact" />
+<link rel="canonicail" href="https://www.showroomafrica.com/bj/contact">
 @include('frontend.bj.header.header1')
 @include('frontend.bj.header.header2')
 @include('frontend.bj.header.header3')
@@ -32,7 +32,6 @@
             <div class="address details">
               <i class="fa-light fa-location-dot"></i>
               <div class="topic">Adresse</div>
-              <div class="text-one"> <b> </b></div>
               <div class="text-two">{{ $parametre->adresse }}</div>
             </div>
             <div class="phone details">

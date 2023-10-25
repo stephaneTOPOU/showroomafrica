@@ -1,6 +1,6 @@
 @include('frontend.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/categories" />
-<link rel="canonicail" href="https://www.showroomafrica.com/categories">
+<meta property="og:url" content="https://www.showroomafrica.com/annuaire/categorie" />
+<link rel="canonicail" href="https://www.showroomafrica.com/annuaire/categorie">
 @include('frontend.header.header1')
 @include('frontend.header.header2')
 @include('frontend.header.header3')
@@ -70,7 +70,7 @@
                         <ul class="accordion-description">
                             @foreach ($souscategories as $souscategorie)
                                 @if ($categorie->idCat == $souscategorie->id1)
-                                    <li><a href="{{ route('entreprise',['souscategorie_id'=>$souscategorie->idSousCat])}}">{{ $souscategorie->subcat }}</a></li>
+                                    <li><a href="{{ route('entreprise',['slug_categorie'=>$souscategorie->slug_categorie,'slug_souscategorie'=>$souscategorie->slug_souscategorie])}}">{{ $souscategorie->subcat }}</a></li>
                                 @endif
                             @endforeach
                         </ul>

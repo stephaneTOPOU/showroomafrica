@@ -11,11 +11,11 @@ class Service extends Model
 
     public function entreprise()
     {
-        return $this->hasMany(Entreprises::class);
+        return $this->belongsTo(Entreprises::class);
     }
 
     public function serviceImage()
     {
-        return $this->belongsTo(ServiceImage::class);
+        return $this->hasMany(ServiceImage::class);
     }
 }

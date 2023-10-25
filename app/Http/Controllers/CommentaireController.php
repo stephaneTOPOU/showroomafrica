@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Commentaire;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CommentaireController extends Controller
 {
@@ -15,8 +16,11 @@ class CommentaireController extends Controller
             'commentaire' => 'required'
         ]);
     }
-    public function commentaire(Request $request, $entreprise_id)
+    public function commentaire(Request $request, $slug_souscategorie, $slug_entreprise)
     {
+        $sousCategorie_id = DB::table('sous_categories')->where('slug_souscategorie', $slug_souscategorie)->select('id')->get();
+        $entreprise_id = DB::table('entreprises')->where('slug_entreprise', $slug_entreprise)->select('id')->get();
+        
         $request->validate([
             'rating' => 'required',
             'commentaire' => 'required'
@@ -24,7 +28,7 @@ class CommentaireController extends Controller
 
         try {
             $commentaire = new Commentaire();
-            $commentaire->entreprise_id = $entreprise_id;
+            $commentaire->entreprise_id = $entreprise_id[0]->id;
             $commentaire->note = $_POST['rating'];
             $commentaire->commentaire = $_POST['commentaire'];
             $commentaire->save();

@@ -31,7 +31,7 @@
                                     <i class="fa-light fa-briefcase"></i>
                               </div>
                               <div class="input-field field2">
-                                    <input type="text" placeholder="Raison soneale" required name="nom" >
+                                    <input type="text" placeholder="Raison sociale" required name="nom" >
                                     <i class="fa-light fa-building"></i>
                               </div>
                               {{-- <div class="input-field field2">
@@ -43,7 +43,7 @@
                                     <i class="fa-light fa-envelope"></i>
                               </div>
                               <div class="input-field field2">
-                                    <input type="text" placeholder="Votre adresse ine" required name="adresse">
+                                    <input type="text" placeholder="Votre adresse ici" required name="adresse">
                                     <i class="fa-light fa-map-location-dot"></i>
                               </div>
                               <div class="input-field field2">
@@ -85,7 +85,7 @@
                                                 <option>{{ $ville->libelle }}</option>
                                           @endforeach
                                     </select>
-                                    <i class="fa-light fa-nety"></i>
+                                    <i class="fa-light fa-city"></i>
                               </div> --}}
                         </div>
 
