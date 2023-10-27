@@ -446,7 +446,7 @@
         <div class="tower-ctn">
             @foreach ($pharmacies as $pharmacie)
                 <div class="drugstore">
-                    <img src="{{ asset('assets/images') }}/{{ $pharmacie->photo1 }}" alt="{{ $pharmacie->nom }}">
+                    <img src="{{ asset('assets/images/drugstores') }}/{{ $pharmacie->photo1 }}" alt="{{ $pharmacie->nom }}">
                     <h3>{{ $pharmacie->nom }}</h3>
                     <ul>
                     <li>
