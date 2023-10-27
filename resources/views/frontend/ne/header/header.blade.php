@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8" />
 
+    <meta name="msvalidate.01" content="89F155585DD1A383CB3CBA7FB33F09C3" />
+    <meta name="google-site-verification" content="eBhqPiUxwjLJP1YBOHvkuaOjXfRlw0d2PJjYKEBEEKg" />
+
     <meta http-equiv="Content-Language" content="fr-NE" />
     <meta name="geo.country" content="NE" />
     <meta name="country" content="NE" />
@@ -64,6 +67,13 @@
     </script>
     
 
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WNNK2DH8');</script>
+    <!-- End Google Tag Manager -->
     
     
     
