@@ -1,7 +1,6 @@
 @include('frontend.tg.header.header')
 @foreach ($entreprises as $entreprise)
     <meta property="og:url" content="https://www.showroomafrica.com/tg/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}"  />
-    <link rel="canonicail" href="https://www.showroomafrica.com/tg/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}" />
 @endforeach
 @include('frontend.tg.header.header1')
 @include('frontend.tg.header.header2')

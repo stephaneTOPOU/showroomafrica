@@ -50,7 +50,7 @@ return [
          */
         'defaults' => [
             'card'        => 'summary',
-            'site'        => '@showroomafrica',
+            'site'        => '@annuaireafrique',
         ],
     ],
     'json-ld' => [
@@ -60,7 +60,7 @@ return [
         'defaults' => [
             'title'       => 'Annuaire des entreprises', // set false to total remove
             'description' => 'Bienvenue sur le site officiel de Showroom Africa, votre annuaire qui répertorie toutes les entreprises africaines....', // set false to total remove
-            'url'         => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
+            'url'         => 'https://showroomafrica.com', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => [],
         ],

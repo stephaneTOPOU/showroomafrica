@@ -1,7 +1,6 @@
 @include('frontend.ci.header.header')
 @foreach ($souscategories as $souscategorie)
 <meta property="og:url" content="https://www.showroomafrica.com/ci/{{ $souscategorie->slug_categorie }}" />
-<link rel="canonicail" href="https://www.showroomafrica.com/ci/{{ $souscategorie->slug_categorie }}">
 @endforeach
 @include('frontend.ci.header.header1')
 @include('frontend.ci.header.header2')

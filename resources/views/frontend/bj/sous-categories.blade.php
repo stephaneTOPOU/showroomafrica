@@ -1,7 +1,6 @@
 @include('frontend.bj.header.header')
 @foreach ($souscategories as $souscategorie)
 <meta property="og:url" content="https://www.showroomafrica.com/bj/{{ $souscategorie->slug_categorie }}" />
-<link rel="canonicail" href="https://www.showroomafrica.com/bj/{{ $souscategorie->slug_categorie }}">
 @endforeach
 @include('frontend.bj.header.header1')
 @include('frontend.bj.header.header2')

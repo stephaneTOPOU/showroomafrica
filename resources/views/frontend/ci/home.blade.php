@@ -1,6 +1,5 @@
 @include('frontend.ci.header.header')
 <meta property="og:url" content="https://showroomafrica.com/ci" />
-<link rel="canonicail" href="https://showroomafrica.com/ci">
 @include('frontend.ci.header.header1')
 @include('frontend.ci.header.header2')
 @include('frontend.ci.header.header3')
@@ -60,7 +59,7 @@
             <div class="search-text">
                 <h1>
                     {{-- Trouvez les meilleurs services & produits aux meilleurs prix en contactant directement les entreprises! --}}
-                    Annuaire des professionnels au Togo
+                    Annuaire des professionnels en côte d'ivoire
                 </h1>
             </div>
 

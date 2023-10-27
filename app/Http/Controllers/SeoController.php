@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Artesaos\SEOTools\Contracts\JsonLd;
+use Artesaos\SEOTools\Contracts\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Facades\SEOTools;
 

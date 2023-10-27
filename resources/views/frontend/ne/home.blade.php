@@ -1,6 +1,5 @@
 @include('frontend.ne.header.header')
 <meta property="og:url" content="https://showroomafrica.com/ne" />
-<link rel="canonicail" href="https://showroomafrica.com/ne">
 @include('frontend.ne.header.header1')
 @include('frontend.ne.header.header2')
 @include('frontend.ne.header.header3')
@@ -60,7 +59,7 @@
             <div class="search-text">
                 <h1>
                     {{-- Trouvez les meilleurs services & produits aux meilleurs prix en contactant directement les entreprises! --}}
-                    Annuaire des professionnels au Togo
+                    Annuaire des professionnels au Niger
                 </h1>
             </div>
 

@@ -1,6 +1,5 @@
 @include('frontend.ci.header.header')
     <meta property="og:url" content="https://www.showroomafrica.com/ci/rechercher-entreprise" />
-    <link rel="canonicail" href="https://www.showroomafrica.com/ci/rechercher-entreprise">
 @include('frontend.ci.header.header1')
 @include('frontend.ci.header.header2')
 <link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />
