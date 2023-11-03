@@ -1,6 +1,7 @@
 @include('frontend.bf.header.header')
 @foreach ($entreprises as $entreprise)
-<meta property="og:url" content="https://www.showroomafrica.com/bf/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}"  />
+    <meta property="og:url" content="https://www.showroomafrica.com/tg/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}"  />
+@endforeach
 @include('frontend.bf.header.header1')
 @include('frontend.bf.header.header2')
 <link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />
@@ -229,7 +230,7 @@
                                         @endif
                                         
                                         @if ($entreprise->telephone1)
-                                            <li><i class="fa-light fa-phone"></i> (+226) <b>{{ $entreprise->telephone1 }} </b>
+                                            <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $entreprise->telephone1 }} </b>
                                                 @if ($entreprise->telephone2)
                                                     <b>
                                                         • {{ $entreprise->telephone2 }}

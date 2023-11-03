@@ -1,4 +1,5 @@
 @include('frontend.ml.header.header')
+<meta property="og:url" content="https://www.showroomafrica.com/ml/contact" />
 @include('frontend.ml.header.header1')
 @include('frontend.ml.header.header2')
 @include('frontend.ml.header.header3')
@@ -14,33 +15,36 @@
 <div class="container">
 
     <div class="map">
-      <iframe
-        src="{{ $parametres->geolocalisation }}"
-        height="360" style="border:0;" allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+      @foreach ($parametres as $parametre)
+        <iframe
+          src="{{ $parametre->geolocalisation }}"
+          height="360" style="border:0;" allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>                                     
+      @endforeach
     </div>
 
     <div class="form-container">
 
       <div class="content">
         <div class="left-side">
-          <div class="address details">
-            <i class="fa-light fa-location-dot"></i>
-            <div class="topic">Adresse</div>
-            <div class="text-one">Derrière la pharmacie <b>Laus Deo</b></div>
-            <div class="text-two">{{ $parametres->adresse }}</div>
-          </div>
-          <div class="phone details">
-            <i class="fa-light fa-phone"></i>
-            <div class="topic">Téléphone</div>
-            <div class="text-one">(+228) <b>{{ $parametres->telephone1 }}</b></div>
-            <div class="text-two">(+228) <b>{{ $parametres->telephone2 }}</b></div>
-          </div>
-          <div class="email details">
-            <i class="fa-light fa-envelope"></i>
-            <div class="topic">Email</div>
-            <div class="text-one">{{ $parametres->email }}</div>
-          </div>
+          @foreach ($parametres as $parametre)
+            <div class="address details">
+              <i class="fa-light fa-location-dot"></i>
+              <div class="topic">Adresse</div>
+              <div class="text-two">{{ $parametre->adresse }}</div>
+            </div>
+            <div class="phone details">
+              <i class="fa-light fa-phone"></i>
+              <div class="topic">Téléphone</div>
+              <div class="text-one">(+228) <b>{{ $parametre->telephone1 }}</b></div>
+              <div class="text-two">(+228) <b>{{ $parametre->telephone2 }}</b></div>
+            </div>
+            <div class="email details">
+              <i class="fa-light fa-envelope"></i>
+              <div class="topic">Email</div>
+              <div class="text-one">{{ $parametre->email }}</div>
+            </div>
+          @endforeach
         </div>
         <div class="right-side">
           <div class="topic-text">Envoyez-nous un message</div>

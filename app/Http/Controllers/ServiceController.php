@@ -58,30 +58,91 @@ class ServiceController extends Controller
                 ->get();
             return view('frontend.ne.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'cm') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.cm.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'cf') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.cf.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'dj') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.dj.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'ga') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.ga.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'gn') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.gn.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'mg') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.mg.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'ml') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 6)
+                ->select('*')
+                ->get();
             return view('frontend.ml.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'mr') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.mr.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'cd') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.cd.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'rw') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.rw.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'sn') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.sn.siteweb', compact('parametres'));
         } elseif ($slug_pays == 'td') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.td.siteweb', compact('parametres'));
         } else {
+            $parametres = Parametre::find(1);
             return view('frontend.siteweb', compact('parametres'));
         }
     }

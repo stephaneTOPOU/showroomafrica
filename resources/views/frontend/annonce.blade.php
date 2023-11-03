@@ -5,11 +5,11 @@
 @include('frontend.header.header1')
 @include('frontend.header.header2')
 @include('frontend.header.header3')
+
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-
-<link rel="stylesheet" href="{{ asset('assets/css/commentaire.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/annonce.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/commentaire.css') }}" />
 
 @include('frontend.header.header4')
 @include('frontend.header.header5')
@@ -128,11 +128,13 @@
 </div>
 
 @include('frontend.footer.footer')
-<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+<script src="{{ asset('assets/js/script.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
     {{-- <script src="https://code.jquery.com/jquery-migrate-3.3.2.js"></script> --}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="{{ asset('assets/js/annonce.js') }}"></script>
-    <script src="{{ asset('assets/js/script.js') }}"></script>
+    
 @include('frontend.footer.footer1')
 @include('frontend.footer.footer2')
 @include('frontend.footer.footer3')

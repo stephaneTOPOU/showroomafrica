@@ -1,4 +1,8 @@
 @include('frontend.ml.header.header')
+@foreach ($Profil_entreprises as $Profil_entreprise)
+<meta property="og:url" content="https://www.showroomafrica.com/ml/{{ $Profil_entreprise->slug_categorie }}/{{ $Profil_entreprise->slug_souscategorie }}/{{ $Profil_entreprise->slug_entreprise }}" />
+@endforeach
+
 @include('frontend.ml.header.header1')
 @include('frontend.ml.header.header2')
 @include('frontend.ml.header.header3')
@@ -26,15 +30,15 @@
     @foreach ($Profil_entreprises as $Profil_entreprise)
       <div class="img-slider company-slider">
         <div class="slide active">
-          <img src="{{ asset('assets/images/sliders/couverture/4.jpg') }}" alt="">
+          <img src="{{ asset('assets/images/sliders/couverture/4.jpg') }}" alt="showroom africa">
         </div>
         @if ($Profil_entreprise->photo2)
           <div class="slide">
-            <img src="{{ asset('assets/images/sliders/couverture') }}/{{ $Profil_entreprise->photo2 }}" alt="">
+            <img src="{{ asset('assets/images/sliders/couverture') }}/{{ $Profil_entreprise->photo2 }}" alt="{{ $Profil_entreprise->nom }}">
           </div>
         @else
           <div class="slide">
-            <img src="{{ asset('assets/images/sliders/couverture/4.jpg') }}" alt="">
+            <img src="{{ asset('assets/images/sliders/couverture/4.jpg') }}" alt="showroom africa">
           </div>
         @endif
       </div>
@@ -45,7 +49,11 @@
           <div class="left">
             <div class="header">
               <h1 class="company-name">{{ $Profil_entreprise->nom }}</h1>
-              <span>{{ $Profil_entreprise->libelle }}</span>
+              @if ($Profil_entreprise->premium == 1)
+                <span class="category">{{ $Profil_entreprise->libelle }}</span>
+              @else
+                <span>{{ $Profil_entreprise->libelle }}</span>
+              @endif
               <div class="page-views">
                 <p><b>{{ $Profil_entreprise->vue }}</b> vues</p>
                 <div class="product-rating">
@@ -60,9 +68,9 @@
                   @endphp
                   @for ($i = 1; $i<= 5; $i++)
                     @if ($i <=$moyene)
-                      <i class="fa-solid fa-star"></i>
+                      <i class="fas fa-star" style="color: #ffd500;"></i>
                     @else
-                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
                     @endif
                   @endfor
                   <a href="#" class="count-review" > @php
@@ -112,7 +120,7 @@
                   @endif
                   
                   @if ($Profil_entreprise->telephone1)
-                    <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $Profil_entreprise->telephone1 }} </b> 
+                    <li><i class="fa-light fa-phone"></i> (+223) <b>{{ $Profil_entreprise->telephone1 }} </b> 
                       @if ($Profil_entreprise->telephone2) 
                         <b>
                           • {{ $Profil_entreprise->telephone2 }}
@@ -193,7 +201,7 @@
                           @foreach ($serviceImages as $serviceImage)
                             <div class="card swiper-slide">
                               <div class="image-box">
-                                <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" />
+                                <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" alt="{{ $serviceImage->service_image }}"/>
                               </div>
                               <div class="product-details">
                                 <h4 class="name">{{ $serviceImage->description }}</h4>
@@ -219,10 +227,10 @@
                         @foreach ($serviceImages as $serviceImage)
                           <div class="card swiper-slide">
                             <div class="image-box">
-                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" />
+                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" alt="{{ $serviceImage->service_image }}"/>
                             </div>
                             <div class="product-details">
-                              <h4 class="name">Comptabilité</h4>
+                              <h4 class="name">{{ $serviceImage->description }}</h4>
                             </div>
                           </div>
                         @endforeach
@@ -242,10 +250,10 @@
                 <div class="flex-boxes">
                   <div id="jLightroom" class="jlr">
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
                     @endforeach
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
                     @endforeach
                   </div>
                 </div>
@@ -258,10 +266,10 @@
                 <div class="flex-boxes">
                   <div id="jLightroom" class="jlr">
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
                     @endforeach
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
                     @endforeach
                   </div>
                 </div>
@@ -280,6 +288,11 @@
                         <p>
                           {{$service->libelle}}
                         </p>
+                        @if ($service->video)
+                          <br />
+                          <video src="{{ asset('assets/videos') }}/{{ $service->video }}" autoplay muted controls width="100%" style="border-radius: 1em"></video>
+                        @endif
+
                       </div>
 
                       <div class="presentation-section">
@@ -290,7 +303,7 @@
                           {{$service->description}}
                         </p>
                         @if ($service->image2)
-                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="IMAGE">
+                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="{{ $service->image2 }}">
                         @endif
                         <p>
                           {{$service->image1}}
@@ -302,7 +315,7 @@
                           <h3>Nos objectifs</h3>
                         @endif
                         @if ($service->image3)
-                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image3 }}" alt="IMAGE">
+                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image3 }}" alt="{{ $service->image3 }}">
                         @endif
                         <p>
                           {{$service->image5}}
@@ -327,7 +340,7 @@
                           {{$service->libelle}}
                         </p>
                         @if ($service->image2)
-                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="IMAGE">
+                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="{{ $service->image2 }}">
                         @endif
                       </div>
                     </div> 
@@ -357,17 +370,70 @@
               </div>
             @endforeach
 
+            @if ($Profil_entreprise->partenaire == 1)
+              @foreach ($premiums as $premium)
+                <div class="company-info">
+                  <div class="contact-form-header">Partenaires</div>
+                  <div class="swiper">
+                    <div class="slide-container">
+                      <div class="card-wrapper swiper-wrapper">
+                        @foreach ($partenaires as $partenaire)
+                          <div class="card swiper-slide">
+                            <div class="image-box">
+                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $partenaire->image }}" alt="{{ $partenaire->image }}"/>
+                            </div>
+                            {{-- <div class="product-details">
+                              <h4 class="name">{{ $partenaire->description }}</h4>
+                            </div> --}}
+                          </div>
+                        @endforeach
+                      
+                      </div>
+                    </div>
+                    <div class="swiper-button-next swiper-navBtn"></div>
+                    <div class="swiper-button-prev swiper-navBtn"></div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+                </div>
+              @endforeach
+
+              @foreach ($basics as $basic)
+                <div class="company-info">
+                  <div class="contact-form-header">Partenaires</div>
+                  <div class="swiper">
+                    <div class="slide-container">
+                      <div class="card-wrapper swiper-wrapper">
+                        @foreach ($partenaires as $partenaire)
+                          <div class="card swiper-slide">
+                            <div class="image-box">
+                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $partenaire->image }}" alt="{{ $partenaire->image }}"/>
+                            </div>
+                            {{-- <div class="product-details">
+                              <h4 class="name">{{ $partenaire->description }}</h4>
+                            </div> --}}
+                          </div>
+                        @endforeach
+                          
+                      </div>
+                    </div>
+                    <div class="swiper-button-next swiper-navBtn"></div>
+                    <div class="swiper-button-prev swiper-navBtn"></div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+                </div>
+              @endforeach
+            @endif
+
             @foreach ($basics as $basic)
               <div class="company-info">
                 <div class="contact-form-header">Horaires de service</div>
                 <div class="premium">
                   @if ($basic->pharmacie_de_garde == 1)
-                  <span><i class="fa-regular fa-check"></i> <b>Garde</b></span>
-                @else
-                  <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span>
-                @endif
-                {{-- <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span> --}}
-                <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
+                    <span><i class="fa-regular fa-check"></i> <b>Garde</b></span>
+                  @else
+                    <span class="closed"><i class="fa-regular fa-shop-slash"></i> <b>Fermé</b></span>
+                    <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
+                  @endif
                 </div>
                 <table class="company-table">
                   <tbody>
@@ -390,7 +456,7 @@
               @if(Session::has('ok'))
                 <div class="alert alert-success" role="alert">{{Session::get('ok') }}</div>
               @endif
-              <form action="{{ route('entreprise.commentaire',['entreprise_id'=>$Profil_entreprise->id]) }}" method="POST">
+              <form action="{{ route('entreprise.commentaire',['slug_souscategorie'=>$Profil_entreprise->slug_souscategorie, 'slug_entreprise'=>$Profil_entreprise->slug_entreprise]) }}" method="POST">
                 @csrf
                 <div class="feedback">
                   <div class="rating">
@@ -512,8 +578,18 @@
           @if(Session::has('success'))
             <div class="alert alert-success" role="alert">{{Session::get('success') }}</div>
           @endif
-          <form action="{{ route('entreprise.form',['entreprise_id'=>$Profil_entreprise->id]) }}" method="POST">
+          <form action="{{ route('entreprise.pays.form',['slug_pays'=>$Profil_entreprise->slug_pays,'slug_categorie'=>$Profil_entreprise->slug_categorie,'slug_souscategorie'=>$Profil_entreprise->slug_souscategorie,'slug_entreprise'=>$Profil_entreprise->slug_entreprise]) }}" method="POST">
             @csrf
+            <div class="input-box" hidden>
+              <input type="text" placeholder="{{ $Profil_entreprise->nom }}" required value="{{ $Profil_entreprise->nom }}" name="entrprise_nom">
+            </div>
+            <div class="input-box" hidden>
+              @if ($Profil_entreprise->email)
+                <input type="text" placeholder="{{ $Profil_entreprise->email }}" required value="{{ $Profil_entreprise->email }}" name="entrprise_email">
+              @else
+                <input type="text" placeholder="contact@showroomafrica.com" required value="contact@showroomafrica.com" name="entrprise_email">
+              @endif
+            </div>
             <div class="input-box">
                 <input type="text" placeholder="Nom et prénom(s)" required name="nom">
             </div>

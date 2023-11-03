@@ -541,7 +541,7 @@
             @foreach ($magazines as $magazine)
             <div class="magazine">
                 <div class="magazine-details">
-                    <img class="magazine-img" src="{{ asset('assets/images') }}/{{ $magazine->magazineimage1 }}" alt="{{ $magazine->nom }}">
+                    <img class="magazine-img" src="{{ asset('assets/images/magazines') }}/{{ $magazine->magazineimage1 }}" alt="{{ $magazine->nom }}">
                     <button type="button" class="discover-btn">
                         <a href="{{ route('entreprise.pays.profil',['slug_pays'=>$magazine->slug_pays,'slug_categorie'=>$magazine->slug_categorie,'slug_souscategorie'=>$magazine->slug_souscategorie,'slug_entreprise'=>$magazine->slug_entreprise]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
                     </button>

@@ -390,7 +390,7 @@
         <h1>Publireportage</h1>
         <div class="advertorials">
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/131511819.jpg') }}" alt="Bravia Eco Hôtel">
+                <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}" alt="telephonie">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-hotel"></i> Bravia Eco Hôtel
@@ -398,7 +398,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}" alt="commerce.jpg">
+                <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}" alt="commerce">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-shopping-bag"></i> Commerce
@@ -406,7 +406,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/education.jpg') }}" alt="education.jpg">
+                <img src="{{ asset('assets/images/advertorial/education.jpg') }}" alt="education">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-backpack"></i> Education
@@ -414,7 +414,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}" alt="medecine.jpg">
+                <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}" alt="medecine">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-user-doctor"></i> Medecine
@@ -422,7 +422,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}" alt="alimentation.jpg">
+                <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}" alt="alimentation">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-utensils"></i>Alimentation</span>
@@ -430,7 +430,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/divers.jpg') }}" alt="divers.jpg">
+                <img src="{{ asset('assets/images/advertorial/divers.jpg') }}" alt="divers">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-arrow-right"></i> Divers</span>
@@ -541,7 +541,7 @@
             @foreach ($magazines as $magazine)
             <div class="magazine">
                 <div class="magazine-details">
-                    <img class="magazine-img" src="{{ asset('assets/images') }}/{{ $magazine->magazineimage1 }}" alt="{{ $magazine->nom }}">
+                    <img class="magazine-img" src="{{ asset('assets/images/magazines') }}/{{ $magazine->magazineimage1 }}" alt="{{ $magazine->nom }}">
                     <button type="button" class="discover-btn">
                         <a href="{{ route('entreprise.pays.profil',['slug_pays'=>$magazine->slug_pays,'slug_categorie'=>$magazine->slug_categorie,'slug_souscategorie'=>$magazine->slug_souscategorie,'slug_entreprise'=>$magazine->slug_entreprise]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
                     </button>

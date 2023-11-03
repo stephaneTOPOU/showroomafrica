@@ -177,57 +177,57 @@
 
             <div class="categories-block">
                 <div class="category">
-                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'communication-publicite']) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'communication-publicite-1']) }}">
                         <i class="fa-duotone fa-bullhorn"></i>
-                        <p>Communication, Publicité</p>
+                        <p>Communication & Publicité</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'batiment-et-construction']) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'batiment-travaux']) }}">
                         <i class="fa-duotone fa-person-digging"></i>
-                        <p>Bâtiments et Constructions</p>
+                        <p>Bâtiment & Travaux</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'administrations']) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'administration']) }}">
                         <i class="fa-duotone fa-user-tie"></i>
-                        <p>Administrations</p>
+                        <p>Administration</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'automobile-moto']) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'autos-mecanique']) }}">
                         <i class="fa-duotone fa-car"></i>
-                        <p>Automobile / Moto</p>
+                        <p>Autos & Mécanique</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'telecom-telephonie']) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'telecoms']) }}">
                         <i class="fa-duotone fa-tower-broadcast"></i>
-                        <p>Télécoms & Téléphonie</p>
+                        <p>Télécoms</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'comptabilite-juridique-conseil']) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'aide-developpement']) }}">
                         <i class="fa-duotone fa-scale-balanced"></i>
-                        <p>Comptabilité, Conseils & juridiques</p>
+                        <p>Aide & Développement</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'immobilier']) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'immobilier-2']) }}">
                         <i class="fa-duotone fa-buildings"></i>
                         <p>Immobilier</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'tourisme-et-loisirs']) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'sports-loisirs']) }}">
                         <i class="fa-duotone fa-island-tropical"></i>
-                        <p>Tourisme et Loisirs</p>
+                        <p>Sports & Loisirs</p>
                     </a>
                 </div>
                 <div class="category">
-                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'commerces']) }}">
+                    <a href="{{ route('subcat.pays',['slug_pays'=>'ne','slug_categorie'=>'magasins-boutiques']) }}">
                         <i class="fa-duotone fa-shop"></i>
-                        <p>Commerces</p>
+                        <p>Magasins & Boutiques</p>
                     </a>
                 </div>
             </div>
@@ -390,7 +390,7 @@
         <h1>Publireportage</h1>
         <div class="advertorials">
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/131511819.jpg') }}" alt="Bravia Eco Hôtel">
+                <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}" alt="telephonie">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-hotel"></i> Bravia Eco Hôtel
@@ -398,7 +398,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}" alt="commerce.jpg">
+                <img src="{{ asset('assets/images/advertorial/commerce.jpg') }}" alt="commerce">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-shopping-bag"></i> Commerce
@@ -406,7 +406,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/education.jpg') }}" alt="education.jpg">
+                <img src="{{ asset('assets/images/advertorial/education.jpg') }}" alt="education">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-backpack"></i> Education
@@ -414,7 +414,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}" alt="medecine.jpg">
+                <img src="{{ asset('assets/images/advertorial/medecine.jpg') }}" alt="medecine">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-user-doctor"></i> Medecine
@@ -422,7 +422,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}" alt="alimentation.jpg">
+                <img src="{{ asset('assets/images/advertorial/alimentation.jpg') }}" alt="alimentation">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-utensils"></i>Alimentation</span>
@@ -430,7 +430,7 @@
             </div>
 
             <div class="advertorial">
-                <img src="{{ asset('assets/images/advertorial/divers.jpg') }}" alt="divers.jpg">
+                <img src="{{ asset('assets/images/advertorial/divers.jpg') }}" alt="divers">
                 <div class="overlay"></div>
                 <a href="#">
                 <i class="fa-solid fa-arrow-right"></i> Divers</span>
@@ -541,7 +541,7 @@
             @foreach ($magazines as $magazine)
             <div class="magazine">
                 <div class="magazine-details">
-                    <img class="magazine-img" src="{{ asset('assets/images') }}/{{ $magazine->magazineimage1 }}" alt="{{ $magazine->nom }}">
+                    <img class="magazine-img" src="{{ asset('assets/images/magazines') }}/{{ $magazine->magazineimage1 }}" alt="{{ $magazine->nom }}">
                     <button type="button" class="discover-btn">
                         <a href="{{ route('entreprise.pays.profil',['slug_pays'=>$magazine->slug_pays,'slug_categorie'=>$magazine->slug_categorie,'slug_souscategorie'=>$magazine->slug_souscategorie,'slug_entreprise'=>$magazine->slug_entreprise]) }}"><i class="fa-light fa-plus"></i> Découvrir</a>
                     </button>

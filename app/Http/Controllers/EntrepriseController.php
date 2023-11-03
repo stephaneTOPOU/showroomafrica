@@ -52,7 +52,7 @@ class EntrepriseController extends Controller
 
         $parametres = Parametre::find(1);
 
-        return view('frontend.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'search' ));
+        return view('frontend.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'search'));
     }
     //**********************************************End Entreprise********************************************************* */
 
@@ -72,12 +72,6 @@ class EntrepriseController extends Controller
             ->select('*')
             ->orderBy('entreprises.id', 'desc')
             ->paginate(100);
-
-        $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 1)
-            ->select('*')
-            ->get();
 
         $sousCategories = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('categories', 'pays.id', '=', 'categories.pays_id')->where('categories.id', $categorie_id[0]->id)
@@ -153,31 +147,92 @@ class EntrepriseController extends Controller
                 ->get();
             return view('frontend.ne.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'cm') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.cm.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'cf') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.cf.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'dj') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.dj.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'ga') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.ga.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'gn') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.gn.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'mg') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.mg.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'ml') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 6)
+                ->select('*')
+                ->get();
             return view('frontend.ml.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'mr') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.mr.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'cd') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.cd.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'rw') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.rw.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'sn') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.sn.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } elseif ($slug_pays == 'td') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.td.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
         } else {
-            return view('frontend.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'search' ));
+            $parametres = Parametre::find(1);
+            return view('frontend.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'search'));
         }
     }
 

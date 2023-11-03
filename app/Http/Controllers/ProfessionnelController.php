@@ -29,11 +29,6 @@ class ProfessionnelController extends Controller
     public function professionnel_pays($slug_pays)
     {
         $pays_id = DB::table('pays')->where('slug_pays', $slug_pays)->select('id')->get();
-        $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
-            ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-            ->where('parametres.id', 1)
-            ->select('*')
-            ->get();
 
         $sousCategorieNavs = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('categories', 'pays.id', '=', 'categories.pays_id')
@@ -83,30 +78,91 @@ class ProfessionnelController extends Controller
                 ->get();
             return view('frontend.ne.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'cm') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.cm.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'cf') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.cf.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'dj') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.dj.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'ga') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.ga.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'gn') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.gn.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'mg') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.mg.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'ml') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 6)
+                ->select('*')
+                ->get();
             return view('frontend.ml.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'mr') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.mr.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'cd') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.cd.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'rw') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.rw.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'sn') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.sn.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } elseif ($slug_pays == 'td') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 1)
+                ->select('*')
+                ->get();
             return view('frontend.td.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         } else {
+            $parametres = Parametre::find(1);
             return view('frontend.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
         }
     }

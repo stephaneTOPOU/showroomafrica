@@ -528,30 +528,91 @@ class AuthController extends Controller
                 ->get();
             return view('frontend.ne.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'cm') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
             return view('frontend.cm.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'cf') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
             return view('frontend.cf.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'dj') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
             return view('frontend.dj.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'ga') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
             return view('frontend.ga.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'gn') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
             return view('frontend.gn.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'mg') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
             return view('frontend.mg.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'ml') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 6)
+                ->select('*')
+                ->get();
             return view('frontend.ml.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'mr') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
             return view('frontend.mr.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'cd') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
             return view('frontend.cd.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'rw') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
             return view('frontend.rw.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'sn') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
             return view('frontend.sn.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } elseif ($slug_pays == 'td') {
+            $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
+                ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
+                ->where('parametres.id', 3)
+                ->select('*')
+                ->get();
             return view('frontend.td.entreprise.enregistrer', compact('parametres', 'pays', 'villes', 'souscategories'));
         } else {
+            $parametres = Parametre::find(1);
             return view('frontend.entreprise.enregistrer', compact('parametres', 'sousCategorieNavs', 'pays', 'villes', 'souscategories'));
         }
     }
