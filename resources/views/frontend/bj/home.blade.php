@@ -393,7 +393,7 @@
                 <img src="{{ asset('assets/images/advertorial/telephonie.jpg') }}" alt="telephonie">
                 <div class="overlay"></div>
                 <a href="#">
-                <i class="fa-solid fa-hotel"></i> Bravia Eco Hôtel
+                    <i class="fa-solid fa-phone"></i> Téléphonie
                 </a>
             </div>
 
