@@ -230,7 +230,7 @@
                                         @endif
                                         
                                         @if ($entreprise->telephone1)
-                                            <li><i class="fa-light fa-phone"></i> (+228) <b>{{ $entreprise->telephone1 }} </b>
+                                            <li><i class="fa-light fa-phone"></i> (+227) <b>{{ $entreprise->telephone1 }} </b>
                                                 @if ($entreprise->telephone2)
                                                     <b>
                                                         • {{ $entreprise->telephone2 }}
