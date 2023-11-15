@@ -1,5 +1,6 @@
 @include('frontend.ci.header.header')
 <meta property="og:url" content="https://showroomafrica.com/ci" />
+<link rel="canonical" href="https://showroomafrica.com/ci" />
 @include('frontend.ci.header.header1')
 @include('frontend.ci.header.header2')
 @include('frontend.ci.header.header3')

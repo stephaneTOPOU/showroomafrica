@@ -242,10 +242,10 @@
                 <div class="flex-boxes">
                   <div id="jLightroom" class="jlr">
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->entreprise }}"></a>
                     @endforeach
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img"></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->entreprise }}"></a>
                     @endforeach
                   </div>
                 </div>

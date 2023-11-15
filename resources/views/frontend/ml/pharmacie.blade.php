@@ -1,5 +1,6 @@
 @include('frontend.ml.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/ml/pharmacie" />
+<meta property="og:url" content="https://www.showroomafrica.com/ml/liste-pharmacie-de-garde" />
+<link rel="canonical" href="https://www.showroomafrica.com/ml/liste-pharmacie-de-garde" />
 @include('frontend.ml.header.header1')
 @include('frontend.ml.header.header2')
 @include('frontend.ml.header.header3')

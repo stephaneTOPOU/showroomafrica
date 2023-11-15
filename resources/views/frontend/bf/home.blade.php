@@ -1,5 +1,6 @@
 @include('frontend.bf.header.header')
 <meta property="og:url" content="https://showroomafrica.com/bf" />
+<link rel="canonical" href="https://showroomafrica.com/bf" />
 @include('frontend.bf.header.header1')
 @include('frontend.bf.header.header2')
 @include('frontend.bf.header.header3')

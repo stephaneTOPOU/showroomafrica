@@ -1,6 +1,7 @@
 @include('frontend.header.header')
 @foreach ($blogs as $blog)
     <meta property="og:url" content="https://www.showroomafrica.com/{{ $blog->slug_blog }}" />
+    <link rel="canonical" href="https://www.showroomafrica.com/{{ $blog->slug_blog }}" />
 @endforeach
 @include('frontend.header.header1')
 @include('frontend.header.header2')

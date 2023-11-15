@@ -1,5 +1,6 @@
 @include('frontend.ne.header.header')
     <meta property="og:url" content="https://www.showroomafrica.com/ne/rechercher-entreprise" />
+    <link rel="canonical" href="https://www.showroomafrica.com/ne/rechercher-entreprise" />
 @include('frontend.ne.header.header1')
 @include('frontend.ne.header.header2')
 <link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />

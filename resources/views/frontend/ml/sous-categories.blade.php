@@ -1,6 +1,7 @@
 @include('frontend.ml.header.header')
 @foreach ($souscategories as $souscategorie)
 <meta property="og:url" content="https://www.showroomafrica.com/ml/{{ $souscategorie->slug_categorie }}" />
+<link rel="canonical" href="https://www.showroomafrica.com/ml/{{ $souscategorie->slug_categorie }}">
 @endforeach
 @include('frontend.ml.header.header1')
 @include('frontend.ml.header.header2')

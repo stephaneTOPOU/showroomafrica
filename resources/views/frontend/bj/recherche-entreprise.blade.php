@@ -1,5 +1,6 @@
 @include('frontend.bj.header.header')
     <meta property="og:url" content="https://www.showroomafrica.com/bj/rechercher-entreprise" />
+    <link rel="canonical" href="https://www.showroomafrica.com/bj/rechercher-entreprise" />
 @include('frontend.bj.header.header1')
 @include('frontend.bj.header.header2')
 <link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />

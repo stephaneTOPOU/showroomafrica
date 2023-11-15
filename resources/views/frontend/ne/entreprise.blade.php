@@ -1,6 +1,7 @@
 @include('frontend.ne.header.header')
 @foreach ($entreprises as $entreprise)
 <meta property="og:url" content="https://www.showroomafrica.com/ne/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}"  />
+<link rel="canonical" href="https://www.showroomafrica.com/ne/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}" />
 @endforeach
 @include('frontend.ne.header.header1')
 @include('frontend.ne.header.header2')

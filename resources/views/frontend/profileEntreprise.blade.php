@@ -1,6 +1,7 @@
 @include('frontend.header.header')
 @foreach ($Profil_entreprises as $Profil_entreprise)
     <meta property="og:url" content="https://www.showroomafrica.com/annuaire/{{ $Profil_entreprise->slug_categorie }}/{{ $Profil_entreprise->slug_souscategorie }}/{{ $Profil_entreprise->slug_entreprise }}" />
+    <link rel="canonical" href="https://www.showroomafrica.com/annuaire/{{ $Profil_entreprise->slug_categorie }}/{{ $Profil_entreprise->slug_souscategorie }}/{{ $Profil_entreprise->slug_entreprise }}" />
 @endforeach
 @include('frontend.header.header1')
 @include('frontend.header.header2')
@@ -236,7 +237,7 @@
                           @foreach ($serviceImages as $serviceImage)
                             <div class="card swiper-slide">
                               <div class="image-box">
-                                <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" alt="{{ $serviceImage->service_image }}"/>
+                                <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" alt="{{ $serviceImage->entreprise }}"/>
                               </div>
                               <div class="product-details">
                                 <h4 class="name">{{ $serviceImage->description }}</h4>
@@ -262,7 +263,7 @@
                         @foreach ($serviceImages as $serviceImage)
                           <div class="card swiper-slide">
                             <div class="image-box">
-                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" alt="{{ $serviceImage->service_image }}"/>
+                              <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $serviceImage->service_image }}" alt="{{ $serviceImage->entreprise }}"/>
                             </div>
                             <div class="product-details">
                               <h4 class="name">{{ $serviceImage->description }}</h4>
@@ -285,10 +286,10 @@
                 <div class="flex-boxes">
                   <div id="jLightroom" class="jlr">
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->entreprise }}"></a>
                     @endforeach
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->entreprise }}"></a>
                     @endforeach
                   </div>
                 </div>
@@ -301,10 +302,10 @@
                 <div class="flex-boxes">
                   <div id="jLightroom" class="jlr">
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->entreprise }}"></a>
                     @endforeach
                     @foreach ($galleries as $gallerie)
-                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->galerie_image }}"></a>
+                      <a href="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" data-lightbox="lb1" class="jlr_item"><img src="{{ asset('assets/images/companies/showroom/gallery') }}/{{ $gallerie->galerie_image }}" class="jlr_img" alt="{{ $gallerie->entreprise }}"></a>
                     @endforeach
                   </div>
                 </div>
@@ -337,7 +338,7 @@
                           {{$service->description}}
                         </p>
                         @if ($service->image2)
-                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="{{ $service->image2 }}">
+                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="{{ $service->entreprise }}">
                         @endif
                         <p>
                           {{$service->image1}}
@@ -349,7 +350,7 @@
                           <h3>Nos objectifs</h3>
                         @endif
                         @if ($service->image3)
-                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image3 }}" alt="{{ $service->image3 }}">
+                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image3 }}" alt="{{ $service->entreprise }}">
                         @endif
                         <p>
                           {{$service->image5}}
@@ -374,7 +375,7 @@
                           {{$service->libelle}}
                         </p>
                         @if ($service->image2)
-                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="{{ $service->image2 }}">
+                          <img src="{{ asset('assets/images/advertorial') }}/{{ $service->image2 }}" alt="{{ $service->entreprise }}">
                         @endif
                       </div>
                     </div> 
@@ -392,7 +393,7 @@
                         @foreach ($partenaires as $partenaire)
                           <div class="card swiper-slide">
                             <div class="image-box">
-                              <img src="{{ asset('assets/images/partenaires') }}/{{ $partenaire->image }}" alt="{{ $partenaire->image }}"/>
+                              <img src="{{ asset('assets/images/partenaires') }}/{{ $partenaire->image }}" alt="{{ $partenaire->entreprise }}"/>
                             </div>
                             {{-- <div class="product-details">
                               <h4 class="name">{{ $partenaire->description }}</h4>
@@ -418,7 +419,7 @@
                         @foreach ($partenaires as $partenaire)
                           <div class="card swiper-slide">
                             <div class="image-box">
-                              <img src="{{ asset('assets/images/partenaires') }}/{{ $partenaire->image }}" alt="{{ $partenaire->image }}"/>
+                              <img src="{{ asset('assets/images/partenaires') }}/{{ $partenaire->image }}" alt="{{ $partenaire->entreprise }}"/>
                             </div>
                             {{-- <div class="product-details">
                               <h4 class="name">{{ $partenaire->description }}</h4>

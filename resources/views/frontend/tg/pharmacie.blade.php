@@ -1,5 +1,6 @@
 @include('frontend.tg.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/tg/pharmacie" />
+<meta property="og:url" content="https://www.showroomafrica.com/tg/liste-pharmacie-de-garde" />
+<link rel="canonical" href="https://www.showroomafrica.com/tg/liste-pharmacie-de-garde" />
 @include('frontend.tg.header.header1')
 @include('frontend.tg.header.header2')
 @include('frontend.tg.header.header3')

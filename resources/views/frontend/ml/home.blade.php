@@ -1,5 +1,6 @@
 @include('frontend.ml.header.header')
 <meta property="og:url" content="https://showroomafrica.com/ml" />
+<link rel="canonical" href="https://showroomafrica.com/ml" />
 @include('frontend.ml.header.header1')
 @include('frontend.ml.header.header2')
 @include('frontend.ml.header.header3')

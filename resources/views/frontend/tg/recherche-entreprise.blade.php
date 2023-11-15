@@ -1,5 +1,6 @@
 @include('frontend.tg.header.header')
     <meta property="og:url" content="https://www.showroomafrica.com/tg/rechercher-entreprise" />
+    <link rel="canonical" href="https://www.showroomafrica.com/tg/rechercher-entreprise" />
 @include('frontend.tg.header.header1')
 @include('frontend.tg.header.header2')
 <link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />

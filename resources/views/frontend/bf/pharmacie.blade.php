@@ -1,5 +1,6 @@
 @include('frontend.bf.header.header')
-<meta property="og:url" content="https://www.showroomafrica.com/bf/pharmacie" />
+<meta property="og:url" content="https://www.showroomafrica.com/bf/liste-pharmacie-de-garde" />
+<link rel="canonical" href="https://www.showroomafrica.com/bf/liste-pharmacie-de-garde" />
 @include('frontend.bf.header.header1')
 @include('frontend.bf.header.header2')
 @include('frontend.bf.header.header3')

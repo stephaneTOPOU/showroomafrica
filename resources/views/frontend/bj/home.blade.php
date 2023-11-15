@@ -1,5 +1,6 @@
 @include('frontend.bj.header.header')
 <meta property="og:url" content="https://showroomafrica.com/bj" />
+<link rel="canonical" href="https://showroomafrica.com/bj" />
 @include('frontend.bj.header.header1')
 @include('frontend.bj.header.header2')
 @include('frontend.bj.header.header3')

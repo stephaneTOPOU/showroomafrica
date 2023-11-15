@@ -1,6 +1,7 @@
 @include('frontend.header.header')
 @foreach ($annonces as $annonce)
     <meta property="og:url" content="https://www.showroomafrica.com/annuaire/annonce/{{ $annonce->slug_annonce }}" />
+    <link rel="canonical" href="https://www.showroomafrica.com/annuaire/annonce/{{ $annonce->slug_annonce }}" />
 @endforeach
 @include('frontend.header.header1')
 @include('frontend.header.header2')
