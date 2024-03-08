@@ -102,6 +102,13 @@
                 @endforeach
             </div>
             
+            <style>
+                .section-annonce {
+                    top: 6em;
+                    position: sticky;
+                    height: fit-content;
+                }
+            </style>
             <div class="section-annonce">
                 @foreach ($annonces as $annonce)
                     @if ($annonce->image3)

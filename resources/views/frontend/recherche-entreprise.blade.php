@@ -321,6 +321,13 @@
             </div>
         </div>
 
+        <style>
+            .top-research {
+                top: 6em;
+                position: sticky;
+                height: fit-content;
+            }
+        </style>
         <div class="top-research">
             <h3>Sociétés les plus recherchées</h3>
             <div class="top-companies">
