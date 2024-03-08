@@ -33,7 +33,7 @@
             <div class="annonce-text">
                 @foreach ($annonces as $annonce)
                     <p>
-                        {{$annonce->text1}}
+                        {!! $annonce->text1 !!}                        
                     </p>
                     <br />
                     @if ($annonce->image1)
@@ -42,7 +42,7 @@
                         <br />
                     @endif
                     <p>
-                        {{$annonce->text2}}
+                        {!! $annonce->text2 !!}
                     </p>
                     <br />
                     @if ($annonce->image2)
@@ -52,7 +52,7 @@
                     @endif
                     
                     <p>
-                        {{$annonce->text3}}
+                        {!! $annonce->text3 !!}
                     </p>
                     <article>
                         <br>

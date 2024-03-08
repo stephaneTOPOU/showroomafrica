@@ -22,7 +22,7 @@ class AnnonceController extends Controller
             ->select('*')
             ->get();
 
-        $actualites = DB::table('annonces')->where('id',$annonce_id[0]->id)
+        $actualites = DB::table('annonces')
             ->select('*')
             ->inRandomOrder()->get();
 

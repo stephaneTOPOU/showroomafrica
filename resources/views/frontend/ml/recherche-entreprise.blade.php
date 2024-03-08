@@ -209,11 +209,25 @@
                         <div class="company-info">
                             <div class="left">
                                 <div class="header">
-                                    <h3 class="company-name"><a href="{{ route('entreprise.pays.profil',['slug_pays'=>$recherche->slug_pays,'slug_categorie'=>$recherche->slug_categorie,'slug_souscategorie'=>$recherche->slug_souscategorie,'slug_entreprise'=>$recherche->slug_entreprise]) }}">{{$recherche->nom}}</a></h3>
+                                    <h3 class="company-name">
+                                        <a
+                                            href="{{ route('entreprise.pays.profil',
+                                            ['slug_pays'=>$recherche->slug_pays,
+                                            'slug_categorie'=>$recherche->slug_categorie,
+                                            'slug_souscategorie'=>$recherche->slug_souscategorie,
+                                            'slug_entreprise'=>$recherche->slug_entreprise]) }}">
+                                            {{$recherche->nom}}
+                                        </a>
+                                    </h3>
                                     <span class="company-category">{{ $recherche->sousCategorie }}</span>
                                     @if ($recherche->premium == 1)
                                         <div class="premium">
                                             <span><i class="fa-regular fa-gem"></i> PREMIUM</span>
+                                        </div>
+                                    @endif
+                                    @if ($recherche->pharmacie_de_garde == 1)
+                                        <div class="premium">
+                                            <span><i class="fa-regular fa-check"></i> <b>Garde</b></span>
                                         </div>
                                     @endif
                                 </div>
@@ -240,7 +254,7 @@
                                         @if ($recherche->siteweb)
                                             <li>
                                                 <i class="fa-light fa-globe"></i>
-                                                <a href="{{ $recherche->siteweb }}" class="website-link">{{ $recherche->siteweb }}</a>
+                                                <a href="{{ $recherche->siteweb }}" class="website-link" target="_blank">{{ $recherche->siteweb }}</a>
                                             </li>
                                         @endif
                                         

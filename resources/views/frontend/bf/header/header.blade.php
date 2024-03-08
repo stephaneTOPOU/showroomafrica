@@ -6,6 +6,7 @@
 
     <meta name="msvalidate.01" content="89F155585DD1A383CB3CBA7FB33F09C3" />
     <meta name="google-site-verification" content="eBhqPiUxwjLJP1YBOHvkuaOjXfRlw0d2PJjYKEBEEKg" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <meta http-equiv="Content-Language" content="fr-BF" />
     <meta name="geo.country" content="BF" />

@@ -40,7 +40,7 @@ return [
             'description' => 'Bienvenue sur le site officiel de Showroom Africa, votre annuaire qui répertorie toutes les entreprises africaines....', // set false to total remove
             'url'         => "https://showroomafrica.com", // Set null for using Url::current(), set false to total remove
             'type'        => "website",
-            'site_name'   => "Showroom Africa",
+            'site_name'   => "Annuaire des entreprises",
             'images'      => ["https://showroomafrica.com/assets/images/showroom/logo.png"],
         ],
     ],

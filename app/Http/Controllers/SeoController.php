@@ -14,15 +14,15 @@ class SeoController extends Controller
 
         SEOTools::setTitle(env('SEO_META_TITLE'));
         SEOTools::setDescription('This is my page description');
-        SEOTools::opengraph()->setUrl('http://current.url.com');
-        SEOTools::setCanonical('https://codecasts.com.br/lesson');
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEOTools::opengraph()->setUrl('https://showroomafrica.com');
+        SEOTools::setCanonical('https://showroomafrica.com');
+        SEOTools::opengraph()->addProperty('type', 'annuaire');
+        SEOTools::twitter()->setSite('@annuaireafrique');
         SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
 
         $posts = Post::all();
 
-        return view('myindex', compact('posts'));
+        return view('frontend.home', compact('posts'));
     }
 
     public function show($id){
@@ -33,7 +33,7 @@ class SeoController extends Controller
         SEOMeta::setDescription($post->resume);
         SEOMeta::addMeta('article:published_time', $post->published_date->toW3CString(), 'property');
         SEOMeta::addMeta('article:section', $post->category, 'property');
-        SEOMeta::addKeyword(['key1', 'key2', 'key3']);
+        SEOMeta::addKeyword(['annuaire', 'annuaire showroom', 'annuaire afrique']);
 
         OpenGraph::setDescription($post->resume);
         OpenGraph::setTitle($post->title);

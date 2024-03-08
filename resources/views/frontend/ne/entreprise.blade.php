@@ -213,11 +213,25 @@
                         <div class="company-info">
                             <div class="left">
                                 <div class="header">
-                                    <h3 class="company-name"><a href="{{ route('entreprise.pays.profil',['slug_pays'=>$entreprise->slug_pays,'slug_categorie'=>$entreprise->slug_categorie,'slug_souscategorie'=>$entreprise->slug_souscategorie,'slug_entreprise'=>$entreprise->slug_entreprise]) }}">{{$entreprise->nom}}</a></h3>
+                                    <h3 class="company-name">
+                                        <a 
+                                            href="{{ route('entreprise.pays.profil',
+                                            ['slug_pays'=>$entreprise->slug_pays,
+                                            'slug_categorie'=>$entreprise->slug_categorie,
+                                            'slug_souscategorie'=>$entreprise->slug_souscategorie,
+                                            'slug_entreprise'=>$entreprise->slug_entreprise]) }}">
+                                            {{$entreprise->nom}}
+                                        </a>
+                                    </h3>
                                     <span class="company-category">{{ $entreprise->libelle }}</span>
                                     @if ($entreprise->premium == 1)
                                         <div class="premium">
                                             <span><i class="fa-regular fa-gem"></i> PREMIUM</span>
+                                        </div>
+                                    @endif
+                                    @if ($entreprise->pharmacie_de_garde == 1)
+                                        <div class="premium">
+                                            <span><i class="fa-regular fa-check"></i> <b>Garde</b></span>
                                         </div>
                                     @endif
                                 </div>
@@ -242,7 +256,7 @@
                                         @if ($entreprise->siteweb)
                                             <li>
                                                 <i class="fa-light fa-globe"></i>
-                                                <a href="{{ $entreprise->siteweb }}" class="website-link">{{ $entreprise->siteweb }}</a>
+                                                <a href="{{ $entreprise->siteweb }}" class="website-link" target="_blank">{{ $entreprise->siteweb }}</a>
                                             </li>
                                         @endif
                                         

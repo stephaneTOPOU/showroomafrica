@@ -71,18 +71,6 @@ class ProfileEntrepriseController extends Controller
             ->select('*', 'entreprises.id as identifiant', 'categories.pays_id as code')
             ->get();
 
-        $premiums = DB::table('entreprises')->where('entreprises.id', $entreprise_id[0]->id)
-            ->join('sous_categories', 'sous_categories.id', '=', 'souscategorie_id')
-            ->where('premium', 1)
-            ->select('*', 'entreprises.id as identifiant')
-            ->get();
-
-        $basics = DB::table('entreprises')->where('entreprises.id', $entreprise_id[0]->id)
-            ->join('sous_categories', 'sous_categories.id', '=', 'souscategorie_id')
-            ->where('basic', 1)
-            ->select('*', 'entreprises.id as identifiant')
-            ->get();
-
         $avis = DB::table('entreprises')->where('entreprises.id', $entreprise_id[0]->id)
             ->join('commentaires', 'entreprises.id', '=', 'commentaires.entreprise_id')
             ->select('note')
@@ -123,7 +111,7 @@ class ProfileEntrepriseController extends Controller
             ->select('*', 'entreprises.id as identifiant', 'entreprises.nom as entreprise')
             ->get();
 
-        return view('frontend.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+        return view('frontend.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
     }
     //****************************************************Profile des entreprise************************************************* */
 
@@ -142,24 +130,6 @@ class ProfileEntrepriseController extends Controller
             ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
             ->where('entreprises.id', $entreprise_id[0]->id)
             ->select('*', 'entreprises.id as identifiant', 'pays.id as pays_id')
-            ->get();
-
-        $premiums = DB::table('pays')->where('pays.id', $pays_id[0]->id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.id', $entreprise_id[0]->id)
-            ->where('premium', 1)
-            ->select('*', 'entreprises.id as identifiant')
-            ->get();
-
-        $basics = DB::table('pays')->where('pays.id', $pays_id[0]->id)
-            ->join('categories', 'pays.id', '=', 'categories.pays_id')
-            ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')
-            ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
-            ->where('entreprises.id', $entreprise_id[0]->id)
-            ->where('basic', 1)
-            ->select('*', 'entreprises.id as identifiant')
             ->get();
 
         $avis = DB::table('pays')->where('pays.id', $pays_id[0]->id)
@@ -236,122 +206,122 @@ class ProfileEntrepriseController extends Controller
                 ->where('parametres.id', 1)
                 ->select('*')
                 ->get();
-            return view('frontend.tg.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.tg.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'bf') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
                 ->where('parametres.id', 4)
                 ->select('*')
                 ->get();
-            return view('frontend.bf.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.bf.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'bj') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
                 ->where('parametres.id', 5)
                 ->select('*')
                 ->get();
-            return view('frontend.bj.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.bj.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'ci') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
                 ->where('parametres.id', 2)
                 ->select('*')
                 ->get();
-            return view('frontend.ci.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.ci.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'ne') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
                 ->where('parametres.id', 3)
                 ->select('*')
                 ->get();
-            return view('frontend.ne.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.ne.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'cm') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-            return view('frontend.cm.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.cm.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'cf') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-            return view('frontend.cf.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.cf.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'dj') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-            return view('frontend.dj.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.dj.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'ga') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-            return view('frontend.ga.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.ga.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'gn') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-            return view('frontend.gn.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.gn.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'mg') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-            return view('frontend.mg.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.mg.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'ml') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 6)
             ->select('*')
             ->get();
-            return view('frontend.ml.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.ml.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'mr') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-            return view('frontend.mr.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.mr.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'cd') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-            return view('frontend.cd.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.cd.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'rw') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-            return view('frontend.rw.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.rw.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'sn') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-            return view('frontend.sn.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.sn.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } elseif ($slug_pays == 'td') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
             ->where('parametres.id', 1)
             ->select('*')
             ->get();
-            return view('frontend.td.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.td.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         } else {
             $parametres = Parametre::find(1);
-            return view('frontend.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'premiums', 'basics', 'partenaires'));
+            return view('frontend.profileEntreprise', compact('parametres', 'Profil_entreprises', 'avis3', 'avis', 'services', 'serviceImages', 'horaires', 'galleries', 'partenaires'));
         }
     }
 
