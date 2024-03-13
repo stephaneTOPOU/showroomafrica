@@ -381,7 +381,7 @@
                                             @foreach ($partenaires as $partenaire)
                                                 <div class="card swiper-slide">
                                                     <div class="image-box">
-                                                        <img src="{{ asset('assets/images/companies/showroom/products') }}/{{ $partenaire->image }}"
+                                                        <img src="{{ asset('assets/images/partenaires') }}/{{ $partenaire->image }}"
                                                             alt="{{ $partenaire->entreprise }}" />
                                                     </div>
                                                     {{-- <div class="product-details">
