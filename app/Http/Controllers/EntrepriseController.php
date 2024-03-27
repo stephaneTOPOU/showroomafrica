@@ -25,7 +25,9 @@ class EntrepriseController extends Controller
             ->where('sous_categories.id', $sousCategorie_id[0]->id)
             ->join('entreprises', 'sous_categories.id', '=', 'souscategorie_id')
             ->select('*', 'categories.pays_id as pays')
-            ->orderBy('entreprises.id', 'desc')
+            ->where('entreprises.valide', 1)
+            ->orderBy('entreprises.logo', 'desc')
+            ->orderBy('entreprises.est_souscrit', 'desc')
             ->paginate(100);
 
         $sousCategories = DB::table('categories')->where('categories.id', $categorie_id[0]->id)
@@ -70,7 +72,9 @@ class EntrepriseController extends Controller
             ->join('sous_categories', 'categories.id', '=', 'sous_categories.categorie_id')->where('sous_categories.id', $sousCategorie_id[0]->id)
             ->join('entreprises', 'sous_categories.id', '=', 'entreprises.souscategorie_id')
             ->select('*')
-            ->orderBy('entreprises.id', 'desc')
+            ->where('entreprises.valide', 1)
+            ->orderBy('entreprises.logo', 'desc')
+            ->orderBy('entreprises.est_souscrit', 'desc')
             ->paginate(100);
 
         $sousCategories = DB::table('pays')->where('pays.id', $pays_id[0]->id)

@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function user()
     {
-        $professionels = User::all(); 
+        $professionels = User::where('valide', 1); 
         return view('frontend.professionnel', compact('professionels'));
     }
 }
