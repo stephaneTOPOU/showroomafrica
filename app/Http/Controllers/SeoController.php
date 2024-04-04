@@ -13,12 +13,12 @@ class SeoController extends Controller
     public function index(){
 
         SEOTools::setTitle(env('SEO_META_TITLE'));
-        SEOTools::setDescription('This is my page description');
+        SEOTools::setDescription('Bienvenue sur le site officiel de Showroom Africa, votre annuaire qui répertorie toutes les entreprises africaines....');
         SEOTools::opengraph()->setUrl('https://showroomafrica.com');
         SEOTools::setCanonical('https://showroomafrica.com');
         SEOTools::opengraph()->addProperty('type', 'annuaire');
         SEOTools::twitter()->setSite('@annuaireafrique');
-        SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
+        SEOTools::jsonLd()->addImage('https://showroomafrica.com/assets/images/showroom/logo.png');
 
         $posts = Post::all();
 
@@ -31,25 +31,25 @@ class SeoController extends Controller
 
         SEOMeta::setTitle($post->title);
         SEOMeta::setDescription($post->resume);
-        SEOMeta::addMeta('article:published_time', $post->published_date->toW3CString(), 'property');
-        SEOMeta::addMeta('article:section', $post->category, 'property');
+        SEOMeta::addMeta('annuaire:published_time', $post->published_date->toW3CString(), 'property');
+        SEOMeta::addMeta('annuaire:section', $post->category, 'property');
         SEOMeta::addKeyword(['annuaire', 'annuaire showroom', 'annuaire afrique']);
 
         OpenGraph::setDescription($post->resume);
         OpenGraph::setTitle($post->title);
-        OpenGraph::setUrl('http://current.url.com');
-        OpenGraph::addProperty('type', 'article');
+        OpenGraph::setUrl('https://showroomafrica.com');
+        OpenGraph::addProperty('type', 'annuaire');
         OpenGraph::addProperty('locale', 'pt-br');
         OpenGraph::addProperty('locale:alternate', ['pt-pt', 'en-us']);
 
         OpenGraph::addImage($post->cover->url);
         OpenGraph::addImage($post->images->list('url'));
-        OpenGraph::addImage(['url' => 'http://image.url.com/cover.jpg', 'size' => 300]);
-        OpenGraph::addImage('http://image.url.com/cover.jpg', ['height' => 300, 'width' => 300]);
+        OpenGraph::addImage(['url' => 'https://showroomafrica.com/assets/images/sliders/main/4.jpg', 'size' => 300]);
+        OpenGraph::addImage('https://showroomafrica.com/assets/images/sliders/main/4.jpg', ['height' => 300, 'width' => 300]);
 
         JsonLd::setTitle($post->title);
         JsonLd::setDescription($post->resume);
-        JsonLd::setType('Article');
+        JsonLd::setType('annuaire');
         JsonLd::addImage($post->images->list('url'));
 
 
