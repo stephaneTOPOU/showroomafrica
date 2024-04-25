@@ -574,7 +574,7 @@ class HomeController extends Controller
         } elseif ($slug_pays == 'sn') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-                ->where('parametres.id', 1)
+                ->where('parametres.id', 7)
                 ->select('*')
                 ->get();
             return view('frontend.sn.recherche-entreprise', compact('recherches', 'entreprisePopulaire', 'parametres', 'slider', 'subcat', 'tops', 'top2s', 'search'));
@@ -942,7 +942,7 @@ class HomeController extends Controller
         } elseif ($slug_pays == 'sn') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-                ->where('parametres.id', 3)
+                ->where('parametres.id', 7)
                 ->select('*')
                 ->get();
             return view('frontend.sn.home', compact('banner', 'slider1s', 'slider2s', 'slider3s', 'sliderLaterals', 'sliderLateralBas', 'rejoints', 'minispots', 'reportages', 'magazines', 'parametres', 'villes', 'pays', 'categories', 'honeures', 'nombresEntreprise', 'pharmacies', 'inscrit', 'visiteur2', 'popups'));

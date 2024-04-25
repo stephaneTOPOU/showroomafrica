@@ -1,4 +1,6 @@
 @include('frontend.sn.header.header')
+<meta property="og:url" content="https://www.showroomafrica.com/sn/liste-pharmacie-de-garde" />
+<link rel="canonical" href="https://www.showroomafrica.com/sn/liste-pharmacie-de-garde" />
 @include('frontend.sn.header.header1')
 @include('frontend.sn.header.header2')
 @include('frontend.sn.header.header3')
@@ -27,10 +29,10 @@
                 <div class="professional-info">
                     <div class="left">
                         <div class="header">
-                            <h3 class="professional-name"><b><a href="{{ route('entreprise.profil',['entreprise_id'=>$pharmacie->id]) }}">{{ $pharmacie->nom }}</a></b></h3>
+                            <h3 class="professional-name"><b><a href="{{ route('entreprise.pays.profil',['slug_pays'=>$pharmacie->slug_pays,'slug_categorie'=>$pharmacie->slug_categorie,'slug_souscategorie'=>$pharmacie->slug_souscategorie,'slug_entreprise'=>$pharmacie->slug_entreprise]) }}">{{ $pharmacie->nom }}</a></b></h3>
                             <ul>
-                                <li><i class="fa-light fa-location-dot"></i> {{ $pharmacie->adresse }}</li>
-                                <li><i class="fa-light fa-phone"></i> {{ $pharmacie->telephone1 }}</li>
+                                @if ($pharmacie->adresse) <li><i class="fa-light fa-location-dot"></i> {{ $pharmacie->adresse }}</li> @endif
+                                @if ($pharmacie->telephone1) <li><i class="fa-light fa-phone"></i>(+221) <b> {{ $pharmacie->telephone1 }} </b> @if ($pharmacie->telephone2)<b> • {{ $pharmacie->telephone2 }} </b> @endif </li>  @endif
                                 {{-- <li><i class="fa-light fa-briefcase"></i> <b>Directeur commercial</b></li> --}}
                             </ul>
                         </div>

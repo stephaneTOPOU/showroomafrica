@@ -1,4 +1,6 @@
 @include('frontend.sn.header.header')
+<meta property="og:url" content="https://www.showroomafrica.com/sn/professionnel" />
+<link rel="canonical" href="https://www.showroomafrica.com/sn/professionnel" />
 @include('frontend.sn.header.header1')
 @include('frontend.sn.header.header2')
 @include('frontend.sn.header.header3')

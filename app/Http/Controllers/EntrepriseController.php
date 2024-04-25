@@ -223,7 +223,7 @@ class EntrepriseController extends Controller
         } elseif ($slug_pays == 'sn') {
             $parametres = DB::table('pays')->where('pays.id', $pays_id[0]->id)
                 ->join('parametres', 'pays.id', '=', 'parametres.pays_id')
-                ->where('parametres.id', 1)
+                ->where('parametres.id', 7)
                 ->select('*')
                 ->get();
             return view('frontend.sn.entreprise', compact('entreprises', 'sousCategories', 'entreprisePopulaire', 'entreprisePopulaire', 'slider', 'parametres', 'tops', 'top2s', 'search'));
