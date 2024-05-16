@@ -33,7 +33,7 @@
                     <h4>nos réseaux sociaux</h4>
                     <div class="social-links">
                         <a target="_blank" href="{{ $parametres->lienface }}"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a target="_blank" href="{{ $parametres->lientwitter }}"><i class="fa-brands fa-twitter"></i></a>
+                        <a target="_blank" href="{{ $parametres->lientwitter }}"><i class="fa-brands fa-x-twitter"></i></a>
                         <a target="_blank" href="{{ $parametres->lieninsta }}"><i class="fa-brands fa-instagram"></i></a>
                         <a target="_blank" href="{{ $parametres->lienyoutube }}"><i class="fa-brands fa-linkedin-in"></i></a>
                         <a target="_blank" href="{{ $parametres->lienlinkedin }}"><i class="fa-brands fa-youtube"></i></a>
