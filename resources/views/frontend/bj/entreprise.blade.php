@@ -1,21 +1,23 @@
 @include('frontend.bj.header.header')
 @foreach ($entreprises as $entreprise)
-<meta property="og:url" content="https://www.showroomafrica.com/bj/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}"  />
-<link rel="canonical" href="https://www.showroomafrica.com/bj/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}" />
+    <meta property="og:url"
+        content="https://www.showroomafrica.com/bj/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}" />
+    <link rel="canonical"
+        href="https://www.showroomafrica.com/bj/{{ $entreprise->slug_categorie }}/{{ $entreprise->slug_souscategorie }}" />
 @endforeach
 @include('frontend.bj.header.header1')
 @include('frontend.bj.header.header2')
 <link rel="stylesheet" href="{{ asset('assets/css/devis-modal.css') }}" />
 @include('frontend.bj.header.header3')
 
-<link rel="stylesheet" href="{{ asset('assets/css/slider.css')}}" />
-<link rel="stylesheet" href="{{ asset('assets/css/search.css')}}" />
+<link rel="stylesheet" href="{{ asset('assets/css/slider.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/search.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/categories.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/companies.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/css/autocompletion.css') }}" />
 
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
 @include('frontend.bj.header.header4')
 @include('frontend.bj.header.header5')
@@ -36,7 +38,8 @@
         </div>
         @foreach ($slider as $sliders)
             <div class="slide">
-                <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}" alt="{{ $sliders->image }}">
+                <img src="{{ asset('assets/images/sliders/search') }}/{{ $sliders->image }}"
+                    alt="{{ $sliders->image }}">
             </div>
         @endforeach
     </div>
@@ -49,7 +52,8 @@
         </div>
         @foreach ($slider as $slider2)
             <div class="slide-two">
-                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}" alt="{{ $slider2->image }}">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider2->image }}"
+                    alt="{{ $slider2->image }}">
             </div>
         @endforeach
     </div>
@@ -61,9 +65,10 @@
             <img src="{{ asset('assets/images/sliders/main/4.jpg') }}" alt="">
         </div>
         @foreach ($slider as $slider3)
-        <div class="slide-three">
-            <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}" alt="{{ $slider3->image }}">
-        </div>
+            <div class="slide-three">
+                <img src="{{ asset('assets/images/sliders/main') }}/{{ $slider3->image }}"
+                    alt="{{ $slider3->image }}">
+            </div>
         @endforeach
     </div>
     <!-- END ADS BIG SLIDER 3 -->
@@ -71,34 +76,36 @@
     <div class="companies-container">
 
         <div class="search-bar" style="margin-bottom:2em;">
-            <form action="{{ route('recherche.pays',['slug_pays'=>'bj']) }}" autocomplete="off" class="search-form" method="GET">
+            <form action="{{ route('recherche.pays', ['slug_pays' => 'bj']) }}" autocomplete="off" class="search-form"
+                method="GET">
                 <div class="search-field autocomplete">
-                    <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel" required="" name="nom">
+                    <input id="searchfield" type="text" placeholder="Rechercher une entreprise ou un professionnel"
+                        required="" name="nom">
                     <i id="searchicon" class="fa-light fa-buildings"></i>
                 </div>
 
                 <script type="text/javascript">
-                    var path = "{{ route('autocomplete.pays',['slug_pays'=>'bj']) }}";
-                    $( "#searchfield" ).autocomplete({
-                        source: function( request, response ) {
+                    var path = "{{ route('autocomplete.pays', ['slug_pays' => 'bj']) }}";
+                    $("#searchfield").autocomplete({
+                        source: function(request, response) {
                             $.ajax({
-                            url: path,
-                            type: 'GET',
-                            dataType: "json",
-                            data: {
-                                searchfield: request.term
-                            },
-                            success: function( data ) {
-                                response( data );
-                            }
+                                url: path,
+                                type: 'GET',
+                                dataType: "json",
+                                data: {
+                                    searchfield: request.term
+                                },
+                                success: function(data) {
+                                    response(data);
+                                }
                             });
                         },
-                        select: function (event, ui) {
+                        select: function(event, ui) {
                             $('#searchfield').val(ui.item.label);
-                            console.log(ui.item); 
+                            console.log(ui.item);
                             return false;
                         }
-                        });
+                    });
                 </script>
                 <style>
                     .ui-menu {
@@ -109,6 +116,7 @@
                         box-shadow: 2px 4px 12px -2px rgb(0 0 0 / 36%);
                         position: absolute;
                     }
+
                     .ui-menu-item {
                         border: none;
                         border-radius: 1em;
@@ -124,11 +132,11 @@
                 </button>
             </form>
         </div>
-        
+
         <div class="search-bar" style="margin-bottom:2em;">
             <form class="search-form">
                 <style>
-                    #devisbtn{
+                    #devisbtn {
                         /* background-color: #073465 !important; */
                         width: auto;
                     }
@@ -147,17 +155,22 @@
                 <div class="contact devis-modal-content">
                     <span class="close" id="closedevis"><i class="fa-regular fa-xmark"></i></span>
                     <span class="titre">Demande de devis</span>
-                    <div><h4>Demande de devis sans engagement de votre part</h4></div>
-                    @if(Session::has('succes'))
-                        <div class="alert alert-success" role="alert">{{Session::get('succes') }}</div>
+                    <div>
+                        <h4>Demande de devis sans engagement de votre part</h4>
+                    </div>
+                    @if (Session::has('succes'))
+                        <div class="alert alert-success" role="alert">{{ Session::get('succes') }}</div>
                     @endif
-                    <form action="{{ route('devis.pays.entreprise',['slug_pays'=>'bj','souscategorie_id'=>$sousCategorie->identifiant]) }}" method="POST">
+                    <form
+                        action="{{ route('devis.pays.entreprise', ['slug_pays' => 'bj', 'souscategorie_id' => $sousCategorie->identifiant]) }}"
+                        method="POST">
                         @csrf
                         <div class="select-box">
                             <select name="souscategorie_id" id="souscategorie_id">
                                 <option class="placeholder" value="" disabled selected>Secteur d'activité</option>
                                 @foreach ($sousCategories as $souscategorie)
-                                    <option value="{{ $souscategorie->identifiant }}">{{ $souscategorie->libelle }}</option>
+                                    <option value="{{ $souscategorie->identifiant }}">{{ $souscategorie->libelle }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -174,7 +187,8 @@
                         </div>
                         <div class="input-box">
                             <input class="nom" type="text" placeholder="Nom" required name="nom" required>
-                            <input class="prenom" type="text" placeholder="Prenoms" required name="prenom" required>
+                            <input class="prenom" type="text" placeholder="Prenoms" required name="prenom"
+                                required>
                         </div>
                         <div class="input-box">
                             <input type="email" placeholder="Votre e-mail" required name="email" required>
@@ -205,7 +219,8 @@
                         <div class="company-slider" style="display: flex; flex-flow: row wrap; margin: 0 15px;">
                             <div class="img-search">
                                 <div class="search active">
-                                    <img src="{{ asset('assets/images/sliders/main') }}/{{ $search->image }}" alt="{{ $search->image }}">
+                                    <img src="{{ asset('assets/images/sliders/main') }}/{{ $search->image }}"
+                                        alt="{{ $search->image }}">
                                 </div>
                             </div>
                         </div>
@@ -214,13 +229,14 @@
                             <div class="left">
                                 <div class="header">
                                     <h3 class="company-name">
-                                        <a 
-                                            href="{{ route('entreprise.pays.profil',
-                                            ['slug_pays'=>$entreprise->slug_pays,
-                                            'slug_categorie'=>$entreprise->slug_categorie,
-                                            'slug_souscategorie'=>$entreprise->slug_souscategorie,
-                                            'slug_entreprise'=>$entreprise->slug_entreprise]) }}">
-                                            {{$entreprise->nom}}
+                                        <a
+                                            href="{{ route('entreprise.pays.profil', [
+                                                'slug_pays' => $entreprise->slug_pays,
+                                                'slug_categorie' => $entreprise->slug_categorie,
+                                                'slug_souscategorie' => $entreprise->slug_souscategorie,
+                                                'slug_entreprise' => $entreprise->slug_entreprise,
+                                            ]) }}">
+                                            {{ $entreprise->nom }}
                                         </a>
                                     </h3>
                                     <span class="company-category">{{ $entreprise->libelle }}</span>
@@ -243,32 +259,46 @@
                                                 {{ $entreprise->adresse }}
                                             </li>
                                         @endif
-                                        
+
                                         @if ($entreprise->telephone1)
-                                            <li><i class="fa-light fa-phone"></i> (+229) <b>{{ $entreprise->telephone1 }} </b>
+                                            <li><i class="fa-light fa-phone"></i> (+229)
+                                                <b>{{ $entreprise->telephone1 }} </b>
                                                 @if ($entreprise->telephone2)
                                                     <b>
                                                         • {{ $entreprise->telephone2 }}
-                                                    </b> 
-                                            @endif </li>
+                                                    </b>
+                                                @endif
+                                            </li>
                                         @endif
 
                                         @if ($entreprise->siteweb)
                                             <li>
                                                 <i class="fa-light fa-globe"></i>
-                                                <a href="{{ $entreprise->siteweb }}" class="website-link" target="_blank">{{ $entreprise->siteweb }}</a>
+                                                <a href="{{ $entreprise->siteweb }}" class="website-link"
+                                                    target="_blank">{{ $entreprise->siteweb }}</a>
                                             </li>
                                         @endif
-                                        
+
                                         @if ($entreprise->itineraire)
-                                            <li><i class="fa-light fa-map-location-dot"></i><a href="{{ $entreprise->itineraire }}" class="website-link">Itineraire</a></li>
+                                            <li><i class="fa-light fa-map-location-dot"></i><a
+                                                    href="{{ $entreprise->itineraire }}"
+                                                    class="website-link">Itineraire</a></li>
+                                        @endif
+
+                                        @if ($entreprise->descriptionCourte)
+                                            <li>
+                                                {{ $entreprise->descriptionCourte }}
+                                            </li>
                                         @endif
                                     </ul>
                                 </div>
                             </div>
                             <div class="right">
-                                @if ($entreprise->logo)
-                                    <img src="{{ asset('assets/images/companies/logos') }}/{{ $entreprise->logo }}" alt="{{$entreprise->nom}}">
+                                @if ($entreprise->premium == 1 || $entreprise->basic == 1)
+                                    @if ($entreprise->logo)
+                                        <img src="{{ asset('assets/images/companies/logos') }}/{{ $entreprise->logo }}"
+                                            alt="{{ $entreprise->nom }}">
+                                    @endif
                                 @endif
                             </div>
                         </div>
@@ -278,7 +308,7 @@
         </div>
 
         <style>
-            .top-research{
+            .top-research {
                 top: 6em;
                 position: sticky;
                 height: fit-content;
@@ -288,15 +318,18 @@
             <div class="search">
                 @foreach ($tops as $top)
                     <div class="img-div">
-                        <img src="{{ asset('assets/images/sliders/search-side') }}/{{ $top->image }}" alt="{{ $top->image }}" style="display: block; width: 50%; margin: auto;" width="100">
+                        <img src="{{ asset('assets/images/sliders/search-side') }}/{{ $top->image }}"
+                            alt="{{ $top->image }}" style="display: block; width: 50%; margin: auto;"
+                            width="100">
                     </div>
                 @endforeach
             </div>
-            <br/>
+            <br />
             <div>
-                <img src="{{ asset('assets/images/sliders/search-side') }}/{{ $top2s->image }}" alt="{{ $top2s->image }}" style="display: block; width: 50%; margin: auto;" width="100">
+                <img src="{{ asset('assets/images/sliders/search-side') }}/{{ $top2s->image }}"
+                    alt="{{ $top2s->image }}" style="display: block; width: 50%; margin: auto;" width="100">
             </div>
-            
+
         </div>
 
     </div>
@@ -318,4 +351,3 @@
 <script src="{{ asset('assets/js/home.js') }}"></script>
 
 @include('frontend.bj.footer.footer3')
-

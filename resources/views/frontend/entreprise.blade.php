@@ -314,13 +314,21 @@
                                                     href="{{ $entreprise->itineraire }}"
                                                     class="website-link">Itineraire</a></li>
                                         @endif
+
+                                        @if ($entreprise->descriptionCourte)
+                                            <li>
+                                                {{ $entreprise->descriptionCourte }}
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
                             <div class="right">
-                                @if ($entreprise->logo)
-                                    <img src="{{ asset('assets/images/companies/logos') }}/{{ $entreprise->logo }}"
-                                        alt="{{ $entreprise->nom }}">
+                                @if ($entreprise->premium == 1 || $entreprise->basic == 1)
+                                    @if ($entreprise->logo)
+                                        <img src="{{ asset('assets/images/companies/logos') }}/{{ $entreprise->logo }}"
+                                            alt="{{ $entreprise->nom }}">
+                                    @endif
                                 @endif
                             </div>
                         </div>

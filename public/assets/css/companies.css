@@ -35,6 +35,18 @@
   margin-bottom: 1.5em;
   box-shadow: 0 5px 10px rgb(100 100 100 / 12%);
 }
+
+.company-info-2 {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #fff;
+  border-bottom: 5px solid var(--color-secondary);
+  border-radius: 1em;
+  padding: 0.5em;
+  margin-bottom: 1.5em;
+  box-shadow: 0 5px 10px rgb(100 100 100 / 12%);
+}
+
 .company-info .left {width: 75%;}
 .company-info .right {
   width: 25%;
@@ -156,7 +168,7 @@
 
 .company-info .contacts ul li {
   list-style-type: none;
-  padding: 2px 0;
+  padding: 4px 0;
   font-size: 14px;
 }
 

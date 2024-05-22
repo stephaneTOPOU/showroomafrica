@@ -211,6 +211,7 @@
                         </div>
                     @else
                         <div class="company-info">
+
                             <div class="left">
                                 <div class="header">
                                     <h3 class="company-name">
@@ -305,16 +306,25 @@
                                                     href="{{ $recherche->itineraire }}"
                                                     class="website-link">Itineraire</a></li>
                                         @endif
+                                        
+                                        @if ($recherche->descriptionCourte)
+                                            <li>
+                                                {{ $recherche->descriptionCourte }}
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
+                            
                             <div class="right">
-                                @if ($recherche->logo)
-                                    <img src="{{ asset('assets/images/companies/logos') }}/{{ $recherche->logo }}"
-                                        alt="{{ $recherche->nom }}">
+                                @if ($recherche->premium == 1 || $recherche->basic == 1)
+                                    @if ($recherche->logo)
+                                        <img src="{{ asset('assets/images/companies/logos') }}/{{ $recherche->logo }}"
+                                            alt="{{ $recherche->nom }}">
+                                    @endif
                                 @endif
                             </div>
-
+                            
                         </div>
                     @endif
                 @endforeach

@@ -102,9 +102,11 @@
                 </div>
 
                 <div class="right">
-                    @if ($Profil_entreprise->logo)
-                        <img src="{{ asset('assets/images/companies/logos') }}/{{ $Profil_entreprise->logo }}"
-                            alt="{{ $Profil_entreprise->nom }}">
+                    @if ($Profil_entreprise->premium == 1 || $Profil_entreprise->basic == 1)
+                        @if ($Profil_entreprise->logo)
+                            <img src="{{ asset('assets/images/companies/logos') }}/{{ $Profil_entreprise->logo }}"
+                                alt="{{ $Profil_entreprise->nom }}">
+                        @endif
                     @endif
                 </div>
             </div>
@@ -263,8 +265,7 @@
                         {{--                          Youtube                                                             --}}
                         @foreach ($services as $service)
                             @if ($service->magazineimage3)
-                                <div class="company-info">
-                                    <div class="contact-form-header">{{ $Profil_entreprise->nom }}</div>
+                                <div class="company-info-2">
                                     <div class="flex-boxes">
                                         <iframe class="youtube" src="{{ $service->magazineimage3 }}"
                                             title="Découvrons {{ $service->nom }}" frameborder="0"
@@ -313,7 +314,7 @@
                                                     alt="{{ $service->entreprise }}">
                                             @endif
                                             <p>
-                                                {{ $service->image1 }}
+                                                {!! $service->image1 !!}
                                             </p>
                                         </div>
 
@@ -361,58 +362,27 @@
 
 
                         {{--                          Horaire                                                             --}}
-                        @if ($Profil_entreprise->premium == 1)
-                            <div class="company-info">
-                                <div class="contact-form-header">Horaires de service</div>
-                                <div class="premium">
-                                    <span class="closed"><i class="fa-regular fa-shop-slash"></i>
-                                        <b>Fermé</b></span>
-                                    <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
-                                </div>
-                                <table class="company-table">
-                                    <tbody>
-
-                                        @foreach ($horaires as $horaire)
-                                            <tr>
-                                                <td class="days" value>{{ $horaire->jour }}</td>
-                                                <td class="hours text-center" colspan="1">
-                                                    {{ $horaire->h_ouverture }}</td>
-                                            </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
+                        <div class="company-info">
+                            <div class="contact-form-header">Horaires de service</div>
+                            <div class="premium">
+                                <span class="closed"><i class="fa-regular fa-shop-slash"></i>
+                                    <b>Fermé</b></span>
+                                <span class="opened"><i class="fa-regular fa-check"></i> <b>Ouvert</b></span>
                             </div>
-                        @endif
+                            <table class="company-table">
+                                <tbody>
 
-                        @if ($Profil_entreprise->basic == 1)
-                            <div class="company-info">
-                                <div class="contact-form-header">Horaires de service</div>
-                                <div class="premium">
-                                    @if ($Profil_entreprise->pharmacie_de_garde == 1)
-                                        <span><i class="fa-regular fa-check"></i> <b>Garde</b></span>
-                                    @else
-                                        <span class="closed"><i class="fa-regular fa-shop-slash"></i>
-                                            <b>Fermé</b></span>
-                                        <span class="opened"><i class="fa-regular fa-check"></i>
-                                            <b>Ouvert</b></span>
-                                    @endif
-                                </div>
-                                <table class="company-table">
-                                    <tbody>
+                                    @foreach ($horaires as $horaire)
+                                        <tr>
+                                            <td class="days" value>{{ $horaire->jour }}</td>
+                                            <td class="hours text-center" colspan="1">
+                                                {{ $horaire->h_ouverture }}</td>
+                                        </tr>
+                                    @endforeach
 
-                                        @foreach ($horaires as $horaire)
-                                            <tr>
-                                                <td class="days" value>{{ $horaire->jour }}</td>
-                                                <td class="hours text-center" colspan="1">
-                                                    {{ $horaire->h_ouverture }}</td>
-                                            </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        @endif
+                                </tbody>
+                            </table>
+                        </div>
                         {{--                          End Horaire                                                          --}}
 
                         {{--                          Partenaire                                                           --}}
@@ -428,9 +398,6 @@
                                                         <img src="{{ asset('assets/images/partenaires') }}/{{ $partenaire->image }}"
                                                             alt="{{ $partenaire->entreprise }}" />
                                                     </div>
-                                                    {{-- <div class="product-details">
-                    <h4 class="name">{{ $partenaire->description }}</h4>
-                  </div> --}}
                                                 </div>
                                             @endforeach
 
