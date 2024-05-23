@@ -787,6 +787,7 @@ class HomeController extends Controller
         $minispots = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('mini_spots', 'pays.id', '=', 'mini_spots.pays_id')
             ->select('*')
+            ->take(2)
             ->get();
 
         $reportages = DB::table('pays')->where('pays.id', $pays_id[0]->id)
@@ -801,6 +802,7 @@ class HomeController extends Controller
             ->select('*')
             ->where('entreprises.a_magazine', '=', '1')
             ->orderBy('entreprises.id', 'desc')
+            ->take(3)
             ->get();
 
         $honeures = DB::table('pays')->where('pays.id', $pays_id[0]->id)
