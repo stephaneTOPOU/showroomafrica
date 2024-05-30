@@ -40,7 +40,7 @@ class ContactController extends Controller
                 'form_message' => $request->input('message'),
             ), function ($message) use ($request) {
                 $message->from($request->input('email'));
-                $message->to('gzk643192@gmail.com', 'Salut K Gz')->subject($request->input('objet'));
+                $message->to('contact@showroomafrica.com', 'Salut SHOWROOM AFRICA')->subject($request->input('objet'));
             });
             return redirect()->back()->with('success', 'Merci de nous avoir contacté.');
         } catch (Exception $e) {
