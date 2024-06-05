@@ -185,6 +185,11 @@
                                     </li>
                                 @endif
 
+                                @if ($Profil_entreprise->descriptionCourte)
+                                    <li>
+                                        {!! $Profil_entreprise->descriptionCourte !!}
+                                    </li>
+                                @endif
                             </ul>
                         </div>
 

@@ -277,7 +277,7 @@
 
                                         @if ($recherche->descriptionCourte)
                                             <li>
-                                                {{ $recherche->descriptionCourte }}
+                                                {!! $recherche->descriptionCourte !!}
                                             </li>
                                         @endif
                                     </ul>

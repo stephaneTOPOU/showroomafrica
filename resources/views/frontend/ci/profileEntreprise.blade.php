@@ -149,7 +149,7 @@
 
                                 @if ($Profil_entreprise->descriptionCourte)
                                     <li>
-                                        {{ $Profil_entreprise->descriptionCourte }}
+                                        {!! $Profil_entreprise->descriptionCourte !!}
                                     </li>
                                 @endif
                             </ul>

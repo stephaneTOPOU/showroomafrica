@@ -317,7 +317,7 @@
 
                                         @if ($entreprise->descriptionCourte)
                                             <li>
-                                                {{ $entreprise->descriptionCourte }}
+                                                {!! $entreprise->descriptionCourte !!}
                                             </li>
                                         @endif
                                     </ul>
