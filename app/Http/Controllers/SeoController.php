@@ -10,6 +10,10 @@ use Artesaos\SEOTools\Facades\SEOTools;
 
 class SeoController extends Controller
 {
+    use SEOMeta;
+    use OpenGraph;
+    use JsonLd;
+    
     public function index(){
 
         SEOTools::setTitle(env('SEO_META_TITLE'));
