@@ -1,6 +1,6 @@
 const preLoad = function () {
     return caches.open("offline").then(function (cache) {
-        // caching index and important routes
+        // Caching index and important routes
         return cache.addAll(filesToCache);
     });
 };
@@ -29,7 +29,9 @@ const checkResponse = function (request) {
 const addToCache = function (request) {
     return caches.open("offline").then(function (cache) {
         return fetch(request).then(function (response) {
-            return cache.put(request, response);
+            if (response.ok) {
+                return cache.put(request, response);
+            }
         });
     });
 };
@@ -47,10 +49,14 @@ const returnFromCache = function (request) {
 };
 
 self.addEventListener("fetch", function (event) {
-    event.respondWith(checkResponse(event.request).catch(function () {
-        return returnFromCache(event.request);
-    }));
-    if(!event.request.url.startsWith('http')){
-        event.waitUntil(addToCache(event.request));
+    if (event.request.method === 'GET') {
+        event.respondWith(checkResponse(event.request).catch(function () {
+            return returnFromCache(event.request);
+        }));
+
+        // Optionally cache only GET requests over HTTPS or specific routes
+        if (event.request.url.startsWith('https')) {
+            addToCache(event.request);
+        }
     }
 });
