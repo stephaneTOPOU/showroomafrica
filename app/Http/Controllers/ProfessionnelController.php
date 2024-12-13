@@ -19,7 +19,7 @@ class ProfessionnelController extends Controller
             ->take(4)
             ->get();
 
-        $professionels = User::all();
+        $professionels = User::all()->where('valide',1);
 
         return view('frontend.professionnel', compact('parametres', 'sousCategorieNavs', 'professionels'));
     }
@@ -40,6 +40,7 @@ class ProfessionnelController extends Controller
         $professionels = DB::table('pays')->where('pays.id', $pays_id[0]->id)
             ->join('users', 'pays.id', '=', 'users.pays_id')
             ->select('*')
+            ->where('valide',1)
             ->get();
 
         if ($slug_pays == 'tg') {
